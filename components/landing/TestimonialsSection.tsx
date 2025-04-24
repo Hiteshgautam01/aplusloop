@@ -37,7 +37,6 @@ export function TestimonialsSection() {
     },
   ];
 
-  // Sample company names for the placeholder logos
   const companies = [
     { name: "TechInnovate", icon: Building2 },
     { name: "GlobalSolutions", icon: Globe },
@@ -46,10 +45,7 @@ export function TestimonialsSection() {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl" />
-
+    <section className="py-24 bg-muted/10 relative overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">What Our Clients Say</h2>
@@ -84,9 +80,12 @@ export function TestimonialsSection() {
               </div>
 
               <div className="flex flex-col items-center">
-                {/* Avatar with initials instead of image */}
-                <div className={`w-16 h-16 rounded-full overflow-hidden mb-3 flex items-center justify-center ${testimonials[activeSlide].bgColor}`}>
-                  <span className={`text-xl font-semibold ${testimonials[activeSlide].textColor}`}>
+                <div
+                  className={`w-16 h-16 rounded-full overflow-hidden mb-3 flex items-center justify-center ${testimonials[activeSlide].bgColor}`}
+                >
+                  <span
+                    className={`text-xl font-semibold ${testimonials[activeSlide].textColor}`}
+                  >
                     {testimonials[activeSlide].initials}
                   </span>
                 </div>
@@ -113,23 +112,23 @@ export function TestimonialsSection() {
             </div>
           </div>
 
-          {/* Replaced logo placeholders with company name and icon combinations */}
           <div className="mt-16 flex flex-wrap justify-center gap-6">
             {companies.map((company, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="flex items-center justify-center h-12 px-4 py-2 bg-card/50 border border-border/40 rounded-lg hover:bg-card/80 transition-colors duration-200"
               >
                 <company.icon className="h-5 w-5 text-primary/60 mr-2" />
-                <span className="text-sm font-medium text-foreground/70">{company.name}</span>
+                <span className="text-sm font-medium text-foreground/70">
+                  {company.name}
+                </span>
               </div>
             ))}
-            {/* Added fifth company */}
-            <div 
-              className="flex items-center justify-center h-12 px-4 py-2 bg-card/50 border border-border/40 rounded-lg hover:bg-card/80 transition-colors duration-200"
-            >
+            <div className="flex items-center justify-center h-12 px-4 py-2 bg-card/50 border border-border/40 rounded-lg hover:bg-card/80 transition-colors duration-200">
               <Star className="h-5 w-5 text-primary/60 mr-2" />
-              <span className="text-sm font-medium text-foreground/70">InnovateX</span>
+              <span className="text-sm font-medium text-foreground/70">
+                InnovateX
+              </span>
             </div>
           </div>
         </div>

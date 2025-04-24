@@ -13,7 +13,7 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
   { href: "/technology", label: "Technology" },
-  { href: "/services", label: "Business Consulting & Marketing" },
+  { href: "/services", label: "Business Consulting" },
   { href: "/blog", label: "Blog" },
   { href: "/careers", label: "Careers" },
 ];
@@ -84,10 +84,10 @@ export function Navbar() {
   return (
     <motion.nav
       className={cn(
-        "fixed top-0 z-50 w-full backdrop-blur-lg transition-colors duration-300 ease-in-out",
+        "fixed top-0 z-50 w-full transition-colors duration-300 ease-in-out",
         scrolled
-          ? "bg-background/60 shadow-sm border-b border-muted/20"
-          : "bg-background/40"
+          ? "bg-background/60 shadow-sm border-b border-muted/20 backdrop-blur-lg"
+          : "bg-background/40 backdrop-blur-lg"
       )}
       initial={{ height: 64 }}
       animate={{ 
@@ -128,9 +128,9 @@ export function Navbar() {
               ref={navContainerRef}
               onMouseLeave={handleMouseLeave}
             >
-              {/* Continuous hover effect */}
+              {/* Continuous hover effect - enhanced for better visibility in light mode */}
               <motion.div
-                className="absolute bg-background/40 dark:bg-primary/10 backdrop-blur-sm rounded-lg z-0 shadow-sm pointer-events-none"
+                className="absolute bg-primary/15 dark:bg-primary/15 border border-primary/10 rounded-lg z-0 shadow-sm pointer-events-none"
                 initial={{ opacity: 0 }}
                 animate={
                   hoverTarget
@@ -198,7 +198,7 @@ export function Navbar() {
               <Button 
                 variant="default" 
                 size="sm"
-                className="bg-primary/70 hover:bg-primary/80 shadow-sm transition-all duration-300"
+                className="bg-primary hover:bg-primary/90 shadow-md transition-all duration-300"
               >
                 Book a Consultation
               </Button>
@@ -226,11 +226,11 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu - SOLID background (no blur) */}
       <div
         className={cn(
-          "md:hidden transition-all duration-300 ease-in-out overflow-hidden bg-background/50 backdrop-blur-md",
-          isOpen ? "max-h-screen border-t border-muted/10" : "max-h-0"
+          "md:hidden transition-all duration-300 ease-in-out overflow-hidden bg-background border-t border-muted/10",
+          isOpen ? "max-h-screen" : "max-h-0"
         )}
       >
         <div 
@@ -238,10 +238,10 @@ export function Navbar() {
           ref={mobileNavRef}
           onMouseLeave={handleMouseLeave}
         >
-          {/* Mobile hover effect */}
+          {/* Mobile hover effect - enhanced for better visibility */}
           {isOpen && (
             <motion.div
-              className="absolute bg-background/40 dark:bg-primary/10 backdrop-blur-sm rounded-lg z-0 shadow-sm pointer-events-none"
+              className="absolute bg-primary/20 dark:bg-primary/25 border border-primary/15 rounded-lg z-0 shadow-sm pointer-events-none"
               initial={{ opacity: 0 }}
               animate={
                 hoverTarget
@@ -308,7 +308,7 @@ export function Navbar() {
               <Button 
                 variant="default" 
                 size="sm" 
-                className="w-full bg-primary/70 hover:bg-primary/80 shadow-sm transition-all duration-300"
+                className="w-full bg-primary hover:bg-primary/90 shadow-md transition-all duration-300"
               >
                 Book a Consultation
               </Button>

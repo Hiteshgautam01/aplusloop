@@ -70,22 +70,13 @@ export function BannerSlider() {
 
   return (
     <section 
-      className="relative h-[600px] md:h-[70vh] overflow-hidden bg-white dark:bg-black"
+      className="relative h-[600px] md:h-[70vh] overflow-hidden py-24 bg-gradient-to-b from-background to-muted/10"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Simple subtle background - just a gradient from light gray to white */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-black"></div>
-      
-      {/* Very subtle pattern overlay */}
-      <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.07]">
-        <svg width="100%" height="100%">
-          <pattern id="diagonalLines" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-            <line x1="0" y1="0" x2="0" y2="40" stroke="currentColor" strokeWidth="1" className="text-gray-900 dark:text-gray-400"/>
-          </pattern>
-          <rect width="100%" height="100%" fill="url(#diagonalLines)"></rect>
-        </svg>
-      </div>
+      {/* Subtle background elements matching testimonial section */}
+      <div className="absolute top-0 left-0 w-64 h-64 bg-blue-500/3 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-0 w-64 h-64 bg-purple-500/3 rounded-full blur-3xl" />
       
       {/* Slides */}
       <AnimatePresence mode="wait">
@@ -106,19 +97,19 @@ export function BannerSlider() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.6 }}
                 >
-                  <h2 className="text-4xl md:text-5xl font-medium text-gray-900 dark:text-white mb-3">
+                  <h2 className="text-4xl md:text-5xl font-bold mb-3">
                     {slides[current].title}
                   </h2>
-                  <p className="text-2xl text-gray-700 dark:text-gray-300 font-light mb-4">
+                  <p className="text-2xl text-foreground font-medium mb-4">
                     {slides[current].subtitle}
                   </p>
-                  <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-xl leading-relaxed">
+                  <p className="text-lg text-muted-foreground mb-8 max-w-xl leading-relaxed">
                     {slides[current].description}
                   </p>
                   
                   <div className="flex flex-wrap gap-4">
                     <Button 
-                      className="bg-gray-900 hover:bg-black text-white dark:bg-white dark:hover:bg-gray-200 dark:text-black px-6 py-2 rounded"
+                      className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2 rounded"
                     >
                       {slides[current].cta}
                       <ChevronRight className="ml-2 h-4 w-4" />
@@ -126,7 +117,7 @@ export function BannerSlider() {
                     
                     <Button 
                       variant="outline"
-                      className="border-gray-300 text-gray-700 hover:bg-gray-100 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-900"
+                      className="border-border text-muted-foreground hover:bg-muted"
                     >
                       {slides[current].secondaryCta}
                     </Button>
@@ -141,28 +132,28 @@ export function BannerSlider() {
       {/* Navigation arrows */}
       <button 
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-black/80 hover:bg-white dark:hover:bg-black border border-gray-200 dark:border-gray-800 p-2 rounded-full z-10 text-gray-800 dark:text-gray-200 transition-all duration-200"
+        className="absolute left-4 top-1/2 -translate-y-1/2 bg-card/50 hover:bg-card/80 border border-border/50 p-2 rounded-full z-10 text-foreground transition-all duration-200"
       >
         <ChevronLeft size={20} />
       </button>
       
       <button 
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-black/80 hover:bg-white dark:hover:bg-black border border-gray-200 dark:border-gray-800 p-2 rounded-full z-10 text-gray-800 dark:text-gray-200 transition-all duration-200"
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-card/50 hover:bg-card/80 border border-border/50 p-2 rounded-full z-10 text-foreground transition-all duration-200"
       >
         <ChevronRight size={20} />
       </button>
       
-      {/* Slide indicators */}
+      {/* Slide indicators - matching style from testimonials */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-        {slides.map((_, index) => (
+        {slides.map((_, i) => (
           <button
-            key={index}
-            onClick={() => goToSlide(index)}
-            className={`h-2 rounded-full transition-all duration-300 ${
-              index === current ? "bg-gray-900 dark:bg-gray-200 w-8" : "bg-gray-300 dark:bg-gray-700 w-2"
+            key={i}
+            onClick={() => goToSlide(i)}
+            className={`h-2.5 rounded-full transition-all ${
+              i === current ? "w-8 bg-primary" : "w-2.5 bg-primary/30"
             }`}
-            aria-label={`Go to slide ${index + 1}`}
+            aria-label={`Go to slide ${i + 1}`}
           />
         ))}
       </div>
