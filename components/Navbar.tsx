@@ -119,10 +119,11 @@ export function Navbar() {
           key={link.href}
           data-href={link.href}
           onMouseEnter={() => handleMouseEnter(link.href)}
+          className=" bg-transparent"
         >
           <NavigationMenuTrigger 
             className={cn(
-              "px-4 py-2 text-sm font-medium transition-all",
+              "px-4 py-2 text-sm font-medium transition-all bg-transparent hover:bg-transparent ", // Remove default background
               "hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent", // Remove default background
               pathname === link.href 
                 ? "text-primary font-semibold" 
