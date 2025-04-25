@@ -8,28 +8,51 @@ import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/mode-toggle";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuLink,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
 
-const navLinks = [
+import { TechnologyMenuContent, BusinessConsultingMenuContent } from "@/components/landing/MegaMenu";
+
+interface NavLink {
+  href: string;
+  label: string;
+  hasMenu?: boolean;
+}
+
+interface HoverRect {
+  left: number;
+  width: number;
+  height: number;
+  top: number;
+}
+
+const navLinks: NavLink[] = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
-  { href: "/technology", label: "Technology" },
-  { href: "/services", label: "Business Consulting" },
+  { href: "/technology", label: "Technology", hasMenu: true },
+  { href: "/services", label: "Business Consulting", hasMenu: true },
   { href: "/blog", label: "Blog" },
   { href: "/careers", label: "Careers" },
 ];
 
 export function Navbar() {
   const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [scrolled, setScrolled] = useState<boolean>(false);
   const [hoverTarget, setHoverTarget] = useState<string | null>(null);
   const navContainerRef = useRef<HTMLDivElement>(null);
   const mobileNavRef = useRef<HTMLDivElement>(null);
-  const [hoverRect, setHoverRect] = useState({ left: 0, width: 0, height: 0, top: 0 });
-  const [isMouseInNav, setIsMouseInNav] = useState(false);
+  const [hoverRect, setHoverRect] = useState<HoverRect>({ left: 0, width: 0, height: 0, top: 0 });
+  const [isMouseInNav, setIsMouseInNav] = useState<boolean>(false);
 
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = (): void => {
       setScrolled(window.scrollY > 10);
     };
 
@@ -60,12 +83,12 @@ export function Navbar() {
   }, [hoverTarget]);
 
   // Mouse tracking for the nav container
-  const handleMouseEnter = (href: string) => {
+  const handleMouseEnter = (href: string): void => {
     setHoverTarget(href);
     setIsMouseInNav(true);
   };
   
-  const handleMouseLeave = () => {
+  const handleMouseLeave = (): void => {
     setIsMouseInNav(false);
     // Don't clear the hoverTarget immediately to keep the highlight visible
     // It will be cleared by the effect below if mouse is outside
@@ -80,6 +103,101 @@ export function Navbar() {
       return () => clearTimeout(timeout);
     }
   }, [isMouseInNav]);
+
+  // Render standard link or navigation menu item
+  const renderNavItem = (link: NavLink, index: number) => {
+    if (link.hasMenu) {
+      return (
+        <NavigationMenuItem key={link.href}>
+          <NavigationMenuTrigger 
+            className={cn(
+              "px-4 py-2 text-sm font-medium transition-all",
+              pathname === link.href 
+                ? "text-primary font-semibold" 
+                : "text-foreground/70 hover:text-foreground",
+              hoverTarget === link.href && "text-foreground"
+            )}
+          >
+            {link.label}
+          </NavigationMenuTrigger>
+          {link.label === "Technology" && <TechnologyMenuContent />}
+          {link.label === "Business Consulting" && <BusinessConsultingMenuContent />}
+        </NavigationMenuItem>
+      );
+    }
+    
+    return (
+      <div
+        key={link.href}
+        className="relative"
+        data-href={link.href}
+        onMouseEnter={() => handleMouseEnter(link.href)}
+      >
+        <Link
+          href={link.href}
+          className={cn(
+            "px-4 py-2 text-sm font-medium relative z-10 block transition-all",
+            pathname === link.href 
+              ? "text-primary font-semibold" 
+              : "text-foreground/70 hover:text-foreground",
+            hoverTarget === link.href && "text-foreground"
+          )}
+        >
+          {link.label}
+          {pathname === link.href && (
+            <motion.span 
+              className="absolute -bottom-0.5 left-4 right-4 h-0.5 bg-primary/60 rounded-full" 
+              layoutId="activeIndicator"
+              transition={{
+                type: "spring",
+                stiffness: 500,
+                damping: 30
+              }}
+            />
+          )}
+        </Link>
+      </div>
+    );
+  };
+
+  // Render mobile nav item
+  const renderMobileNavItem = (link: NavLink) => {
+    return (
+      <div
+        key={link.href}
+        className="relative"
+        data-href={link.href}
+        onMouseEnter={() => handleMouseEnter(link.href)}
+      >
+        <Link
+          href={link.href}
+          className={cn(
+            "block rounded-md px-3 py-2.5 text-base font-medium relative z-10 transition-all",
+            pathname === link.href 
+              ? "text-primary font-semibold" 
+              : "text-foreground/70 hover:text-foreground",
+            hoverTarget === link.href && "text-foreground"
+          )}
+          onClick={() => setIsOpen(false)}
+        >
+          {link.label}
+          {pathname === link.href && (
+            <motion.span 
+              className="absolute -left-1 top-2.5 bottom-2.5 w-0.5 bg-primary rounded-full" 
+              layoutId="mobileActiveIndicator"
+              initial={{ scaleY: 0 }}
+              animate={{ scaleY: 1 }}
+              transition={{
+                type: "spring",
+                stiffness: 500,
+                damping: 30
+              }}
+            />
+          )}
+        </Link>
+      </div>
+    );
+  };
 
   return (
     <motion.nav
@@ -123,17 +241,13 @@ export function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div
-              className="ml-10 flex items-center relative"
-              ref={navContainerRef}
-              onMouseLeave={handleMouseLeave}
-            >
+            <div className="ml-10 flex items-center relative" ref={navContainerRef} onMouseLeave={handleMouseLeave}>
               {/* Continuous hover effect - enhanced for better visibility in light mode */}
               <motion.div
                 className="absolute bg-primary/15 dark:bg-primary/15 border border-primary/10 rounded-lg z-0 shadow-sm pointer-events-none"
                 initial={{ opacity: 0 }}
                 animate={
-                  hoverTarget
+                  hoverTarget && !navLinks.find(link => link.href === hoverTarget)?.hasMenu
                     ? {
                         width: hoverRect.width,
                         left: hoverRect.left,
@@ -149,47 +263,17 @@ export function Navbar() {
                 }}
               />
               
-              {/* Create a continuous interactive area */}
-              <div className="flex">
-                {navLinks.map((link, index) => (
-                  <div
-                    key={link.href}
-                    className="relative"
-                    data-href={link.href}
-                    onMouseEnter={() => handleMouseEnter(link.href)}
-                  >
-                    <Link
-                      href={link.href}
-                      className={cn(
-                        "px-4 py-2 text-sm font-medium relative z-10 block transition-all",
-                        pathname === link.href 
-                          ? "text-primary font-semibold" 
-                          : "text-foreground/70 hover:text-foreground",
-                        hoverTarget === link.href && "text-foreground"
-                      )}
-                    >
-                      {link.label}
-                      {pathname === link.href && (
-                        <motion.span 
-                          className="absolute -bottom-0.5 left-4 right-4 h-0.5 bg-primary/60 rounded-full" 
-                          layoutId="activeIndicator"
-                          transition={{
-                            type: "spring",
-                            stiffness: 500,
-                            damping: 30
-                          }}
-                        />
-                      )}
-                    </Link>
-                  </div>
-                ))}
-              </div>
+              {/* Regular links and Mega Menu navigation */}
+              <NavigationMenu>
+                <NavigationMenuList>
+                  {navLinks.map((link, index) => renderNavItem(link, index))}
+                </NavigationMenuList>
+              </NavigationMenu>
             </div>
           </div>
 
           {/* Right side: CTA & Theme Toggle */}
           <div className="hidden md:flex items-center space-x-4">
-            {/* FIX: Replace motion.button with motion.div */}
             <motion.div 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -262,44 +346,11 @@ export function Navbar() {
             />
           )}
           
-          {navLinks.map((link) => (
-            <div
-              key={link.href}
-              className="relative"
-              data-href={link.href}
-              onMouseEnter={() => handleMouseEnter(link.href)}
-            >
-              <Link
-                href={link.href}
-                className={cn(
-                  "block rounded-md px-3 py-2.5 text-base font-medium relative z-10 transition-all",
-                  pathname === link.href 
-                    ? "text-primary font-semibold" 
-                    : "text-foreground/70 hover:text-foreground",
-                  hoverTarget === link.href && "text-foreground"
-                )}
-                onClick={() => setIsOpen(false)}
-              >
-                {link.label}
-                {pathname === link.href && (
-                  <motion.span 
-                    className="absolute -left-1 top-2.5 bottom-2.5 w-0.5 bg-primary rounded-full" 
-                    layoutId="mobileActiveIndicator"
-                    initial={{ scaleY: 0 }}
-                    animate={{ scaleY: 1 }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 500,
-                      damping: 30
-                    }}
-                  />
-                )}
-              </Link>
-            </div>
-          ))}
+          {/* Mobile menu items */}
+          {navLinks.map((link) => renderMobileNavItem(link))}
           
+          {/* Mobile CTA */}
           <div className="mt-6 pt-4 border-t border-muted/20">
-            {/* FIX: Replace motion.button with motion.div */}
             <motion.div
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
