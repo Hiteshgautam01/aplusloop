@@ -35,7 +35,7 @@ export default function BlogPage() {
               </motion.div>
             </AnimatePresence>
           </div>
-          <div className="w-full lg:w-auto">
+          <div className="w-full lg:w-88">
             <FeaturedBlogs />
           </div>
         </div>

@@ -19,7 +19,7 @@ export const BlogTabs = ({
   setActiveCategory,
 }: BlogTabsProps) => {
   return (
-    <div className="mb-8">
+    <div className="mb-3">
       <Tabs
         defaultValue={activeCategory}
         value={activeCategory}
@@ -36,7 +36,7 @@ export const BlogTabs = ({
               {category.label}
               {category.id === activeCategory && (
                 <motion.div
-                  className="absolute bottom-0 left-0 w-full h-0.5 bg-purple-800"
+                  className="absolute bottom-0 left-0 w-full h-[2px] bg-purple-800"
                   layoutId="active-tab-underline"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}

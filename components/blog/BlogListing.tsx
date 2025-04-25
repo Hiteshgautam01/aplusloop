@@ -44,7 +44,7 @@ export const blogs = [
 const BlogCard = ({ blog }: { blog: (typeof blogs)[0] }) => {
   return (
     <Link href={`/blog/${blog.slug}`}>
-      <div className="flex flex-col md:flex-row gap-6 p-6 border border-border rounded-lg mb-6 transition-all duration-300 hover:shadow-md hover:border-purple-700 hover:-translate-y-1">
+      <div className="flex flex-col md:flex-row gap-6 p-6 border border-border rounded-lg mb-3 transition-all duration-300 hover:shadow-md hover:border-purple-700 hover:-translate-y-1">
         <div className="flex-1">
           <h2 className="text-xl font-bold mb-2">{blog.title}</h2>
           <p className="text-muted-foreground line-clamp-3">{blog.excerpt}</p>
