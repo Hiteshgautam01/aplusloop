@@ -49,7 +49,7 @@ const BlogCard = ({ blog }: { blog: (typeof blogs)[0] }) => {
           <h2 className="text-xl font-bold mb-2">{blog.title}</h2>
           <p className="text-muted-foreground line-clamp-3">{blog.excerpt}</p>
         </div>
-        <div className="w-full md:w-1/3 relative aspect-[4/3] md:h-auto">
+        <div className="w-full md:w-1/3 relative h-40 md:h-auto md:max-h-32">
           <Image
             src={blog.image}
             alt={blog.title}

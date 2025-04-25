@@ -34,7 +34,7 @@ export const FeaturedBlogs = () => {
   const [expandedBlog, setExpandedBlog] = useState(0);
 
   return (
-    <div className="border border-border rounded-lg p-6">
+    <div className="border border-border rounded-lg p-6 w-full md:max-w-md">
       <h2 className="text-xl font-bold mb-6 border-b pb-2">Featured Blogs</h2>
       <div className="space-y-4">
         {featuredBlogs.map((blog, index) => (
@@ -42,7 +42,7 @@ export const FeaturedBlogs = () => {
             key={blog.id}
             className="overflow-hidden transition-all duration-500 ease-in-out"
             style={{
-              height: expandedBlog === index ? "320px" : "80px",
+              height: expandedBlog === index ? "320px" : "100px",
             }}
             onMouseEnter={() => setExpandedBlog(index)}
           >
@@ -68,7 +68,15 @@ export const FeaturedBlogs = () => {
                 <h3 className="text-md font-medium line-clamp-2 mb-1">
                   {blog.title}
                 </h3>
-                <p className="text-sm text-muted-foreground line-clamp-2">
+                <p
+                  className="text-sm text-muted-foreground"
+                  style={{
+                    display: "-webkit-box",
+                    WebkitLineClamp: expandedBlog === index ? 3 : 2,
+                    WebkitBoxOrient: "vertical",
+                    overflow: "hidden",
+                  }}
+                >
                   {blog.excerpt}
                 </p>
               </div>

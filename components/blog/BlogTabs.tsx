@@ -1,4 +1,5 @@
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { motion, AnimatePresence } from "framer-motion";
 
 export const blogCategories = [
   { id: "all", label: "All Blogs" },
@@ -30,20 +31,18 @@ export const BlogTabs = ({
             <TabsTrigger
               key={category.id}
               value={category.id}
-              className="text-sm md:text-base relative data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:text-foreground data-[state=active]:font-medium"
-              style={
-                {
-                  "--tab-underline-color": "#5b21b6", // dark purple
-                } as React.CSSProperties
-              }
+              className="text-sm md:text-base relative data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:text-foreground data-[state=active]:font-medium transition-all duration-200"
             >
               {category.label}
-              <span
-                className="absolute bottom-0 left-0 w-full h-0.5 scale-x-0 bg-[--tab-underline-color] transition-transform duration-200 data-[state=active]:scale-x-100"
-                data-state={
-                  category.id === activeCategory ? "active" : "inactive"
-                }
-              />
+              {category.id === activeCategory && (
+                <motion.div
+                  className="absolute bottom-0 left-0 w-full h-0.5 bg-purple-800"
+                  layoutId="active-tab-underline"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+              )}
             </TabsTrigger>
           ))}
         </TabsList>
