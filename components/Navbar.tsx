@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/mode-toggle";
 import { cn } from "@/lib/utils";
@@ -14,6 +14,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   NavigationMenuLink,
+  NavigationMenuContent,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
@@ -50,6 +51,7 @@ export function Navbar() {
   const mobileNavRef = useRef<HTMLDivElement>(null);
   const [hoverRect, setHoverRect] = useState<HoverRect>({ left: 0, width: 0, height: 0, top: 0 });
   const [isMouseInNav, setIsMouseInNav] = useState<boolean>(false);
+  const [activeMobileMenu, setActiveMobileMenu] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = (): void => {
@@ -104,14 +106,24 @@ export function Navbar() {
     }
   }, [isMouseInNav]);
 
+  // Toggle mobile mega menu
+  const toggleMobileMenu = (href: string): void => {
+    setActiveMobileMenu(activeMobileMenu === href ? null : href);
+  };
+
   // Render standard link or navigation menu item
   const renderNavItem = (link: NavLink, index: number) => {
     if (link.hasMenu) {
       return (
-        <NavigationMenuItem key={link.href}>
+        <NavigationMenuItem 
+          key={link.href}
+          data-href={link.href}
+          onMouseEnter={() => handleMouseEnter(link.href)}
+        >
           <NavigationMenuTrigger 
             className={cn(
               "px-4 py-2 text-sm font-medium transition-all",
+              "hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent", // Remove default background
               pathname === link.href 
                 ? "text-primary font-semibold" 
                 : "text-foreground/70 hover:text-foreground",
@@ -163,40 +175,171 @@ export function Navbar() {
   // Render mobile nav item
   const renderMobileNavItem = (link: NavLink) => {
     return (
-      <div
-        key={link.href}
-        className="relative"
-        data-href={link.href}
-        onMouseEnter={() => handleMouseEnter(link.href)}
-      >
-        <Link
-          href={link.href}
-          className={cn(
-            "block rounded-md px-3 py-2.5 text-base font-medium relative z-10 transition-all",
-            pathname === link.href 
-              ? "text-primary font-semibold" 
-              : "text-foreground/70 hover:text-foreground",
-            hoverTarget === link.href && "text-foreground"
-          )}
-          onClick={() => setIsOpen(false)}
-        >
-          {link.label}
-          {pathname === link.href && (
-            <motion.span 
-              className="absolute -left-1 top-2.5 bottom-2.5 w-0.5 bg-primary rounded-full" 
-              layoutId="mobileActiveIndicator"
-              initial={{ scaleY: 0 }}
-              animate={{ scaleY: 1 }}
-              transition={{
-                type: "spring",
-                stiffness: 500,
-                damping: 30
-              }}
-            />
-          )}
-        </Link>
+      <div key={link.href} className="relative">
+        {link.hasMenu ? (
+          <div>
+            <button
+              data-href={link.href}
+              onMouseEnter={() => handleMouseEnter(link.href)}
+              onClick={() => toggleMobileMenu(link.href)}
+              className={cn(
+                "flex w-full justify-between items-center rounded-md px-3 py-2.5 text-base font-medium relative z-10 transition-all",
+                pathname === link.href 
+                  ? "text-primary font-semibold" 
+                  : "text-foreground/70 hover:text-foreground",
+                hoverTarget === link.href && "text-foreground"
+              )}
+            >
+              <span>{link.label}</span>
+              <ChevronDown
+                className={cn(
+                  "h-4 w-4 transition-transform", 
+                  activeMobileMenu === link.href && "transform rotate-180"
+                )}
+              />
+            </button>
+            
+            {/* Mobile Mega Menu Content */}
+            {activeMobileMenu === link.href && (
+              <div className="bg-background/80 border-l border-muted/20 pl-4 ml-3 my-2">
+                {link.label === "Technology" && renderMobileMegaMenuContent("technology")}
+                {link.label === "Business Consulting" && renderMobileMegaMenuContent("services")}
+              </div>
+            )}
+          </div>
+        ) : (
+          <Link
+            href={link.href}
+            data-href={link.href}
+            onMouseEnter={() => handleMouseEnter(link.href)}
+            className={cn(
+              "block rounded-md px-3 py-2.5 text-base font-medium relative z-10 transition-all",
+              pathname === link.href 
+                ? "text-primary font-semibold" 
+                : "text-foreground/70 hover:text-foreground",
+              hoverTarget === link.href && "text-foreground"
+            )}
+            onClick={() => setIsOpen(false)}
+          >
+            {link.label}
+            {pathname === link.href && (
+              <motion.span 
+                className="absolute -left-1 top-2.5 bottom-2.5 w-0.5 bg-primary rounded-full" 
+                layoutId="mobileActiveIndicator"
+                initial={{ scaleY: 0 }}
+                animate={{ scaleY: 1 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 500,
+                  damping: 30
+                }}
+              />
+            )}
+          </Link>
+        )}
       </div>
     );
+  };
+
+  // Render mobile mega menu content
+  const renderMobileMegaMenuContent = (section: string) => {
+    if (section === "technology") {
+      return (
+        <div className="py-2">
+          <div className="mb-3">
+            <h4 className="text-sm font-medium text-foreground/80 mb-2">Core Technologies</h4>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/technology/cloud" className="block text-sm pl-2 py-1 text-foreground/70 hover:text-foreground">
+                  Cloud Services
+                </Link>
+              </li>
+              <li>
+                <Link href="/technology/data" className="block text-sm pl-2 py-1 text-foreground/70 hover:text-foreground">
+                  Data Engineering
+                </Link>
+              </li>
+              <li>
+                <Link href="/technology/development" className="block text-sm pl-2 py-1 text-foreground/70 hover:text-foreground">
+                  Software Development
+                </Link>
+              </li>
+              <li>
+                <Link href="/technology/architecture" className="block text-sm pl-2 py-1 text-foreground/70 hover:text-foreground">
+                  System Architecture
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-sm font-medium text-foreground/80 mb-2">Resources</h4>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/technology/case-studies" className="block text-sm pl-2 py-1 text-foreground/70 hover:text-foreground">
+                  Case Studies
+                </Link>
+              </li>
+              <li>
+                <Link href="/technology/whitepapers" className="block text-sm pl-2 py-1 text-foreground/70 hover:text-foreground">
+                  Whitepapers
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      );
+    } else if (section === "services") {
+      return (
+        <div className="py-2">
+          <div className="mb-3">
+            <h4 className="text-sm font-medium text-foreground/80 mb-2">Consulting Services</h4>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/services/strategy" className="block text-sm pl-2 py-1 text-foreground/70 hover:text-foreground">
+                  Business Strategy
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/operations" className="block text-sm pl-2 py-1 text-foreground/70 hover:text-foreground">
+                  Operations
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/digital" className="block text-sm pl-2 py-1 text-foreground/70 hover:text-foreground">
+                  Digital Transformation
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/change" className="block text-sm pl-2 py-1 text-foreground/70 hover:text-foreground">
+                  Change Management
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-sm font-medium text-foreground/80 mb-2">Analysis Services</h4>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/services/market-analysis" className="block text-sm pl-2 py-1 text-foreground/70 hover:text-foreground">
+                  Market Analysis
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/financial-modeling" className="block text-sm pl-2 py-1 text-foreground/70 hover:text-foreground">
+                  Financial Modeling
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/performance" className="block text-sm pl-2 py-1 text-foreground/70 hover:text-foreground">
+                  Performance Metrics
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      );
+    }
+    return null;
   };
 
   return (
@@ -247,7 +390,7 @@ export function Navbar() {
                 className="absolute bg-primary/15 dark:bg-primary/15 border border-primary/10 rounded-lg z-0 shadow-sm pointer-events-none"
                 initial={{ opacity: 0 }}
                 animate={
-                  hoverTarget && !navLinks.find(link => link.href === hoverTarget)?.hasMenu
+                  hoverTarget
                     ? {
                         width: hoverRect.width,
                         left: hoverRect.left,
@@ -310,7 +453,7 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu - SOLID background (no blur) */}
+      {/* Mobile menu */}
       <div
         className={cn(
           "md:hidden transition-all duration-300 ease-in-out overflow-hidden bg-background border-t border-muted/10",

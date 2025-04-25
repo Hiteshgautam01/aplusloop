@@ -75,7 +75,7 @@ const FeaturedContent: React.FC<FeaturedContentProps> = ({ title, description, h
 // Technology dropdown content
 export function TechnologyMenuContent() {
   return (
-    <NavigationMenuContent>
+    <NavigationMenuContent className="bg-background/90 backdrop-blur-lg border border-muted/20 shadow-lg">
       <div className="grid w-[600px] grid-cols-[1fr_2fr] gap-3 p-4">
         <div className="col-span-1 row-span-3">
           <FeaturedContent 
@@ -139,7 +139,7 @@ export function TechnologyMenuContent() {
 // Business Consulting dropdown content
 export function BusinessConsultingMenuContent() {
   return (
-    <NavigationMenuContent>
+    <NavigationMenuContent className="bg-background/90 backdrop-blur-lg border border-muted/20 shadow-lg">
       <div className="grid w-[600px] grid-cols-[1fr_2fr] gap-3 p-4">
         <div className="col-span-1 row-span-3">
           <FeaturedContent 
