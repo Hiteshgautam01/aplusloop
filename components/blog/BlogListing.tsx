@@ -1,47 +1,32 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { createClient } from "next-sanity";
+import { urlForImage } from "@/sanity/lib/image";
+import { getPosts } from "@/sanity/queries/blog";
 
-// Mock data for blogs
-export const blogs = [
-  {
-    id: 1,
-    title: "How to Optimize Your Business with AI Solutions",
-    excerpt:
-      "Discover the latest AI trends that are transforming businesses across industries. Learn how implementing these solutions can boost your productivity and streamline operations...",
-    image: "/blog.png",
-    category: "case-studies",
-    slug: "optimize-business-ai-solutions",
-  },
-  {
-    id: 2,
-    title: "Annual Tech Conference Highlights",
-    excerpt:
-      "Our team attended the biggest tech conference of the year. Here are the key takeaways and innovations that stood out among the presentations and exhibitions...",
-    image: "/blog.png",
-    category: "event-reviews",
-    slug: "annual-tech-conference-highlights",
-  },
-  {
-    id: 3,
-    title: "Our Product Wins Innovation Award",
-    excerpt:
-      "We're proud to announce that our flagship product has been recognized with the prestigious Innovation Award. This recognition highlights our commitment to excellence...",
-    image: "/blog.png",
-    category: "awards",
-    slug: "product-wins-innovation-award",
-  },
-  {
-    id: 4,
-    title: "New Features Released for Our Platform",
-    excerpt:
-      "We've just launched a set of powerful new features for our platform. These updates are designed to enhance user experience and provide more advanced functionality...",
-    image: "/blog.png",
-    category: "product-news",
-    slug: "new-features-released",
-  },
-];
+// Client-side Sanity client with fixed API version
+const client = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "",
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "",
+  apiVersion: "2023-05-03", // Using a fixed valid date format
+  useCdn: true,
+});
 
-const BlogCard = ({ blog }: { blog: (typeof blogs)[0] }) => {
+interface Post {
+  _id: string;
+  title: string;
+  excerpt: string;
+  slug: string;
+  category: string;
+  mainImage: any;
+}
+
+interface BlogCardProps {
+  blog: Post;
+}
+
+const BlogCard = ({ blog }: BlogCardProps) => {
   return (
     <Link href={`/blog/${blog.slug}`}>
       <div className="flex flex-col md:flex-row gap-6 p-6 border border-border rounded-lg mb-3 transition-all duration-300 hover:shadow-md hover:border-purple-700 hover:-translate-y-1">
@@ -50,12 +35,14 @@ const BlogCard = ({ blog }: { blog: (typeof blogs)[0] }) => {
           <p className="text-muted-foreground line-clamp-3">{blog.excerpt}</p>
         </div>
         <div className="w-full md:w-1/3 relative h-40 md:h-auto md:max-h-32">
-          <Image
-            src={blog.image}
-            alt={blog.title}
-            fill
-            className="object-cover rounded-md"
-          />
+          {blog.mainImage && (
+            <Image
+              src={urlForImage(blog.mainImage)}
+              alt={blog.title}
+              fill
+              className="object-cover rounded-md"
+            />
+          )}
         </div>
       </div>
     </Link>
@@ -67,15 +54,41 @@ interface BlogListingProps {
 }
 
 export const BlogListing = ({ activeCategory }: BlogListingProps) => {
-  const filteredBlogs =
-    activeCategory === "all"
-      ? blogs
-      : blogs.filter((blog) => blog.category === activeCategory);
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchPosts() {
+      try {
+        setLoading(true);
+        // Using the imported query function
+        const fetchedPosts = await getPosts(
+          activeCategory !== "all" ? activeCategory : undefined
+        );
+        setPosts(fetchedPosts);
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchPosts();
+  }, [activeCategory]);
+
+  if (loading) {
+    return (
+      <div className="my-8 text-center">
+        <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"></div>
+        <p className="mt-4">Loading posts...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
-      {filteredBlogs.length > 0 ? (
-        filteredBlogs.map((blog) => <BlogCard key={blog.id} blog={blog} />)
+      {posts.length > 0 ? (
+        posts.map((post) => <BlogCard key={post._id} blog={post} />)
       ) : (
         <div className="text-center py-10">
           <p className="text-muted-foreground">

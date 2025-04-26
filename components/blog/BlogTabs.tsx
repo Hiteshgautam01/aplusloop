@@ -1,6 +1,8 @@
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion, AnimatePresence } from "framer-motion";
+import { useMemo } from "react";
 
+// Default categories if none are provided from Sanity
 export const blogCategories = [
   { id: "all", label: "All Blogs" },
   { id: "case-studies", label: "Case Studies" },
@@ -12,12 +14,41 @@ export const blogCategories = [
 interface BlogTabsProps {
   activeCategory: string;
   setActiveCategory: (category: string) => void;
+  categoriesData?: {
+    categories: Array<{
+      id: string;
+      label: string;
+      isDefault: boolean;
+    }>;
+    showAllOption: boolean;
+    allCategoryLabel: string;
+  };
 }
 
 export const BlogTabs = ({
   activeCategory,
   setActiveCategory,
+  categoriesData,
 }: BlogTabsProps) => {
+  // Use categories from Sanity if available, otherwise fall back to defaults
+  const categories = useMemo(() => {
+    if (!categoriesData) return blogCategories;
+
+    const sanityCategories = categoriesData.categories.map((cat) => ({
+      id: cat.id,
+      label: cat.label,
+    }));
+
+    if (categoriesData.showAllOption) {
+      return [
+        { id: "all", label: categoriesData.allCategoryLabel || "All Blogs" },
+        ...sanityCategories,
+      ];
+    }
+
+    return sanityCategories;
+  }, [categoriesData]);
+
   return (
     <div className="mb-3">
       <Tabs
@@ -27,7 +58,7 @@ export const BlogTabs = ({
         onValueChange={setActiveCategory}
       >
         <TabsList className="w-full sm:w-auto flex flex-wrap bg-transparent">
-          {blogCategories.map((category) => (
+          {categories.map((category) => (
             <TabsTrigger
               key={category.id}
               value={category.id}
