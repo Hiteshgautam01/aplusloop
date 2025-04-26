@@ -14,7 +14,7 @@ export default function BlogPage() {
 
   return (
     <main>
-      <Navbar />
+      {/* <Navbar /> */}
       <BlogBanner activeCategory={activeCategory} />
       <div className="container mx-auto px-4 pt-6 pb-16">
         <div className="flex flex-col lg:flex-row gap-8">
@@ -40,7 +40,7 @@ export default function BlogPage() {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 }

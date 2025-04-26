@@ -11,13 +11,13 @@ import { Footer } from "@/components/landing/Footer";
 export default function Home() {
   return (
     <main className="min-h-screen relative overflow-hidden">
-      <Navbar />
+      {/* <Navbar /> */}
       <BannerSlider />
       <BusinessActivities />
       <ServicesSection />
       <TestimonialsSection />
       <CtaSection />
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 }
