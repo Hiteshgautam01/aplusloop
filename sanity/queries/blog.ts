@@ -8,7 +8,12 @@ export async function getBlogPageData() {
       title,
       metaDescription,
       blogBanner,
-      blogCategories,
+      showAllOption,
+      allCategoryLabel,
+      "categories": categories[]->{ 
+        "id": slug.current,
+        title
+      },
       featuredBlogs
     }
   `;
@@ -17,31 +22,35 @@ export async function getBlogPageData() {
 }
 
 // Get all posts or filtered by category
-export async function getPosts(category?: string) {
-  const query =
-    category && category !== "all"
-      ? groq`
-        *[_type == "post" && category == $category] | order(publishedAt desc) {
-          _id,
-          title,
-          excerpt,
-          "slug": slug.current,
-          category,
-          mainImage
-        }
-      `
-      : groq`
-        *[_type == "post"] | order(publishedAt desc) {
-          _id,
-          title,
-          excerpt,
-          "slug": slug.current,
-          category,
-          mainImage
-        }
-      `;
+export async function getPosts(categoryId: string | undefined) {
+  // If categoryId is undefined or "all", fetch all posts
+  if (!categoryId || categoryId === "all") {
+    const query = groq`
+      *[_type == "post"] | order(publishedAt desc) {
+        _id,
+        title,
+        excerpt,
+        "slug": slug.current,
+        "categories": categories[]->{ "id": slug.current, title },
+        mainImage
+      }
+    `;
+    return client.fetch(query);
+  }
 
-  return client.fetch(query, { category });
+  // Otherwise fetch posts with the specified category
+  const query = groq`
+    *[_type == "post" && references(*[_type == "category" && slug.current == $categoryId]._id)] | order(publishedAt desc) {
+      _id,
+      title,
+      excerpt,
+      "slug": slug.current,
+      "categories": categories[]->{ "id": slug.current, title },
+      mainImage
+    }
+  `;
+
+  return client.fetch(query, { categoryId });
 }
 
 // Get featured posts
@@ -53,6 +62,7 @@ export async function getFeaturedPosts(postIds?: string[]) {
         title,
         excerpt,
         "slug": slug.current,
+        "categories": categories[]->{ "id": slug.current, title },
         mainImage
       }
     `;
@@ -67,6 +77,7 @@ export async function getFeaturedPosts(postIds?: string[]) {
       title,
       excerpt,
       "slug": slug.current,
+      "categories": categories[]->{ "id": slug.current, title },
       mainImage
     }
   `;
@@ -85,8 +96,8 @@ export async function getPost(slug: string) {
       body,
       mainImage,
       publishedAt,
-      category,
-      "author": author->{name, image, bio},
+      "categories": categories[]->{ "id": slug.current, title },
+      "author": author->{ name, image, bio },
     }
   `;
 
@@ -94,19 +105,31 @@ export async function getPost(slug: string) {
 }
 
 // Get related posts
-export async function getRelatedPosts(category: string, currentPostId: string) {
+export async function getRelatedPosts(slug: string, currentPostId: string) {
+  // First check if the post exists to prevent "Cannot read properties of null" errors
+  const postCheck = groq`*[_type == "post" && slug.current == $slug][0]`;
+  const post = await client.fetch(postCheck, { slug });
+
+  if (!post) {
+    return []; // Return empty array if post doesn't exist
+  }
+
+  // Get posts that share at least one category with the current post
   const query = groq`
-    *[_type == "post" && category == $category && _id != $currentPostId][0...3] {
+    *[_type == "post" && _id != $currentPostId && count(
+      categories[]->[slug.current in *[_type == "post" && slug.current == $slug][0].categories[]->slug.current]
+    ) > 0][0...3] {
       _id,
       title,
       excerpt,
       "slug": slug.current,
+      "categories": categories[]->{ "id": slug.current, title },
       mainImage,
       publishedAt,
     }
   `;
 
-  return client.fetch(query, { category, currentPostId });
+  return client.fetch(query, { slug, currentPostId });
 }
 
 // Get blog post page config
@@ -118,5 +141,17 @@ export async function getBlogPostPageConfig() {
 // Get all post slugs for static generation
 export async function getAllPostSlugs() {
   const query = groq`*[_type == "post"] { "slug": slug.current }`;
+  return client.fetch(query);
+}
+
+// Get all categories
+export async function getAllCategories() {
+  const query = groq`
+    *[_type == "category"] | order(title asc) {
+      "id": slug.current,
+      title,
+      description,
+    }
+  `;
   return client.fetch(query);
 }

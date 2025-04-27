@@ -1,6 +1,7 @@
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion, AnimatePresence } from "framer-motion";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { getAllCategories } from "@/sanity/queries/blog";
 
 // Default categories if none are provided from Sanity
 export const blogCategories = [
@@ -17,8 +18,7 @@ interface BlogTabsProps {
   categoriesData?: {
     categories: Array<{
       id: string;
-      label: string;
-      isDefault: boolean;
+      title: string;
     }>;
     showAllOption: boolean;
     allCategoryLabel: string;
@@ -30,24 +30,67 @@ export const BlogTabs = ({
   setActiveCategory,
   categoriesData,
 }: BlogTabsProps) => {
+  const [fetchedCategories, setFetchedCategories] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchCategories() {
+      try {
+        const fetchedCats = await getAllCategories();
+        setFetchedCategories(fetchedCats);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    // Only fetch categories if they're not provided by the parent
+    if (!categoriesData) {
+      fetchCategories();
+    } else {
+      setLoading(false);
+    }
+  }, [categoriesData]);
+
   // Use categories from Sanity if available, otherwise fall back to defaults
   const categories = useMemo(() => {
-    if (!categoriesData) return blogCategories;
+    // If we have categoriesData from the parent, use that configuration
+    if (categoriesData) {
+      if (categoriesData.showAllOption) {
+        return [
+          { id: "all", label: categoriesData.allCategoryLabel || "All Blogs" },
+          ...categoriesData.categories.map((cat) => ({
+            id: cat.id,
+            label: cat.title,
+          })),
+        ];
+      }
 
-    const sanityCategories = categoriesData.categories.map((cat) => ({
-      id: cat.id,
-      label: cat.label,
-    }));
+      return categoriesData.categories.map((cat) => ({
+        id: cat.id,
+        label: cat.title,
+      }));
+    }
 
-    if (categoriesData.showAllOption) {
+    // If we have fetched categories from the database, use those
+    if (fetchedCategories.length > 0) {
       return [
-        { id: "all", label: categoriesData.allCategoryLabel || "All Blogs" },
-        ...sanityCategories,
+        { id: "all", label: "All Blogs" },
+        ...fetchedCategories.map((cat) => ({
+          id: cat.id,
+          label: cat.title,
+        })),
       ];
     }
 
-    return sanityCategories;
-  }, [categoriesData]);
+    // Fall back to defaults if nothing else is available
+    return blogCategories;
+  }, [categoriesData, fetchedCategories]);
+
+  if (loading) {
+    return <div className="mb-3 h-10 bg-muted animate-pulse rounded-md"></div>;
+  }
 
   return (
     <div className="mb-3">

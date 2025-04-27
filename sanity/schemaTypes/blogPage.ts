@@ -1,4 +1,4 @@
-import { defineField, defineType } from "sanity";
+import { defineField, defineType, defineArrayMember } from "sanity";
 
 export const blogPage = defineType({
   name: "blogPage",
@@ -38,10 +38,27 @@ export const blogPage = defineType({
       description: "Banner section for the blog page",
     }),
     defineField({
-      name: "blogCategories",
+      name: "categories",
       title: "Blog Categories",
-      type: "blogCategories",
-      description: "Categories for filtering blog posts",
+      type: "array",
+      of: [defineArrayMember({ type: "reference", to: { type: "category" } })],
+      description: "Categories to display on the blog page",
+      validation: (Rule) => Rule.required().min(1),
+    }),
+    defineField({
+      name: "showAllOption",
+      title: 'Show "All" Option',
+      type: "boolean",
+      description: 'Include an "All" option to show all blog posts',
+      initialValue: true,
+    }),
+    defineField({
+      name: "allCategoryLabel",
+      title: '"All" Category Label',
+      type: "string",
+      description: 'Label for the "All" category option',
+      initialValue: "All Blogs",
+      hidden: ({ document }) => !document?.showAllOption,
     }),
     defineField({
       name: "featuredBlogs",

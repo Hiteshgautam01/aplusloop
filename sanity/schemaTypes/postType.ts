@@ -48,24 +48,13 @@ export const postType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "category",
-      type: "string",
-      description:
-        "Blog category ID (should match the IDs defined in Blog Categories)",
-      validation: (Rule) => Rule.required(),
-      options: {
-        list: [
-          { title: "Case Studies", value: "case-studies" },
-          { title: "Event Reviews", value: "event-reviews" },
-          { title: "Awards", value: "awards" },
-          { title: "Product News", value: "product-news" },
-        ],
-      },
-    }),
-    defineField({
       name: "categories",
+      title: "Categories",
       type: "array",
       of: [defineArrayMember({ type: "reference", to: { type: "category" } })],
+      description: "Choose one or more categories for this post",
+      validation: (Rule) =>
+        Rule.required().min(1).error("At least one category is required"),
     }),
     defineField({
       name: "publishedAt",
@@ -90,13 +79,13 @@ export const postType = defineType({
       title: "title",
       author: "author.name",
       media: "mainImage",
-      category: "category",
+      categories: "categories.0.title",
     },
     prepare(selection) {
-      const { author, category } = selection;
+      const { author, categories } = selection;
       return {
         ...selection,
-        subtitle: `${category ? `${category} • ` : ""}${author ? `by ${author}` : ""}`,
+        subtitle: `${categories ? `${categories} • ` : ""}${author ? `by ${author}` : ""}`,
       };
     },
   },

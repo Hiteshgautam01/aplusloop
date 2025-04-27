@@ -9,7 +9,6 @@ import { landingPage } from "./landingPage";
 import { bannerSlider } from "./bannerSlider";
 import { blogPage } from "./blogPage";
 import { blogBanner } from "./blogBanner";
-import { blogCategories } from "./blogCategories";
 import { featuredBlogs } from "./featuredBlogs";
 import { blogPostPage } from "./blogPostPage";
 
@@ -24,7 +23,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     bannerSlider,
     blogPage,
     blogBanner,
-    blogCategories,
     featuredBlogs,
     blogPostPage,
   ],

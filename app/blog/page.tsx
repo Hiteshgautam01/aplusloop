@@ -48,6 +48,13 @@ export default function BlogPage() {
     );
   }
 
+  // Create a categories data object compatible with BlogTabs
+  const categoriesData = blogData && {
+    categories: blogData.categories || [],
+    showAllOption: blogData.showAllOption,
+    allCategoryLabel: blogData.allCategoryLabel,
+  };
+
   return (
     <main>
       {/* <Navbar /> */}
@@ -61,7 +68,7 @@ export default function BlogPage() {
             <BlogTabs
               activeCategory={activeCategory}
               setActiveCategory={setActiveCategory}
-              categoriesData={blogData?.blogCategories}
+              categoriesData={categoriesData}
             />
             <AnimatePresence mode="wait">
               <motion.div
