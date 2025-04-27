@@ -22,35 +22,48 @@ export async function getBlogPageData() {
 }
 
 // Get all posts or filtered by category
-export async function getPosts(categoryId: string | undefined) {
+export async function getPosts(
+  categoryId: string | undefined,
+  page: number = 1,
+  pageSize: number = 10
+) {
+  const start = (page - 1) * pageSize;
+  const end = start + pageSize;
+
   // If categoryId is undefined or "all", fetch all posts
   if (!categoryId || categoryId === "all") {
     const query = groq`
-      *[_type == "post"] | order(publishedAt desc) {
+      {
+        "posts": *[_type == "post"] | order(publishedAt desc) [$start...$end] {
+          _id,
+          title,
+          excerpt,
+          "slug": slug.current,
+          "categories": categories[]->{ "id": slug.current, title },
+          mainImage
+        },
+        "total": count(*[_type == "post"])
+      }
+    `;
+    return client.fetch(query, { start, end });
+  }
+
+  // Otherwise fetch posts with the specified category
+  const query = groq`
+    {
+      "posts": *[_type == "post" && references(*[_type == "category" && slug.current == $categoryId]._id)] | order(publishedAt desc) [$start...$end] {
         _id,
         title,
         excerpt,
         "slug": slug.current,
         "categories": categories[]->{ "id": slug.current, title },
         mainImage
-      }
-    `;
-    return client.fetch(query);
-  }
-
-  // Otherwise fetch posts with the specified category
-  const query = groq`
-    *[_type == "post" && references(*[_type == "category" && slug.current == $categoryId]._id)] | order(publishedAt desc) {
-      _id,
-      title,
-      excerpt,
-      "slug": slug.current,
-      "categories": categories[]->{ "id": slug.current, title },
-      mainImage
+      },
+      "total": count(*[_type == "post" && references(*[_type == "category" && slug.current == $categoryId]._id)])
     }
   `;
 
-  return client.fetch(query, { categoryId });
+  return client.fetch(query, { categoryId, start, end });
 }
 
 // Get featured posts
