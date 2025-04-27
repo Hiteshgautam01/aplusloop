@@ -31,7 +31,13 @@ export async function generateStaticParams() {
 
 export default async function BlogPostPage({ params }: PostPageProps) {
   try {
-    const post = await getPost(params.slug);
+    // Ensure we have a slug before proceeding
+    const { slug } = await params;
+    if (!slug) {
+      return notFound();
+    }
+
+    const post = await getPost(slug);
 
     if (!post) {
       return notFound();
@@ -39,7 +45,7 @@ export default async function BlogPostPage({ params }: PostPageProps) {
 
     const pageConfig = await getBlogPostPageConfig();
     const relatedPosts = pageConfig?.showRelatedPosts
-      ? await getRelatedPosts(params.slug, post._id)
+      ? await getRelatedPosts(slug, post._id)
       : [];
 
     return (
