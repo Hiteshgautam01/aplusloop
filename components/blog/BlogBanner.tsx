@@ -11,17 +11,15 @@ interface BlogBannerProps {
     defaultTitle: string;
     height: number;
   };
+  activeCategoryTitle?: string;
 }
 
 export const BlogBanner = ({
   activeCategory = "all",
   bannerData,
+  activeCategoryTitle,
 }: BlogBannerProps) => {
-  const categoryLabel =
-    blogCategories.find((cat) => cat.id === activeCategory)?.label ||
-    bannerData?.defaultTitle ||
-    "All Blogs";
-
+  const categoryLabel = activeCategoryTitle || "All Blogs";
   // Default values if bannerData is not provided
   const height = bannerData?.height || 300;
   const overlayColor = bannerData?.overlayColor || "rgba(0, 0, 0, 0.4)";

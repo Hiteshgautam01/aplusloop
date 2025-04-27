@@ -20,19 +20,22 @@ interface BlogTabsProps {
       id: string;
       title: string;
     }>;
-    showAllOption: boolean;
+    showAllOption?: boolean;
     allCategoryLabel: string;
   };
+
+  setActiveCategoryTitle: (title: string) => void;
 }
 
 export const BlogTabs = ({
   activeCategory,
   setActiveCategory,
   categoriesData,
+  setActiveCategoryTitle,
 }: BlogTabsProps) => {
   const [fetchedCategories, setFetchedCategories] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-
+  console.log("activeCategory", categoriesData);
   useEffect(() => {
     async function fetchCategories() {
       try {
@@ -98,7 +101,12 @@ export const BlogTabs = ({
         defaultValue={activeCategory}
         value={activeCategory}
         className="w-full"
-        onValueChange={setActiveCategory}
+        onValueChange={(value) => {
+          setActiveCategory(value);
+          setActiveCategoryTitle(
+            categories.find((cat) => cat.id === value)?.label || "All Blogs"
+          );
+        }}
       >
         <TabsList className="w-full sm:w-auto flex flex-wrap bg-transparent">
           {categories.map((category) => (

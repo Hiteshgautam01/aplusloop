@@ -21,6 +21,7 @@ const clientSide = createClient({
 
 export default function BlogPage() {
   const [activeCategory, setActiveCategory] = useState("all");
+  const [activeCategoryTitle, setActiveCategoryTitle] = useState("All Blogs");
   const [blogData, setBlogData] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -61,6 +62,7 @@ export default function BlogPage() {
       <BlogBanner
         activeCategory={activeCategory}
         bannerData={blogData?.blogBanner}
+        activeCategoryTitle={activeCategoryTitle}
       />
       <div className="container mx-auto px-4 pt-6 pb-16">
         <div className="flex flex-col lg:flex-row gap-8">
@@ -68,6 +70,7 @@ export default function BlogPage() {
             <BlogTabs
               activeCategory={activeCategory}
               setActiveCategory={setActiveCategory}
+              setActiveCategoryTitle={setActiveCategoryTitle}
               categoriesData={categoriesData}
             />
             <AnimatePresence mode="wait">
