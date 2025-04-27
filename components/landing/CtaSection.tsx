@@ -8,26 +8,26 @@ export function CtaSection() {
   return (
     <div className="container mx-auto px-4 pt-15 pb-24 relative z-10">
       <div className="relative">
-        {/* Decorative elements */}
-        <div className="absolute -top-10 -left-10 w-72 h-72 bg-blue-100/30 dark:bg-blue-900/20 rounded-full blur-3xl" />
-        <div className="absolute -bottom-10 -right-10 w-72 h-72 bg-purple-100/30 dark:bg-purple-900/20 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 right-1/4 w-48 h-48 bg-teal-100/20 dark:bg-teal-900/10 rounded-full blur-3xl" />
+        {/* Decorative elements - slightly reduced opacity and blur */}
+        <div className="absolute -top-10 -left-10 w-72 h-72 bg-blue-100/20 dark:bg-blue-900/10 rounded-full blur-2xl" />
+        <div className="absolute -bottom-10 -right-10 w-72 h-72 bg-purple-100/20 dark:bg-purple-900/10 rounded-full blur-2xl" />
+        <div className="absolute top-1/2 right-1/4 w-48 h-48 bg-teal-100/10 dark:bg-teal-900/5 rounded-full blur-2xl" />
         
         <motion.div 
-          className="relative bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-xl overflow-hidden"
+          className="relative bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-lg overflow-hidden"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true, margin: "-100px" }}
         >
-          {/* Animated gradient accent */}
-          <div className="absolute -top-24 -left-24 w-48 h-48 bg-gradient-to-r from-primary/30 to-blue-400/30 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '7s' }} />
-          <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-gradient-to-r from-purple-400/30 to-primary/30 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '8s' }} />
+          {/* Animated gradient accent - reduced opacity and animation duration */}
+          <div className="absolute -top-24 -left-24 w-48 h-48 bg-gradient-to-r from-primary/20 to-blue-400/20 rounded-full blur-2xl animate-pulse" style={{ animationDuration: '10s' }} />
+          <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-gradient-to-r from-purple-400/20 to-primary/20 rounded-full blur-2xl animate-pulse" style={{ animationDuration: '12s' }} />
           
           <div className="relative px-8 py-16 md:px-16 md:py-20">
             <div className="max-w-4xl mx-auto text-center">
               <motion.div
-                className="inline-flex items-center justify-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-foreground text-sm font-medium"
+                className="inline-flex items-center justify-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-primary/5 dark:bg-primary/10 text-primary dark:text-primary-foreground text-sm font-medium"
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
@@ -67,7 +67,7 @@ export function CtaSection() {
               >
                 <Button
                   size="lg"
-                  className="group bg-gradient-to-r from-primary to-primary/90 text-primary-foreground hover:from-primary/90 hover:to-primary px-8 py-6 text-lg rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 w-full sm:w-auto"
+                  className="group bg-gradient-to-r from-primary to-primary/90 text-primary-foreground hover:from-primary/90 hover:to-primary px-8 py-6 text-lg rounded-xl shadow-md transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 w-full sm:w-auto"
                 >
                   <span>Schedule a Free Consultation</span>
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />

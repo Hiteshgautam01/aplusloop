@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/navigation-menu";
 
 import { TechnologyMenuContent, BusinessConsultingMenuContent } from "@/components/landing/MegaMenu";
-
+import Image from "next/image";
 interface NavLink {
   href: string;
   label: string;
@@ -363,11 +363,11 @@ export function Navbar() {
       }}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-16 items-center justify-between relative">
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center">
-              <motion.span 
+          <div className="">
+            <Link href="/" className="absolute left-[-40] top-2">
+              {/* <motion.span 
                 className="text-xl font-bold tracking-tight bg-gradient-to-r from-primary/90 to-primary/70 bg-clip-text text-transparent"
                 animate={{ 
                   scale: scrolled ? 0.95 : 1
@@ -379,13 +379,14 @@ export function Navbar() {
                 }}
               >
                 Aplus-loop
-              </motion.span>
+              </motion.span> */}
+              <Image src="/Logo.jpg" alt="Aplus-loop" width={120} height={100} />
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-center relative" ref={navContainerRef} onMouseLeave={handleMouseLeave}>
+            <div className="ml-10 mt-1 flex items-center relative" ref={navContainerRef} onMouseLeave={handleMouseLeave}>
               {/* Continuous hover effect - enhanced for better visibility in light mode */}
               <motion.div
                 className="absolute bg-primary/15 dark:bg-primary/15 border border-primary/10 rounded-lg z-0 shadow-sm pointer-events-none"
