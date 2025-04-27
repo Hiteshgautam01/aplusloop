@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { format } from "date-fns";
 import { urlForImage } from "@/sanity/lib/image";
+import  PageProps  from "next";
 import {
   getPost,
   getRelatedPosts,
@@ -11,11 +12,9 @@ import {
   getAllPostSlugs,
 } from "@/sanity/queries/blog";
 
-interface PostPageProps {
-  params: {
-    slug: string;
-  };
-}
+type Params = {
+  slug: string;
+};
 
 export async function generateStaticParams() {
   try {
@@ -29,7 +28,7 @@ export async function generateStaticParams() {
   }
 }
 
-export default async function BlogPostPage({ params }: PostPageProps) {
+export default async function BlogPostPage( { params }: { params: Params }) {
   try {
     // Ensure we have a slug before proceeding
     const { slug } = await params;
