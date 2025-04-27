@@ -1,45 +1,105 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createClient } from "next-sanity";
+import { urlForImage } from "@/sanity/lib/image";
+import { getFeaturedPosts } from "@/sanity/queries/blog";
 
-// Mock data for featured blogs
-const featuredBlogs = [
-  {
-    id: 1,
-    title: "Top 5 Industry Trends of 2023",
-    image: "/blog.png",
-    slug: "top-industry-trends-2023",
-    excerpt:
-      "Discover the latest trends that are shaping industries and how your business can stay ahead of the competition.",
-  },
-  {
-    id: 2,
-    title: "Client Success: Global Expansion Case Study",
-    image: "/blog.png",
-    slug: "client-success-global-expansion",
-    excerpt:
-      "Learn how we helped our client expand their operations internationally and achieve remarkable growth in new markets.",
-  },
-  {
-    id: 3,
-    title: "How We Improved Conversion Rates by 300%",
-    image: "/blog.png",
-    slug: "improved-conversion-rates",
-    excerpt:
-      "A detailed look at the strategies we implemented to dramatically increase conversion rates for our e-commerce client.",
-  },
-];
+// Client-side Sanity client with fixed API version
+const client = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "",
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "",
+  apiVersion: "2023-05-03", // Using a fixed valid date format
+  useCdn: true,
+});
 
-export const FeaturedBlogs = () => {
+interface FeaturedBlog {
+  _id: string;
+  title: string;
+  excerpt: string;
+  slug: string;
+  mainImage: any;
+}
+
+interface FeaturedBlogsProps {
+  featuredData?: {
+    title: string;
+    featuredPosts: any[];
+  };
+}
+
+export const FeaturedBlogs = ({ featuredData }: FeaturedBlogsProps) => {
   const [expandedBlog, setExpandedBlog] = useState(0);
+  const [featuredBlogs, setFeaturedBlogs] = useState<FeaturedBlog[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchFeaturedBlogs() {
+      try {
+        setLoading(true);
+
+        if (featuredData?.featuredPosts) {
+          // Get the references to posts from featuredData
+          const postIds = featuredData.featuredPosts.map((ref) => ref._ref);
+
+          if (postIds.length === 0) {
+            setFeaturedBlogs([]);
+            return;
+          }
+
+          // Using the imported query function
+          const posts = await getFeaturedPosts(postIds);
+          setFeaturedBlogs(posts);
+        } else {
+          // Using the imported query function without params to get default featured posts
+          const posts = await getFeaturedPosts();
+          setFeaturedBlogs(posts);
+        }
+      } catch (error) {
+        console.error("Error fetching featured blogs:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchFeaturedBlogs();
+  }, [featuredData]);
+
+  if (loading) {
+    return (
+      <div className="border border-border rounded-lg p-6 w-full md:max-w-md">
+        <h2 className="text-xl font-bold mb-6 border-b pb-2">
+          {featuredData?.title || "Featured Blogs"}
+        </h2>
+        <div className="flex justify-center py-8">
+          <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"></div>
+        </div>
+      </div>
+    );
+  }
+
+  if (featuredBlogs.length === 0) {
+    return (
+      <div className="border border-border rounded-lg p-6 w-full md:max-w-md">
+        <h2 className="text-xl font-bold mb-6 border-b pb-2">
+          {featuredData?.title || "Featured Blogs"}
+        </h2>
+        <p className="text-center text-muted-foreground py-4">
+          No featured blogs available.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="border border-border rounded-lg p-6 w-full md:max-w-md">
-      <h2 className="text-xl font-bold mb-6 border-b pb-2">Featured Blogs</h2>
+      <h2 className="text-xl font-bold mb-6 border-b pb-2">
+        {featuredData?.title || "Featured Blogs"}
+      </h2>
       <div className="space-y-0">
         {featuredBlogs.map((blog, index) => (
           <div
-            key={blog.id}
+            key={blog._id}
             className="overflow-hidden transition-all duration-500 ease-in-out"
             style={{
               height: expandedBlog === index ? "320px" : "110px",
@@ -56,9 +116,9 @@ export const FeaturedBlogs = () => {
                     marginBottom: expandedBlog === index ? "0.75rem" : "0",
                   }}
                 >
-                  {expandedBlog === index && (
+                  {expandedBlog === index && blog.mainImage && (
                     <Image
-                      src={blog.image}
+                      src={urlForImage(blog.mainImage)}
                       alt={blog.title}
                       fill
                       className="object-cover rounded-md"

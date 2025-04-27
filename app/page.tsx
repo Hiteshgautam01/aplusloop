@@ -7,6 +7,7 @@ import { TestimonialsSection } from "@/components/landing/TestimonialsSection";
 import { CtaSection } from "@/components/landing/CtaSection";
 import { Footer } from "@/components/landing/Footer";
 import { getLandingPage } from "@/sanity/queries/landing";
+import { ContactButtonModal } from "@/components/landing/ContactButtonModal";
 
 export const revalidate = 60; // Revalidate this page every 60 seconds
 
@@ -18,8 +19,8 @@ export default async function Home() {
       {landingData.bannerSlider && <BannerSlider data={landingData.bannerSlider} />}
       <BusinessActivities />
       <ServicesSection />
-      <TestimonialsSection />
       <CtaSection />
+      <ContactButtonModal />
     </main>
   );
 }
