@@ -40,6 +40,7 @@ const navLinks: NavLink[] = [
   { href: "/services", label: "Business Consulting", hasMenu: true },
   { href: "/blog", label: "Blog" },
   { href: "/careers", label: "Careers" },
+  { href: "/contact-us", label: "Contact Us" },
 ];
 
 export function Navbar() {
@@ -432,12 +433,12 @@ export function Navbar() {
                 Book a Consultation
               </Button>
             </motion.div>
-            <ModeToggle />
+         {/*   <ModeToggle />*/}
           </div>
 
           {/* Mobile menu button */}
           <div className="flex md:hidden">
-            <ModeToggle />
+         {/*   <ModeToggle />*/}
             <Button
               variant="ghost"
               size="icon"
