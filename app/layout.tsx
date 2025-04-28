@@ -35,18 +35,18 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${roboto.className} antialiased`}
       >
-        <ThemeProvider
+        {/* <ThemeProvider
           attribute="class"
           defaultTheme="light"
           // enableSystem
           disableTransitionOnChange
-        >
+        > */}
           <Navbar />
 
           {children}
 
           <Footer />
-        </ThemeProvider>
+        {/* </ThemeProvider> */}
       </body>
     </html>
   );
