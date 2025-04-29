@@ -20,7 +20,7 @@ const TopLevelTabs: React.FC<{
             ? "text-blue-700 border-b-2 border-blue-700"
             : "hover:text-blue-600"
         )}
-        onMouseEnter={() => setActiveTab("solutions")}
+        onClick={() => setActiveTab("solutions")}
       >
         Solutions
       </div>
@@ -31,7 +31,7 @@ const TopLevelTabs: React.FC<{
             ? "text-blue-700 border-b-2 border-blue-700"
             : "hover:text-blue-600"
         )}
-        onMouseEnter={() => setActiveTab("services")}
+        onClick={() => setActiveTab("services")}
       >
         Services
       </div>
@@ -41,7 +41,7 @@ const TopLevelTabs: React.FC<{
 
 // Main navigation content component
 export function MegaMenuContent() {
-  const [activeTab, setActiveTab] = React.useState("services");
+  const [activeTab, setActiveTab] = React.useState("solutions");
 
   return (
     <NavigationMenuContent className="bg-background/95 backdrop-blur-lg border border-muted/20 shadow-lg w-[900px] rounded-lg overflow-hidden">

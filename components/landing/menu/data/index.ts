@@ -268,28 +268,28 @@ export const businessInfrastructureSections = [
     title: "Enterprise Resource Planning",
     description:
       "Comprehensive ERP solutions for streamlined business operations",
-    imageSrc: "/solutions/erp.jpg",
+      imageSrc: "/automation.jpg",
   },
   {
     title: "Customer Relationship Management",
     description:
       "CRM systems to enhance customer engagement and sales performance",
-    imageSrc: "/solutions/crm.jpg",
+    imageSrc: "/automation.jpg",
   },
   {
     title: "Business Intelligence",
     description: "Data analytics and BI tools for informed decision-making",
-    imageSrc: "/solutions/bi.jpg",
+    imageSrc: "/automation.jpg",
   },
   {
     title: "Supply Chain Management",
     description: "End-to-end supply chain optimization solutions",
-    imageSrc: "/solutions/scm.jpg",
+    imageSrc: "/automation.jpg",
   },
   {
     title: "Cloud Infrastructure",
     description: "Scalable cloud infrastructure solutions for business growth",
-    imageSrc: "/solutions/cloud.jpg",
+    imageSrc: "/automation.jpg",
   },
 ];
 
@@ -297,27 +297,27 @@ export const mobilitySolutions = [
   {
     title: "Enterprise Mobility",
     description: "Mobile solutions designed for enterprise business processes",
-    imageSrc: "/solutions/mobility.jpg",
+    imageSrc: "/automation.jpg",
   },
   {
     title: "Mobile App Development",
     description: "Custom mobile applications for iOS and Android platforms",
-    imageSrc: "/solutions/app-dev.jpg",
+    imageSrc: "/automation.jpg",
   },
   {
     title: "Cross-Platform Solutions",
     description: "Unified applications that work across multiple devices",
-    imageSrc: "/solutions/cross-platform.jpg",
+    imageSrc: "/automation.jpg",
   },
   {
     title: "Mobile Device Management",
     description: "Solutions to secure and manage company mobile devices",
-    imageSrc: "/solutions/mdm.jpg",
+    imageSrc: "/automation.jpg",
   },
   {
     title: "Location-Based Services",
     description: "GPS and location intelligence for mobile applications",
-    imageSrc: "/solutions/location.jpg",
+    imageSrc: "/automation.jpg",
   },
 ];
 
@@ -325,27 +325,27 @@ export const digitalTransformationSolutions = [
   {
     title: "Digital Strategy",
     description: "Comprehensive digital transformation roadmaps",
-    imageSrc: "/solutions/digital-strategy.jpg",
+    imageSrc: "/automation.jpg",
   },
   {
     title: "Process Automation",
     description: "Workflow and business process automation solutions",
-    imageSrc: "/solutions/automation.jpg",
+    imageSrc: "/automation.jpg",
   },
   {
     title: "Data Analytics",
     description: "Advanced analytics to drive business insights",
-    imageSrc: "/solutions/analytics.jpg",
+    imageSrc: "/automation.jpg",
   },
   {
     title: "Customer Experience",
     description: "Digital solutions to enhance customer engagement",
-    imageSrc: "/solutions/cx.jpg",
+    imageSrc: "/automation.jpg",
   },
   {
     title: "AI & Machine Learning",
     description: "Intelligent solutions powered by AI technologies",
-    imageSrc: "/solutions/ai.jpg",
+    imageSrc: "/automation.jpg",
   },
 ];
 
@@ -353,27 +353,27 @@ export const cybersecuritySolutions = [
   {
     title: "Network Security",
     description: "Protection for your business network infrastructure",
-    imageSrc: "/solutions/network-security.jpg",
+    imageSrc: "/automation.jpg",
   },
   {
     title: "Application Security",
     description: "Security solutions for web and mobile applications",
-    imageSrc: "/solutions/app-security.jpg",
+    imageSrc: "/automation.jpg",
   },
   {
     title: "Identity Management",
     description: "Advanced identity and access management systems",
-    imageSrc: "/solutions/identity.jpg",
+    imageSrc: "/automation.jpg",
   },
   {
     title: "Security Operations Center",
     description: "24/7 monitoring and threat response services",
-    imageSrc: "/solutions/soc.jpg",
+    imageSrc: "/automation.jpg",
   },
   {
     title: "Compliance Solutions",
     description: "Security solutions to meet regulatory requirements",
-    imageSrc: "/solutions/compliance.jpg",
+    imageSrc: "/automation.jpg",
   },
 ];
 
@@ -381,27 +381,27 @@ export const industryIotSolutions = [
   {
     title: "IoT Platform Integration",
     description: "Enterprise-grade IoT platform implementation",
-    imageSrc: "/solutions/iot-platform.jpg",
+    imageSrc: "/automation.jpg",
   },
   {
     title: "Industrial Automation",
     description: "IoT solutions for manufacturing and industrial processes",
-    imageSrc: "/solutions/industrial.jpg",
+    imageSrc: "/automation.jpg",
   },
   {
     title: "Predictive Maintenance",
     description: "IoT-based systems for equipment monitoring and maintenance",
-    imageSrc: "/solutions/predictive.jpg",
+    imageSrc: "/automation.jpg",
   },
   {
     title: "Connected Products",
     description: "Product innovation through IoT connectivity",
-    imageSrc: "/solutions/connected-products.jpg",
+    imageSrc: "/automation.jpg",
   },
   {
     title: "Smart Factory Solutions",
     description: "End-to-end Industry 4.0 implementations",
-    imageSrc: "/solutions/smart-factory.jpg",
+    imageSrc: "/automation.jpg",
   },
 ];
 
@@ -409,27 +409,27 @@ export const smartNationsSolutions = [
   {
     title: "Smart City Infrastructure",
     description: "Integrated urban technology solutions",
-    imageSrc: "/solutions/smart-city.jpg",
+    imageSrc: "/automation.jpg",
   },
   {
     title: "Digital Government",
     description: "Technology solutions for government services",
-    imageSrc: "/solutions/e-gov.jpg",
+    imageSrc: "/automation.jpg",
   },
   {
     title: "Public Safety",
     description: "Technology for enhanced public safety and security",
-    imageSrc: "/solutions/public-safety.jpg",
+    imageSrc: "/automation.jpg",
   },
   {
     title: "Urban Mobility",
     description: "Smart transportation and traffic management systems",
-    imageSrc: "/solutions/urban-mobility.jpg",
+    imageSrc: "/automation.jpg",
   },
   {
     title: "Sustainability Solutions",
     description: "Smart environmental monitoring and management",
-    imageSrc: "/solutions/sustainability.jpg",
+    imageSrc: "/automation.jpg",
   },
 ];
 

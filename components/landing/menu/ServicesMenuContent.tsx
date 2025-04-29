@@ -27,7 +27,7 @@ export const ServicesContent = () => {
   return (
     <div className="grid grid-cols-[250px_1fr] gap-6 p-4">
       {/* Left side - Service categories */}
-      <div className="space-y-1">
+      <div className="space-y-1 w-[260px]">
         {serviceCategories.map((category) => (
           <ServiceCategoryTab
             key={category.title}
