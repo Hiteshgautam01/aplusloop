@@ -18,8 +18,14 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
-import { TechnologyMenuContent, BusinessConsultingMenuContent } from "@/components/landing/MegaMenu";
+import { MegaMenuContent } from "@/components/landing/menu/MegaMenuContent";
+import { BusinessConsultingMenuContent } from "@/components/landing/menu/BusinessConsultingMenuContent";
 import Image from "next/image";
+import {
+  serviceCategories,
+  solutionCategories,
+} from "@/components/landing/menu/data";
+
 interface NavLink {
   href: string;
   label: string;
@@ -50,7 +56,12 @@ export function Navbar() {
   const [hoverTarget, setHoverTarget] = useState<string | null>(null);
   const navContainerRef = useRef<HTMLDivElement>(null);
   const mobileNavRef = useRef<HTMLDivElement>(null);
-  const [hoverRect, setHoverRect] = useState<HoverRect>({ left: 0, width: 0, height: 0, top: 0 });
+  const [hoverRect, setHoverRect] = useState<HoverRect>({
+    left: 0,
+    width: 0,
+    height: 0,
+    top: 0,
+  });
   const [isMouseInNav, setIsMouseInNav] = useState<boolean>(false);
   const [activeMobileMenu, setActiveMobileMenu] = useState<string | null>(null);
 
@@ -66,22 +77,24 @@ export function Navbar() {
   // Update hover rectangle when target changes
   useEffect(() => {
     if (!hoverTarget || !navContainerRef.current) return;
-    
+
     const isMobile = window.innerWidth < 768;
     const container = isMobile ? mobileNavRef.current : navContainerRef.current;
     if (!container) return;
-    
-    const targetElement = container.querySelector(`[data-href="${hoverTarget}"]`);
+
+    const targetElement = container.querySelector(
+      `[data-href="${hoverTarget}"]`
+    );
     if (!targetElement) return;
-    
+
     const elementRect = targetElement.getBoundingClientRect();
     const containerRect = container.getBoundingClientRect();
-    
+
     setHoverRect({
       width: elementRect.width,
       left: elementRect.left - containerRect.left,
       top: isMobile ? elementRect.top - containerRect.top : 0,
-      height: isMobile ? elementRect.height : 40
+      height: isMobile ? elementRect.height : 40,
     });
   }, [hoverTarget]);
 
@@ -90,7 +103,7 @@ export function Navbar() {
     setHoverTarget(href);
     setIsMouseInNav(true);
   };
-  
+
   const handleMouseLeave = (): void => {
     setIsMouseInNav(false);
     // Don't clear the hoverTarget immediately to keep the highlight visible
@@ -116,30 +129,32 @@ export function Navbar() {
   const renderNavItem = (link: NavLink, index: number) => {
     if (link.hasMenu) {
       return (
-        <NavigationMenuItem 
+        <NavigationMenuItem
           key={link.href}
           data-href={link.href}
           onMouseEnter={() => handleMouseEnter(link.href)}
           className=" bg-transparent"
         >
-          <NavigationMenuTrigger 
+          <NavigationMenuTrigger
             className={cn(
               "px-4 py-2 text-sm font-medium transition-all bg-transparent hover:bg-transparent ", // Remove default background
               "hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent", // Remove default background
-              pathname === link.href 
-                ? "text-primary font-semibold" 
+              pathname === link.href
+                ? "text-primary font-semibold"
                 : "text-foreground/70 hover:text-foreground",
               hoverTarget === link.href && "text-foreground"
             )}
           >
             {link.label}
           </NavigationMenuTrigger>
-          {link.label === "Technology" && <TechnologyMenuContent />}
-          {link.label === "Business Consulting" && <BusinessConsultingMenuContent />}
+          {link.label === "Technology" && <MegaMenuContent />}
+          {link.label === "Business Consulting" && (
+            <BusinessConsultingMenuContent />
+          )}
         </NavigationMenuItem>
       );
     }
-    
+
     return (
       <div
         key={link.href}
@@ -151,21 +166,21 @@ export function Navbar() {
           href={link.href}
           className={cn(
             "px-4 py-2 text-sm font-medium relative z-10 block transition-all",
-            pathname === link.href 
-              ? "text-primary font-semibold" 
+            pathname === link.href
+              ? "text-primary font-semibold"
               : "text-foreground/70 hover:text-foreground",
             hoverTarget === link.href && "text-foreground"
           )}
         >
           {link.label}
           {pathname === link.href && (
-            <motion.span 
-              className="absolute -bottom-0.5 left-4 right-4 h-0.5 bg-primary/60 rounded-full" 
+            <motion.span
+              className="absolute -bottom-0.5 left-4 right-4 h-0.5 bg-primary/60 rounded-full"
               layoutId="activeIndicator"
               transition={{
                 type: "spring",
                 stiffness: 500,
-                damping: 30
+                damping: 30,
               }}
             />
           )}
@@ -186,8 +201,8 @@ export function Navbar() {
               onClick={() => toggleMobileMenu(link.href)}
               className={cn(
                 "flex w-full justify-between items-center rounded-md px-3 py-2.5 text-base font-medium relative z-10 transition-all",
-                pathname === link.href 
-                  ? "text-primary font-semibold" 
+                pathname === link.href
+                  ? "text-primary font-semibold"
                   : "text-foreground/70 hover:text-foreground",
                 hoverTarget === link.href && "text-foreground"
               )}
@@ -195,17 +210,19 @@ export function Navbar() {
               <span>{link.label}</span>
               <ChevronDown
                 className={cn(
-                  "h-4 w-4 transition-transform", 
+                  "h-4 w-4 transition-transform",
                   activeMobileMenu === link.href && "transform rotate-180"
                 )}
               />
             </button>
-            
+
             {/* Mobile Mega Menu Content */}
             {activeMobileMenu === link.href && (
               <div className="bg-background/80 border-l border-muted/20 pl-4 ml-3 my-2">
-                {link.label === "Technology" && renderMobileMegaMenuContent("technology")}
-                {link.label === "Business Consulting" && renderMobileMegaMenuContent("services")}
+                {link.label === "Technology" &&
+                  renderMobileMegaMenuContent("technology")}
+                {link.label === "Business Consulting" &&
+                  renderMobileMegaMenuContent("services")}
               </div>
             )}
           </div>
@@ -216,8 +233,8 @@ export function Navbar() {
             onMouseEnter={() => handleMouseEnter(link.href)}
             className={cn(
               "block rounded-md px-3 py-2.5 text-base font-medium relative z-10 transition-all",
-              pathname === link.href 
-                ? "text-primary font-semibold" 
+              pathname === link.href
+                ? "text-primary font-semibold"
                 : "text-foreground/70 hover:text-foreground",
               hoverTarget === link.href && "text-foreground"
             )}
@@ -225,15 +242,15 @@ export function Navbar() {
           >
             {link.label}
             {pathname === link.href && (
-              <motion.span 
-                className="absolute -left-1 top-2.5 bottom-2.5 w-0.5 bg-primary rounded-full" 
+              <motion.span
+                className="absolute -left-1 top-2.5 bottom-2.5 w-0.5 bg-primary rounded-full"
                 layoutId="mobileActiveIndicator"
                 initial={{ scaleY: 0 }}
                 animate={{ scaleY: 1 }}
                 transition={{
                   type: "spring",
                   stiffness: 500,
-                  damping: 30
+                  damping: 30,
                 }}
               />
             )}
@@ -249,43 +266,21 @@ export function Navbar() {
       return (
         <div className="py-2">
           <div className="mb-3">
-            <h4 className="text-sm font-medium text-foreground/80 mb-2">Core Technologies</h4>
+            <h4 className="text-sm font-medium text-foreground/80 mb-2">
+              Solutions
+            </h4>
             <ul className="space-y-2">
-              <li>
-                <Link href="/technology/cloud" className="block text-sm pl-2 py-1 text-foreground/70 hover:text-foreground">
-                  Cloud Services
-                </Link>
-              </li>
-              <li>
-                <Link href="/technology/data" className="block text-sm pl-2 py-1 text-foreground/70 hover:text-foreground">
-                  Data Engineering
-                </Link>
-              </li>
-              <li>
-                <Link href="/technology/development" className="block text-sm pl-2 py-1 text-foreground/70 hover:text-foreground">
-                  Software Development
-                </Link>
-              </li>
-              <li>
-                <Link href="/technology/architecture" className="block text-sm pl-2 py-1 text-foreground/70 hover:text-foreground">
-                  System Architecture
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-sm font-medium text-foreground/80 mb-2">Resources</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/technology/case-studies" className="block text-sm pl-2 py-1 text-foreground/70 hover:text-foreground">
-                  Case Studies
-                </Link>
-              </li>
-              <li>
-                <Link href="/technology/whitepapers" className="block text-sm pl-2 py-1 text-foreground/70 hover:text-foreground">
-                  Whitepapers
-                </Link>
-              </li>
+              {solutionCategories.map((category) => (
+                <li key={category.title}>
+                  <Link
+                    href={category.href}
+                    className="flex items-center text-sm pl-2 py-1 text-foreground/70 hover:text-foreground"
+                  >
+                    <category.icon className="h-3.5 w-3.5 mr-2 text-primary/70" />
+                    {category.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -294,48 +289,21 @@ export function Navbar() {
       return (
         <div className="py-2">
           <div className="mb-3">
-            <h4 className="text-sm font-medium text-foreground/80 mb-2">Consulting Services</h4>
+            <h4 className="text-sm font-medium text-foreground/80 mb-2">
+              Services
+            </h4>
             <ul className="space-y-2">
-              <li>
-                <Link href="/services/strategy" className="block text-sm pl-2 py-1 text-foreground/70 hover:text-foreground">
-                  Business Strategy
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/operations" className="block text-sm pl-2 py-1 text-foreground/70 hover:text-foreground">
-                  Operations
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/digital" className="block text-sm pl-2 py-1 text-foreground/70 hover:text-foreground">
-                  Digital Transformation
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/change" className="block text-sm pl-2 py-1 text-foreground/70 hover:text-foreground">
-                  Change Management
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-sm font-medium text-foreground/80 mb-2">Analysis Services</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/services/market-analysis" className="block text-sm pl-2 py-1 text-foreground/70 hover:text-foreground">
-                  Market Analysis
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/financial-modeling" className="block text-sm pl-2 py-1 text-foreground/70 hover:text-foreground">
-                  Financial Modeling
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/performance" className="block text-sm pl-2 py-1 text-foreground/70 hover:text-foreground">
-                  Performance Metrics
-                </Link>
-              </li>
+              {serviceCategories.map((category) => (
+                <li key={category.title}>
+                  <Link
+                    href={category.href}
+                    className="flex items-center text-sm pl-2 py-1 text-foreground/70 hover:text-foreground"
+                  >
+                    <category.icon className="h-3.5 w-3.5 mr-2 text-primary/70" />
+                    {category.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -353,14 +321,14 @@ export function Navbar() {
           : "bg-background/40 backdrop-blur-lg"
       )}
       initial={{ height: 64 }}
-      animate={{ 
+      animate={{
         height: scrolled ? 60 : 64,
-        y: scrolled ? 0 : 0
+        y: scrolled ? 0 : 0,
       }}
       transition={{
         type: "spring",
         stiffness: 300,
-        damping: 30
+        damping: 30,
       }}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -381,13 +349,22 @@ export function Navbar() {
               >
                 Aplus-loop
               </motion.span> */}
-              <Image src="/Logo.jpg" alt="Aplus-loop" width={120} height={100} />
+              <Image
+                src="/Logo.jpg"
+                alt="Aplus-loop"
+                width={120}
+                height={100}
+              />
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 mt-1 flex items-center relative" ref={navContainerRef} onMouseLeave={handleMouseLeave}>
+            <div
+              className="ml-10 mt-1 flex items-center relative"
+              ref={navContainerRef}
+              onMouseLeave={handleMouseLeave}
+            >
               {/* Continuous hover effect - enhanced for better visibility in light mode */}
               <motion.div
                 className="absolute bg-primary/15 dark:bg-primary/15 border border-primary/10 rounded-lg z-0 shadow-sm pointer-events-none"
@@ -408,7 +385,7 @@ export function Navbar() {
                   damping: 35,
                 }}
               />
-              
+
               {/* Regular links and Mega Menu navigation */}
               <NavigationMenu>
                 <NavigationMenuList>
@@ -420,25 +397,25 @@ export function Navbar() {
 
           {/* Right side: CTA & Theme Toggle */}
           <div className="hidden md:flex items-center space-x-4">
-            <motion.div 
+            <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
-              <Button 
-                variant="default" 
+              <Button
+                variant="default"
                 size="sm"
                 className="bg-primary hover:bg-primary/90 shadow-md transition-all duration-300"
               >
                 Book a Consultation
               </Button>
             </motion.div>
-         {/*   <ModeToggle />*/}
+            {/*   <ModeToggle />*/}
           </div>
 
           {/* Mobile menu button */}
           <div className="flex md:hidden">
-         {/*   <ModeToggle />*/}
+            {/*   <ModeToggle />*/}
             <Button
               variant="ghost"
               size="icon"
@@ -463,8 +440,8 @@ export function Navbar() {
           isOpen ? "max-h-screen" : "max-h-0"
         )}
       >
-        <div 
-          className="space-y-1 px-4 pb-4 pt-2 relative" 
+        <div
+          className="space-y-1 px-4 pb-4 pt-2 relative"
           ref={mobileNavRef}
           onMouseLeave={handleMouseLeave}
         >
@@ -491,10 +468,10 @@ export function Navbar() {
               }}
             />
           )}
-          
+
           {/* Mobile menu items */}
           {navLinks.map((link) => renderMobileNavItem(link))}
-          
+
           {/* Mobile CTA */}
           <div className="mt-6 pt-4 border-t border-muted/20">
             <motion.div
@@ -502,9 +479,9 @@ export function Navbar() {
               whileTap={{ scale: 0.98 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
-              <Button 
-                variant="default" 
-                size="sm" 
+              <Button
+                variant="default"
+                size="sm"
                 className="w-full bg-primary hover:bg-primary/90 shadow-md transition-all duration-300"
               >
                 Book a Consultation
