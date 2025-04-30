@@ -45,7 +45,7 @@ const navLinks: NavLink[] = [
   { href: "/technology", label: "Technology", hasMenu: true },
   { href: "/services", label: "Business Consulting", hasMenu: true },
   { href: "/blog", label: "Blog" },
-  { href: "/careers", label: "Careers" },
+  { href: "/career", label: "Careers" },
   { href: "/contact-us", label: "Contact Us" },
 ];
 
