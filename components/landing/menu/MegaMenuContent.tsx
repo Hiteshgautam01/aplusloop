@@ -5,6 +5,7 @@ import { NavigationMenuContent } from "@/components/ui/navigation-menu";
 import { ServicesContent } from "./ServicesMenuContent";
 import { SolutionsContent } from "./SolutionsMenuContent";
 import { cn } from "@/lib/utils";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Top level tabs component
 const TopLevelTabs: React.FC<{
@@ -15,25 +16,39 @@ const TopLevelTabs: React.FC<{
     <div className="flex border-b mb-4">
       <div
         className={cn(
-          "px-6 py-3 font-medium cursor-pointer transition-colors",
-          activeTab === "solutions"
-            ? "text-blue-700 border-b-2 border-blue-700"
-            : "hover:text-blue-600"
+          "px-6 py-3 font-medium cursor-pointer transition-colors relative",
+          activeTab === "solutions" ? "text-blue-700" : "hover:text-blue-600"
         )}
         onClick={() => setActiveTab("solutions")}
       >
         Solutions
+        {activeTab === "solutions" && (
+          <motion.div
+            className="absolute bottom-0 left-0 w-full h-[2px] bg-blue-700"
+            layoutId="active-tab-indicator"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+          />
+        )}
       </div>
       <div
         className={cn(
-          "px-6 py-3 font-medium cursor-pointer transition-colors",
-          activeTab === "services"
-            ? "text-blue-700 border-b-2 border-blue-700"
-            : "hover:text-blue-600"
+          "px-6 py-3 font-medium cursor-pointer transition-colors relative",
+          activeTab === "services" ? "text-blue-700" : "hover:text-blue-600"
         )}
         onClick={() => setActiveTab("services")}
       >
         Services
+        {activeTab === "services" && (
+          <motion.div
+            className="absolute bottom-0 left-0 w-full h-[2px] bg-blue-700"
+            layoutId="active-tab-indicator"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+          />
+        )}
       </div>
     </div>
   );
@@ -50,7 +65,21 @@ export function MegaMenuContent() {
         <TopLevelTabs activeTab={activeTab} setActiveTab={setActiveTab} />
 
         {/* Content based on active tab */}
-        {activeTab === "solutions" ? <SolutionsContent /> : <ServicesContent />}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+          >
+            {activeTab === "solutions" ? (
+              <SolutionsContent />
+            ) : (
+              <ServicesContent />
+            )}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </NavigationMenuContent>
   );
