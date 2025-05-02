@@ -244,12 +244,7 @@ const BlockchainWeb3 = () => {
           viewport={{ once: true }}
           className="mb-8"
         >
-          <div className="text-center mb-10">
-            <h3 className="text-2xl font-bold mb-3 text-gray-800">Our Blockchain Services</h3>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Comprehensive solutions tailored to your business needs, from smart contract development to full Web3 integration.
-            </p>
-          </div>
+          
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {services.map((service, index) => (
