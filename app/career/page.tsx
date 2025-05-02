@@ -34,7 +34,7 @@ export default function CareersPage() {
   ];
 
   return (
-    <main className="bg-white w-full">
+    <main className="bg-white">
       <Banner />
       <NavMenu sections={sections} scrollToSection={scrollToSection} />
       
