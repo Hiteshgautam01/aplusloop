@@ -259,7 +259,7 @@ const BlockchainWeb3 = () => {
                 
                 <CardContent className="p-6 h-full flex flex-col">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className={`bg-${service.color}-50 p-3 rounded-lg group-hover:bg-${service.color}-600 group-hover:text-white transition-colors duration-300`}>
+                    <div className={`bg-${service.color}-50 p-3 rounded-lg group-hover:bg-${service.color}-600  transition-colors duration-300`}>
                       {service.icon}
                     </div>
                     <div>
