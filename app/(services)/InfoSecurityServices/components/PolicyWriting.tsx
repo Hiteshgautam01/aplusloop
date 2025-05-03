@@ -9,7 +9,7 @@ import {
   History,
   ArrowRight,
   CheckCircle2,
-  Sparkles
+  Sparkles,
 } from "lucide-react";
 
 const fadeInUp = {
@@ -26,62 +26,72 @@ const PolicyWriting = () => {
     {
       icon: ClipboardCheck,
       title: "Assessment & Analysis",
-      description: "Analyze your organization's needs, regulatory requirements, and industry standards.",
-      color: "blue"
+      description:
+        "Analyze your organization's needs, regulatory requirements, and industry standards.",
+      color: "blue",
     },
     {
       icon: BookOpen,
       title: "Policy Development",
-      description: "Create clear, concise policies aligned with best practices and your business needs.",
-      color: "indigo"
+      description:
+        "Create clear, concise policies aligned with best practices and your business needs.",
+      color: "indigo",
     },
     {
       icon: UserCheck,
       title: "Review & Approval",
-      description: "Collaborate with stakeholders to review and approve final policy documents.",
-      color: "purple"
+      description:
+        "Collaborate with stakeholders to review and approve final policy documents.",
+      color: "purple",
     },
     {
       icon: History,
       title: "Maintenance & Updates",
-      description: "Regular review and updates to keep policies current with changing regulations.",
-      color: "violet"
-    }
+      description:
+        "Regular review and updates to keep policies current with changing regulations.",
+      color: "violet",
+    },
   ];
 
   const policyTypes = [
     {
       icon: Shield,
       title: "Information Security Policies",
-      description: "Comprehensive policies covering all aspects of information security.",
+      description:
+        "Comprehensive policies covering all aspects of information security.",
       gradient: "from-blue-500 to-cyan-500",
-      bgColor: "from-blue-50 to-cyan-50"
+      bgColor: "from-blue-50 to-cyan-50",
     },
     {
       icon: FileText,
       title: "Data Protection Policies",
-      description: "Policies for data classification, handling, and protection.",
+      description:
+        "Policies for data classification, handling, and protection.",
       gradient: "from-purple-500 to-pink-500",
-      bgColor: "from-purple-50 to-pink-50"
+      bgColor: "from-purple-50 to-pink-50",
     },
     {
       icon: UserCheck,
       title: "Access Control Policies",
-      description: "Policies for user access, authorization, and authentication.",
+      description:
+        "Policies for user access, authorization, and authentication.",
       gradient: "from-green-500 to-emerald-500",
-      bgColor: "from-green-50 to-emerald-50"
+      bgColor: "from-green-50 to-emerald-50",
     },
     {
       icon: ClipboardCheck,
       title: "Risk Management Policies",
       description: "Policies for identifying, assessing, and mitigating risks.",
       gradient: "from-orange-500 to-amber-500",
-      bgColor: "from-orange-50 to-amber-50"
-    }
+      bgColor: "from-orange-50 to-amber-50",
+    },
   ];
 
   return (
-    <section id="policy-writing" className="py-24 bg-gradient-to-b from-transparent to-white relative overflow-hidden">
+    <section
+      id="policy-writing"
+      className="py-24 bg-gradient-to-b from-transparent to-white relative overflow-hidden"
+    >
       {/* Background Decorations */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-40 left-20 w-64 h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
@@ -100,7 +110,7 @@ const PolicyWriting = () => {
           custom={0}
         >
           {/* Badge */}
-          <motion.div 
+          <motion.div
             className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-800 rounded-full text-sm font-semibold mb-6"
             // animate={{ scale: [1, 1.05, 1] }}
             // transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
@@ -108,11 +118,11 @@ const PolicyWriting = () => {
             <FileText className="h-4 w-4" />
             Expert Policy Development
           </motion.div>
-          
+
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-blue-900 to-indigo-900 bg-clip-text text-transparent pb-4">
             Policy Writing Services
           </h2>
-          
+
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Comprehensive security policy development services tailored to your
             organization's unique requirements and industry standards
@@ -126,11 +136,7 @@ const PolicyWriting = () => {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <motion.div
-              variants={fadeInUp}
-              custom={1}
-              className="relative"
-            >
+            <motion.div variants={fadeInUp} custom={1} className="relative">
               {/* Modern Card with Glass Effect */}
               <div className="bg-gradient-to-br from-white/80 to-blue-50/80 backdrop-blur-lg p-8 md:p-12 rounded-3xl border border-white/20 shadow-xl relative overflow-hidden">
                 {/* Decorative Elements */}
@@ -144,7 +150,7 @@ const PolicyWriting = () => {
 
                 <ul className="space-y-8 relative z-10">
                   {processSteps.map((step, index) => (
-                    <motion.li 
+                    <motion.li
                       key={index}
                       className="flex items-start gap-4 group"
                       initial={{ opacity: 0, x: -20 }}
@@ -152,7 +158,7 @@ const PolicyWriting = () => {
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1 }}
                     >
-                      <motion.div 
+                      <motion.div
                         className={`bg-gradient-to-br from-${step.color}-500 to-${step.color}-600 p-3 rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300`}
                         whileHover={{ scale: 1.1, rotate: 5 }}
                       >
@@ -162,9 +168,7 @@ const PolicyWriting = () => {
                         <h4 className="font-semibold text-lg mb-1 group-hover:text-blue-600 transition-colors">
                           {step.title}
                         </h4>
-                        <p className="text-gray-600">
-                          {step.description}
-                        </p>
+                        <p className="text-gray-600">{step.description}</p>
                       </div>
                     </motion.li>
                   ))}
@@ -173,11 +177,15 @@ const PolicyWriting = () => {
                 {/* Progress Indicator */}
                 <div className="mt-8 pt-8 border-t border-gray-200/50">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-gray-600">Process Timeline</span>
-                    <span className="text-sm font-medium text-blue-600">4-6 weeks</span>
+                    <span className="text-sm font-medium text-gray-600">
+                      Process Timeline
+                    </span>
+                    <span className="text-sm font-medium text-blue-600">
+                      4-6 weeks
+                    </span>
                   </div>
                   <div className="mt-2 h-2 bg-gray-200/50 rounded-full overflow-hidden">
-                    <motion.div 
+                    <motion.div
                       className="h-full bg-gradient-to-r from-blue-500 to-indigo-500"
                       initial={{ width: "0%" }}
                       whileInView={{ width: "100%" }}
@@ -216,13 +224,17 @@ const PolicyWriting = () => {
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   {/* Card Container */}
-                  <div className={`relative bg-white p-6 rounded-2xl border border-gray-200 overflow-hidden transition-all duration-300 group-hover:shadow-lg`}>
+                  <div
+                    className={`relative bg-white p-6 rounded-2xl border border-gray-200 overflow-hidden transition-all duration-300 group-hover:shadow-lg`}
+                  >
                     {/* Background Gradient on Hover */}
-                    <div className={`absolute inset-0 bg-gradient-to-r ${policy.bgColor} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
-                    
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-r ${policy.bgColor} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+                    ></div>
+
                     {/* Content */}
                     <div className="relative z-10 flex items-start gap-4">
-                      <motion.div 
+                      <motion.div
                         className={`flex-shrink-0 bg-gradient-to-br ${policy.gradient} p-3 rounded-xl shadow-md group-hover:shadow-lg transition-shadow duration-300`}
                         whileHover={{ rotate: [0, -5, 5, 0] }}
                         transition={{ duration: 0.5 }}
@@ -233,11 +245,9 @@ const PolicyWriting = () => {
                         <h4 className="font-semibold text-lg mb-1 text-gray-900 group-hover:text-blue-700 transition-colors">
                           {policy.title}
                         </h4>
-                        <p className="text-gray-600">
-                          {policy.description}
-                        </p>
+                        <p className="text-gray-600">{policy.description}</p>
                       </div>
-                      <motion.div 
+                      <motion.div
                         className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                         initial={{ x: -10 }}
                         whileHover={{ x: 0 }}
@@ -246,19 +256,17 @@ const PolicyWriting = () => {
                       </motion.div>
                     </div>
                   </div>
-                  
+
                   {/* Hover Border Effect */}
-                  <div className={`absolute -inset-0.5 bg-gradient-to-r ${policy.gradient} rounded-2xl opacity-0 group-hover:opacity-30 blur transition duration-300 -z-10`}></div>
+                  <div
+                    className={`absolute -inset-0.5 bg-gradient-to-r ${policy.gradient} rounded-2xl opacity-0 group-hover:opacity-30 blur transition duration-300 -z-10`}
+                  ></div>
                 </motion.div>
               ))}
             </div>
 
             {/* CTA Button */}
-            <motion.div
-              variants={fadeInUp}
-              custom={6}
-              className="mt-10"
-            >
+            <motion.div variants={fadeInUp} custom={6} className="mt-10">
               <motion.button
                 className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-4 px-6 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
                 whileHover={{ scale: 1.02 }}
@@ -270,8 +278,6 @@ const PolicyWriting = () => {
             </motion.div>
           </motion.div>
         </div>
-
-       
       </div>
 
       {/* Global Styles for Animations */}
