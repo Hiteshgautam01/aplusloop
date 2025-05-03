@@ -73,7 +73,7 @@ export const serviceCategories = [
   {
     title: "Digital Transformation",
     icon: Zap,
-    href: "/digitaltransformation",
+    href: "/digital-transformation-solution",
   },
   {
     title: "Info Security Services",
@@ -107,7 +107,7 @@ export const solutionCategories = [
   {
     title: "Digital Transformation",
     icon: Workflow,
-    href: "/solutions/digital-transformation",
+    href: "digital-transformation-solutions",
   },
   {
     title: "Cybersecurity Solutions",
@@ -129,15 +129,9 @@ export const solutionCategories = [
 // Digital transformation sections
 export const digitalTransformationSections = [
   {
-    title: "Development",
+    title: "Development Integration & Deployment",
     description:
       "Custom software development services tailored to your business needs and requirements",
-    imageSrc: "/automation.jpg",
-  },
-  {
-    title: "Integration & Deployment",
-    description:
-      "Seamless integration of systems and efficient deployment strategies for your business",
     imageSrc: "/automation.jpg",
   },
   {
@@ -147,7 +141,7 @@ export const digitalTransformationSections = [
     imageSrc: "/automation.jpg",
   },
   {
-    title: "Data Management",
+    title: "Data Management Services",
     description:
       "End-to-end data management solutions to help you make informed business decisions",
     imageSrc: "/automation.jpg",
@@ -181,55 +175,69 @@ export const digitalTransformationSections = [
 // Info security sections
 export const infoSecuritySections = [
   {
-    title: "Security Assessment",
+    title: "Risk Assessment and VAPT",
     description:
       "Comprehensive security assessment to identify vulnerabilities in your systems",
     imageSrc: "/automation.jpg",
   },
   {
-    title: "Threat Detection",
+    title: "Design & Consulting",
     description:
       "Advanced threat detection systems to protect your business from cyber attacks",
     imageSrc: "/automation.jpg",
   },
   {
-    title: "Data Protection",
+    title: "Policy writing",
     description:
       "Solutions to safeguard sensitive data and ensure compliance with regulations",
     imageSrc: "/automation.jpg",
   },
   {
-    title: "Security Training",
+    title: "Regulatory Compliance",
     description:
       "Staff training programs to create a security-conscious organization",
     imageSrc: "/automation.jpg",
   },
+  {
+    title: "Zero Trust-OT/IT",
+    description:
+      "Comprehensive incident response services to mitigate the impact of cyber attacks",
+    imageSrc: "/automation.jpg",
+  },
+  {
+    title: "Network & Communications",
+    description:
+      "Comprehensive incident response services to mitigate the impact of cyber attacks",
+    imageSrc: "/automation.jpg",
+  },
+
+  
 ];
 
 // Consulting sections
 export const consultingSections = [
   {
-    title: "Strategy Consulting",
+    title: "Strategy Advisory",
     description:
       "Strategic guidance to help businesses achieve their long-term objectives",
     imageSrc: "/automation.jpg",
   },
   {
-    title: "Process Optimization",
+    title: "Program Management",
     description:
       "Streamline business processes to improve efficiency and reduce costs",
     imageSrc: "/automation.jpg",
   },
   {
-    title: "Digital Strategy",
+    title: "Strategic Advisory",
     description:
       "Digital transformation strategies to keep your business competitive",
     imageSrc: "/automation.jpg",
   },
   {
-    title: "Change Management",
+    title: "Bespoke Development",
     description:
-      "Facilitate smooth transitions during organizational changes and transformation",
+      "Custom software development services tailored to your business needs and requirements",
     imageSrc: "/automation.jpg",
   },
 ];
@@ -265,172 +273,128 @@ export const staffingSections = [
 // Solution Sections Data
 export const businessInfrastructureSections = [
   {
-    title: "Enterprise Resource Planning",
+    title: "Enterprise Applications",
     description:
       "Comprehensive ERP solutions for streamlined business operations",
       imageSrc: "/automation.jpg",
   },
   {
-    title: "Customer Relationship Management",
+    title: "Infra Solutions",
     description:
       "CRM systems to enhance customer engagement and sales performance",
-    imageSrc: "/automation.jpg",
-  },
-  {
-    title: "Business Intelligence",
-    description: "Data analytics and BI tools for informed decision-making",
-    imageSrc: "/automation.jpg",
-  },
-  {
-    title: "Supply Chain Management",
-    description: "End-to-end supply chain optimization solutions",
-    imageSrc: "/automation.jpg",
-  },
-  {
-    title: "Cloud Infrastructure",
-    description: "Scalable cloud infrastructure solutions for business growth",
     imageSrc: "/automation.jpg",
   },
 ];
 
 export const mobilitySolutions = [
   {
-    title: "Enterprise Mobility",
+    title: "PTOS(Platform for Transport Operations System)",
     description: "Mobile solutions designed for enterprise business processes",
     imageSrc: "/automation.jpg",
   },
   {
-    title: "Mobile App Development",
+    title: "CMES(Central Monitoring & Emergency System)",
     description: "Custom mobile applications for iOS and Android platforms",
     imageSrc: "/automation.jpg",
   },
   {
-    title: "Cross-Platform Solutions",
+    title: "PFPS(Public Fleet Management System)",
     description: "Unified applications that work across multiple devices",
-    imageSrc: "/automation.jpg",
-  },
-  {
-    title: "Mobile Device Management",
-    description: "Solutions to secure and manage company mobile devices",
-    imageSrc: "/automation.jpg",
-  },
-  {
-    title: "Location-Based Services",
-    description: "GPS and location intelligence for mobile applications",
     imageSrc: "/automation.jpg",
   },
 ];
 
 export const digitalTransformationSolutions = [
   {
-    title: "Digital Strategy",
+    title: "Artificial Intelligence",
     description: "Comprehensive digital transformation roadmaps",
     imageSrc: "/automation.jpg",
   },
   {
-    title: "Process Automation",
+    title: "BlockChain & Web 3.0",
     description: "Workflow and business process automation solutions",
     imageSrc: "/automation.jpg",
   },
   {
-    title: "Data Analytics",
+    title: "Software Platforms",
     description: "Advanced analytics to drive business insights",
     imageSrc: "/automation.jpg",
-  },
-  {
-    title: "Customer Experience",
-    description: "Digital solutions to enhance customer engagement",
-    imageSrc: "/automation.jpg",
-  },
-  {
-    title: "AI & Machine Learning",
-    description: "Intelligent solutions powered by AI technologies",
-    imageSrc: "/automation.jpg",
-  },
+  }
 ];
 
 export const cybersecuritySolutions = [
   {
-    title: "Network Security",
+    title: "SOAR(Security Operations Automation & Response)",
     description: "Protection for your business network infrastructure",
     imageSrc: "/automation.jpg",
   },
   {
-    title: "Application Security",
+    title: "EDR & XDR",
     description: "Security solutions for web and mobile applications",
     imageSrc: "/automation.jpg",
   },
   {
-    title: "Identity Management",
+    title: "SEIM(Security Event & Incident Management)",
     description: "Advanced identity and access management systems",
     imageSrc: "/automation.jpg",
   },
   {
-    title: "Security Operations Center",
+    title: "SecOps",
     description: "24/7 monitoring and threat response services",
     imageSrc: "/automation.jpg",
-  },
-  {
-    title: "Compliance Solutions",
-    description: "Security solutions to meet regulatory requirements",
-    imageSrc: "/automation.jpg",
-  },
+  }
 ];
 
 export const industryIotSolutions = [
   {
-    title: "IoT Platform Integration",
+    title: "Realtime Data Acquisition",
     description: "Enterprise-grade IoT platform implementation",
     imageSrc: "/automation.jpg",
   },
   {
-    title: "Industrial Automation",
+    title: "AI ML Edge Automation",
     description: "IoT solutions for manufacturing and industrial processes",
     imageSrc: "/automation.jpg",
-  },
-  {
-    title: "Predictive Maintenance",
-    description: "IoT-based systems for equipment monitoring and maintenance",
-    imageSrc: "/automation.jpg",
-  },
-  {
-    title: "Connected Products",
-    description: "Product innovation through IoT connectivity",
-    imageSrc: "/automation.jpg",
-  },
-  {
-    title: "Smart Factory Solutions",
-    description: "End-to-end Industry 4.0 implementations",
-    imageSrc: "/automation.jpg",
-  },
+  }
 ];
 
 export const smartNationsSolutions = [
   {
-    title: "Smart City Infrastructure",
+    title: "3D Digital Twin",
     description: "Integrated urban technology solutions",
     imageSrc: "/automation.jpg",
   },
   {
-    title: "Digital Government",
+    title: "City Health",
     description: "Technology solutions for government services",
     imageSrc: "/automation.jpg",
   },
   {
-    title: "Public Safety",
+    title: "City Resilence",
     description: "Technology for enhanced public safety and security",
     imageSrc: "/automation.jpg",
   },
   {
-    title: "Urban Mobility",
+    title: "Emergency Training",
     description: "Smart transportation and traffic management systems",
     imageSrc: "/automation.jpg",
   },
   {
-    title: "Sustainability Solutions",
+    title: "Urban Planning",
     description: "Smart environmental monitoring and management",
     imageSrc: "/automation.jpg",
   },
+  {
+    title: "Transportation",
+    description: "Smart transportation and traffic management systems",
+    imageSrc: "/automation.jpg",
+  },
+  {
+    title: "Citywide Integration",
+    description: "Citywide integration solutions for government services",
+    imageSrc: "/automation.jpg",
+  },
+  
 ];
 
 // Map solution category to sections
