@@ -11,13 +11,7 @@ import { Footer } from "@/components/landing/Footer";
 import { createClient } from "next-sanity";
 import { getBlogPageData } from "@/sanity/queries/blog";
 
-// This client is used on the client-side with fixed API version
-const clientSide = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "",
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "",
-  apiVersion: "2023-05-03", // Using a fixed valid date format
-  useCdn: true,
-});
+
 
 export default function BlogPage() {
   const [activeCategory, setActiveCategory] = useState("all");
