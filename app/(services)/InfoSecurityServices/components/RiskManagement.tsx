@@ -54,7 +54,7 @@ const RiskManagement = () => {
             </span>
           </motion.div>
 
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-blue-900 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-blue-900 bg-clip-text text-transparent pb-2">
             Risk Management & VAPT
           </h2>
 
