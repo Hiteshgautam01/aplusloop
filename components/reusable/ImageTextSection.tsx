@@ -137,7 +137,7 @@ export default function ImageTextSection({
   } = getBorderStyles();
 
   return (
-    <section className={`relative overflow-hidden mb-24 ${className}`}>
+    <section className={`relative overflow-hidden  ${className}`}>
       {/* Background decorative elements - positioned inside the component */}
       {decorative && (
         <>
