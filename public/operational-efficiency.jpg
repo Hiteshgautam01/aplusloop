@@ -1,0 +1,7 @@
+<!-- This is a placeholder for a binary image file that would need to be uploaded. Using an SVG placeholder instead. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f1f5f9"/>
+  <rect x="150" y="150" width="500" height="300" rx="20" fill="#10b981" opacity="0.1"/>
+  <text x="400" y="300" font-family="Arial, sans-serif" font-size="32" text-anchor="middle" fill="#047857">Operational Efficiency</text>
+  <text x="400" y="350" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#64748b">ERP Systems and Process Automation</text>
+</svg> 

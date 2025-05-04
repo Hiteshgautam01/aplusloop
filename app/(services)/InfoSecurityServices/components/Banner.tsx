@@ -63,7 +63,7 @@ const CTAButtonComponent: React.FC<CTAButton & { delay?: number }> = ({
     "px-8 py-3 font-semibold rounded-full transition-all duration-300 transform hover:scale-105";
 
   const variants = {
-    primary: "bg-white text-black hover:bg-opacity-90 shadow-lg",
+    primary: " text-black hover:bg-opacity-90 shadow-lg",
     secondary:
       "bg-black/70 text-white border-2 border-white hover:bg-white hover:text-black",
     outline:
