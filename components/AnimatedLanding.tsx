@@ -8,7 +8,7 @@ import TechnologyStackSection from "./landing/TechnologyStackSection";
 import InnovationHubSection from "./landing/InnovationHubSection";
 import SolutionsSection from "./landing/SolutionsSection";
 import { useRef, useState, useEffect } from "react";
-
+import ValuePropositionSection from "./landing/ValuePropositionSection";
 // Animation variants
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -182,10 +182,10 @@ export default function AnimatedLanding() {
           />
         </div>
 
-        {/* Right Image Carousel - absolutely positioned, full height, right 1/2 */}
+        {/* Right Image Carousel - absolutely positioned within hero, not fixed */}
         <motion.div 
           variants={fadeInUp}
-          className="hidden md:block fixed top-0 right-0 h-screen w-1/2 z-10"
+          className="hidden md:block absolute top-0 right-0 h-full w-1/2 z-10"
           style={{ pointerEvents: 'none' }}
         >
           <div className="relative h-full w-full">
@@ -230,634 +230,126 @@ export default function AnimatedLanding() {
         </motion.div>
 
         {/* Left Content - stays in container, z-20 to be above gradients */}
-        <div className="container mx-auto px-4 relative z-20 flex min-h-screen">
+        <div className="container mx-auto px-4 relative z-20 flex min-h-screen items-center">
+          {/* Particle background placeholder (for future use) */}
+          <div className="absolute inset-0 md:inset-y-0 md:left-0 md:w-1/2 pointer-events-none z-0" id="particle-bg-left" />
           <motion.div 
             variants={fadeInUp}
-            className="w-full md:w-1/2 flex flex-col justify-center py-24"
+            className="w-full md:w-1/2 flex flex-col justify-center relative z-10"
           >
-            <div className="inline-flex items-center bg-gradient-to-r from-blue-100 to-pink-100 text-blue-800 px-4 py-1 rounded-full mb-8">
-              <motion.svg 
-                className="w-4 h-4 mr-2" 
-                fill="currentColor" 
-                viewBox="0 0 20 20"
-                initial="hidden"
-                animate="visible"
-              >
-                <motion.path
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z"
-                  variants={{
-                    hidden: { pathLength: 0, opacity: 0 },
-                    visible: { 
-                      pathLength: 1, 
-                      opacity: 1,
-                      transition: {
-                        pathLength: { 
-                          type: "spring",
-                          duration: 1.5,
-                          bounce: 0.3,
-                          repeat: Infinity,
-                          repeatType: "reverse"
-                        },
-                        opacity: { duration: 0.01 }
+            <div className=" backdrop-blur-md rounded-2xl  p-10 md:p-14  flex flex-col gap-8">
+              <div className="inline-flex items-center bg-gradient-to-r from-blue-100 to-pink-100 text-blue-800 px-4 py-1 rounded-full self-start">
+                <motion.svg 
+                  className="w-4 h-4 mr-2" 
+                  fill="currentColor" 
+                  viewBox="0 0 20 20"
+                  initial="hidden"
+                  animate="visible"
+                >
+                  <motion.path
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z"
+                    variants={{
+                      hidden: { pathLength: 0, opacity: 0 },
+                      visible: { 
+                        pathLength: 1, 
+                        opacity: 1,
+                        transition: {
+                          pathLength: { 
+                            type: "spring",
+                            duration: 1.5,
+                            bounce: 0.3,
+                            repeat: Infinity,
+                            repeatType: "reverse"
+                          },
+                          opacity: { duration: 0.01 }
+                        }
                       }
-                    }
-                  }}
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  fill="none"
-                />
-              </motion.svg>
-              <span className="text-xs font-semibold">Digital Transformation & Innovation</span>
-            </div>
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-8 leading-tight">
-              Transforming Businesses with <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-pink-600">Smart Technology Solutions</span>
-            </h1>
-            <p className="text-xl text-gray-600 mb-12 leading-relaxed">
-              We deliver comprehensive digital transformation, cybersecurity, and smart solutions. Our expertise spans across:
-            </p>
-            <div className="grid grid-cols-2 gap-4 mb-12">
-              <div className="flex items-center group">
-                <div className="bg-blue-100 rounded-lg p-2 mr-3 group-hover:scale-110 transition-transform duration-300">
-                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <span className="text-gray-700 group-hover:text-blue-600 transition-colors">Digital Transformation</span>
-              </div>
-              <div className="flex items-center group">
-                <div className="bg-pink-100 rounded-lg p-2 mr-3 group-hover:scale-110 transition-transform duration-300">
-                  <svg className="w-5 h-5 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <span className="text-gray-700 group-hover:text-pink-600 transition-colors">Cybersecurity</span>
-              </div>
-              <div className="flex items-center group">
-                <div className="bg-blue-100 rounded-lg p-2 mr-3 group-hover:scale-110 transition-transform duration-300">
-                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <span className="text-gray-700 group-hover:text-blue-600 transition-colors">Cloud Services</span>
-              </div>
-              <div className="flex items-center group">
-                <div className="bg-pink-100 rounded-lg p-2 mr-3 group-hover:scale-110 transition-transform duration-300">
-                  <svg className="w-5 h-5 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <span className="text-gray-700 group-hover:text-pink-600 transition-colors">Smart Solutions</span>
-              </div>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-6">
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="bg-gradient-to-r from-blue-600 to-blue-700 text-white font-medium px-8 py-4 rounded-lg flex items-center group shadow-lg hover:shadow-xl transition-all"
-              >
-                Explore Our Services
-                <motion.svg 
-                  className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    }}
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    fill="none"
+                  />
                 </motion.svg>
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="bg-gradient-to-r from-pink-500 to-pink-600 text-white font-medium px-8 py-4 rounded-lg flex items-center group shadow-lg hover:shadow-xl transition-all"
-              >
-                Request Consultation
-                <motion.svg 
-                  className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
+                <span className="text-xs font-semibold">Digital Transformation & Innovation</span>
+              </div>
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+                Transforming Businesses with <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-pink-600">Smart Technology Solutions</span>
+              </h1>
+              <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
+                We deliver comprehensive digital transformation, cybersecurity, and smart solutions. Our expertise spans across:
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="flex items-center gap-3">
+                  <div className="bg-blue-100 rounded-lg p-2">
+                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-700">Digital Transformation</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="bg-pink-100 rounded-lg p-2">
+                    <svg className="w-5 h-5 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-700">Cybersecurity</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="bg-blue-100 rounded-lg p-2">
+                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-700">Cloud Services</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="bg-pink-100 rounded-lg p-2">
+                    <svg className="w-5 h-5 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-700">Smart Solutions</span>
+                </div>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4 mt-4">
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="bg-gradient-to-r from-blue-600 to-blue-700 text-white font-medium px-8 py-4 rounded-lg flex items-center group shadow-lg hover:shadow-xl transition-all"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </motion.svg>
-              </motion.button>
+                  Explore Our Services
+                  <motion.svg 
+                    className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </motion.svg>
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="bg-gradient-to-r from-pink-500 to-pink-600 text-white font-medium px-8 py-4 rounded-lg flex items-center group shadow-lg hover:shadow-xl transition-all"
+                >
+                  Request Consultation
+                  <motion.svg 
+                    className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </motion.svg>
+                </motion.button>
+              </div>
             </div>
           </motion.div>
         </div>
       </motion.section>
 
-      {/* Value Proposition Section */}
-      <motion.section 
-        initial="initial"
-        animate="animate"
-        variants={staggerContainer}
-        className="py-16 bg-gradient-to-b from-white to-gray-50 relative z-10"
-      >
-        <div className="container mx-auto px-4">
-          <motion.div 
-            variants={fadeInUp}
-            className="text-center mb-20"
-          >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Our ROI-Focused Approach
-            </h2>
-            <div className="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Value Prop 1 */}
-            <motion.div 
-              variants={fadeInUp}
-              whileHover={{ y: -5 }}
-              className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-all"
-            >
-              <div className="mb-6">
-                <div className="bg-blue-100 rounded-lg p-4 inline-block">
-                  <svg className="w-8 h-8 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Technology Solutions</h3>
-              <ul className="text-gray-600 space-y-2">
-                <li className="flex items-center">
-                  <motion.svg 
-                    className="w-5 h-5 text-blue-600 mr-2" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                    initial="hidden"
-                    animate="visible"
-                  >
-                    <motion.path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5 13l4 4L19 7"
-                      variants={{
-                        hidden: { pathLength: 0, opacity: 0 },
-                        visible: { 
-                          pathLength: 1, 
-                          opacity: 1,
-                          transition: {
-                            pathLength: { 
-                              type: "spring",
-                              duration: 1.5,
-                              bounce: 0.3,
-                              repeat: Infinity,
-                              repeatType: "reverse"
-                            },
-                            opacity: { duration: 0.01 }
-                          }
-                        }
-                      }}
-                    />
-                  </motion.svg>
-                  Digital Transformation
-                </li>
-                <li className="flex items-center">
-                  <motion.svg 
-                    className="w-5 h-5 text-blue-600 mr-2" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                    initial="hidden"
-                    animate="visible"
-                  >
-                    <motion.path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5 13l4 4L19 7"
-                      variants={{
-                        hidden: { pathLength: 0, opacity: 0 },
-                        visible: { 
-                          pathLength: 1, 
-                          opacity: 1,
-                          transition: {
-                            pathLength: { 
-                              type: "spring",
-                              duration: 1.5,
-                              bounce: 0.3,
-                              repeat: Infinity,
-                              repeatType: "reverse"
-                            },
-                            opacity: { duration: 0.01 }
-                          }
-                        }
-                      }}
-                    />
-                  </motion.svg>
-                  Cybersecurity
-                </li>
-                <li className="flex items-center">
-                  <motion.svg 
-                    className="w-5 h-5 text-blue-600 mr-2" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                    initial="hidden"
-                    animate="visible"
-                  >
-                    <motion.path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5 13l4 4L19 7"
-                      variants={{
-                        hidden: { pathLength: 0, opacity: 0 },
-                        visible: { 
-                          pathLength: 1, 
-                          opacity: 1,
-                          transition: {
-                            pathLength: { 
-                              type: "spring",
-                              duration: 1.5,
-                              bounce: 0.3,
-                              repeat: Infinity,
-                              repeatType: "reverse"
-                            },
-                            opacity: { duration: 0.01 }
-                          }
-                        }
-                      }}
-                    />
-                  </motion.svg>
-                  Smart Solutions
-                </li>
-              </ul>
-            </motion.div>
-
-            {/* Value Prop 2 */}
-            <motion.div 
-              variants={fadeInUp}
-              whileHover={{ y: -5 }}
-              className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-all"
-            >
-              <div className="mb-6">
-                <div className="bg-blue-100 rounded-lg p-4 inline-block">
-                  <svg className="w-8 h-8 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Business Consulting</h3>
-              <ul className="text-gray-600 space-y-2">
-                <li className="flex items-center">
-                  <motion.svg 
-                    className="w-5 h-5 text-blue-600 mr-2" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                    initial="hidden"
-                    animate="visible"
-                  >
-                    <motion.path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5 13l4 4L19 7"
-                      variants={{
-                        hidden: { pathLength: 0, opacity: 0 },
-                        visible: { 
-                          pathLength: 1, 
-                          opacity: 1,
-                          transition: {
-                            pathLength: { 
-                              type: "spring",
-                              duration: 1.5,
-                              bounce: 0.3,
-                              repeat: Infinity,
-                              repeatType: "reverse"
-                            },
-                            opacity: { duration: 0.01 }
-                          }
-                        }
-                      }}
-                    />
-                  </motion.svg>
-                  Strategic Advisory
-                </li>
-                <li className="flex items-center">
-                  <motion.svg 
-                    className="w-5 h-5 text-blue-600 mr-2" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                    initial="hidden"
-                    animate="visible"
-                  >
-                    <motion.path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5 13l4 4L19 7"
-                      variants={{
-                        hidden: { pathLength: 0, opacity: 0 },
-                        visible: { 
-                          pathLength: 1, 
-                          opacity: 1,
-                          transition: {
-                            pathLength: { 
-                              type: "spring",
-                              duration: 1.5,
-                              bounce: 0.3,
-                              repeat: Infinity,
-                              repeatType: "reverse"
-                            },
-                            opacity: { duration: 0.01 }
-                          }
-                        }
-                      }}
-                    />
-                  </motion.svg>
-                  Process Optimization
-                </li>
-                <li className="flex items-center">
-                  <motion.svg 
-                    className="w-5 h-5 text-blue-600 mr-2" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                    initial="hidden"
-                    animate="visible"
-                  >
-                    <motion.path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5 13l4 4L19 7"
-                      variants={{
-                        hidden: { pathLength: 0, opacity: 0 },
-                        visible: { 
-                          pathLength: 1, 
-                          opacity: 1,
-                          transition: {
-                            pathLength: { 
-                              type: "spring",
-                              duration: 1.5,
-                              bounce: 0.3,
-                              repeat: Infinity,
-                              repeatType: "reverse"
-                            },
-                            opacity: { duration: 0.01 }
-                          }
-                        }
-                      }}
-                    />
-                  </motion.svg>
-                  Innovation Management
-                </li>
-              </ul>
-            </motion.div>
-
-            {/* Value Prop 3 */}
-            <motion.div 
-              variants={fadeInUp}
-              whileHover={{ y: -5 }}
-              className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-all"
-            >
-              <div className="mb-6">
-                <div className="bg-blue-100 rounded-lg p-4 inline-block">
-                  <svg className="w-8 h-8 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                  </svg>
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Digital Marketing</h3>
-              <ul className="text-gray-600 space-y-2">
-                <li className="flex items-center">
-                  <motion.svg 
-                    className="w-5 h-5 text-blue-600 mr-2" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                    initial="hidden"
-                    animate="visible"
-                  >
-                    <motion.path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5 13l4 4L19 7"
-                      variants={{
-                        hidden: { pathLength: 0, opacity: 0 },
-                        visible: { 
-                          pathLength: 1, 
-                          opacity: 1,
-                          transition: {
-                            pathLength: { 
-                              type: "spring",
-                              duration: 1.5,
-                              bounce: 0.3,
-                              repeat: Infinity,
-                              repeatType: "reverse"
-                            },
-                            opacity: { duration: 0.01 }
-                          }
-                        }
-                      }}
-                    />
-                  </motion.svg>
-                  Brand Strategy
-                </li>
-                <li className="flex items-center">
-                  <motion.svg 
-                    className="w-5 h-5 text-blue-600 mr-2" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                    initial="hidden"
-                    animate="visible"
-                  >
-                    <motion.path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5 13l4 4L19 7"
-                      variants={{
-                        hidden: { pathLength: 0, opacity: 0 },
-                        visible: { 
-                          pathLength: 1, 
-                          opacity: 1,
-                          transition: {
-                            pathLength: { 
-                              type: "spring",
-                              duration: 1.5,
-                              bounce: 0.3,
-                              repeat: Infinity,
-                              repeatType: "reverse"
-                            },
-                            opacity: { duration: 0.01 }
-                          }
-                        }
-                      }}
-                    />
-                  </motion.svg>
-                  Performance Marketing
-                </li>
-                <li className="flex items-center">
-                  <motion.svg 
-                    className="w-5 h-5 text-blue-600 mr-2" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                    initial="hidden"
-                    animate="visible"
-                  >
-                    <motion.path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5 13l4 4L19 7"
-                      variants={{
-                        hidden: { pathLength: 0, opacity: 0 },
-                        visible: { 
-                          pathLength: 1, 
-                          opacity: 1,
-                          transition: {
-                            pathLength: { 
-                              type: "spring",
-                              duration: 1.5,
-                              bounce: 0.3,
-                              repeat: Infinity,
-                              repeatType: "reverse"
-                            },
-                            opacity: { duration: 0.01 }
-                          }
-                        }
-                      }}
-                    />
-                  </motion.svg>
-                  Analytics & Insights
-                </li>
-              </ul>
-            </motion.div>
-
-            {/* Value Prop 4 */}
-            <motion.div 
-              variants={fadeInUp}
-              whileHover={{ y: -5 }}
-              className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-all"
-            >
-              <div className="mb-6">
-                <div className="bg-blue-100 rounded-lg p-4 inline-block">
-                  <svg className="w-8 h-8 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Smart Solutions</h3>
-              <ul className="text-gray-600 space-y-2">
-                <li className="flex items-center">
-                  <motion.svg 
-                    className="w-5 h-5 text-blue-600 mr-2" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                    initial="hidden"
-                    animate="visible"
-                  >
-                    <motion.path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5 13l4 4L19 7"
-                      variants={{
-                        hidden: { pathLength: 0, opacity: 0 },
-                        visible: { 
-                          pathLength: 1, 
-                          opacity: 1,
-                          transition: {
-                            pathLength: { 
-                              type: "spring",
-                              duration: 1.5,
-                              bounce: 0.3,
-                              repeat: Infinity,
-                              repeatType: "reverse"
-                            },
-                            opacity: { duration: 0.01 }
-                          }
-                        }
-                      }}
-                    />
-                  </motion.svg>
-                  AI & ML Integration
-                </li>
-                <li className="flex items-center">
-                  <motion.svg 
-                    className="w-5 h-5 text-blue-600 mr-2" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                    initial="hidden"
-                    animate="visible"
-                  >
-                    <motion.path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5 13l4 4L19 7"
-                      variants={{
-                        hidden: { pathLength: 0, opacity: 0 },
-                        visible: { 
-                          pathLength: 1, 
-                          opacity: 1,
-                          transition: {
-                            pathLength: { 
-                              type: "spring",
-                              duration: 1.5,
-                              bounce: 0.3,
-                              repeat: Infinity,
-                              repeatType: "reverse"
-                            },
-                            opacity: { duration: 0.01 }
-                          }
-                        }
-                      }}
-                    />
-                  </motion.svg>
-                  IoT Solutions
-                </li>
-                <li className="flex items-center">
-                  <motion.svg 
-                    className="w-5 h-5 text-blue-600 mr-2" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                    initial="hidden"
-                    animate="visible"
-                  >
-                    <motion.path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5 13l4 4L19 7"
-                      variants={{
-                        hidden: { pathLength: 0, opacity: 0 },
-                        visible: { 
-                          pathLength: 1, 
-                          opacity: 1,
-                          transition: {
-                            pathLength: { 
-                              type: "spring",
-                              duration: 1.5,
-                              bounce: 0.3,
-                              repeat: Infinity,
-                              repeatType: "reverse"
-                            },
-                            opacity: { duration: 0.01 }
-                          }
-                        }
-                      }}
-                    />
-                  </motion.svg>
-                  Smart City Integration
-                </li>
-              </ul>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
+     <ValuePropositionSection />
 
       {/* Solutions Section */}
       <SolutionsSection />  
