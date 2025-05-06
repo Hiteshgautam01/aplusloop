@@ -21,6 +21,7 @@ import {
 import { MegaMenuContent } from "@/components/landing/menu/MegaMenuContent";
 import { BusinessConsultingMenuContent } from "@/components/landing/menu/BusinessConsultingMenuContent";
 import Image from "next/image";
+import AnimatedLogo from "@/components/AnimatedLogo";
 import {
   serviceCategories,
   solutionCategories,
@@ -40,7 +41,7 @@ interface HoverRect {
 }
 
 const navLinks: NavLink[] = [
-  { href: "/", label: "Home" },
+  
   { href: "/about", label: "About Us" },
   { href: "/technology", label: "Technology", hasMenu: true },
   { href: "/services", label: "Business Consulting", hasMenu: true },
@@ -322,7 +323,7 @@ export function Navbar() {
       )}
       initial={{ height: 64 }}
       animate={{
-        height: scrolled ? 60 : 64,
+        height: scrolled ? 70 : 64,
         y: scrolled ? 0 : 0,
       }}
       transition={{
@@ -336,25 +337,7 @@ export function Navbar() {
           {/* Logo */}
           <div className="">
             <Link href="/" className="absolute left-[-40] top-2">
-              {/* <motion.span 
-                className="text-xl font-bold tracking-tight bg-gradient-to-r from-primary/90 to-primary/70 bg-clip-text text-transparent"
-                animate={{ 
-                  scale: scrolled ? 0.95 : 1
-                }}
-                transition={{
-                  type: "spring",
-                  stiffness: 300,
-                  damping: 30
-                }}
-              >
-                Aplus-loop
-              </motion.span> */}
-              <Image
-                src="/Logo.jpg"
-                alt="Aplus-loop"
-                width={120}
-                height={100}
-              />
+              <AnimatedLogo />
             </Link>
           </div>
 

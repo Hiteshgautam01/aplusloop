@@ -30,7 +30,8 @@ export function DigitalTransformationHero() {
             </div>
           </div>
 
-          <div className="relative h-[500px] w-full rounded-lg overflow-hidden shadow-2xl">
+          <div className="relative h-[500px] w-full rounded-lg overflow-hidden 
+          ">
             <div className="absolute inset-0 bg-gradient-to-br from-transparent to-indigo-900/30 z-10 rounded-lg"></div>
             <div className="relative h-full w-full transform transition duration-700 hover:scale-105">
               <Image
