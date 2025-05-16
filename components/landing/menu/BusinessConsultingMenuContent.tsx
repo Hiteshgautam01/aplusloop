@@ -15,7 +15,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 
-export function BusinessConsultingMenuContent() {
+export function BusinessConsultingMenuContent( {closeMenu}: {closeMenu: () => void}) {
   return (
     <NavigationMenuContent className="bg-background/90 backdrop-blur-lg border border-muted/20 shadow-lg">
       <div className="grid w-[600px] grid-cols-[1fr_2fr] gap-3 p-4">
