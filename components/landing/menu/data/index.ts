@@ -186,64 +186,74 @@ export const infoSecuritySections = [
     description:
       "Comprehensive security assessment to identify vulnerabilities in your systems",
     imageSrc: "/automation.jpg",
+    section: "risk-assessment-and-vapt",
   },
   {
     title: "Design & Consulting",
     description:
       "Advanced threat detection systems to protect your business from cyber attacks",
     imageSrc: "/automation.jpg",
+    section: "design-consulting",
   },
   {
     title: "Policy writing",
     description:
       "Solutions to safeguard sensitive data and ensure compliance with regulations",
     imageSrc: "/automation.jpg",
+    section: "policy-writing",
   },
   {
     title: "Regulatory Compliance",
     description:
       "Staff training programs to create a security-conscious organization",
     imageSrc: "/automation.jpg",
+    section: "regulatory-compliance",
   },
   {
     title: "Zero Trust-OT/IT",
     description:
       "Comprehensive incident response services to mitigate the impact of cyber attacks",
     imageSrc: "/automation.jpg",
+    section: "zero-trust-ot-it",
   },
   {
     title: "Network & Communications",
     description:
       "Comprehensive incident response services to mitigate the impact of cyber attacks",
     imageSrc: "/automation.jpg",
+    section: "network-communications",
   },
 ];
 
 // Consulting sections
 export const consultingSections = [
   {
-    title: "Strategy Advisory",
+    title: "Software Advisory",
     description:
       "Strategic guidance to help businesses achieve their long-term objectives",
     imageSrc: "/automation.jpg",
+    section: "software-advisory",
   },
   {
     title: "Program Management",
     description:
       "Streamline business processes to improve efficiency and reduce costs",
     imageSrc: "/automation.jpg",
+    section: "program-management",
   },
   {
     title: "Strategic Advisory",
     description:
       "Digital transformation strategies to keep your business competitive",
     imageSrc: "/automation.jpg",
+    section: "strategic-advisory",
   },
   {
-    title: "Bespoke Development",
+    title: "Research & Innovation",
     description:
       "Custom software development services tailored to your business needs and requirements",
     imageSrc: "/automation.jpg",
+    section: "research-innovation",
   },
 ];
 
