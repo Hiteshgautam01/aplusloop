@@ -1,3 +1,4 @@
+"use client"
 import React, { CSSProperties } from "react";
 import Image from "next/image";
 import { motion, MotionProps } from "framer-motion";
