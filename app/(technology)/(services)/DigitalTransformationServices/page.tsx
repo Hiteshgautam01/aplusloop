@@ -1,7 +1,10 @@
 import React from 'react'
 import Development from './Development'
 import Banner from '../InfoSecurityServices/components/Banner'
-
+import AutomationServices from './components/AutomationServices'
+import DataManagementServices from './components/DataManagementServices'
+import MobilityServices from './components/MobilityServices'
+import CloudServices from './components/CloudServices'
 const DigitalTransformationServices = () => {
   return (
     <div>
@@ -31,6 +34,10 @@ const DigitalTransformationServices = () => {
         subtitleClassName="text-xl md:text-2xl font-light max-w-3xl mx-auto"
       />
       <Development />
+      <AutomationServices />
+      <DataManagementServices />
+      <MobilityServices />
+      <CloudServices />
     </div>
   )
 }
