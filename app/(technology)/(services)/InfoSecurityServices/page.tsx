@@ -17,7 +17,7 @@ import RiskManagement from "./components/RiskManagement";
 import DesignConsulting from "./components/DesignConsulting";
 import PolicyWriting from "./components/PolicyWriting";
 import RegulatoryCompliance from "./components/RegulatoryCompliance";
-
+import ZeroTrust from "./components/ZeroTrust";
 const InfoSecurityServices = () => {
   return (
     <main className="flex min-h-screen flex-col items-center">
@@ -28,6 +28,7 @@ const InfoSecurityServices = () => {
         <DesignConsulting />
         <PolicyWriting />
         <RegulatoryCompliance />
+        <ZeroTrust />
       </div>
     </main>
   );
