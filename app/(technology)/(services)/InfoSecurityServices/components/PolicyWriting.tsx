@@ -90,7 +90,7 @@ const PolicyWriting = () => {
   return (
     <section
       id="policy-writing"
-      className="py-24 bg-gradient-to-b from-transparent to-white relative overflow-hidden"
+      className="pt-10 pb-8 bg-gradient-to-b from-transparent to-white relative overflow-hidden"
     >
       {/* Background Decorations */}
       <div className="absolute inset-0 pointer-events-none">

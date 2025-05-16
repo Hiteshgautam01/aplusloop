@@ -27,10 +27,21 @@ interface ImageTextSectionProps {
     | "frosted"
     | "cutout"
     | "layered"
-    | "neon";
+    | "neon"
+    | "ripple"
+    | "tilt"
+    | "zoom"
+    | "parallax"
+    | "polaroid";
   borderColor?: string;
   usePlaceholder?: boolean;
   placeholderIcon?: string;
+  // New props
+  backgroundColor?: string;
+  backgroundStyle?: "solid" | "gradient" | "pattern" | "none";
+  imageEffect?: "none" | "blur" | "grayscale" | "sepia" | "hue-rotate" | "saturation" | "vintage" | "duotone";
+  imageHoverEffect?: "none" | "zoom" | "rotate" | "flip" | "shake" | "pulse" | "bounce";
+  textContentStyle?: "default" | "card" | "bordered" | "minimal" | "highlighted";
 }
 
 export default function ImageTextSection({
@@ -48,7 +59,85 @@ export default function ImageTextSection({
   borderColor = "blue",
   usePlaceholder = false,
   placeholderIcon = "M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z",
+  // New props with defaults
+  backgroundColor = "transparent",
+  backgroundStyle = "none",
+  imageEffect = "none",
+  imageHoverEffect = "none",
+  textContentStyle = "default",
 }: ImageTextSectionProps) {
+  // Define background styles
+  const getBackgroundStyles = () => {
+    switch (backgroundStyle) {
+      case "solid":
+        return `bg-${backgroundColor}`;
+      case "gradient":
+        return `bg-gradient-to-br from-${backgroundColor}-50 to-${backgroundColor}-200`;
+      case "pattern":
+        return `bg-${backgroundColor}-50 bg-opacity-70 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] bg-[size:20px_20px]`;
+      default:
+        return "";
+    }
+  };
+
+  // Define image effect styles
+  const getImageEffectStyles = () => {
+    switch (imageEffect) {
+      case "blur":
+        return "filter hover:blur-none transition-all duration-500 blur-[2px]";
+      case "grayscale":
+        return "filter hover:grayscale-0 transition-all duration-500 grayscale";
+      case "sepia":
+        return "filter hover:sepia-0 transition-all duration-500 sepia";
+      case "hue-rotate":
+        return "filter hover:hue-rotate-0 transition-all duration-500 hue-rotate-30";
+      case "saturation":
+        return "filter hover:saturate-100 transition-all duration-500 saturate-150";
+      case "vintage":
+        return "filter hover:filter-none transition-all duration-500 sepia brightness-90 contrast-110";
+      case "duotone":
+        return `filter hover:filter-none transition-all duration-500 brightness-110 contrast-110 sepia hue-rotate-[${borderColor === 'blue' ? '190deg' : '30deg'}]`;
+      default:
+        return "";
+    }
+  };
+
+  // Define image hover animation styles
+  const getImageHoverStyles = () => {
+    switch (imageHoverEffect) {
+      case "zoom":
+        return "transform hover:scale-110 transition-transform duration-500";
+      case "rotate":
+        return "transform hover:rotate-3 transition-transform duration-500";
+      case "flip":
+        return "transform perspective-1000 hover:rotateY-180 transition-transform duration-700";
+      case "shake":
+        return "hover:animate-[wiggle_0.5s_ease-in-out_infinite]";
+      case "pulse":
+        return "hover:animate-pulse";
+      case "bounce":
+        return "hover:animate-bounce";
+      default:
+        return "";
+    }
+  };
+
+  // Define text content styles
+  const getTextContentStyles = () => {
+    switch (textContentStyle) {
+      case "card":
+        return `bg-white p-6 rounded-xl shadow-md border border-gray-100`;
+      case "bordered":
+        return `border-l-4 border-${borderColor}-500 pl-6`;
+      case "minimal":
+        return "pl-4";
+      case "highlighted":
+        return `bg-${borderColor}-50 p-6 rounded-xl`;
+      default:
+        return "";
+    }
+  };
+
   // Define border styles
   const getBorderStyles = () => {
     switch (borderStyle) {
@@ -120,6 +209,38 @@ export default function ImageTextSection({
           imageClass: "rounded-2xl",
           decorElements: false,
         };
+      case "ripple":
+        return {
+          wrapperClass: `rounded-2xl overflow-hidden`,
+          imageClass: "rounded-2xl",
+          decorElements: false,
+          extraClass: `before:content-[''] before:absolute before:inset-0 before:rounded-2xl before:border-2 before:border-${borderColor}-300 before:animate-[ripple_2s_linear_infinite]`,
+        };
+      case "tilt":
+        return {
+          wrapperClass: `rounded-2xl shadow-xl perspective-1000 transform transition-transform duration-500 hover:rotate-y-5 hover:rotate-x-5`,
+          imageClass: "rounded-2xl",
+          decorElements: false,
+        };
+      case "zoom":
+        return {
+          wrapperClass: `rounded-2xl shadow-xl overflow-hidden`,
+          imageClass: "rounded-2xl scale-110 hover:scale-100 transition-transform duration-700",
+          decorElements: false,
+        };
+      case "parallax":
+        return {
+          wrapperClass: `rounded-2xl shadow-xl overflow-hidden relative`,
+          imageClass: "rounded-2xl translate-y-4 hover:-translate-y-4 transition-transform duration-700",
+          decorElements: false,
+        };
+      case "polaroid":
+        return {
+          wrapperClass: `p-2 bg-white rounded-sm shadow-xl rotate-1 hover:rotate-0 transition-transform duration-500`,
+          imageClass: "rounded-sm",
+          decorElements: false,
+          extraClass: `after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-10 after:bg-white`,
+        };
       default:
         return {
           wrapperClass: "rounded-2xl overflow-hidden shadow-xl",
@@ -136,17 +257,29 @@ export default function ImageTextSection({
     extraClass = "",
   } = getBorderStyles();
 
+  // Background class
+  const bgClass = getBackgroundStyles();
+  // Image effects classes
+  const imageEffectClass = getImageEffectStyles();
+  const imageHoverClass = getImageHoverStyles();
+  // Text content class
+  const textContentClass = getTextContentStyles();
+
   return (
-    <section className={`relative overflow-hidden  ${className}`}>
+    <section className={`relative overflow-hidden w-full py-16 ${className}`}>
+      {/* Background div that spans full width without padding/margin issues */}
+      <div className={`absolute inset-0 w-full h-full ${bgClass}`}></div>
+      
       {/* Background decorative elements - positioned inside the component */}
       {decorative && (
         <>
-          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100/30 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-100/30 rounded-full blur-3xl"></div>
+          <div className={`absolute top-0 right-0 w-96 h-96 bg-${borderColor}-100/30 rounded-full blur-3xl`}></div>
+          <div className={`absolute bottom-0 left-0 w-64 h-64 bg-${borderColor}-100/30 rounded-full blur-3xl`}></div>
         </>
       )}
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* Content container with padding */}
+      <div className=" mx-auto px-4 sm:px-6 lg:px-[200px] relative z-10">
         <motion.div
           className={`flex flex-col-reverse ${
             imagePosition === "right" ? "md:flex-row" : "md:flex-row-reverse"
@@ -158,7 +291,7 @@ export default function ImageTextSection({
         >
           {/* Text Content */}
           <motion.div
-            className="w-full md:w-1/2"
+            className={`w-full md:w-1/2 ${textContentClass}`}
             initial={{ opacity: 0, x: imagePosition === "right" ? -30 : 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -247,7 +380,7 @@ export default function ImageTextSection({
                     src={imageSrc}
                     alt={imageAlt}
                     fill
-                    className={`object-cover ${imageClass}`}
+                    className={`object-cover ${imageClass} ${imageEffectClass} ${imageHoverClass}`}
                   />
                   {/* Overlay gradient */}
                   <div

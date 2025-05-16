@@ -22,8 +22,9 @@ const InfoSecurityServices = () => {
   return (
     <main className="flex min-h-screen flex-col items-center">
       <Banner />
-      <div className="container mx-auto px-4 py-16 space-y-32">
+      <div className=" mx-auto px-4 py-16 space-y-">
         <RiskManagement />
+        
         <DesignConsulting />
         <PolicyWriting />
         <RegulatoryCompliance />

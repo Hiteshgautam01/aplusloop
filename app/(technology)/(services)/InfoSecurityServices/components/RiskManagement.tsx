@@ -12,6 +12,7 @@ import {
   Lock,
   Server,
 } from "lucide-react";
+import Vapt from "./Vapt";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -65,8 +66,10 @@ const RiskManagement = () => {
         </div>
       </motion.div>
 
+      <Vapt />
+
       {/* SOC Design Section */}
-      <motion.div
+      {/* <motion.div
         className="grid md:grid-cols-2 gap-16 items-center mb-32 px-4 max-w-7xl mx-auto"
         initial="hidden"
         whileInView="visible"
@@ -132,14 +135,14 @@ const RiskManagement = () => {
         </motion.div>
 
         <motion.div variants={fadeInUp} custom={2} className="relative">
-          {/* Modern Image Container with Effects */}
+
           <div className="relative group">
-            {/* Glow Effect */}
+
             <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur-xl opacity-25 group-hover:opacity-40 transition-opacity" />
 
-            {/* Image Container */}
+  
             <div className="relative h-[400px] w-full rounded-2xl overflow-hidden">
-              {/* Decorative Elements */}
+
               <div className="absolute top-4 right-4 z-10">
                 <motion.div
                   className="w-12 h-12 bg-blue-500/20 backdrop-blur-sm rounded-lg flex items-center justify-center"
@@ -164,7 +167,7 @@ const RiskManagement = () => {
                 </motion.div>
               </div>
 
-              {/* Image */}
+
               <Image
                 src="/security-images.png"
                 alt="Security Operations Center"
@@ -172,19 +175,19 @@ const RiskManagement = () => {
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
 
-              {/* Overlay */}
+
               <div className="absolute inset-0 bg-gradient-to-tr from-blue-900/20 to-transparent" />
             </div>
 
-            {/* Corner Accents */}
+
             <div className="absolute -top-3 -left-3 w-12 h-12 border-l-4 border-t-4 border-blue-600 rounded-tl-2xl" />
             <div className="absolute -bottom-3 -right-3 w-12 h-12 border-r-4 border-b-4 border-purple-600 rounded-br-2xl" />
           </div>
         </motion.div>
-      </motion.div>
+      </motion.div> */}
 
       {/* Advanced Tools Section */}
-      <motion.div
+      {/* <motion.div
         className="mb-32 px-4"
         initial="hidden"
         whileInView="visible"
@@ -240,9 +243,8 @@ const RiskManagement = () => {
                 custom={index + 2}
                 className="group"
               >
-                {/* Card */}
+
                 <div className="relative bg-white p-8 rounded-2xl border border-gray-200 hover:border-gray-300 transition-all duration-300 overflow-hidden h-full shadow-sm hover:shadow-md">
-                  {/* Background Pattern */}
                   <div className="absolute top-0 right-0 w-40 h-40 opacity-5">
                     <motion.div
                       animate={{ rotate: 360 }}
@@ -256,7 +258,7 @@ const RiskManagement = () => {
                     </motion.div>
                   </div>
 
-                  {/* Icon */}
+ 
                   <motion.div
                     className={`relative z-10 bg-gradient-to-br ${tool.gradient} p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
                     whileHover={{ rotate: [0, -10, 10, 0] }}
@@ -265,7 +267,6 @@ const RiskManagement = () => {
                     <tool.icon className="h-8 w-8 text-white" />
                   </motion.div>
 
-                  {/* Content */}
                   <h4 className="text-xl font-semibold mb-3 relative z-10 text-gray-900">
                     {tool.title}
                   </h4>
@@ -273,7 +274,7 @@ const RiskManagement = () => {
                     {tool.description}
                   </p>
 
-                  {/* Hover Effect */}
+
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-br from-gray-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     initial={false}
@@ -283,10 +284,10 @@ const RiskManagement = () => {
             ))}
           </div>
         </div>
-      </motion.div>
+      </motion.div> */}
 
       {/* Incident Response Lifecycle */}
-      <motion.div
+      {/* <motion.div
         className="px-4"
         initial="hidden"
         whileInView="visible"
@@ -294,7 +295,7 @@ const RiskManagement = () => {
       >
         <div className="max-w-7xl mx-auto">
           <div className="bg-gradient-to-br from-gray-900 to-blue-900 text-white p-12 md:p-20 rounded-3xl relative overflow-hidden">
-            {/* Background Decoration */}
+
             <div className="absolute inset-0 opacity-10">
               <div className="absolute top-0 left-0 w-72 h-72 bg-blue-500 rounded-full filter blur-3xl" />
               <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500 rounded-full filter blur-3xl" />
@@ -322,7 +323,6 @@ const RiskManagement = () => {
                 custom={3}
                 className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8"
               >
-                {/* Placeholder for diagram with enhanced styling */}
                 <div className="h-[400px] flex items-center justify-center">
                   <div className="text-gray-400 text-xl">
                     Incident Response Lifecycle Interactive Diagram
@@ -330,7 +330,6 @@ const RiskManagement = () => {
                 </div>
               </motion.div>
 
-              {/* Stats Section */}
               <motion.div
                 className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16"
                 variants={fadeInUp}
@@ -369,7 +368,7 @@ const RiskManagement = () => {
             </div>
           </div>
         </div>
-      </motion.div>
+      </motion.div> */}
     </section>
   );
 };

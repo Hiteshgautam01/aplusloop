@@ -1,6 +1,6 @@
 "use client";
 
-import Banner from "@/app/(services)/InfoSecurityServices/components/Banner";
+import Banner from "@/app/(technology)/(services)/InfoSecurityServices/components/Banner";
 import ImageTextSection from "@/components/reusable/ImageTextSection";
 import InfrastructureEvolutionSection from "@/components/reusable/InfrastructureEvolutionSection";
 import ImagePlaceholder from "@/components/reusable/ImagePlaceholder";
