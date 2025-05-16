@@ -55,7 +55,7 @@ const TopLevelTabs: React.FC<{
 };
 
 // Main navigation content component
-export function MegaMenuContent( { closeMenu }: { closeMenu: () => void }) {
+export function MegaMenuContent( { closeMenu }: { closeMenu?: () => void }) {
   const [activeTab, setActiveTab] = React.useState("solutions");
 
   return (
