@@ -44,7 +44,7 @@ export const ServiceSections: React.FC<ServiceSectionProps> = ({
               <ServiceCard
                 title={sections[hoveredSection].title}
                 description={sections[hoveredSection].description}
-                href={`/${activeCategory.toLowerCase().replace(/\s+/g, "-")}`}
+                href={`${sections[hoveredSection].href}`}
                 section={sections[hoveredSection].title
                   .toLowerCase()
                   .replace(/\s+/g, "-")}

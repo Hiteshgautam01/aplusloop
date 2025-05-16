@@ -99,31 +99,31 @@ export function Navbar() {
     }
 
     return (
-      <NavigationMenuItem key={link.href}>
-        <Link href={link.href} legacyBehavior passHref>
-          <NavigationMenuLink
-            className={cn(
-              "px-4 py-2 text-sm font-medium inline-flex items-center justify-center",
-              pathname === link.href
-                ? "text-primary font-semibold"
-                : "text-foreground/70 hover:text-foreground"
-            )}
-          >
-            {link.label}
-            {pathname === link.href && (
-              <motion.span
-                className="absolute -bottom-0.5 left-4 right-4 h-0.5 bg-primary/60 rounded-full"
-                layoutId="activeIndicator"
-                transition={{
-                  type: "spring",
-                  stiffness: 500,
-                  damping: 30,
-                }}
-              />
-            )}
-          </NavigationMenuLink>
-        </Link>
-      </NavigationMenuItem>
+      
+<NavigationMenuItem key={link.href}>
+  <NavigationMenuLink
+    href={link.href}
+    className={cn(
+      "px-4 py-2 text-sm font-medium inline-flex items-center justify-center relative",
+      pathname === link.href
+        ? "text-primary font-semibold"
+        : "text-foreground/70 hover:text-foreground"
+    )}
+  >
+    {link.label}
+    {pathname === link.href && (
+      <motion.span
+        className="absolute -bottom-0.5 left-4 right-4 h-0.5 bg-primary/60 rounded-full"
+        layoutId="activeIndicator"
+        transition={{
+          type: "spring",
+          stiffness: 500,
+          damping: 30,
+        }}
+      />
+    )}
+  </NavigationMenuLink>
+</NavigationMenuItem>
     );
   };
 

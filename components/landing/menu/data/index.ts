@@ -133,42 +133,49 @@ export const digitalTransformationSections = [
     description:
       "Custom software development services tailored to your business needs and requirements",
     imageSrc: "/automation.jpg",
+    section: "development-integration-deployment",
   },
   {
     title: "Automation Services",
     description:
       "Streamline operations with intelligent automation solutions to increase efficiency",
     imageSrc: "/automation.jpg",
+    section: "automation-services",
   },
   {
     title: "Data Management Services",
     description:
       "End-to-end data management solutions to help you make informed business decisions",
     imageSrc: "/automation.jpg",
+    section: "data-management-services",
   },
   {
     title: "Mobility Services",
     description:
       "Mobile application development and management services for modern businesses",
     imageSrc: "/automation.jpg",
+    section: "mobility-services",
   },
   {
     title: "Cloud Services",
     description:
       "Comprehensive cloud solutions to enhance scalability and reduce operational costs",
     imageSrc: "/automation.jpg",
+    section: "cloud-services",
   },
   {
     title: "Service Management",
     description:
       "Effective IT service management to optimize your technology investments",
     imageSrc: "/automation.jpg",
+    section: "service-management",
   },
   {
     title: "DevOps",
     description:
       "DevOps practices to accelerate development cycles and improve collaboration",
     imageSrc: "/automation.jpg",
+    section: "devops",
   },
 ];
 
@@ -210,8 +217,6 @@ export const infoSecuritySections = [
       "Comprehensive incident response services to mitigate the impact of cyber attacks",
     imageSrc: "/automation.jpg",
   },
-
-  
 ];
 
 // Consulting sections
@@ -276,7 +281,7 @@ export const businessInfrastructureSections = [
     title: "Enterprise Applications",
     description:
       "Comprehensive ERP solutions for streamlined business operations",
-      imageSrc: "/automation.jpg",
+    imageSrc: "/automation.jpg",
   },
   {
     title: "Infra Solutions",
@@ -319,7 +324,7 @@ export const digitalTransformationSolutions = [
     title: "Software Platforms",
     description: "Advanced analytics to drive business insights",
     imageSrc: "/automation.jpg",
-  }
+  },
 ];
 
 export const cybersecuritySolutions = [
@@ -342,7 +347,7 @@ export const cybersecuritySolutions = [
     title: "SecOps",
     description: "24/7 monitoring and threat response services",
     imageSrc: "/automation.jpg",
-  }
+  },
 ];
 
 export const industryIotSolutions = [
@@ -355,7 +360,7 @@ export const industryIotSolutions = [
     title: "AI ML Edge Automation",
     description: "IoT solutions for manufacturing and industrial processes",
     imageSrc: "/automation.jpg",
-  }
+  },
 ];
 
 export const smartNationsSolutions = [
@@ -394,7 +399,6 @@ export const smartNationsSolutions = [
     description: "Citywide integration solutions for government services",
     imageSrc: "/automation.jpg",
   },
-  
 ];
 
 // Map solution category to sections
