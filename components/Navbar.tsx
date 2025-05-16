@@ -42,10 +42,10 @@ interface HoverRect {
 
 const navLinks: NavLink[] = [
   
-  { href: "/about", label: "About Us" },
+  // { href: "/about", label: "About Us" },
   { href: "/technology", label: "Technology", hasMenu: true },
   { href: "/services", label: "Business Consulting", hasMenu: true },
-  { href: "/blog", label: "Blog" },
+  // { href: "/blog", label: "Blog" },
   { href: "/career", label: "Careers" },
   { href: "/contact-us", label: "Contact Us" },
 ];

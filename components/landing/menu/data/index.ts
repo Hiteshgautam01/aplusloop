@@ -73,22 +73,22 @@ export const serviceCategories = [
   {
     title: "Digital Transformation",
     icon: Zap,
-    href: "/digital-transformation-solution",
+    href: "/DigitalTransformationServices",
   },
   {
     title: "Info Security Services",
     icon: Shield,
-    href: "/infosecurity",
+    href: "/InfoSecurityServices",
   },
   {
     title: "Business Consulting",
     icon: Briefcase,
-    href: "/consulting",
+    href: "/BusinessConsultingServices",
   },
   {
     title: "IT Staff Augmentation",
     icon: Users,
-    href: "/staffing",
+    href: "/StaffingServices",
   },
 ];
 
@@ -97,32 +97,32 @@ export const solutionCategories = [
   {
     title: "Business & Infrastructure",
     icon: Building2,
-    href: "/solutions/business-infrastructure",
+    href: "/BusinessInfrastructureSolutions",
   },
   {
     title: "Mobility Solutions",
     icon: Smartphone,
-    href: "/solutions/mobility",
+    href: "/MobilitySolutions",
   },
   {
     title: "Digital Transformation",
     icon: Workflow,
-    href: "digital-transformation-solutions",
+    href: "/digital-transformation-solution",
   },
   {
     title: "Cybersecurity Solutions",
     icon: Lock,
-    href: "/solutions/cybersecurity",
+    href: "/CybersecuritySolutions",
   },
   {
     title: "Industry 4.0 & IOT",
     icon: Cpu,
-    href: "/solutions/industry-iot",
+    href: "/IndustryIOT",
   },
   {
     title: "Smart Nations Solutions",
     icon: Globe,
-    href: "/solutions/smart-nations",
+    href: "/SmartNations",
   },
 ];
 
