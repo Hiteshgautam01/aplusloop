@@ -33,11 +33,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Suspense fallback={<div>Loading...</div>}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${roboto.className} antialiased`}
       >
-        {/* <ThemeProvider
+        <Suspense fallback={<div>Loading...</div>}>
+          {/* <ThemeProvider
           attribute="class"
           defaultTheme="light"
           // enableSystem
@@ -48,9 +48,9 @@ export default function RootLayout({
           {children}
 
           <Footer />
-          {/* </ThemeProvider> */}
-        </body>
-      </Suspense>
+        </Suspense>
+        {/* </ThemeProvider> */}
+      </body>
     </html>
   );
 }
