@@ -48,7 +48,7 @@ const Development = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-4xl md:text-5xl text-center text-gray-800 mb-4 font-montserrat font-bold"
+            className="text-4xl md:text-5xl text-center text-gray-800 mb-4 "
           >
             Development, Integration and Deployment
           </motion.h1>
@@ -64,7 +64,7 @@ const Development = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-lg text-gray-600 max-w-3xl mx-auto text-center mb-4 font-open-sans"
+            className="text-lg text-gray-600 max-w-3xl mx-auto text-center mb-4 "
           >
             We help organizations implement and modernize enterprise platforms
             like HRMS, CRM, and ERP. Our experts develop custom applications
@@ -76,7 +76,7 @@ const Development = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="text-lg text-gray-600 max-w-3xl mx-auto text-center font-open-sans"
+            className="text-lg text-gray-600 max-w-3xl mx-auto text-center"
           >
             From launch to maintenance, we ensure every app delivers
             performance, security, and value.
@@ -92,7 +92,7 @@ const Development = () => {
         >
           <div className="flex items-center justify-center gap-4 mb-12">
             <div className="h-px w-12 bg-blue-200"></div>
-            <h2 className="text-3xl font-light text-gray-800 text-center font-montserrat">
+            <h2 className="text-3xl font-light text-gray-800 text-center ">
               Evolution of Software Development
             </h2>
             <div className="h-px w-12 bg-blue-200"></div>
@@ -118,7 +118,7 @@ const Development = () => {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
                 <div className="order-2 md:order-1">
-                  <h3 className="text-2xl font-normal text-gray-800 mb-4 font-montserrat">
+                  <h3 className="text-2xl font-normal text-gray-800 mb-4">
                     Early Days of Software
                   </h3>
                   <p className="text-gray-600 leading-relaxed font-open-sans">

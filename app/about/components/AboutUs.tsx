@@ -4,10 +4,12 @@ import VisionMission from './VissionMission';
 import OurValues from './OurValues';
 import UniqueApproach from './UniqueValues';
 import GlobalPresence from './GlobalPresence';
+import TechnologyAndMarketing from './TechnologyAndMarketing';
+import PremiumCTASection from './PremiumCTASection';
 
 const AboutUs = () => {
   return (
-    <div className="relative overflow-hidden bg-white">
+    <div className="relative overflow-hidden bg-white mt-16">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 -z-10 opacity-5 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] bg-[size:20px_20px]"></div>
       
@@ -41,7 +43,7 @@ const AboutUs = () => {
       <div className="w-full h-12 bg-gradient-to-b from-gray-50/0 to-white"></div>
       
       <UniqueApproach />
-
+      <PremiumCTASection />
       
       
       <div className="w-full h-12 bg-gradient-to-b from-white to-gray-50/0"></div>
