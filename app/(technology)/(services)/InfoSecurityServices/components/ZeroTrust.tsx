@@ -8,7 +8,8 @@ import {
   Globe, 
   LineChart, 
   Cog, 
-  AlertTriangle
+  AlertTriangle,
+  ChevronRight
 } from "lucide-react";
 
 const ZeroTrust = () => {
@@ -18,6 +19,19 @@ const ZeroTrust = () => {
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    })
+  };
+
+  const scaleUp = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: (i: number) => ({
+      opacity: 1,
+      scale: 1,
       transition: {
         delay: i * 0.1,
         duration: 0.5,
@@ -92,60 +106,104 @@ const ZeroTrust = () => {
   };
 
   return (
-    <div className="bg-white">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-800 via-blue-700 to-blue-900 py-16">
+    <div className="bg-white font-sans">
+      {/* Hero Section - Enhanced with geometric patterns and depth */}
+      <section className="relative overflow-hidden pt-24 lg:pt-32">
+        {/* Background gradients and patterns */}
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-800 via-blue-700 to-blue-900"></div>
+        <div className="absolute inset-0 opacity-30 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC40Ij48cGF0aCBkPSJNMzYgMzRhNCA0IDAgMSAxIDAgOCA0IDQgMCAwIDEgMC04em0wLTEyYTQgNCAwIDEgMSAwIDggNCA0IDAgMCAxIDAtOHptMTIgMTJhNCA0IDAgMSAxIDAgOCA0IDQgMCAwIDEgMC04ek0xMiAzNGE0IDQgMCAxIDEgMCA4IDQgNCAwIDAgMSAwLTh6bTAtMTJhNCA0IDAgMSAxIDAgOCA0IDQgMCAwIDEgMC04em0xMiAwYTQgNCAwIDEgMSAwIDggNCA0IDAgMCAxIDAtOHoiPjwvcGF0aD48L2c+PC9nPjwvc3ZnPg==')]"></div>
+        
+        {/* Glowing orbs for depth */}
+        <div className="absolute top-20 -left-32 w-96 h-96 bg-blue-500 opacity-20 rounded-full filter blur-3xl"></div>
+        <div className="absolute -bottom-20 right-10 w-96 h-96 bg-blue-400 opacity-15 rounded-full filter blur-3xl"></div>
+        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <motion.div 
-            className="flex flex-col items-center text-center"
+            className="flex flex-col items-center text-center max-w-3xl mx-auto"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeIn}
             custom={0}
           >
-            <div className="inline-flex items-center justify-center p-3 bg-white bg-opacity-10 backdrop-blur-sm rounded-full mb-6">
+            <div className="inline-flex items-center justify-center p-4 bg-white/10 backdrop-blur-lg rounded-full mb-8 border border-white/20 shadow-lg">
               <Shield className="h-8 w-8 text-white" />
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Essential Zero Trust Solutions</h1>
-            <p className="text-lg text-blue-100 max-w-3xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+              Essential Zero Trust Solutions
+            </h1>
+            <motion.p 
+              className="text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed"
+              variants={fadeIn}
+              custom={0.3}
+            >
               To implement Zero Trust efficiently and effectively, organizations must adopt technologies 
               that can perform several crucial capabilities.
-            </p>
+            </motion.p>
+            
+            {/* Decorative element */}
+            <motion.div 
+              className="mt-10 h-1 w-24 bg-gradient-to-r from-blue-300 to-blue-200 rounded-full"
+              variants={scaleUp}
+              custom={0.5}
+            ></motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Capabilities Section */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* Capabilities Section - Redesigned with premium card layout */}
+      <section className="py-24 bg-gradient-to-b from-blue-50 to-white relative overflow-hidden">
+        {/* Subtle background pattern */}
+       
+        
+        {/* Background blue blobs */}
+        <div className="absolute top-1/4 -left-32 w-64 h-64 bg-blue-300/20 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-blue-200/30 rounded-full filter blur-3xl"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <motion.div
+            className="text-center mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+            custom={0}
+          >
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-800">
+                Essential Capabilities
+              </span>
+            </h2>
+            <div className="h-1 w-24 bg-gradient-to-r from-blue-400 to-blue-600 mx-auto rounded-full"></div>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {capabilities.map((capability, index) => (
               <motion.div
                 key={capability.id}
-                className="relative group"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-50px" }}
                 variants={fadeIn}
-                custom={index * 0.2}
+                custom={index * 0.15}
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-400 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                
-                <div className="relative bg-white border border-gray-100 rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all duration-300 z-10">
-                  <div className="h-2 bg-gradient-to-r from-blue-600 to-blue-400"></div>
+                <div className="h-full bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group relative border border-blue-50">
+                  {/* Gradient side border instead of top */}
+                  <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-blue-400 to-blue-600"></div>
+                  
                   <div className="p-6">
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="bg-blue-50 rounded-lg p-3 group-hover:bg-white transition-colors duration-300">
-                        <div className="text-blue-600">
-                          {capability.icon}
+                    <div className="flex items-center mb-4">
+                      <div className="flex-shrink-0 h-10 w-10 rounded-lg bg-blue-100 flex items-center justify-center mr-4 group-hover:bg-blue-500 transition-all duration-300">
+                        <div className="text-blue-600 group-hover:text-white transition-colors duration-300">
+                          {React.cloneElement(capability.icon, { className: "h-5 w-5" })}
                         </div>
                       </div>
                       <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
                         {capability.title}
                       </h3>
                     </div>
-                    <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300 text-sm">
+                    
+                    <p className="text-gray-600 text-sm leading-relaxed pl-14">
                       {capability.description}
                     </p>
                   </div>
@@ -156,51 +214,94 @@ const ZeroTrust = () => {
         </div>
       </section>
 
-      {/* Forcepoint Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Forcepoint Section - Enhanced with premium design */}
+      <section className="py-20 relative overflow-hidden bg-gradient-to-br from-white to-blue-50">
+        {/* Background elements */}
+        <div className="absolute left-0 top-0 w-1/3 h-full bg-blue-100/30 blur-3xl"></div>
+        <div className="absolute right-0 bottom-0 w-1/3 h-1/2 bg-blue-100/40 blur-3xl"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <motion.div 
-            className="text-center mb-12"
+            className="text-center max-w-3xl mx-auto mb-12"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeIn}
             custom={0}
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Forcepoint: A Leading Zero Trust Platform</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-100 to-blue-200 mb-6 border border-blue-200 shadow-sm">
+              <Shield className="h-4 w-4 text-blue-600 mr-2" />
+              <span className="text-sm font-semibold text-blue-700">Industry Leader</span>
+            </div>
+            
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+              Forcepoint: A Leading Zero Trust Platform
+            </h2>
+            
+            <p className="text-lg text-gray-600 leading-relaxed">
               {forcepointInfo.description}
             </p>
           </motion.div>
 
-          <div className="space-y-8">
+          <div className="space-y-6">
             {forcepointInfo.solutions.map((solution, index) => (
               <motion.div
                 key={solution.id}
-                className="bg-white rounded-xl overflow-hidden shadow-xl border border-gray-100"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                variants={fadeIn}
+                variants={scaleUp}
                 custom={index * 0.2 + 0.5}
               >
-                <div className="grid grid-cols-1 lg:grid-cols-5">
-                  <div className="lg:col-span-1 bg-gradient-to-br from-blue-700 to-blue-900 p-6 flex items-center justify-center">
-                    <div className="text-center">
-                      {React.cloneElement(solution.icon, { className: "h-12 w-12 text-white mx-auto mb-3" })}
-                      <h3 className="text-xl font-bold text-white">{solution.id === 1 ? "ZTNA" : "ONE"}</h3>
+                <div className="bg-white rounded-xl overflow-hidden shadow-lg border border-blue-100 hover:shadow-xl transition-all duration-300">
+                  <div className="grid grid-cols-1 md:grid-cols-8">
+                    <div className="md:col-span-2 bg-gradient-to-br from-blue-500 to-blue-700 p-6 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="inline-flex h-14 w-14 rounded-full bg-white/10 backdrop-blur-sm items-center justify-center mb-3 border border-white/20">
+                          {React.cloneElement(solution.icon, { className: "h-6 w-6 text-white" })}
+                        </div>
+                        <h3 className="text-xl font-bold text-white">
+                          {solution.id === 1 ? "ZTNA" : "ONE"}
+                        </h3>
+                      </div>
                     </div>
-                  </div>
-                  <div className="lg:col-span-4 p-8">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4">{solution.title}</h3>
-                    <p className="text-gray-600">
-                      {solution.description}
-                    </p>
+                    
+                    <div className="md:col-span-6 p-6">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 pb-2 border-b border-gray-100">
+                        {solution.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        {solution.description}
+                      </p>
+                      
+                      {/* Call to action */}
+                      <div className="mt-4 flex justify-end">
+                        <button className="inline-flex items-center bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                          Learn more
+                          <ChevronRight className="h-4 w-4 ml-1" />
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </motion.div>
             ))}
           </div>
+          
+          {/* Final CTA */}
+          <motion.div
+            className="mt-12 text-center"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+            custom={1.3}
+          >
+            <button className="inline-flex items-center bg-gradient-to-r from-blue-600 to-blue-800 text-white px-6 py-3 rounded-xl text-base font-medium shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              Request a Zero Trust assessment
+              <ChevronRight className="h-5 w-5 ml-2" />
+            </button>
+          </motion.div>
         </div>
       </section>
     </div>
