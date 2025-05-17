@@ -33,7 +33,7 @@ const AboutSection = () => {
         <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.06)_1px,transparent_1px),linear-gradient(to_right,rgba(59,130,246,0.06)_1px,transparent_1px)] bg-[size:50px_50px] z-0"></div>
         
         {/* Circular bluish gradient at the top center */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full translate-y-[-100px]  bg-blue-300/30 blur-[100px] z-[1]"></div>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full translate-y-[-200px]  bg-blue-300/30 blur-[100px] z-[1]"></div>
         
         {/* Background Elements */}
         <div className="absolute right-0 top-20 h-96 w-96 bg-blue-100/30 rounded-full blur-[120px] z-[2]"></div>
@@ -95,8 +95,8 @@ const AboutSection = () => {
               <div className="relative rounded-2xl overflow-hidden bg-white p-3 shadow-2xl shadow-blue-500/10">
                 {/* Image placeholder with gradient overlay */}
                 <div className="w-full aspect-[4/3] rounded-xl overflow-hidden relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-600/90 to-indigo-600/90 mix-blend-multiply"></div>
-                  <img src="/api/placeholder/800/600" alt="Enterprise Solutions" className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-600/90 to-indigo-600/90 mix-blend-multiply opacity-65"></div>
+                  <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop" alt="Enterprise Solutions" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 flex flex-col justify-end p-8 text-white">
                     <h3 className="text-2xl font-bold mb-2">Future-Focused Solutions</h3>
                     <p className="text-white/90">Building resilient and high-performing enterprises</p>
@@ -143,21 +143,21 @@ const AboutSection = () => {
             >
               <div className="grid grid-cols-2 gap-4 relative">
                 <div className="col-span-2 rounded-xl overflow-hidden shadow-lg h-64 relative">
-                  <img src="/api/placeholder/600/400" alt="Headquarters" className="w-full h-full object-cover" />
+                  <img src="/OfficeOne.jpg" alt="Headquarters" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent"></div>
                   <div className="absolute bottom-4 left-4 text-white">
                     <p className="font-semibold">UAE Headquarters</p>
                   </div>
                 </div>
                 <div className="rounded-xl overflow-hidden shadow-lg h-40 relative">
-                  <img src="/api/placeholder/300/240" alt="Dubai Office" className="w-full h-full object-cover" />
+                  <img src="/OfficeTwo.jpg" alt="Dubai Office" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent"></div>
                   <div className="absolute bottom-3 left-3 text-white">
                     <p className="text-sm font-medium">Dubai</p>
                   </div>
                 </div>
                 <div className="rounded-xl overflow-hidden shadow-lg h-40 relative">
-                  <img src="/api/placeholder/300/240" alt="Abu Dhabi Office" className="w-full h-full object-cover" />
+                  <img src="/OfficeThree.jpg" alt="Abu Dhabi Office" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent"></div>
                   <div className="absolute bottom-3 left-3 text-white">
                     <p className="text-sm font-medium">Abu Dhabi</p>
@@ -271,7 +271,7 @@ const AboutSection = () => {
                 
                 {/* Vision image area */}
                 <div className="rounded-xl overflow-hidden h-48 relative">
-                  <img src="/api/placeholder/700/350" alt="Vision" className="w-full h-full object-cover" />
+                  <img src="/Global.jpg" alt="Vision" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-blue-900/70 via-blue-800/30 to-transparent"></div>
                   <div className="absolute bottom-0 left-0 w-full p-4 text-white">
                     <div className="flex items-center">
@@ -324,7 +324,7 @@ const AboutSection = () => {
                 
                 {/* Mission image area */}
                 <div className="rounded-xl overflow-hidden h-48 relative">
-                  <img src="/api/placeholder/700/350" alt="Mission" className="w-full h-full object-cover" />
+                  <img src="/Aim.jpg" alt="Mission" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/70 via-indigo-800/30 to-transparent"></div>
                   <div className="absolute bottom-0 left-0 w-full p-4 text-white">
                     <div className="flex items-center">
