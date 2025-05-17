@@ -349,10 +349,10 @@ export default function AnimatedLanding() {
         </div>
       </motion.section>
 
-     <ValuePropositionSection />
+     {/* <ValuePropositionSection /> */}
 
       {/* Solutions Section */}
-      <SolutionsSection />  
+      {/* <SolutionsSection />  
 
       <WhyChooseSection />
      
@@ -360,7 +360,7 @@ export default function AnimatedLanding() {
     
     <TechnologyStackSection />
 
-      <InnovationHubSection />
+      <InnovationHubSection /> */}
 
 
       {/* Client Testimonials Section */}
