@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Globe, Target, Building, ChevronRight, Sparkles } from 'lucide-react';
+import TechnologyAndMarketing from './TechnologyAndMarketing';
 
 const AboutSection = () => {
   // Animation variants
@@ -28,14 +29,17 @@ const AboutSection = () => {
     <div className="bg-slate-50 overflow-hidden">
       {/* Hero Section */}
       <section className="relative py-24 overflow-hidden bg-gradient-to-br from-white to-slate-100">
+        {/* Subtle grid background - slightly more visible */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.06)_1px,transparent_1px),linear-gradient(to_right,rgba(59,130,246,0.06)_1px,transparent_1px)] bg-[size:50px_50px] z-0"></div>
+        
+        {/* Circular bluish gradient at the top center */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full translate-y-[-100px]  bg-blue-300/30 blur-[100px] z-[1]"></div>
+        
         {/* Background Elements */}
-        <div className="absolute right-0 top-20 h-96 w-96 bg-blue-100/30 rounded-full blur-[120px] -z-10"></div>
-        <div className="absolute left-20 bottom-20 h-80 w-80 bg-indigo-100/30 rounded-full blur-[100px] -z-10"></div>
+        <div className="absolute right-0 top-20 h-96 w-96 bg-blue-100/30 rounded-full blur-[120px] z-[2]"></div>
+        <div className="absolute left-20 bottom-20 h-80 w-80 bg-indigo-100/30 rounded-full blur-[100px] z-[2]"></div>
         
-        {/* Subtle grid background */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(to_right,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:50px_50px] z-0"></div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-[5]">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             {/* Left Content */}
             <motion.div 
@@ -206,6 +210,7 @@ const AboutSection = () => {
           </div>
         </div>
       </section>
+      <TechnologyAndMarketing />
       
       {/* Vision & Mission Section */}
       <section className="py-24 relative overflow-hidden bg-gradient-to-br from-gray-50 to-white">

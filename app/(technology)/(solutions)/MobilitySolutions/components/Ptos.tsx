@@ -9,13 +9,13 @@ const Ptos = () => {
     {
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 6l6 6m0 0l-6 6" />
         </svg>
       ),
-      title: "Real-time Fleet Monitoring",
-      description: "Track and manage your entire fleet with live GPS updates",
-      stat: "99.9%",
-      statLabel: "Uptime"
+      title: "Intelligent Fleet Management",
+      description: "Monitor and optimize your entire fleet with live tracking and predictive maintenance alerts",
+      stat: "99.8%",
+      statLabel: "Operational Efficiency"
     },
     {
       icon: (
@@ -23,10 +23,10 @@ const Ptos = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
       ),
-      title: "Advanced Analytics",
-      description: "AI-powered insights to optimize routes and reduce costs",
-      stat: "35%",
-      statLabel: "Cost Reduction"
+      title: "Data-Driven Decision Making",
+      description: "Transform operational data into actionable insights with our real-time analytics platform",
+      stat: "40%",
+      statLabel: "Resource Optimization"
     },
     {
       icon: (
@@ -35,10 +35,10 @@ const Ptos = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
       ),
-      title: "Smart Route Optimization",
-      description: "Dynamic routing algorithms adapt to traffic in real-time",
-      stat: "28%",
-      statLabel: "Faster Routes"
+      title: "Strategic Route Planning",
+      description: "Enhance passenger experience and reduce costs with AI-powered route optimization",
+      stat: "32%",
+      statLabel: "Fuel Savings"
     }
   ];
 
