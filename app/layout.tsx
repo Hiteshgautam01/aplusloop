@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
+import { Suspense } from "react";
 
 const roboto = Roboto({
   weight: ["400", "500", "700"],
@@ -35,7 +36,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${roboto.className} antialiased`}
       >
-        {/* <ThemeProvider
+        <Suspense fallback={<div>Loading...</div>}>
+          {/* <ThemeProvider
           attribute="class"
           defaultTheme="light"
           // enableSystem
@@ -46,6 +48,7 @@ export default function RootLayout({
           {children}
 
           <Footer />
+        </Suspense>
         {/* </ThemeProvider> */}
       </body>
     </html>

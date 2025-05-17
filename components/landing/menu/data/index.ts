@@ -73,22 +73,22 @@ export const serviceCategories = [
   {
     title: "Digital Transformation",
     icon: Zap,
-    href: "/digital-transformation-solution",
+    href: "/DigitalTransformationServices",
   },
   {
     title: "Info Security Services",
     icon: Shield,
-    href: "/infosecurity",
+    href: "/InfoSecurityServices",
   },
   {
     title: "Business Consulting",
     icon: Briefcase,
-    href: "/consulting",
+    href: "/BusinessConsultingServices",
   },
   {
     title: "IT Staff Augmentation",
     icon: Users,
-    href: "/staffing",
+    href: "/StaffingServices",
   },
 ];
 
@@ -97,32 +97,32 @@ export const solutionCategories = [
   {
     title: "Business & Infrastructure",
     icon: Building2,
-    href: "/solutions/business-infrastructure",
+    href: "/BusinessInfrastructureSolutions",
   },
   {
     title: "Mobility Solutions",
     icon: Smartphone,
-    href: "/solutions/mobility",
+    href: "/MobilitySolutions",
   },
   {
     title: "Digital Transformation",
     icon: Workflow,
-    href: "digital-transformation-solutions",
+    href: "/digital-transformation-solution",
   },
   {
     title: "Cybersecurity Solutions",
     icon: Lock,
-    href: "/solutions/cybersecurity",
+    href: "/CybersecuritySolutions",
   },
   {
     title: "Industry 4.0 & IOT",
     icon: Cpu,
-    href: "/solutions/industry-iot",
+    href: "/IndustryIOT",
   },
   {
     title: "Smart Nations Solutions",
     icon: Globe,
-    href: "/solutions/smart-nations",
+    href: "/SmartNations",
   },
 ];
 
@@ -133,42 +133,49 @@ export const digitalTransformationSections = [
     description:
       "Custom software development services tailored to your business needs and requirements",
     imageSrc: "/automation.jpg",
+    section: "development-integration-deployment",
   },
   {
     title: "Automation Services",
     description:
       "Streamline operations with intelligent automation solutions to increase efficiency",
     imageSrc: "/automation.jpg",
+    section: "automation-services",
   },
   {
     title: "Data Management Services",
     description:
       "End-to-end data management solutions to help you make informed business decisions",
     imageSrc: "/automation.jpg",
+    section: "data-management-services",
   },
   {
     title: "Mobility Services",
     description:
       "Mobile application development and management services for modern businesses",
     imageSrc: "/automation.jpg",
+    section: "mobility-services",
   },
   {
     title: "Cloud Services",
     description:
       "Comprehensive cloud solutions to enhance scalability and reduce operational costs",
     imageSrc: "/automation.jpg",
+    section: "cloud-services",
   },
   {
     title: "Service Management",
     description:
       "Effective IT service management to optimize your technology investments",
     imageSrc: "/automation.jpg",
+    section: "service-management",
   },
   {
     title: "DevOps",
     description:
       "DevOps practices to accelerate development cycles and improve collaboration",
     imageSrc: "/automation.jpg",
+    section: "devops",
   },
 ];
 
@@ -179,66 +186,74 @@ export const infoSecuritySections = [
     description:
       "Comprehensive security assessment to identify vulnerabilities in your systems",
     imageSrc: "/automation.jpg",
+    section: "risk-assessment-and-vapt",
   },
   {
     title: "Design & Consulting",
     description:
       "Advanced threat detection systems to protect your business from cyber attacks",
     imageSrc: "/automation.jpg",
+    section: "design-consulting",
   },
   {
     title: "Policy writing",
     description:
       "Solutions to safeguard sensitive data and ensure compliance with regulations",
     imageSrc: "/automation.jpg",
+    section: "policy-writing",
   },
   {
     title: "Regulatory Compliance",
     description:
       "Staff training programs to create a security-conscious organization",
     imageSrc: "/automation.jpg",
+    section: "regulatory-compliance",
   },
   {
     title: "Zero Trust-OT/IT",
     description:
       "Comprehensive incident response services to mitigate the impact of cyber attacks",
     imageSrc: "/automation.jpg",
+    section: "zero-trust-ot-it",
   },
   {
     title: "Network & Communications",
     description:
       "Comprehensive incident response services to mitigate the impact of cyber attacks",
     imageSrc: "/automation.jpg",
+    section: "network-communications",
   },
-
-  
 ];
 
 // Consulting sections
 export const consultingSections = [
   {
-    title: "Strategy Advisory",
+    title: "Software Advisory",
     description:
       "Strategic guidance to help businesses achieve their long-term objectives",
     imageSrc: "/automation.jpg",
+    section: "software-advisory",
   },
   {
     title: "Program Management",
     description:
       "Streamline business processes to improve efficiency and reduce costs",
     imageSrc: "/automation.jpg",
+    section: "program-management",
   },
   {
     title: "Strategic Advisory",
     description:
       "Digital transformation strategies to keep your business competitive",
     imageSrc: "/automation.jpg",
+    section: "strategic-advisory",
   },
   {
-    title: "Bespoke Development",
+    title: "Research & Innovation",
     description:
       "Custom software development services tailored to your business needs and requirements",
     imageSrc: "/automation.jpg",
+    section: "research-innovation",
   },
 ];
 
@@ -276,7 +291,7 @@ export const businessInfrastructureSections = [
     title: "Enterprise Applications",
     description:
       "Comprehensive ERP solutions for streamlined business operations",
-      imageSrc: "/automation.jpg",
+    imageSrc: "/automation.jpg",
   },
   {
     title: "Infra Solutions",
@@ -319,7 +334,7 @@ export const digitalTransformationSolutions = [
     title: "Software Platforms",
     description: "Advanced analytics to drive business insights",
     imageSrc: "/automation.jpg",
-  }
+  },
 ];
 
 export const cybersecuritySolutions = [
@@ -342,7 +357,7 @@ export const cybersecuritySolutions = [
     title: "SecOps",
     description: "24/7 monitoring and threat response services",
     imageSrc: "/automation.jpg",
-  }
+  },
 ];
 
 export const industryIotSolutions = [
@@ -355,7 +370,7 @@ export const industryIotSolutions = [
     title: "AI ML Edge Automation",
     description: "IoT solutions for manufacturing and industrial processes",
     imageSrc: "/automation.jpg",
-  }
+  },
 ];
 
 export const smartNationsSolutions = [
@@ -394,7 +409,6 @@ export const smartNationsSolutions = [
     description: "Citywide integration solutions for government services",
     imageSrc: "/automation.jpg",
   },
-  
 ];
 
 // Map solution category to sections

@@ -1,14 +1,14 @@
 "use client";
 import React from "react";
 import { Metadata } from "next";
+import SoarSection from "./components/cybersecurity/SoarSection";
+import SecurityHero from "./components/cybersecurity/SecurityHero";
+import EdrXdrSection from "./components/cybersecurity/EdrXdrSection";
+import SiemSection from "./components/cybersecurity/SiemSection";
+import SecOpsSection from "./components/cybersecurity/SecOpsSection";
+import SecurityCTA from "./components/cybersecurity/SecurityCTA";
 
-// Import section components
-import SecurityHero from "@/app/(solutions)/CybersecuritySolutions/components/cybersecurity/SecurityHero";
-import SoarSection from "@/app/(solutions)/CybersecuritySolutions/components/cybersecurity/SoarSection";
-import EdrXdrSection from "@/app/(solutions)/CybersecuritySolutions/components/cybersecurity/EdrXdrSection";
-import SiemSection from "@/app/(solutions)/CybersecuritySolutions/components/cybersecurity/SiemSection";
-import SecOpsSection from "@/app/(solutions)/CybersecuritySolutions/components/cybersecurity/SecOpsSection";
-import SecurityCTA from "@/app/(solutions)/CybersecuritySolutions/components/cybersecurity/SecurityCTA";
+
 
 // export const metadata: Metadata = {
 //   title: "Cybersecurity Solutions | A+ Loop",
