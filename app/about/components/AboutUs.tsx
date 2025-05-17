@@ -41,10 +41,12 @@ const AboutUs = () => {
       <div className="w-full h-12 bg-gradient-to-b from-gray-50/0 to-white"></div>
       
       <UniqueApproach />
+
+      
       
       <div className="w-full h-12 bg-gradient-to-b from-white to-gray-50/0"></div>
       
-      <GlobalPresence />
+      {/* <GlobalPresence /> */}
       
       {/* Add custom styles for animations to the document */}
       <style jsx global>{`
