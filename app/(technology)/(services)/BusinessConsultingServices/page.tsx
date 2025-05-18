@@ -4,21 +4,22 @@ import Banner from "../InfoSecurityServices/components/Banner";
 import SoftwareAdvisory from "./components/SoftwareAdvisory";
 import ProgramManagement from "./components/ProgramManagement";
 import StrategicAdvisory from "./components/StrategicAdvisory";
-import ResearchInnovation from "./components/ResearchInovation";
+import ResearchInnovation, {
+  ProcessImprovement,
+} from "./components/ResearchInovation";
+import BespokeDevelopment from "./components/BespokeDevelopment";
+import SectionSeparator from "@/components/reusable/SectionSeparator";
 import { useSearchParams } from "next/navigation";
 
 const BusinessConsultingServices = () => {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    // Get the section parameter from the URL
     const section = searchParams.get("section");
     if (section) {
-      // Find the element with the corresponding ID
       const element = document.getElementById(section);
       if (element) {
-        // Scroll to the element with a smooth behavior and some offset to account for fixed headers
-        const headerOffset = 100; // Adjust this value based on your header height
+        const headerOffset = 100;
         const elementPosition =
           element.getBoundingClientRect().top + window.pageYOffset;
         const offsetPosition = elementPosition - headerOffset;
@@ -34,10 +35,8 @@ const BusinessConsultingServices = () => {
   return (
     <div>
       <Banner
-        // imageSrc="/.jpg"
         title="Business Consulting Services"
         subtitle="Strategic solutions to optimize your business operations and drive sustainable growth"
-        // overlayType="glass"
         layout="center"
         height="650px"
         badge="EXPERTISE"
@@ -56,19 +55,35 @@ const BusinessConsultingServices = () => {
               "text-slate-800 border-slate-800 hover:bg-slate-800 hover:text-white",
           },
         ]}
-        // customOverlayStyle={{ backgroundColor: "rgba(255,255,255,0.7)" }}
       />
-      <div id="software-advisory">
+      
+      <div id="software-advisory" className="relative">
         <SoftwareAdvisory />
+        <SectionSeparator variant="default" className="bottom-0" />
       </div>
-      <div id="program-management">
+      
+      <div id="program-management" className="relative">
         <ProgramManagement />
+        <SectionSeparator variant="decorative" className="bottom-0" />
       </div>
-      <div id="strategic-advisory">
+      
+      <div id="strategic-advisory" className="relative">
         <StrategicAdvisory />
+        <SectionSeparator variant="minimal" className="bottom-0" />
       </div>
-      <div id="research-innovation">
+      
+      <div id="research-innovation" className="relative">
         <ResearchInnovation />
+        <SectionSeparator variant="wave" className="bottom-0" />
+      </div>
+      
+      <div id="process-improvement" className="relative">
+        <ProcessImprovement />
+        <SectionSeparator variant="decorative" className="bottom-0" />
+      </div>
+      
+      <div id="bespoke-development">
+        <BespokeDevelopment />
       </div>
     </div>
   );
