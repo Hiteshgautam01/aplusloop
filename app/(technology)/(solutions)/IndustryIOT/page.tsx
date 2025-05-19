@@ -4,8 +4,12 @@ import React from "react";
 import RealtimeDataSection from "./components/RealtimeDataSection";
 import AIMLEdgeSection from "./components/AIMLEdgeSection";
 import HeroSection from "@/components/reusable/HeroSection";
+import { useScrollToSection } from "@/app/hooks/useScrollToSection";
+import IoTTimeSeriesDataManagement from "./components/TimeSeriesData";
+import AIMLEdgeAutomation from "./components/AIMLEdgeSection";
 
 const IndustryIoTSolutions = () => {
+  useScrollToSection();
   return (
     <main className="pb-16 mt-16">
       {/* Hero Section */}
@@ -21,12 +25,18 @@ const IndustryIoTSolutions = () => {
         descriptionColor="text-blue-200"
       />
 
+      <div className="" id="time-series-data">
+        <IoTTimeSeriesDataManagement />
+      </div>
+
       {/* Realtime Data Acquisition Section */}
-      <RealtimeDataSection />
+      <div className="mt-10" id="realtime-data">
+        <RealtimeDataSection />
+      </div>
 
       {/* AI ML Edge Automation Section */}
-      <div className="">
-        <AIMLEdgeSection />
+      <div className="" id="ai-ml-edge-automation">
+        <AIMLEdgeAutomation />
       </div>
     </main>
   );

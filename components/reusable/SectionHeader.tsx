@@ -158,13 +158,13 @@ const SectionHeader = ({
   };
   
   return (
-    <div className={`relative ${backgroundColor}`}>
+    <div className={`relative max-w-6xl mx-auto ${backgroundColor}`}>
       {/* Use a separate div for background styling to prevent overlay issues */}
       {backgroundColor && (
         <div className="absolute inset-0 z-0"></div>
       )}
       
-      <div className={`${maxWidth} mx-auto px-4 sm:px-6 lg:px-8 ${className} relative z-10`}>
+      <div className={`${maxWidth} ${className} relative z-10`}>
         <motion.div 
           {...animationProps}
           className="mb-16 relative"
