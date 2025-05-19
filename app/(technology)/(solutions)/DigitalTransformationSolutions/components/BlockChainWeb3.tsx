@@ -4,11 +4,36 @@ import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Shield, Database, Code, Check, ChevronRight } from 'lucide-react';
+import { ArrowRight, Globe, Lock, Users, ChevronRight } from 'lucide-react';
 
 const BlockchainWeb3 = () => {
-  const [activeCard, setActiveCard] = useState(0);
-  
+  // Content data arrays
+  const headerData = {
+    badge: "Blockchain & Web 3.0",
+    title: "Web 3.0 and Blockchain: Shaping the Future of the Internet",
+    description: "The internet is evolving, and Web 3.0 is at the heart of its next transformation. Often referred to as the \"semantic web,\" Web 3.0 aims to create a more intelligent, decentralized, and user-focused digital world. At the core of this evolution is blockchain technology, enabling transparency, security, and ownership in a way never before possible."
+  };
+
+  const sections = [
+    {
+      title: "What Is Web 3.0?",
+      content: "Web 3.0 moves beyond static websites and centralized platforms. It's designed to make the internet more intuitive and personalized by incorporating technologies like artificial intelligence, machine learning, and decentralized networks. Unlike previous versions of the web, Web 3.0 empowers users to control their own data and digital identities.",
+      icon: <Globe className="w-5 h-5" />
+    },
+    {
+      title: "The Role of Blockchain",
+      content: "Blockchain is the backbone of Web 3.0. It's a distributed ledger technology that allows data to be stored across a network of computers rather than in a central server. This decentralization makes transactions more secure, transparent, and tamper-proof. Cryptocurrencies, decentralized finance (DeFi), and non-fungible tokens (NFTs) are all built on blockchain, showcasing its potential to disrupt traditional industries.",
+      icon: <Lock className="w-5 h-5" />
+    },
+    {
+      title: "Why It Matters",
+      content: "Web 3.0 and blockchain together promise a fairer, more open internet—one where users aren't just consumers but also participants and owners. From secure digital identities to decentralized applications (dApps), the possibilities are vast and still unfolding.",
+      icon: <Users className="w-5 h-5" />
+    }
+  ];
+
+  const conclusion = "The future of the internet is being rewritten—and it's more democratic, secure, and user-centric than ever before.";
+
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -19,39 +44,6 @@ const BlockchainWeb3 = () => {
       }
     }
   };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.5 }
-    }
-  };
-
-  const services = [
-    {
-      title: "Smart Contracts Development",
-      description: "Custom smart contract solutions for decentralized applications, DeFi protocols, and NFT marketplaces with rigorous security audits.",
-      icon: <Code className="w-5 h-5" />,
-      color: "blue",
-      stats: "85% faster deployment"
-    },
-    {
-      title: "Blockchain Security",
-      description: "Comprehensive security audits for blockchain applications, vulnerability assessments, and implementation of best practices to protect your assets.",
-      icon: <Shield className="w-5 h-5" />,
-      color: "blue",
-      stats: "99.9% secure transactions"
-    },
-    {
-      title: "Web3 Integration",
-      description: "Seamless integration of Web3 technologies with existing systems, including wallet connections, token standards, and decentralized storage solutions.",
-      icon: <Database className="w-5 h-5" />,
-      color: "blue",
-      stats: "40+ supported protocols"
-    }
-  ];
 
   return (
     <section className="py-16 relative overflow-hidden">
@@ -71,13 +63,13 @@ const BlockchainWeb3 = () => {
             transition={{ duration: 0.5 }}
           >
             <Badge className="bg-gradient-to-r from-indigo-50 to-blue-50 text-indigo-600 border border-indigo-100 hover:from-indigo-100 hover:to-blue-100 mb-4 px-4 py-1.5 text-sm font-medium">
-              Blockchain & Web3
+              {headerData.badge}
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-600">Decentralized</span> Solutions
+              {headerData.title}
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-              Harness the power of blockchain technology and Web3 to build transparent, secure, and innovative applications.
+            <p className="text-gray-600 max-w-4xl mx-auto text-lg">
+              {headerData.description}
             </p>
           </motion.div>
         </div>
@@ -147,7 +139,7 @@ const BlockchainWeb3 = () => {
               >
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                  <span className="text-white text-xs">Network Active</span>
+                  <span className="text-white text-xs">Web 3.0 Active</span>
                 </div>
               </motion.div>
               
@@ -155,10 +147,10 @@ const BlockchainWeb3 = () => {
                 <div className="bg-gradient-to-r from-indigo-900/90 to-blue-900/80 backdrop-blur-sm p-4 rounded-xl">
                   <div className="flex items-center space-x-2 mb-2">
                     <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                    <span className="text-white/90 text-sm font-medium">Secure blockchain network</span>
+                    <span className="text-white/90 text-sm font-medium">Blockchain Network</span>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    {['Smart Contracts', 'DeFi', 'dApps', 'NFTs'].map((tag, i) => (
+                    {['DeFi', 'NFTs', 'dApps', 'Crypto'].map((tag, i) => (
                       <span key={i} className="bg-white/10 text-white/90 px-2 py-1 rounded-md text-xs font-medium">
                         {tag}
                       </span>
@@ -169,7 +161,7 @@ const BlockchainWeb3 = () => {
             </div>
           </motion.div>
           
-          {/* Text section */}
+          {/* Text section with two sections */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -178,107 +170,49 @@ const BlockchainWeb3 = () => {
             className="lg:col-span-6 order-2"
           >
             <div className="text-left">
-              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-gray-800">Empowering the decentralized future</h3>
-              <p className="text-gray-600 mb-6 text-lg">
-                Our blockchain solutions empower businesses to harness the full potential of decentralized technologies, enabling transparent, secure, and efficient digital ecosystems.
-              </p>
-              
-              <div className="mb-8 space-y-3">
-                {[
-                  "Build trustless applications with smart contract automation",
-                  "Reduce transaction costs by up to 60% with blockchain networks",
-                  "Ensure data integrity through immutable ledger technology",
-                  "Scale operations with distributed consensus mechanisms"
-                ].map((benefit, index) => (
-                  <motion.div 
-                    key={index} 
-                    className="flex items-center gap-3"
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.1 * index }}
-                  >
-                    <div className="rounded-full bg-green-100 p-1">
-                      <Check className="w-4 h-4 text-green-600" />
-                    </div>
-                    <span className="text-gray-700">{benefit}</span>
-                  </motion.div>
-                ))}
+              <div className="mb-8">
+                <h3 className="text-2xl font-bold mb-4 text-gray-800">{sections[0].title}</h3>
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  {sections[0].content}
+                </p>
               </div>
               
-              {/* Stats row */}
-              <div className="grid grid-cols-3 gap-4 p-4 bg-gradient-to-r from-indigo-50/50 to-blue-50/50 rounded-xl mb-6">
-                <div className="text-center">
-                  <h4 className="text-indigo-600 font-bold text-xl mb-1">200+</h4>
-                  <p className="text-gray-600 text-xs">Projects</p>
-                </div>
-                <div className="text-center">
-                  <h4 className="text-indigo-600 font-bold text-xl mb-1">50M+</h4>
-                  <p className="text-gray-600 text-xs">Transactions</p>
-                </div>
-                <div className="text-center">
-                  <h4 className="text-indigo-600 font-bold text-xl mb-1">15+</h4>
-                  <p className="text-gray-600 text-xs">Networks</p>
-                </div>
+              <div className="mb-8">
+                <h3 className="text-2xl font-bold mb-4 text-gray-800">{sections[1].title}</h3>
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  {sections[1].content}
+                </p>
               </div>
               
               <div className="flex items-center gap-4">
                 <Button className="bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white px-5 py-2 rounded-lg flex items-center gap-2 group shadow-md">
-                  Explore Solutions
+                  Explore Web 3.0
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
                 
                 <Button variant="outline" className="border-indigo-200 text-indigo-600 hover:text-indigo-700 px-4 py-2 rounded-lg">
-                  Schedule Demo
+                  Learn More
                 </Button>
               </div>
             </div>
           </motion.div>
         </div>
         
-        {/* Service cards section (below) */}
+        {/* Why It Matters - Full Width Section */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-8"
+          transition={{ duration: 0.6 }}
+          className="mb-16"
         >
-          
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {services.map((service, index) => (
-              <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <Card className="bg-white border-none h-full shadow-md hover:shadow-xl transition-all duration-300 group overflow-hidden">
-                
-                <CardContent className="p-6 h-full flex flex-col">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className={`bg-${service.color}-50 p-3 rounded-lg group-hover:bg-${service.color}-600  transition-colors duration-300`}>
-                      {service.icon}
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-800 mb-1">{service.title}</h3>
-                      <p className={`text-${service.color}-600 font-medium text-sm`}>{service.stats}</p>
-                    </div>
-                  </div>
-                  
-                  <p className="text-gray-600 mb-6 flex-grow">{service.description}</p>
-                  
-                  <div className="mt-auto">
-                    <button className={`text-${service.color}-600 font-medium flex items-center gap-1 group-hover:gap-2 transition-all`}>
-                      Learn more <ChevronRight className="w-4 h-4" />
-                    </button>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-            ))}
+          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-2xl p-8">
+            <div className="max-w-4xl mx-auto text-center">
+              <h3 className="text-3xl font-bold mb-6 text-gray-800">{sections[2].title}</h3>
+              <p className="text-gray-700 text-lg leading-relaxed">
+                {sections[2].content}
+              </p>
+            </div>
           </div>
         </motion.div>
       </div>
