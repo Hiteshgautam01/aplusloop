@@ -7,6 +7,9 @@ import ImagePlaceholder from "@/components/reusable/ImagePlaceholder";
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import InfrastructureSolutions from "./components/InfrastructureSolutions";
+import SectionHeader from "@/components/reusable/SectionHeader";
+import { Building, Server } from "lucide-react";
 
 const BusinessInfrastructureSolutions = () => {
   // Icon paths for SVG placeholders
@@ -76,45 +79,24 @@ const BusinessInfrastructureSolutions = () => {
       />
 
       <div className="py- bg-white">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className=" mx-auto px-4">
           <div className="pt-10 bg-white">
-            <div className="max-w-7xl mx-auto px-4">
+            <div className=" mx-auto px-4">
               <div className="text-center mb-16">
-                <motion.span
-                  className="inline-block px-4 py-1 text-sm font-medium text-blue-600 bg-blue-50 rounded-full mb-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  SOLUTIONS PORTFOLIO
-                </motion.span>
-
-                <motion.h2
-                  className="text-2xl md:text-3xl lg:text-4xl font-bold text-blue-900 mb-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                >
-                  Enterprise Applications
-                </motion.h2>
-
-                <motion.div
-                  className="w-24 h-1.5 bg-blue-600 mx-auto mb-6 rounded-full"
-                  initial={{ width: 0 }}
-                  animate={{ width: 96 }}
-                  transition={{ duration: 0.7, delay: 0.4 }}
+                <SectionHeader
+                  title="Enterprise Applications"
+                  description="Comprehensive enterprise solutions designed to streamline operations, enhance workforce management, and drive organizational efficiency"
+                  icon={<Building className="w-8 h-8 text-white" />}
+                  iconBackground="bg-gradient-to-br from-[#0047FF] to-[#1E22AA]"
+                  layout="centered"
+                  dividerStyle="dashed"
+                  dividerColor="from-[#0047FF]"
+                  // badge="Enterprise Solutions"
+                  badgeColor="bg-[#F5F8FF] text-[#0047FF]"
+                  maxWidth="max-w-6xl"
+                  animationDelay={0.2}
+                  titleClassName="tracking-tight"
                 />
-
-                <motion.p
-                  className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 0.6 }}
-                >
-                  Comprehensive enterprise solutions designed to streamline
-                  operations, enhance workforce management, and drive
-                  organizational efficiency
-                </motion.p>
               </div>
             </div>
           </div>
@@ -234,8 +216,9 @@ const BusinessInfrastructureSolutions = () => {
         </div>
       </div>
 
+      <InfrastructureSolutions />
       {/* Infrastructure Solutions Section */}
-      <div className="py-10 bg-gradient-to-b from-gray-50 to-white">
+      {/* <div className="py-10 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4">
           <InfrastructureEvolutionSection
             title="Infrastructure Solutions"
@@ -259,7 +242,7 @@ const BusinessInfrastructureSolutions = () => {
             techStack={techStackData}
           />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

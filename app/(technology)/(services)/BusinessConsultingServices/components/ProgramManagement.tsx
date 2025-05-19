@@ -8,30 +8,29 @@ import {
   ArrowRight,
   Settings,
 } from "lucide-react";
+import SectionHeader from "@/components/reusable/SectionHeader";
 
 const ProgramManagement = () => {
   return (
-    <section className="py-24 bg-gradient-to-br from-white to-blue-50/30">
-      <div className="container mx-auto px-4">
+    <section className="relative py-24 bg-gradient-to-br from-gray-50 via-slate-50 to-blue-50/50 overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-indigo-100/25 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         {/* Header Section */}
-        <motion.div
-          className="text-center mb-20"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className="inline-block px-6 py-2 bg-blue-100 text-blue-600 font-semibold rounded-full mb-4">
-            Program Management
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-            Streamlined Project Execution
-          </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Our program management services ensure your projects are delivered
-            on time, within budget, and to the highest quality standards.
-          </p>
-        </motion.div>
+        <SectionHeader
+          title="Streamlined Project Execution"
+          description="Our program management services ensure your projects are delivered on time, within budget, and to the highest quality standards."
+          // badge="Program Management"
+          badgeColor="bg-blue-100 text-blue-600"
+          layout="centered"
+          titleSize="xl"
+          maxWidth="max-w-5xl"
+          animationDelay={0}
+          titleClassName="font-bold"
+          descriptionClassName="text-xl text-slate-600"
+        />
 
         {/* Consulting Services Section */}
         <motion.div
@@ -67,112 +66,25 @@ const ProgramManagement = () => {
             ].map((service, index) => (
               <motion.div
                 key={index}
-                className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow"
+                className="group bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-md border border-gray-100/50 hover:shadow-2xl hover:-translate-y-2 hover:bg-white transition-all duration-300"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
               >
-                <service.icon className="w-12 h-12 text-blue-600 mb-4" />
-                <h4 className="text-xl font-bold text-slate-900 mb-3">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl flex items-center justify-center text-blue-600 mb-6 group-hover:from-blue-100 group-hover:to-blue-200 transition-colors duration-300">
+                  <service.icon className="w-8 h-8" />
+                </div>
+                <h4 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-700 transition-colors">
                   {service.title}
                 </h4>
-                <p className="text-slate-600">{service.description}</p>
+                <p className="text-slate-600 leading-relaxed group-hover:text-slate-700 transition-colors">
+                  {service.description}
+                </p>
               </motion.div>
             ))}
           </div>
         </motion.div>
-
-        {/* Visual Suggestions Grid - Side by Side */}
-        {/* <div className="space-y-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <motion.div
-              className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <h3 className="text-xl font-bold text-slate-900 mb-6">
-                Visual Suggestion 1: Project Management Tool Comparison
-              </h3>
-              <div className="h-[300px] bg-gradient-to-br from-gray-50 to-blue-50/20 rounded-2xl border border-gray-200 flex items-center justify-center">
-                <p className="text-lg text-slate-500 font-medium text-center">
-                  [Placeholder for side-by-side comparison chart<br />of project management tools]
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              <h3 className="text-xl font-bold text-slate-900 mb-6">
-                Visual Suggestion 2: Tool Selection Scoring Matrix
-              </h3>
-              <div className="h-[300px] bg-gradient-to-br from-gray-50 to-blue-50/20 rounded-2xl border border-gray-200 flex items-center justify-center">
-                <p className="text-lg text-slate-500 font-medium text-center">
-                  [Placeholder for scoring matrix<br />displayed on a whiteboard]
-                </p>
-              </div>
-            </motion.div>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          
-            <motion.div
-              className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <h3 className="text-xl font-bold text-slate-900 mb-6">
-                Visual Suggestion 3: Tool Implementation Process
-              </h3>
-              <div className="h-[300px] bg-gradient-to-br from-gray-50 to-blue-50/20 rounded-2xl border border-gray-200 flex items-center justify-center">
-                <p className="text-lg text-slate-500 font-medium text-center">
-                  [Placeholder for team working on tool implementation<br />with step-by-step progress visuals]
-                </p>
-              </div>
-            </motion.div>
-
-           
-            <motion.div
-              className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              <h3 className="text-xl font-bold text-slate-900 mb-6">
-                Project Management Process Flow
-              </h3>
-              <div className="h-[300px] bg-gradient-to-br from-gray-50 to-blue-50/20 rounded-2xl border border-gray-200 flex items-center justify-center">
-                <p className="text-lg text-slate-500 font-medium text-center">
-                  [Placeholder for graphics of the various processes:<br />
-                  Initiation, Discovery, Build, Deploy, Implement, Close]
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </div> */}
-
-        {/* CTA Section */}
-        {/* <motion.div
-          className="mt-20 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <button className="px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-semibold transition-all shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/30 hover:-translate-y-0.5">
-            Explore Our Approach
-          </button>
-        </motion.div> */}
       </div>
     </section>
   );
