@@ -1,17 +1,5 @@
 "use client";
 import React, { useEffect } from "react";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import {
-  Shield,
-  ShieldAlert,
-  Settings,
-  Wrench,
-  BarChart,
-  FileText,
-  CheckCircle,
-  LucideIcon,
-} from "lucide-react";
 import Banner from "./components/Banner";
 import RiskManagement from "./components/RiskManagement";
 import DesignConsulting from "./components/DesignConsulting";
@@ -19,7 +7,8 @@ import PolicyWriting from "./components/PolicyWriting";
 import RegulatoryCompliance from "./components/RegulatoryCompliance";
 import ZeroTrust from "./components/ZeroTrust";
 import { useSearchParams } from "next/navigation";
-
+import NetworkCommunication from "./components/NetworkCommunicationContent";
+import ZeroTrustSecurity from "./components/ZeroTrust";
 const InfoSecurityServices = () => {
   const searchParams = useSearchParams();
 
@@ -65,7 +54,10 @@ const InfoSecurityServices = () => {
         </div>
 
         <div id="zero-trust-ot-it">
-          <ZeroTrust />
+          <ZeroTrustSecurity />
+        </div>
+        <div id="network-communication">  
+          <NetworkCommunication />
         </div>
       </div>
     </main>
