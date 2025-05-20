@@ -7,7 +7,7 @@ import DataManagementServices from "./components/DataManagementServices";
 import MobilityServices from "./components/MobilityServices";
 import CloudServices from "./components/CloudServices";
 import { useSearchParams } from "next/navigation";
-
+import Devops from "./components/Devops";
 const DigitalTransformationServices = () => {
   const searchParams = useSearchParams();
 
@@ -72,6 +72,9 @@ const DigitalTransformationServices = () => {
       </div>
       <div id="cloud-services">
         <CloudServices />
+      </div>
+      <div id="devops">
+        <Devops />
       </div>
     </div>
   );
