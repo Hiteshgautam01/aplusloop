@@ -31,7 +31,7 @@ const HeroSection = ({
   descriptionColor = "text-blue-200",
 }: HeroSectionProps) => {
   return (
-    <section className={cn(bgGradient, textColor, "pt-18 pb-16 mb-10 px-4")}>
+    <section className={cn(bgGradient, textColor, "pt-18 pb-16  px-4")}>
       <div className="max-w-6xl mx-auto">
         {tagText && (
           <span
