@@ -1,96 +1,9 @@
 "use client";
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React from "react";
+import StickyImageSection from "../../../../../components/reusable/StickyImageComponent";
 
-// Collapsible Section Component
-const CollapsibleSection = ({
-  title,
-  children,
-  titleColor = "text-gray-800",
-  contentBgColor = "bg-white/50",
-  iconColor = "text-pink-600",
-  borderColor = "border-pink-200",
-  isActive,
-  onToggle,
-}: {
-  title: string;
-  children: React.ReactNode;
-  titleColor?: string;
-  contentBgColor?: string;
-  iconColor?: string;
-  borderColor?: string;
-  isActive?: boolean;
-  onToggle?: () => void;
-}) => {
-  return (
-    <div
-      className={`mb-6 border-b ${borderColor} pb-4 last:border-0 last:pb-0`}
-    >
-      <button
-        onClick={onToggle}
-        className="flex justify-between items-center w-full py-3 text-left transition-all duration-300"
-        aria-expanded={isActive}
-      >
-        <h3
-          className={`text-xl font-semibold ${titleColor} transition-colors duration-300`}
-        >
-          {title}
-        </h3>
-        <motion.div
-          animate={{ rotate: isActive ? 45 : 0 }}
-          transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
-          className={`flex items-center justify-center w-8 h-8 rounded-full border ${borderColor} ${iconColor}`}
-        >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12 4V20M4 12H20"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </motion.div>
-      </button>
-
-      {isActive && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{
-            opacity: 1,
-            height: "auto",
-            transition: { duration: 0.3, ease: "easeOut" },
-          }}
-          exit={{
-            opacity: 0,
-            height: 0,
-            transition: { duration: 0.2, ease: "easeIn" },
-          }}
-          className={`overflow-hidden pt-4 ${contentBgColor}`}
-        >
-          {children}
-        </motion.div>
-      )}
-    </div>
-  );
-};
-
-// Brand Services Component
+// BrandingServices Component
 const BrandingServices = () => {
-  // State for active section
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-
-  // Toggle section open/closed
-  const toggleSection = (index: number) => {
-    setActiveIndex(activeIndex === index ? null : index);
-  };
-
   // Brand image placeholder
   const BrandImage = () => (
     <div className="relative w-full h-full aspect-square rounded-xl overflow-hidden shadow-lg">
@@ -311,84 +224,24 @@ const BrandingServices = () => {
   return (
     <div className="font-sans bg-gray-50">
       {/* Main Branding Section */}
-      <section className="relative bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          {/* Pink gradient background element */}
-          <div className="absolute top-0 right-0 w-1/3 h-1/2 bg-gradient-to-bl from-pink-100 to-transparent opacity-70"></div>
-          <div className="absolute bottom-0 left-0 w-1/2 h-1/3 bg-gradient-to-tr from-pink-50 to-transparent opacity-70"></div>
-
-          <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 relative">
-            {/* Sticky Image Side */}
-            <div className="lg:w-1/2">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6 }}
-                className="lg:sticky lg:top-8 transition-all duration-300"
-              >
-                <BrandImage />
-              </motion.div>
-            </div>
-
-            {/* Scrollable Content Side */}
-            <div className="lg:w-1/2">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <h2 className="text-3xl font-bold mb-3 text-gray-900">
-                  Our Approach to Branding Services
-                </h2>
-                <p className="text-xl mb-6 text-gray-600">
-                  There's no brand quite like yours.
-                </p>
-
-                <div className="h-1 w-20 bg-gradient-to-r from-pink-500 to-pink-700 rounded-full mb-8"></div>
-
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.2, duration: 0.5 }}
-                  className="text-lg mb-10 text-gray-700"
-                >
-                  Whether you're building it from scratch or freshening up its
-                  appeal, we'll create a solution specifically for your goals
-                  and ambitions. Combining data and insight with our passion for
-                  design, we develop emotionally resonant brand identities and
-                  experiences. And we constantly challenge norms and assumptions
-                  – all in search of ideas that accelerate your growth and help
-                  you make an impact at scale.
-                </motion.p>
-
-                <div className="space-y-2 bg-pink-50/40 p-6 rounded-xl">
-                  {sections.map((section, index) => (
-                    <CollapsibleSection
-                      key={index}
-                      title={section.title}
-                      titleColor="text-pink-800"
-                      contentBgColor="bg-white/50"
-                      iconColor="text-pink-600"
-                      borderColor="border-pink-200"
-                      isActive={activeIndex === index}
-                      onToggle={() => toggleSection(index)}
-                    >
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.3 }}
-                        className="text-gray-700"
-                      >
-                        {section.content}
-                      </motion.div>
-                    </CollapsibleSection>
-                  ))}
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <StickyImageSection
+        imageComponent={<BrandImage />}
+        title="Our Approach to Branding Services"
+        subtitle="There's no brand quite like yours."
+        introText="Whether you're building it from scratch or freshening up its appeal, we'll create a solution specifically for your goals and ambitions. Combining data and insight with our passion for design, we develop emotionally resonant brand identities and experiences. And we constantly challenge norms and assumptions – all in search of ideas that accelerate your growth and help you make an impact at scale."
+        sections={sections}
+        backgroundColor="bg-white"
+        textColor="text-gray-700"
+        accentColor="bg-gradient-to-r from-pink-500 to-pink-700"
+        titleColor="text-gray-900"
+        subtitleColor="text-gray-600"
+        sectionTitleColor="text-pink-800"
+        sectionContentBgColor="bg-white/50"
+        iconColor="text-pink-600"
+        borderColor="border-pink-200"
+        stickyTopOffset="top-8"
+        className="relative overflow-hidden"
+      />
 
       {/* Additional Call to Action */}
       <div className="bg-gradient-to-r from-pink-600 to-pink-800 text-white py-12 px-4">
