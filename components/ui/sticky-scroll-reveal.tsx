@@ -147,7 +147,7 @@ export const StickyScroll = ({
 
   return (
     <div
-      className="relative h-[50rem] overflow-y-auto rounded-md p-6"
+      className="relative h-[35rem] overflow-y-auto rounded-md p-6"
       ref={ref}
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
