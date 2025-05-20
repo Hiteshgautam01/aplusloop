@@ -307,7 +307,7 @@ const BrandingServices = () => {
       </section>
 
       {/* Additional Call to Action */}
-      <div className="bg-gradient-to-r from-pink-600 to-pink-800 text-white py-12 px-4">
+      <div className="bg-gradient-to-r from-pink-600 to-pink-800 text-white py-24 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h3 className="text-2xl font-bold mb-4">
             Curious what's the optimal creative process for your product and

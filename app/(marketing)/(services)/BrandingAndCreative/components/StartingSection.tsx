@@ -10,7 +10,7 @@ const StartingSection = () => {
       <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-[#FF3D9A] opacity-5 rounded-full blur-3xl transform translate-x-1/4 -translate-y-1/4"></div>
       <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-[#C4008C] opacity-5 rounded-full blur-3xl transform -translate-x-1/4 translate-y-1/4"></div>
       
-      <div className=" mx-auto  py-20 relative z-10">
+      <div className=" mx-auto  py-10 relative z-10">
         {/* Main Content with Image and Text */}
         <div className="">
           <ImageTextSection
@@ -55,7 +55,7 @@ const StartingSection = () => {
         </div>
         
         {/* Feature cards - moved outside of ImageTextSection for full width */}
-        <div className="max-w-6xl mx-auto mt-16">
+        <div className="max-w-6xl px-4 mx-auto mt-16">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow duration-300 border border-pink-100">
               <div className="w-12 h-12 mb-4 bg-gradient-to-br from-[#FF3D9A]/10 to-[#C4008C]/10 rounded-full flex items-center justify-center">
@@ -86,7 +86,7 @@ const StartingSection = () => {
       
       {/* Call to action section - not full width */}
       <div className="py-16 px-4">
-        <div className="max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-lg">
+        <div className="max-w-6xl mx-auto rounded-2xl overflow-hidden shadow-lg">
           <div className="bg-gradient-to-r from-[#FF3D9A] to-[#C4008C] px-8 py-12">
             <div className="max-w-2xl mx-auto text-center">
               <h2 className="text-3xl font-bold text-white mb-6">Build a brand that connects</h2>

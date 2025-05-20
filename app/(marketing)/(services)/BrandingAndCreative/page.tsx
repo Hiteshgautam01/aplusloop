@@ -1,16 +1,17 @@
-import HeroSection from '@/components/reusable/HeroSection'
-import StartingSection from './components/StartingSection'
-import React from 'react'
-import BrandingServices from './components/BrandingServices'
+import HeroSection from "@/components/reusable/HeroSection";
+import StartingSection from "./components/StartingSection";
+import React from "react";
+import BrandingServices from "./components/BrandingServices";
+import Banner from "./components/Banner";
 
 const BrandingAndCreative = () => {
   return (
-    <div>
-          <HeroSection heading="Branding & Creative" subheading="Branding & Creative" description="We create brand identities that stand out and connect with your audience." />
-          <StartingSection />
-          <BrandingServices />
+    <div className="mt-16">
+      <Banner />
+      <StartingSection />
+      <BrandingServices />
     </div>
-  )
-}
+  );
+};
 
-export default BrandingAndCreative
+export default BrandingAndCreative;
