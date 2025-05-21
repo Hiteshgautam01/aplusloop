@@ -177,7 +177,7 @@ const SectionHeader = ({
                 </div>
               )}
               
-              <div className="flex flex-col">
+              <div className="flex flex-col items-center">
                 <motion.h2 
                   initial={animation ? { opacity: 0, x: -20 } : undefined}
                   animate={animation ? { opacity: 1, x: 0 } : undefined}
@@ -192,7 +192,7 @@ const SectionHeader = ({
                     initial={animation ? { opacity: 0, y: -5 } : undefined}
                     animate={animation ? { opacity: 1, y: 0 } : undefined}
                     transition={{ delay: animationDelay + 0.4, duration: 0.5 }}
-                    className={`text-xs font-semibold uppercase tracking-wider px-2 py-1 rounded-full ${badgeColor} inline-block mt-2 relative z-10`}
+                    className={`text-xs font-semibold uppercase tracking-wider px-2 py-1 rounded-full ${badgeColor} inline-block mt-2 relative z-10 `}
                   >
                     {badge}
                   </motion.span>
