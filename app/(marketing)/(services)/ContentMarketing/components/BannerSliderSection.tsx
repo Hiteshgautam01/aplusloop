@@ -39,10 +39,23 @@ const BannerSliderSection = () => {
     setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
   };
 
+  // Updated slide variants for smoother transitions without black flashes
   const slideVariants = {
-    hidden: { opacity: 0, x: 100 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
-    exit: { opacity: 0, x: -100, transition: { duration: 0.5 } },
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.7,
+        ease: "easeInOut",
+      },
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeInOut",
+      },
+    },
   };
 
   // Slides content
@@ -76,7 +89,7 @@ const BannerSliderSection = () => {
   ];
 
   return (
-    <section className="py-16 relative overflow-hidden">
+    <section className="relative overflow-hidden w-full h-[65vh]">
       {/* Decorative background elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
         <div
@@ -103,14 +116,14 @@ const BannerSliderSection = () => {
         ></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
-        {/* Slider container */}
-        <div className="relative h-[500px] md:h-[400px] overflow-hidden rounded-2xl shadow-2xl">
+      <div className="w-full h-full relative z-10">
+        {/* Slider container - full width and height */}
+        <div className="w-full h-full overflow-hidden">
           {/* Gradient overlay for better text visibility */}
           <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 to-transparent z-10"></div>
 
-          {/* Slides */}
-          <AnimatePresence mode="wait">
+          {/* Slides - using crossfade transitions */}
+          <AnimatePresence mode="sync">
             <motion.div
               key={currentSlide}
               className="absolute inset-0 flex items-center"
@@ -129,28 +142,28 @@ const BannerSliderSection = () => {
                 ></div>
               </div>
 
-              {/* Slide Content */}
+              {/* Slide Content - improved alignment */}
               <div className="w-full h-full flex items-center">
-                <div className="w-full md:w-1/2 p-8 md:p-12 z-20">
-                  <h2 className="text-white text-3xl md:text-4xl font-bold mb-2">
+                <div className="w-full md:w-1/2 p-8 md:p-16 lg:p-20 z-20">
+                  <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-3">
                     {slides[currentSlide].title}
                   </h2>
                   <div className="h-1 w-24 bg-white mb-4"></div>
-                  <h3 className="text-pink-200 text-lg md:text-xl mb-4">
+                  <h3 className="text-pink-200 text-lg md:text-xl lg:text-2xl mb-4">
                     {slides[currentSlide].subtitle}
                   </h3>
-                  <p className="text-white/90 mb-6 max-w-lg">
+                  <p className="text-white/90 mb-8 max-w-lg text-base md:text-lg">
                     {slides[currentSlide].content}
                   </p>
 
-                  {/* Stats */}
-                  <div className="grid grid-cols-3 gap-4 mb-8">
+                  {/* Stats - improved spacing and alignment */}
+                  <div className="grid grid-cols-3 gap-4 mb-10">
                     {slides[currentSlide].stats.map((stat, index) => (
                       <div key={index} className="text-center">
-                        <div className="text-white text-2xl md:text-3xl font-bold">
+                        <div className="text-white text-2xl md:text-3xl lg:text-4xl font-bold">
                           {stat.value}
                         </div>
-                        <div className="text-pink-200 text-xs md:text-sm">
+                        <div className="text-pink-200 text-xs md:text-sm whitespace-nowrap">
                           {stat.label}
                         </div>
                       </div>
@@ -158,29 +171,29 @@ const BannerSliderSection = () => {
                   </div>
 
                   {/* CTA Button */}
-                  <button className="bg-white text-pink-600 px-6 py-3 rounded-lg font-medium flex items-center space-x-2 shadow-lg transform transition hover:scale-105">
+                  <button className="bg-white text-pink-600 px-8 py-4 rounded-lg font-medium flex items-center space-x-2 shadow-lg transform transition hover:scale-105 hover:shadow-xl">
                     <span>{slides[currentSlide].cta}</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="w-5 h-5 ml-2" />
                   </button>
                 </div>
 
-                {/* Slide Decorative Elements */}
+                {/* Slide Decorative Elements - improved positioning */}
                 <div className="hidden md:flex w-1/2 h-full items-center justify-center relative">
-                  <div className="relative w-64 h-64">
+                  <div className="relative w-72 h-72 lg:w-96 lg:h-96">
                     {slides[currentSlide].icons.map((icon, index) => (
                       <motion.div
                         key={index}
-                        className="absolute p-5 bg-white rounded-full shadow-lg text-pink-600"
+                        className="absolute p-6 bg-white rounded-full shadow-lg text-pink-600"
                         initial={{ scale: 0, rotate: -30 }}
                         animate={{
                           scale: 1,
                           rotate: 0,
-                          x: Math.cos((index * (Math.PI * 2)) / 3) * 100,
-                          y: Math.sin((index * (Math.PI * 2)) / 3) * 100,
+                          x: Math.cos((index * (Math.PI * 2)) / 3) * 120,
+                          y: Math.sin((index * (Math.PI * 2)) / 3) * 120,
                         }}
                         transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
                       >
-                        {React.cloneElement(icon, { size: 24 })}
+                        {React.cloneElement(icon, { size: 28 })}
                       </motion.div>
                     ))}
                     <motion.div
@@ -189,8 +202,8 @@ const BannerSliderSection = () => {
                       animate={{ scale: 1 }}
                       transition={{ delay: 0.1, duration: 0.5 }}
                     >
-                      <div className="w-20 h-20 bg-pink-500 rounded-full flex items-center justify-center text-white shadow-lg">
-                        <ExternalLink size={32} />
+                      <div className="w-24 h-24 bg-pink-500 rounded-full flex items-center justify-center text-white shadow-lg">
+                        <ExternalLink size={36} />
                       </div>
                     </motion.div>
                   </div>
@@ -199,31 +212,34 @@ const BannerSliderSection = () => {
             </motion.div>
           </AnimatePresence>
 
-          {/* Navigation Buttons */}
-          <div className="absolute bottom-6 right-6 flex space-x-3 z-30">
+          {/* Navigation Buttons - improved positioning */}
+          <div className="absolute bottom-8 right-8 flex space-x-4 z-30">
             <button
               onClick={prevSlide}
-              className="p-2 rounded-full bg-white/20 text-white backdrop-blur-md hover:bg-white/40 transition"
+              className="p-3 rounded-full bg-white/20 text-white backdrop-blur-md hover:bg-white/40 transition"
+              aria-label="Previous slide"
             >
-              <ChevronLeft size={20} />
+              <ChevronLeft size={22} />
             </button>
             <button
               onClick={nextSlide}
-              className="p-2 rounded-full bg-white/20 text-white backdrop-blur-md hover:bg-white/40 transition"
+              className="p-3 rounded-full bg-white/20 text-white backdrop-blur-md hover:bg-white/40 transition"
+              aria-label="Next slide"
             >
-              <ChevronRight size={20} />
+              <ChevronRight size={22} />
             </button>
           </div>
 
-          {/* Slide Indicators */}
-          <div className="absolute bottom-6 left-6 flex space-x-2 z-30">
+          {/* Slide Indicators - improved positioning */}
+          <div className="absolute bottom-8 left-8 flex space-x-3 z-30">
             {Array.from({ length: totalSlides }).map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  currentSlide === index ? "w-8 bg-white" : "bg-white/40"
+                className={`h-2.5 rounded-full transition-all duration-300 ${
+                  currentSlide === index ? "w-10 bg-white" : "w-2.5 bg-white/40"
                 }`}
+                aria-label={`Go to slide ${index + 1}`}
               />
             ))}
           </div>
