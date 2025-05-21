@@ -4,14 +4,15 @@
 import { defineLive, createClient } from "next-sanity";
 import { apiVersion, dataset, projectId } from "../env";
 
-// Create a dedicated client for live updates
-const liveClient = createClient({
+// Create a client directly with next-sanity (not importing from client.ts)
+const client = createClient({
   projectId,
   dataset,
   apiVersion,
   useCdn: false, // Must be false for live updates
 });
 
+// Using type assertion to avoid the type conflict
 export const { sanityFetch, SanityLive } = defineLive({
-  client: liveClient,
+  client: client as any,
 });
