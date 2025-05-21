@@ -131,7 +131,7 @@ export interface AccordionSectionProps {
       iconPath?: string;
     };
   }[];
-  title?: string;
+  title?: React.ReactNode;
   subtitle?: React.ReactNode;
   backgroundColor?: string;
 }
@@ -153,14 +153,17 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {(title || subtitle) && (
           <div className="text-center mb-12">
-            {title && (
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-                <span className="relative inline-block">
-                  {title}
-                  <span className="absolute bottom-1 left-0 w-full h-3 bg-pink-200 opacity-70 transform -rotate-1 z-0"></span>
-                </span>
-              </h2>
-            )}
+            {title &&
+              (typeof title === "string" ? (
+                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                  <span className="relative inline-block">
+                    {title}
+                    <span className="absolute bottom-1 left-0 w-full h-3 bg-pink-200 opacity-70 transform -rotate-1 z-0"></span>
+                  </span>
+                </h2>
+              ) : (
+                title
+              ))}
             {subtitle &&
               (typeof subtitle === "string" ? (
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
