@@ -17,6 +17,7 @@ const ContentMarketing = () => {
       <BannerSliderSection />
       <StartingSection />
       <BenefitsGridSection />
+      <ApproachSection />
       <ContentStrategySection />
       <EditorialStrategySection />
       <ContentAuditSection />
@@ -24,7 +25,6 @@ const ContentMarketing = () => {
       <ContentOptimizationSection />
       <ContentPromotionSection />
       <ContentReportingSection />
-      <ApproachSection />
     </div>
   );
 };
