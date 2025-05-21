@@ -69,7 +69,7 @@ const WebAndMobileDevelopment = () => {
       description: "A content Management System generally refers to a web-based application that enables multiple users with different privilege levels to manage any type of data, content, or information of any website application, or project on the internet forum.",
       icon: <FileCode size={28} color="white" />,
       iconPath: "M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z",
-      link: "#"
+      link: "/cms-development"
     }
   ];
 
