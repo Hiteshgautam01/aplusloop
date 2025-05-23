@@ -99,7 +99,7 @@ const Development = () => {
         </div>
 
         {/* Evolution of SDLC Timeline */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7, duration: 0.8 }}
@@ -114,10 +114,10 @@ const Development = () => {
           </div>
 
           <div className="relative">
-            {/* Timeline Line */}
+
             <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-gradient-to-b from-blue-200 via-indigo-200 to-blue-200"></div>
 
-            {/* Era 1: Early Days */}
+
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -171,7 +171,7 @@ const Development = () => {
               </div>
             </motion.div>
 
-            {/* Era 2: Evolution */}
+           
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -225,7 +225,7 @@ const Development = () => {
               </div>
             </motion.div>
 
-            {/* Era 3: Modern */}
+            
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -280,7 +280,7 @@ const Development = () => {
               </div>
             </motion.div>
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* Our Services */}
         <motion.div

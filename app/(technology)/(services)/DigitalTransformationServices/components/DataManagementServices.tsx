@@ -14,10 +14,10 @@ import ImagePlaceholder from "@/components/reusable/ImagePlaceholder";
 import SectionHeader from "@/components/reusable/SectionHeader";
 const DataManagementServices = () => {
   return (
-    <div className="relative py-20 overflow-hidden">
+    <div className="relative pb-20 overflow-hidden">
       {/* Background Elements - using a different style from Automation component */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-blue-50 via-white to-indigo-50/30"></div>
-      <div className="absolute top-0 right-0 -z-10 w-full h-full bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-blue-100/20 via-transparent to-transparent"></div>
+      {/* <div className="absolute inset-0 -z-10 bg-gradient-to-br from-blue-50 via-white to-indigo-50/30"></div>
+      <div className="absolute top-0 right-0 -z-10 w-full h-full bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-blue-100/20 via-transparent to-transparent"></div> */}
 
       {/* Decorative Elements */}
       <div className="absolute top-40 left-10 w-80 h-80 rounded-full bg-indigo-100/20 blur-3xl"></div>
@@ -27,13 +27,13 @@ const DataManagementServices = () => {
         title="Data Management Services"
         description="Data is your most strategic asset. We deliver services in data governance, real-time processing (including IoT and edge computing), AI/ML-powered analytics, and cloud-based warehousing. Our integrated data solutions enhance accuracy, compliance, and decision-making in real time.
 "
-        icon={<Database className="w-8 h-8 text-white" />}
+        icon={<Database className="w-8 h-8 " />}
         layout="centered"
         titleSize="xl"
         badgeColor="bg-indigo-100 text-indigo-800"
         // badge="Strategic Data Solutions"
-        iconBackground="bg-gradient-to-br from-indigo-500 to-indigo-600"
         animation={true}
+        blueBg={true}
       />
 
       {/* Data Services Overview - Using ImageTextSection with a different approach */}

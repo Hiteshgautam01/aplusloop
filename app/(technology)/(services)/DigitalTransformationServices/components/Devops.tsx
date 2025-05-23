@@ -96,11 +96,11 @@ export default function DevOpsServices() {
       {/* Main Content */}
       <div className="relative z-10">
         {/* Hero Section with SectionHeader */}
-        <div className="px-4 sm:px-6 lg:px-8 pt-16 md:pt-24">
+        <div className="">
           <SectionHeader
             title="DevOps Services"
-            icon={<Server size={24} className="text-white " />}
-            description="Accelerate Development. Automate Delivery. Achieve Operational Excellence."
+            icon={<Server size={24} className=" " />}
+            // description="Accelerate Development. Automate Delivery. Achieve Operational Excellence."
             layout="centered"
             titleSize="xl"
             titleColor="text-blue-950"
@@ -108,12 +108,16 @@ export default function DevOpsServices() {
             dividerColor="from-blue-600"
             // badge="Professional Services"
             badgeColor="bg-blue-100 text-blue-800 w-fit"
-            className="max-w-6xl mx-auto px-4"
+            className=" mx-auto "
             animation={true}
+            blueBg={true}
           >
-            <p className="text-blue-700 max-w-6xl text-center mt-6">
-              At Aplusloop, our DevOps services empower your organization to bridge the gap between development and operations—enhancing collaboration, increasing release velocity, and reducing deployment failures. By integrating modern DevOps practices, we help you streamline software delivery pipelines, improve product quality, and accelerate time-to-market.
-            </p>
+            <div className="text-center mx-auto max-w-4xl text-md  mt-6">
+              <div className="text-blue-700 text-2xl font-bold mb-4">Accelerate Development. Automate Delivery. Achieve Operational Excellence.</div>
+              <p className="">
+                At Aplusloop, our DevOps services empower your organization to bridge the gap between development and operations—enhancing collaboration, increasing release velocity, and reducing deployment failures. By integrating modern DevOps practices, we help you streamline software delivery pipelines, improve product quality, and accelerate time-to-market.
+              </p>
+            </div>
           </SectionHeader>
         </div>
 
@@ -235,7 +239,7 @@ export default function DevOpsServices() {
         </div>
         
         {/* CTA Section */}
-        <div className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        {/* <div className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -265,7 +269,7 @@ export default function DevOpsServices() {
               </div>
             </div>
           </motion.div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

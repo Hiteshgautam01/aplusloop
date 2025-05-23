@@ -27,6 +27,7 @@ interface SectionHeaderProps {
   descriptionColor?: string;
   dividerColor?: string;
   backgroundColor?: string;
+  blueBg?: boolean; // New prop for default blue background
   
   // Layout options
   layout?: "standard" | "centered" | "stacked" | "reversed";
@@ -63,7 +64,7 @@ const SectionHeader = ({
   
   // Icon defaults
   icon,
-  iconBackground = "bg-gradient-to-br from-blue-600 to-indigo-600",
+  iconBackground="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100/50",
   iconBorderRadius = "rounded-2xl",
   
   // Image defaults
@@ -78,6 +79,7 @@ const SectionHeader = ({
   descriptionColor = "text-gray-600",
   dividerColor = "from-blue-500",
   backgroundColor,
+  blueBg = false, // Default to false
   
   // Layout defaults
   layout = "standard",
@@ -127,6 +129,14 @@ const SectionHeader = ({
     ? { ...defaultAnimationProps, ...customAnimationProps }
     : {};
   
+  // Determine background class - blueBg takes priority over backgroundColor
+  const getBackgroundClass = () => {
+    if (blueBg) {
+      return "bg-gradient-to-br from-blue-100 to-indigo-200";
+    }
+    return backgroundColor || "";
+  };
+  
   // Determine divider styles based on dividerStyle
   const getDividerStyles = () => {
     switch (dividerStyle) {
@@ -157,14 +167,11 @@ const SectionHeader = ({
     }
   };
   
+  const backgroundClass = getBackgroundClass();
+  
   return (
-    <div className={`relative max-w-6xl mx-auto ${backgroundColor}`}>
-      {/* Use a separate div for background styling to prevent overlay issues */}
-      {backgroundColor && (
-        <div className="absolute inset-0 z-0"></div>
-      )}
-      
-      <div className={`${maxWidth} ${className} relative z-10`}>
+    <div className={`w-full ${backgroundClass} ${blueBg ? 'py-16 px-6' : ''}`}>
+      <div className={`${maxWidth} mx-auto ${className} relative z-10`}>
         <motion.div 
           {...animationProps}
           className="mb-16 relative"
@@ -172,7 +179,7 @@ const SectionHeader = ({
           <div className={`${getLayoutClasses()} mb-8 relative z-20`}>
             <div className={layout === "centered" ? "flex flex-col items-center gap-4" : "flex items-start gap-5"}>
               {icon && (
-                <div className={`flex-shrink-0 flex items-center justify-center w-16 h-16 ${iconBorderRadius} ${iconBackground} shadow-lg relative z-10`}>
+                <div className={`flex-shrink-0 flex items-center justify-center w-16 h-16 ${iconBorderRadius} ${iconBackground} text-blue-600 shadow-lg relative z-10`}>
                   {icon}
                 </div>
               )}
@@ -264,4 +271,3 @@ const SectionHeader = ({
 };
 
 export default SectionHeader;
-
