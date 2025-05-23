@@ -170,11 +170,11 @@ const SectionHeader = ({
   const backgroundClass = getBackgroundClass();
   
   return (
-    <div className={`w-full ${backgroundClass} ${blueBg ? 'py-16 px-6' : ''}`}>
+    <div className={`w-full ${backgroundClass} ${blueBg ? 'py-20  px-6' : ''}`}>
       <div className={`${maxWidth} mx-auto ${className} relative z-10`}>
         <motion.div 
           {...animationProps}
-          className="mb-16 relative"
+          className=" relative"
         >
           <div className={`${getLayoutClasses()} mb-8 relative z-20`}>
             <div className={layout === "centered" ? "flex flex-col items-center gap-4" : "flex items-start gap-5"}>
@@ -231,7 +231,7 @@ const SectionHeader = ({
               initial={animation ? { opacity: 0 } : undefined}
               animate={animation ? { opacity: 1 } : undefined}
               transition={{ delay: animationDelay + 0.5, duration: 0.8 }}
-              className={`text-lg ${descriptionColor} ${layout === "centered" ? "text-center max-w-3xl mx-auto" : "max-w-4xl"} ${descriptionClassName} relative z-10`}
+              className={`text-lg ${descriptionColor} ${layout === "centered" ? "text-center max-w-3xl mx-auto" : "max-w-3xl"} ${descriptionClassName} relative z-10`}
             >
               {description}
             </motion.p>

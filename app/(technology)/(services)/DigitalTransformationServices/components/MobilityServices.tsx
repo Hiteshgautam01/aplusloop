@@ -20,7 +20,7 @@ const MobilityServices = () => {
         title="Mobility Services"
         description="We design scalable, technology-driven mobility platforms for fleet optimization, route planning, and public-private transport integration. Our solutions improve efficiency, reduce operational costs, and adapt to evolving transportation demands."
         icon={<Navigation className="w-8 h-8 text-blue-600" />}
-        layout="centered"
+        layout="stacked"
         dividerStyle="dashed"
         dividerColor="from-blue-500"
         // badge="Transportation Technology"

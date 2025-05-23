@@ -101,18 +101,18 @@ export default function DevOpsServices() {
             title="DevOps Services"
             icon={<Server size={24} className=" " />}
             // description="Accelerate Development. Automate Delivery. Achieve Operational Excellence."
-            layout="centered"
+            layout="stacked"
             titleSize="xl"
             titleColor="text-blue-950"
             descriptionColor="text-blue-900"
             dividerColor="from-blue-600"
             // badge="Professional Services"
             badgeColor="bg-blue-100 text-blue-800 w-fit"
-            className=" mx-auto "
+            className="  "
             animation={true}
             blueBg={true}
           >
-            <div className="text-center mx-auto max-w-4xl text-md  mt-6">
+            <div className="  max-w-4xl text-md  mt-6">
               <div className="text-blue-700 text-2xl font-bold mb-4">Accelerate Development. Automate Delivery. Achieve Operational Excellence.</div>
               <p className="">
                 At Aplusloop, our DevOps services empower your organization to bridge the gap between development and operations—enhancing collaboration, increasing release velocity, and reducing deployment failures. By integrating modern DevOps practices, we help you streamline software delivery pipelines, improve product quality, and accelerate time-to-market.
@@ -123,7 +123,7 @@ export default function DevOpsServices() {
 
         {/* What We Offer Section */}
         <div className="py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-0">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

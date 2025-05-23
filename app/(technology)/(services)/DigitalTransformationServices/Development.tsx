@@ -17,7 +17,7 @@ import SectionHeader from "@/components/reusable/SectionHeader";
 
 const Development = () => {
   return (
-    <div className="relative min-h-screen pt-16 pb-20 overflow-hidden">
+    <div className="relative min-h-screen  pb-20 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-white via-blue-50 to-indigo-50"></div>
       <div className="absolute top-0 left-0 -z-10 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-100/20 via-transparent to-transparent"></div>
@@ -25,40 +25,33 @@ const Development = () => {
       {/* Decorative Elements */}
       <div className="absolute top-40 right-10 w-64 h-64 rounded-full bg-blue-100/30 blur-3xl"></div>
       <div className="absolute bottom-20 left-10 w-64 h-64 rounded-full bg-indigo-100/30 blur-3xl"></div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
-      >
-        {/* Header Section */}
-        <div className="mb-20">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="flex justify-center mb-2"
-          >
-            <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-blue-100/50 backdrop-blur-sm">
-              <Code className="w-8 h-8 text-blue-600" />
-            </div>
-          </motion.div>
-
-          <SectionHeader
-            title="Development, Integration and Deployment"
+      <SectionHeader
+            title="Application Development"
             description="We help organizations implement and modernize enterprise platforms like HRMS, CRM, and ERP. Our experts develop custom applications that align with your business workflows and ensure seamless integration for unified operations. From launch to maintenance, we ensure every app delivers
             performance, security, and value."
-            layout="centered"
+            layout="stacked"
+            icon={<Code className="w-8 h-8 text-blue-600" />}
             titleSize="xl"
             titleColor="text-blue-950"
             descriptionColor="text-blue-900"
             dividerColor="from-blue-600"
             // badge="Professional Services"
             badgeColor="bg-blue-100 text-blue-800 w-fit"
-            className="max-w-6xl mx-auto px-4 pb-0 mb-0"
+            className="max-w-6xl mx-auto pb-0 mb-0"
             animation={true}
+            blueBg={true}
           />
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className=" max-w-6xl mx-auto pb-0 mb-0"
+      >
+        {/* Header Section */}
+        <div className="mb-20">
+         
+
+          
 
           {/* <motion.h1
             initial={{ opacity: 0 }}
