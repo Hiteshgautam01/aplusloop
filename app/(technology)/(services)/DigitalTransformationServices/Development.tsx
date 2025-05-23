@@ -58,7 +58,7 @@ const Development = () => {
           bgColor="#f0f7ff"
           textColor="#1e3a8a"
           accentColor="#3b82f6"
-          className="max-w-4xl shadow-lg border border-blue-100"
+          className="max-w-6xl shadow-lg border border-blue-100"
           iconPath="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
         />
       </motion.div>
