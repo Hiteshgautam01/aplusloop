@@ -101,17 +101,17 @@ export default function DevOpsServices() {
             title="DevOps Services"
             icon={<Server size={24} className="text-white " />}
             description="Accelerate Development. Automate Delivery. Achieve Operational Excellence."
-            layout="stacked"
+            layout="centered"
             titleSize="xl"
             titleColor="text-blue-950"
             descriptionColor="text-blue-900"
             dividerColor="from-blue-600"
-            badge="Professional Services"
+            // badge="Professional Services"
             badgeColor="bg-blue-100 text-blue-800 w-fit"
             className="max-w-6xl mx-auto px-4"
             animation={true}
           >
-            <p className="text-blue-700 max-w-3xl mt-6">
+            <p className="text-blue-700 max-w-6xl text-center mt-6">
               At Aplusloop, our DevOps services empower your organization to bridge the gap between development and operations—enhancing collaboration, increasing release velocity, and reducing deployment failures. By integrating modern DevOps practices, we help you streamline software delivery pipelines, improve product quality, and accelerate time-to-market.
             </p>
           </SectionHeader>

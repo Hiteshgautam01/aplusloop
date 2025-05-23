@@ -264,24 +264,28 @@ export const staffingSections = [
     description:
       "Access to skilled IT professionals to supplement your existing team",
     imageSrc: "/automation.jpg",
+    section: "it-professionals",
   },
   {
     title: "Project Teams",
     description:
       "Dedicated project teams to handle specific initiatives and deliverables",
     imageSrc: "/automation.jpg",
+    section: "project-teams",
   },
   {
     title: "Executive Talent",
     description:
       "C-level and senior IT leadership to guide strategic technology decisions",
     imageSrc: "/automation.jpg",
+    section: "executive-talent",
   },
   {
     title: "Contract to Hire",
     description:
       "Flexible staffing solutions with the option to convert to permanent roles",
     imageSrc: "/automation.jpg",
+    section: "contract-to-hire",
   },
 ];
 
@@ -292,12 +296,14 @@ export const businessInfrastructureSections = [
     description:
       "Comprehensive ERP solutions for streamlined business operations",
     imageSrc: "/automation.jpg",
+    section: "enterprise-applications",
   },
   {
     title: "Infra Solutions",
     description:
       "CRM systems to enhance customer engagement and sales performance",
     imageSrc: "/automation.jpg",
+    section: "infra-solutions",
   },
 ];
 
@@ -306,16 +312,19 @@ export const mobilitySolutions = [
     title: "PTOS(Platform for Transport Operations System)",
     description: "Mobile solutions designed for enterprise business processes",
     imageSrc: "/automation.jpg",
+    section: "ptos-platform-for-transport-operations-system",
   },
   {
     title: "CMES(Central Monitoring & Emergency System)",
     description: "Custom mobile applications for iOS and Android platforms",
     imageSrc: "/automation.jpg",
+    section: "cmes-central-monitoring-emergency-system",
   },
   {
     title: "PFPS(Public Fleet Management System)",
     description: "Unified applications that work across multiple devices",
     imageSrc: "/automation.jpg",
+    section: "pfps-public-fleet-management-system",
   },
 ];
 
@@ -324,16 +333,19 @@ export const digitalTransformationSolutions = [
     title: "Artificial Intelligence",
     description: "Comprehensive digital transformation roadmaps",
     imageSrc: "/automation.jpg",
+    section: "artificial-intelligence",
   },
   {
     title: "BlockChain & Web 3.0",
     description: "Workflow and business process automation solutions",
     imageSrc: "/automation.jpg",
+    section: "blockchain-web-3-0",
   },
   {
     title: "Software Platforms",
     description: "Advanced analytics to drive business insights",
     imageSrc: "/automation.jpg",
+    section: "software-platforms",
   },
 ];
 
@@ -342,21 +354,25 @@ export const cybersecuritySolutions = [
     title: "SOAR(Security Operations Automation & Response)",
     description: "Protection for your business network infrastructure",
     imageSrc: "/automation.jpg",
+    section: "soar-security-operations-automation-response",
   },
   {
     title: "EDR & XDR",
     description: "Security solutions for web and mobile applications",
     imageSrc: "/automation.jpg",
+    section: "edr-xdr",
   },
   {
     title: "SEIM(Security Event & Incident Management)",
     description: "Advanced identity and access management systems",
     imageSrc: "/automation.jpg",
+    section: "seim-security-event-incident-management",
   },
   {
     title: "SecOps",
     description: "24/7 monitoring and threat response services",
     imageSrc: "/automation.jpg",
+    section: "secops",
   },
 ];
 
@@ -365,11 +381,13 @@ export const industryIotSolutions = [
     title: "Realtime Data Acquisition",
     description: "Enterprise-grade IoT platform implementation",
     imageSrc: "/automation.jpg",
+    section: "realtime-data-acquisition",
   },
   {
     title: "AI ML Edge Automation",
     description: "IoT solutions for manufacturing and industrial processes",
     imageSrc: "/automation.jpg",
+    section: "ai-ml-edge-automation",
   },
 ];
 
@@ -378,36 +396,43 @@ export const smartNationsSolutions = [
     title: "3D Digital Twin",
     description: "Integrated urban technology solutions",
     imageSrc: "/automation.jpg",
+    section: "3d-digital-twin",
   },
   {
     title: "City Health",
     description: "Technology solutions for government services",
     imageSrc: "/automation.jpg",
+    section: "city-health",
   },
   {
     title: "City Resilence",
     description: "Technology for enhanced public safety and security",
     imageSrc: "/automation.jpg",
+    section: "city-resilience",
   },
   {
     title: "Emergency Training",
     description: "Smart transportation and traffic management systems",
     imageSrc: "/automation.jpg",
-  },
+    section: "emergency-training",
+      },
   {
     title: "Urban Planning",
     description: "Smart environmental monitoring and management",
     imageSrc: "/automation.jpg",
+    section: "urban-planning",
   },
   {
     title: "Transportation",
     description: "Smart transportation and traffic management systems",
     imageSrc: "/automation.jpg",
+    section: "transportation",
   },
   {
     title: "Citywide Integration",
     description: "Citywide integration solutions for government services",
     imageSrc: "/automation.jpg",
+    section: "citywide-integration",
   },
 ];
 

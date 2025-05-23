@@ -13,6 +13,7 @@ import {
   ArrowRight,
   Star,
 } from "lucide-react";
+import SectionHeader from "@/components/reusable/SectionHeader";
 
 const Development = () => {
   return (
@@ -44,11 +45,26 @@ const Development = () => {
             </div>
           </motion.div>
 
-          <motion.h1
+          <SectionHeader
+            title="Development, Integration and Deployment"
+            description="We help organizations implement and modernize enterprise platforms like HRMS, CRM, and ERP. Our experts develop custom applications that align with your business workflows and ensure seamless integration for unified operations. From launch to maintenance, we ensure every app delivers
+            performance, security, and value."
+            layout="centered"
+            titleSize="xl"
+            titleColor="text-blue-950"
+            descriptionColor="text-blue-900"
+            dividerColor="from-blue-600"
+            // badge="Professional Services"
+            badgeColor="bg-blue-100 text-blue-800 w-fit"
+            className="max-w-6xl mx-auto px-4 pb-0 mb-0"
+            animation={true}
+          />
+
+          {/* <motion.h1
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-4xl md:text-5xl text-center text-gray-800 mb-4 "
+            className="text-xl md:text-2xl text-center text-gray-800 mb-4 "
           >
             Development, Integration and Deployment
           </motion.h1>
@@ -58,9 +74,9 @@ const Development = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
             className="h-1 w-32 bg-gradient-to-r from-blue-400 to-indigo-500 mx-auto mb-8"
-          />
+          /> */}
 
-          <motion.p
+          {/* <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
@@ -70,7 +86,7 @@ const Development = () => {
             like HRMS, CRM, and ERP. Our experts develop custom applications
             that align with your business workflows and ensure seamless
             integration for unified operations.
-          </motion.p>
+          </motion.p> */}
 
           <motion.p
             initial={{ opacity: 0 }}
@@ -78,8 +94,7 @@ const Development = () => {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="text-lg text-gray-600 max-w-3xl mx-auto text-center"
           >
-            From launch to maintenance, we ensure every app delivers
-            performance, security, and value.
+            
           </motion.p>
         </div>
 

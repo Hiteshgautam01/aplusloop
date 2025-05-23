@@ -1,312 +1,420 @@
 import React from "react";
 import { motion } from "framer-motion";
 import {
-  FileText,
-  BookOpen,
-  ClipboardCheck,
   Shield,
-  UserCheck,
-  History,
-  ArrowRight,
-  CheckCircle2,
-  Sparkles,
+  FileText,
+  Users,
+  Database,
+  AlertTriangle,
+  Cloud,
+  CheckCircle,
+  Building,
+  Stethoscope,
+  Globe,
+  Lock,
+  Settings,
+  BarChart3,
+  FileCheck,
+  Phone,
+  Download,
 } from "lucide-react";
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (custom: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: custom * 0.15, duration: 0.6, ease: "easeOut" },
-  }),
-};
-
 const PolicyWriting = () => {
-  const processSteps = [
+  const heroContent = {
+    title: "Policy Writing Services",
+    tagline: "Codifying Security. Simplifying Compliance.",
+    description:
+      "Strong security starts with clear policies. At Aplusloop, we help organizations translate complex regulatory and operational requirements into practical, enforceable information security policies that safeguard your systems and support compliance.",
+  };
+
+  const services = [
     {
-      icon: ClipboardCheck,
-      title: "Assessment & Analysis",
+      icon: Shield,
+      title: "Information Security Policy Development",
       description:
-        "Analyze your organization's needs, regulatory requirements, and industry standards.",
-      color: "blue",
+        "We draft robust, customized policies aligned with global standards such as ISO/IEC 27001, NIST, GDPR, HIPAA, and UAE Cybersecurity Frameworks.",
     },
     {
-      icon: BookOpen,
-      title: "Policy Development",
+      icon: Users,
+      title: "Acceptable Use & Access Control Policies",
       description:
-        "Create clear, concise policies aligned with best practices and your business needs.",
-      color: "indigo",
+        "Ensure proper use of IT assets and implement defined roles, permissions, and user access rules that reduce vulnerabilities.",
     },
     {
-      icon: UserCheck,
-      title: "Review & Approval",
+      icon: Database,
+      title: "Data Protection & Privacy Policies",
       description:
-        "Collaborate with stakeholders to review and approve final policy documents.",
-      color: "purple",
+        "Safeguard sensitive data with enforceable privacy, classification, retention, and handling guidelines in line with data protection regulations.",
     },
     {
-      icon: History,
-      title: "Maintenance & Updates",
+      icon: AlertTriangle,
+      title: "Incident Response & Disaster Recovery Policies",
       description:
-        "Regular review and updates to keep policies current with changing regulations.",
-      color: "violet",
+        "Be ready for the unexpected. Our policies outline protocols for cyber incidents, ensuring continuity, accountability, and fast recovery.",
+    },
+    {
+      icon: Cloud,
+      title: "BYOD, Remote Work & Cloud Security Policies",
+      description:
+        "Secure remote environments and third-party access with practical policies for modern hybrid workplaces.",
+    },
+    {
+      icon: FileCheck,
+      title: "Policy Review, Update & Gap Analysis",
+      description:
+        "Already have policies? We audit, assess, and refine them to ensure they remain current and effective in today's evolving threat landscape.",
     },
   ];
 
-  const policyTypes = [
+  const benefits = [
+    {
+      icon: CheckCircle,
+      title: "Ensures Regulatory Compliance",
+    },
     {
       icon: Shield,
-      title: "Information Security Policies",
+      title: "Minimizes Legal & Operational Risk",
+    },
+    {
+      icon: Users,
+      title: "Standardizes User Behavior & Security Practices",
+    },
+    {
+      icon: AlertTriangle,
+      title: "Improves Incident Preparedness & Response",
+    },
+    {
+      icon: Settings,
+      title: "Strengthens Internal Governance & Culture of Security",
+    },
+  ];
+
+  const targetAudience = [
+    {
+      icon: Building,
+      title: "Startups scaling with security in mind",
+      description: "Growing companies need robust security foundations",
+    },
+    {
+      icon: BarChart3,
+      title: "Enterprises formalizing governance frameworks",
+      description: "Large organizations requiring structured compliance",
+    },
+    {
+      icon: Stethoscope,
+      title: "Regulated industries (healthcare, fintech, public sector)",
+      description: "Industries with strict compliance requirements",
+    },
+    {
+      icon: Globe,
+      title: "Global companies seeking UAE-specific compliance support",
+      description: "International businesses operating in the UAE",
+    },
+  ];
+
+  const differentiators = [
+    {
+      icon: Lock,
+      title: "Deep Regulatory Expertise",
+      description: "UAE, GCC, and global standards",
+    },
+    {
+      icon: Settings,
+      title: "End-to-End Delivery",
+      description: "From drafting to rollout & awareness",
+    },
+    {
+      icon: BarChart3,
+      title: "Tailored to Your Environment",
       description:
-        "Comprehensive policies covering all aspects of information security.",
-      gradient: "from-blue-500 to-cyan-500",
-      bgColor: "from-blue-50 to-cyan-50",
+        "No templates. Only relevant, practical, and enforceable policies",
     },
     {
       icon: FileText,
-      title: "Data Protection Policies",
-      description:
-        "Policies for data classification, handling, and protection.",
-      gradient: "from-purple-500 to-pink-500",
-      bgColor: "from-purple-50 to-pink-50",
-    },
-    {
-      icon: UserCheck,
-      title: "Access Control Policies",
-      description:
-        "Policies for user access, authorization, and authentication.",
-      gradient: "from-green-500 to-emerald-500",
-      bgColor: "from-green-50 to-emerald-50",
-    },
-    {
-      icon: ClipboardCheck,
-      title: "Risk Management Policies",
-      description: "Policies for identifying, assessing, and mitigating risks.",
-      gradient: "from-orange-500 to-amber-500",
-      bgColor: "from-orange-50 to-amber-50",
+      title: "Audit-Ready Documentation",
+      description: "Structured, version-controlled, and board-ready",
     },
   ];
 
+  const ctaActions = [
+    {
+      icon: Phone,
+      title: "Book a Consultation",
+      type: "primary",
+    },
+    {
+      icon: FileText,
+      title: "Request Sample Policies",
+      type: "secondary",
+    },
+    {
+      icon: Download,
+      title: "Download InfoSec Services Portfolio",
+      type: "secondary",
+    },
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+    hover: {
+      scale: 1.02,
+      y: -5,
+      transition: {
+        duration: 0.2,
+        ease: "easeInOut",
+      },
+    },
+  };
+
   return (
-    <section
-      id="policy-writing"
-      className="pt-10 pb-8 bg-gradient-to-b from-transparent to-white relative overflow-hidden"
-    >
-      {/* Background Decorations */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-40 left-20 w-64 h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-        <div className="absolute top-60 right-20 w-64 h-64 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-32 left-1/2 w-64 h-64 bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 relative">
-        {/* Header Section */}
-        <motion.div
-          className="text-center mb-20"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeInUp}
-          custom={0}
-        >
-          {/* Badge */}
-          <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-800 rounded-full text-sm font-semibold mb-6"
-            // animate={{ scale: [1, 1.05, 1] }}
-            // transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <FileText className="h-4 w-4" />
-            Expert Policy Development
-          </motion.div>
-
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-blue-900 to-indigo-900 bg-clip-text text-transparent pb-4">
-            Policy Writing Services
-          </h2>
-
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Comprehensive security policy development services tailored to your
-            organization's unique requirements and industry standards
-          </p>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 gap-16 items-start">
-          {/* Process Section */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <motion.div variants={fadeInUp} custom={1} className="relative">
-              {/* Modern Card with Glass Effect */}
-              <div className="bg-gradient-to-br from-white/80 to-blue-50/80 backdrop-blur-lg p-8 md:p-12 rounded-3xl border border-white/20 shadow-xl relative overflow-hidden">
-                {/* Decorative Elements */}
-                <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-blue-200/30 to-indigo-200/30 rounded-full blur-3xl"></div>
-                <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-br from-indigo-200/30 to-purple-200/30 rounded-full blur-3xl"></div>
-
-                <h3 className="text-2xl font-bold mb-8 relative z-10 flex items-center gap-3">
-                  <Sparkles className="h-6 w-6 text-blue-600" />
-                  Our Policy Writing Process
-                </h3>
-
-                <ul className="space-y-8 relative z-10">
-                  {processSteps.map((step, index) => (
-                    <motion.li
-                      key={index}
-                      className="flex items-start gap-4 group"
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
-                    >
-                      <motion.div
-                        className={`bg-gradient-to-br from-${step.color}-500 to-${step.color}-600 p-3 rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300`}
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                      >
-                        <step.icon className="h-6 w-6 text-white" />
-                      </motion.div>
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-lg mb-1 group-hover:text-blue-600 transition-colors">
-                          {step.title}
-                        </h4>
-                        <p className="text-gray-600">{step.description}</p>
-                      </div>
-                    </motion.li>
-                  ))}
-                </ul>
-
-                {/* Progress Indicator */}
-                <div className="mt-8 pt-8 border-t border-gray-200/50">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-gray-600">
-                      Process Timeline
-                    </span>
-                    <span className="text-sm font-medium text-blue-600">
-                      4-6 weeks
-                    </span>
-                  </div>
-                  <div className="mt-2 h-2 bg-gray-200/50 rounded-full overflow-hidden">
-                    <motion.div
-                      className="h-full bg-gradient-to-r from-blue-500 to-indigo-500"
-                      initial={{ width: "0%" }}
-                      whileInView={{ width: "100%" }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1.5, ease: "easeOut" }}
-                    />
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-
-          {/* Policy Types Section */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <motion.h3
-              variants={fadeInUp}
-              custom={1}
-              className="text-2xl font-bold mb-8 flex items-center gap-3"
-            >
-              <CheckCircle2 className="h-6 w-6 text-green-600" />
-              Types of Policies We Develop
-            </motion.h3>
-
-            <div className="space-y-5">
-              {policyTypes.map((policy, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  custom={index + 2}
-                  className="group relative"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  {/* Card Container */}
-                  <div
-                    className={`relative bg-white p-6 rounded-2xl border border-gray-200 overflow-hidden transition-all duration-300 group-hover:shadow-lg`}
-                  >
-                    {/* Background Gradient on Hover */}
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-r ${policy.bgColor} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
-                    ></div>
-
-                    {/* Content */}
-                    <div className="relative z-10 flex items-start gap-4">
-                      <motion.div
-                        className={`flex-shrink-0 bg-gradient-to-br ${policy.gradient} p-3 rounded-xl shadow-md group-hover:shadow-lg transition-shadow duration-300`}
-                        whileHover={{ rotate: [0, -5, 5, 0] }}
-                        transition={{ duration: 0.5 }}
-                      >
-                        <policy.icon className="h-6 w-6 text-white" />
-                      </motion.div>
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-lg mb-1 text-gray-900 group-hover:text-blue-700 transition-colors">
-                          {policy.title}
-                        </h4>
-                        <p className="text-gray-600">{policy.description}</p>
-                      </div>
-                      <motion.div
-                        className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                        initial={{ x: -10 }}
-                        whileHover={{ x: 0 }}
-                      >
-                        <ArrowRight className="h-5 w-5 text-blue-600" />
-                      </motion.div>
-                    </div>
-                  </div>
-
-                  {/* Hover Border Effect */}
-                  <div
-                    className={`absolute -inset-0.5 bg-gradient-to-r ${policy.gradient} rounded-2xl opacity-0 group-hover:opacity-30 blur transition duration-300 -z-10`}
-                  ></div>
-                </motion.div>
-              ))}
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+      {/* Hero Section */}
+      <motion.section
+        className="relative py-16 px-6 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900"
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-indigo-900/20"></div>
+        <div className="max-w-6xl mx-auto text-center relative z-10">
+          <motion.div variants={itemVariants} className="mb-6">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6 bg-white/10 backdrop-blur-sm border border-white/20">
+              <FileText className="w-8 h-8 text-blue-300" />
             </div>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">
+              {heroContent.title}
+            </h1>
+            <p className="text-lg md:text-xl font-medium mb-6 text-blue-200">
+              {heroContent.tagline}
+            </p>
+          </motion.div>
 
-            {/* CTA Button */}
-            <motion.div variants={fadeInUp} custom={6} className="mt-10">
-              <motion.button
-                className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-4 px-6 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+          <motion.p
+            variants={itemVariants}
+            className="text-base md:text-lg leading-relaxed max-w-3xl mx-auto text-blue-100"
+          >
+            {heroContent.description}
+          </motion.p>
+        </div>
+      </motion.section>
+
+      {/* Services Section */}
+      <motion.section
+        className="py-16 px-6"
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
+        <div className="max-w-6xl mx-auto">
+          <motion.div variants={itemVariants} className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-slate-800 to-blue-800 bg-clip-text text-transparent">
+              What We Offer
+            </h2>
+            <div className="w-16 h-0.5 mx-auto bg-gradient-to-r from-blue-500 to-indigo-600"></div>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((service, index) => (
+              <motion.div
+                key={index}
+                variants={cardVariants}
+                whileHover="hover"
+                className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-blue-100/50"
               >
-                Get Started with Policy Development
-                <ArrowRight className="h-5 w-5" />
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br from-blue-50 to-indigo-50 mb-4 border border-blue-100/50">
+                  <service.icon className="w-6 h-6 text-blue-600" />
+                </div>
+                <h3 className="text-lg font-semibold mb-3 text-slate-800">
+                  {service.title}
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  {service.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Why It Matters Section */}
+      <motion.section
+        className="py-16 px-6 bg-gradient-to-br from-blue-50 to-indigo-50"
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
+        <div className="max-w-6xl mx-auto">
+          <motion.div variants={itemVariants} className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-slate-800 to-blue-800 bg-clip-text text-transparent">
+              Why It Matters
+            </h2>
+            <div className="w-16 h-0.5 mx-auto bg-gradient-to-r from-blue-500 to-indigo-600"></div>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {benefits.map((benefit, index) => (
+              <motion.div
+                key={index}
+                variants={cardVariants}
+                whileHover="hover"
+                className="bg-white/70 backdrop-blur-sm rounded-lg p-5 text-center shadow-sm hover:shadow-md transition-all duration-300 border border-white/50"
+              >
+                <div className="inline-flex items-center justify-center w-10 h-10 rounded-full mb-3 bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200/50">
+                  <benefit.icon className="w-5 h-5 text-blue-600" />
+                </div>
+                <h3 className="text-sm font-semibold text-slate-700">
+                  {benefit.title}
+                </h3>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Target Audience Section */}
+      <motion.section
+        className="py-16 px-6"
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
+        <div className="max-w-6xl mx-auto">
+          <motion.div variants={itemVariants} className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-slate-800 to-blue-800 bg-clip-text text-transparent">
+              Who We Help
+            </h2>
+            <div className="w-16 h-0.5 mx-auto bg-gradient-to-r from-blue-500 to-indigo-600"></div>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {targetAudience.map((target, index) => (
+              <motion.div
+                key={index}
+                variants={cardVariants}
+                whileHover="hover"
+                className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-blue-100/50"
+              >
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg mb-4 bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100/50">
+                  <target.icon className="w-6 h-6 text-blue-600" />
+                </div>
+                <h3 className="text-lg font-semibold mb-2 text-slate-800">
+                  {target.title}
+                </h3>
+                <p className="text-sm text-slate-600">{target.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Why Aplusloop Section */}
+      <motion.section
+        className="py-16 px-6 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 relative"
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/30 to-indigo-900/30"></div>
+        <div className="max-w-6xl mx-auto relative z-10">
+          <motion.div variants={itemVariants} className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              Why Aplusloop?
+            </h2>
+            <div className="w-16 h-0.5 mx-auto bg-gradient-to-r from-blue-400 to-indigo-400"></div>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {differentiators.map((diff, index) => (
+              <motion.div
+                key={index}
+                variants={cardVariants}
+                whileHover="hover"
+                className="text-center p-5 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20"
+              >
+                <div className="inline-flex items-center justify-center w-10 h-10 rounded-full mb-3 bg-white/10 backdrop-blur-sm border border-white/20">
+                  <diff.icon className="w-5 h-5 text-blue-300" />
+                </div>
+                <h3 className="text-sm font-semibold text-white mb-2">
+                  {diff.title}
+                </h3>
+                <p className="text-xs text-blue-200">{diff.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* CTA Section */}
+      <motion.section
+        className="py-16 px-6 bg-gradient-to-br from-slate-50 to-blue-50"
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div variants={itemVariants}>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-slate-800 to-blue-800 bg-clip-text text-transparent">
+              Ready to Get Your Security House in Order?
+            </h2>
+            <p className="text-base md:text-lg mb-8 text-slate-600">
+              Let's design policy documents that don't just tick compliance
+              boxes—but build trust across your organization.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-col sm:flex-row gap-3 justify-center items-center"
+          >
+            {ctaActions.map((action, index) => (
+              <motion.button
+                key={index}
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className={`inline-flex items-center px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-300 ${
+                  action.type === "primary"
+                    ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md hover:shadow-lg"
+                    : "bg-white/80 backdrop-blur-sm text-blue-600 border border-blue-200 hover:bg-blue-50"
+                }`}
+              >
+                <action.icon className="w-4 h-4 mr-2" />
+                {action.title}
               </motion.button>
-            </motion.div>
+            ))}
           </motion.div>
         </div>
-      </div>
-
-      {/* Global Styles for Animations */}
-      <style jsx global>{`
-        @keyframes blob {
-          0% {
-            transform: translate(0px, 0px) scale(1);
-          }
-          33% {
-            transform: translate(30px, -50px) scale(1.1);
-          }
-          66% {
-            transform: translate(-20px, 20px) scale(0.9);
-          }
-          100% {
-            transform: translate(0px, 0px) scale(1);
-          }
-        }
-        .animate-blob {
-          animation: blob 7s infinite;
-        }
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-        .animation-delay-4000 {
-          animation-delay: 4s;
-        }
-      `}</style>
-    </section>
+      </motion.section>
+    </div>
   );
 };
 
