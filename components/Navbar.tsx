@@ -23,6 +23,7 @@ import {
   serviceCategories,
   solutionCategories,
 } from "@/components/landing/menu/data";
+import { MarketingMegaMenu } from "./landing/Marketing/MarketingMegaMenu";
 
 interface NavLink {
   href: string;
@@ -92,7 +93,7 @@ export function Navbar() {
             <MegaMenuContent closeMenu={closeAllMenus} />
           )}
           {link.label === "Business Consulting" && (
-            <BusinessConsultingMenuContent closeMenu={closeAllMenus} />
+            <MarketingMegaMenu closeMenu={closeAllMenus} />
           )}
         </NavigationMenuItem>
       );
