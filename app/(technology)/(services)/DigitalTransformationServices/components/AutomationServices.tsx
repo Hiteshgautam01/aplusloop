@@ -24,6 +24,7 @@ const AutomationServices = () => {
         maxWidth="max-w-6xl"
         badgeColor="bg-blue-100 text-blue-800"
         blueBg={true}
+        isFloat={true}
       />
       
       {/* Introduction Section */}
