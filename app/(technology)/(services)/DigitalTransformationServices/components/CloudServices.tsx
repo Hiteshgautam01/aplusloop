@@ -96,14 +96,14 @@ const CloudServices = () => {
           icon={<Cloud className="w-8 h-8 text-blue-600" />}
           iconBackground="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100/50"
           iconBorderRadius="rounded-xl"
-          layout="centered"
+          layout="stacked"
           dividerStyle="solid"
           dividerColor="blue-400"
           badgeColor="bg-blue-100 text-blue-800"
-          maxWidth="w-full"
+          maxWidth="max-w-6xl"
           animationDelay={0.2}
           blueBg={true}
-          className="w-full mx-auto px-4 pb-0 mb-0"
+          className="w-full mx-auto  pb-0 mb-0"
         />
       </div>
 

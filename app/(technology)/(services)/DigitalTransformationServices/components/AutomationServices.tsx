@@ -19,10 +19,12 @@ const AutomationServices = () => {
             With tools like ITSM, ITAM, and automation frameworks (Ansible, Terraform), we enable organizations to focus on strategic 
             growth by streamlining repetitive processes."
         icon={<Settings className="w-8 h-8 text-blue-600" />}
-        layout="centered"
+        layout="stacked"
         titleSize="xl"
+        maxWidth="max-w-6xl"
         badgeColor="bg-blue-100 text-blue-800"
         blueBg={true}
+        isFloat={true}
       />
       
       {/* Introduction Section */}
@@ -31,7 +33,7 @@ const AutomationServices = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
         viewport={{ once: true, margin: "-100px" }}
-        className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8  mt-16"
+        className="max-w-6xl mx-auto  mt-16"
       >
         <div className="text-left">
           <motion.h2 

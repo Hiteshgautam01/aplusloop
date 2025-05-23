@@ -14,10 +14,11 @@ import {
   Star,
 } from "lucide-react";
 import SectionHeader from "@/components/reusable/SectionHeader";
+import ImagePlaceholder from "@/components/reusable/ImagePlaceholder";
 
 const Development = () => {
   return (
-    <div className="relative min-h-screen pt-16 pb-20 overflow-hidden">
+    <div className="relative min-h-screen  pb-20 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-white via-blue-50 to-indigo-50"></div>
       <div className="absolute top-0 left-0 -z-10 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-100/20 via-transparent to-transparent"></div>
@@ -25,41 +26,51 @@ const Development = () => {
       {/* Decorative Elements */}
       <div className="absolute top-40 right-10 w-64 h-64 rounded-full bg-blue-100/30 blur-3xl"></div>
       <div className="absolute bottom-20 left-10 w-64 h-64 rounded-full bg-indigo-100/30 blur-3xl"></div>
+      <SectionHeader
+        title="Application Development"
+        description="We help organizations implement and modernize enterprise platforms like HRMS, CRM, and ERP. Our experts develop custom applications that align with your business workflows and ensure seamless integration for unified operations. From launch to maintenance, we ensure every app delivers
+            performance, security, and value."
+        layout="stacked"
+        icon={<Code className="w-8 h-8 text-blue-600" />}
+        titleSize="xl"
+        titleColor="text-blue-950"
+        descriptionColor="text-blue-900"
+        dividerColor="from-blue-600"
+        // badge="Professional Services"
+        badgeColor="bg-blue-100 text-blue-800 w-fit"
+        className="max-w-6xl mx-auto pb-0 mb-0"
+        animation={true}
+        blueBg={true}
+      />
+
+      {/* SDLC Diagram Image Placeholder */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.4 }}
+        className="mb-20 mt-20 flex justify-center"
+      >
+        <ImagePlaceholder
+          title="Software Development Life Cycle"
+          subtitle="End-to-End Development Process"
+          width="100%"
+          height="400px"
+          bgColor="#f0f7ff"
+          textColor="#1e3a8a"
+          accentColor="#3b82f6"
+          className="max-w-6xl shadow-lg border border-blue-100"
+          iconPath="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+        />
+      </motion.div>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
+        className=" max-w-6xl mx-auto pb-0 mb-0"
       >
         {/* Header Section */}
         <div className="mb-20">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="flex justify-center mb-2"
-          >
-            <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-blue-100/50 backdrop-blur-sm">
-              <Code className="w-8 h-8 text-blue-600" />
-            </div>
-          </motion.div>
-
-          <SectionHeader
-            title="Development, Integration and Deployment"
-            description="We help organizations implement and modernize enterprise platforms like HRMS, CRM, and ERP. Our experts develop custom applications that align with your business workflows and ensure seamless integration for unified operations. From launch to maintenance, we ensure every app delivers
-            performance, security, and value."
-            layout="centered"
-            titleSize="xl"
-            titleColor="text-blue-950"
-            descriptionColor="text-blue-900"
-            dividerColor="from-blue-600"
-            // badge="Professional Services"
-            badgeColor="bg-blue-100 text-blue-800 w-fit"
-            className="max-w-6xl mx-auto px-4 pb-0 mb-0"
-            animation={true}
-          />
-
           {/* <motion.h1
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -93,9 +104,7 @@ const Development = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
             className="text-lg text-gray-600 max-w-3xl mx-auto text-center"
-          >
-            
-          </motion.p>
+          ></motion.p>
         </div>
 
         {/* Evolution of SDLC Timeline */}

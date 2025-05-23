@@ -28,7 +28,7 @@ const DataManagementServices = () => {
         description="Data is your most strategic asset. We deliver services in data governance, real-time processing (including IoT and edge computing), AI/ML-powered analytics, and cloud-based warehousing. Our integrated data solutions enhance accuracy, compliance, and decision-making in real time.
 "
         icon={<Database className="w-8 h-8 " />}
-        layout="centered"
+        layout="stacked"
         titleSize="xl"
         badgeColor="bg-indigo-100 text-indigo-800"
         // badge="Strategic Data Solutions"

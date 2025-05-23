@@ -37,11 +37,11 @@ const DigitalTransformationServices = () => {
       <Banner
         title="Digital Transformation Services"
         subtitle="Modernizing enterprise platforms and developing custom applications that align with your workflows for seamless, successful integration."
-        height="500px"
+        height="700px"
         overlayType="gradient"
         overlayOpacity={0.7}
         animationDuration={0.8}
-        layout="center"
+        layout="left"
         badge="Innovation"
         ctaButtons={[
           {
@@ -57,6 +57,8 @@ const DigitalTransformationServices = () => {
         ]}
         titleClassName="text-4xl md:text-5xl font-light mb-4"
         subtitleClassName="text-xl md:text-2xl font-light max-w-3xl mx-auto"
+        imageSrc="/DigitalTransformation.jpg"
+        
       />
       <div id="development-integration-deployment">
         <Development />

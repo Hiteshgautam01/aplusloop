@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { CSSProperties } from "react";
 import Image from "next/image";
 import { motion, MotionProps } from "framer-motion";
@@ -61,14 +61,15 @@ const CTAButtonComponent: React.FC<CTAButton & { delay?: number }> = ({
   delay = 0.6,
 }) => {
   const baseStyles =
-    "px-8 py-3 font-semibold rounded-full transition-all duration-300 transform hover:scale-105";
+    "px-8 py-4 font-semibold rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] backdrop-blur-sm";
 
   const variants = {
-    primary: " text-black hover:bg-opacity-90 shadow-lg",
+    primary:
+      "bg-gradient-to-r from-blue-950 to-blue-900 text-white shadow-xl hover:from-blue-900 hover:to-blue-800 hover:shadow-2xl border border-blue-800/60 hover:border-blue-700/80",
     secondary:
-      "bg-black/70 text-white border-2 border-white hover:bg-white hover:text-black",
+      "bg-gradient-to-r from-blue-950/90 to-blue-900/90 text-white border-2 border-blue-800/50 hover:from-blue-900/95 hover:to-blue-800/95 hover:border-blue-700/70 backdrop-blur-md shadow-lg",
     outline:
-      "bg-transparent text-white border-2 border-white hover:bg-white hover:text-black",
+      "bg-gradient-to-r from-transparent to-blue-950/30 text-white border-2 border-blue-700/60 hover:from-blue-900/40 hover:to-blue-800/40 hover:border-blue-600/80 backdrop-blur-sm shadow-lg",
   };
 
   const buttonStyle = `${baseStyles} ${variants[variant]} ${className}`;
@@ -87,7 +88,9 @@ const CTAButtonComponent: React.FC<CTAButton & { delay?: number }> = ({
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay }}
+      transition={{ duration: 0.6, delay, ease: "easeOut" }}
+      whileHover={{ y: -2 }}
+      whileTap={{ y: 0 }}
     >
       {content}
     </motion.div>
@@ -119,50 +122,51 @@ const Banner: React.FC<BannerProps> = ({
   const overlayStyles: OverlayStyles = {
     gradient: {
       background:
-        "linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,50,0.8) 100%)",
+        "linear-gradient(135deg, rgba(15,23,42,0.85) 0%, rgba(30,41,59,0.9) 50%, rgba(51,65,85,0.8) 100%)",
     },
     mesh: {
       background: `
-        radial-gradient(circle at 20% 20%, rgba(0,100,255,0.3) 0%, transparent 40%),
-        radial-gradient(circle at 80% 80%, rgba(255,0,100,0.3) 0%, transparent 40%),
-        linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.8) 100%)
+        radial-gradient(circle at 20% 20%, rgba(23,37,84,0.4) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(30,58,138,0.3) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(37,99,235,0.2) 0%, transparent 60%),
+        linear-gradient(135deg, rgba(15,23,42,0.8) 0%, rgba(30,41,59,0.9) 100%)
       `,
     },
     blur: {
-      backgroundColor: `rgba(0,0,0,${overlayOpacity})`,
-      backdropFilter: "blur(8px) saturate(150%)",
-      WebkitBackdropFilter: "blur(8px) saturate(150%)",
+      backgroundColor: `rgba(15,23,42,${overlayOpacity + 0.2})`,
+      backdropFilter: "blur(12px) saturate(150%) brightness(1.1)",
+      WebkitBackdropFilter: "blur(12px) saturate(150%) brightness(1.1)",
     },
     glass: {
       background:
-        "linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)",
-      backdropFilter: "blur(10px) saturate(180%)",
-      WebkitBackdropFilter: "blur(10px) saturate(180%)",
-      borderTop: "1px solid rgba(255,255,255,0.2)",
-      borderLeft: "1px solid rgba(255,255,255,0.2)",
-      boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+        "linear-gradient(135deg, rgba(23,37,84,0.15) 0%, rgba(30,58,138,0.1) 50%, rgba(37,99,235,0.08) 100%)",
+      backdropFilter: "blur(16px) saturate(180%) brightness(1.2)",
+      WebkitBackdropFilter: "blur(16px) saturate(180%) brightness(1.2)",
+      borderTop: "1px solid rgba(23,37,84,0.3)",
+      borderLeft: "1px solid rgba(23,37,84,0.2)",
+      boxShadow:
+        "0 8px 32px 0 rgba(23,37,84,0.2), inset 0 1px 0 rgba(255,255,255,0.1)",
     },
     split: {
       background: `
-        linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.3) 100%)
+        linear-gradient(90deg, rgba(15,23,42,0.95) 0%, rgba(30,41,59,0.8) 50%, rgba(51,65,85,0.6) 100%)
       `,
     },
     geometric: {
       backgroundImage: `
-        linear-gradient(30deg, #000 12%, transparent 12.5%, transparent 87%, #000 87.5%, #000),
-        linear-gradient(150deg, #000 12%, transparent 12.5%, transparent 87%, #000 87.5%, #000),
-        linear-gradient(30deg, #000 12%, transparent 12.5%, transparent 87%, #000 87.5%, #000),
-        linear-gradient(150deg, #000 12%, transparent 12.5%, transparent 87%, #000 87.5%, #000),
-        linear-gradient(60deg, rgba(0,0,0,0.8) 25%, transparent 25.5%, transparent 75%, rgba(0,0,0,0.8) 75%, rgba(0,0,0,0.8)),
-        linear-gradient(60deg, rgba(0,0,0,0.8) 25%, transparent 25.5%, transparent 75%, rgba(0,0,0,0.8) 75%, rgba(0,0,0,0.8))
+        linear-gradient(30deg, rgba(15,23,42,0.9) 12%, transparent 12.5%, transparent 87%, rgba(15,23,42,0.9) 87.5%),
+        linear-gradient(150deg, rgba(30,41,59,0.8) 12%, transparent 12.5%, transparent 87%, rgba(30,41,59,0.8) 87.5%),
+        linear-gradient(60deg, rgba(23,37,84,0.3) 25%, transparent 25.5%, transparent 75%, rgba(23,37,84,0.3) 75%),
+        linear-gradient(120deg, rgba(30,58,138,0.2) 25%, transparent 25.5%, transparent 75%, rgba(30,58,138,0.2) 75%)
       `,
-      backgroundSize: "80px 140px",
-      backgroundPosition: "0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px",
-      backgroundColor: "rgba(0,0,0,0.6)",
+      backgroundSize: "100px 170px, 80px 140px, 60px 104px, 40px 70px",
+      backgroundPosition: "0 0, 40px 70px, 20px 35px, 60px 105px",
+      backgroundColor: "rgba(15,23,42,0.85)",
     },
     default: {
-      backgroundColor: `rgba(0,0,20,${overlayOpacity})`,
-      background: `linear-gradient(135deg, rgba(0,0,20,${overlayOpacity}) 0%, rgba(0,0,40,${overlayOpacity + 0.1}) 100%)`,
+      background: `
+        linear-gradient(135deg, rgba(15,23,42,${overlayOpacity + 0.15}) 0%, rgba(30,41,59,${overlayOpacity + 0.1}) 50%, rgba(51,65,85,${overlayOpacity}) 100%)
+      `,
     },
   };
 
@@ -215,23 +219,72 @@ const Banner: React.FC<BannerProps> = ({
       {/* Decorative Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Top gradient line */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-700/40 to-transparent" />
 
-        {/* Corner accents */}
-        <div className="absolute top-0 left-0 w-32 h-32 border-t-2 border-l-2 border-white/20" />
-        <div className="absolute bottom-0 right-0 w-32 h-32 border-b-2 border-r-2 border-white/20" />
+        {/* Sophisticated corner accents */}
+        <div className="absolute top-0 left-0 w-40 h-40">
+          <div className="absolute top-0 left-0 w-full h-full border-t-2 border-l-2 border-blue-600/40 rounded-br-3xl" />
+          <div className="absolute top-2 left-2 w-6 h-6 border-t border-l border-blue-500/30" />
+        </div>
 
-        {/* Animated particles */}
+        <div className="absolute bottom-0 right-0 w-40 h-40">
+          <div className="absolute bottom-0 right-0 w-full h-full border-b-2 border-r-2 border-blue-500/40 rounded-tl-3xl" />
+          <div className="absolute bottom-2 right-2 w-6 h-6 border-b border-r border-blue-400/50" />
+        </div>
+
+        {/* Enhanced floating particles */}
         <motion.div
-          className="absolute top-1/4 left-1/4 w-2 h-2 bg-white/30 rounded-full"
+          className="absolute top-1/4 left-1/4 w-3 h-3 bg-gradient-to-r from-blue-800 to-blue-700 rounded-full shadow-lg shadow-blue-950/70"
           animate={{
-            y: [0, -30, 0],
-            opacity: [0.3, 0.6, 0.3],
+            y: [0, -40, 0],
+            opacity: [0.4, 0.8, 0.4],
+            scale: [1, 1.2, 1],
           }}
           transition={{
-            duration: 3,
+            duration: 4,
             repeat: Infinity,
             ease: "easeInOut",
+          }}
+        />
+
+        <motion.div
+          className="absolute top-3/4 right-1/3 w-2 h-2 bg-gradient-to-r from-blue-900 to-blue-800 rounded-full shadow-lg shadow-blue-950/70"
+          animate={{
+            y: [0, -25, 0],
+            x: [0, 15, 0],
+            opacity: [0.3, 0.7, 0.3],
+          }}
+          transition={{
+            duration: 3.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1,
+          }}
+        />
+
+        <motion.div
+          className="absolute top-1/2 right-1/4 w-1.5 h-1.5 bg-gradient-to-r from-blue-700 to-blue-600 rounded-full shadow-md shadow-blue-950/60"
+          animate={{
+            y: [0, -20, 0],
+            opacity: [0.5, 0.9, 0.5],
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2,
+          }}
+        />
+
+        {/* Subtle grid pattern */}
+        <div
+          className="absolute inset-0 opacity-5"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(37,99,235,0.4) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(37,99,235,0.4) 1px, transparent 1px)
+            `,
+            backgroundSize: "50px 50px",
           }}
         />
       </div>
@@ -252,7 +305,8 @@ const Banner: React.FC<BannerProps> = ({
                 transition={{ duration: animationDuration }}
                 className="mb-6"
               >
-                <span className="px-4 py-2 bg-white/10 backdrop-blur-md rounded-full text-white/90 text-sm font-medium border border-white/20">
+                <span className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-950/70 to-blue-900/70 backdrop-blur-md rounded-full text-white/95 text-sm font-semibold border border-blue-800/50 shadow-lg shadow-blue-950/40">
+                  <span className="w-2 h-2 bg-gradient-to-r from-blue-700 to-blue-600 rounded-full mr-3 animate-pulse"></span>
                   {badge}
                 </span>
               </motion.div>
@@ -260,7 +314,11 @@ const Banner: React.FC<BannerProps> = ({
 
             {/* Title */}
             <motion.h1
-              className={`${titleClassName} text-white leading-tight`}
+              className={`${titleClassName} text-white leading-tight drop-shadow-lg`}
+              style={{
+                textShadow:
+                  "0 4px 12px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.3)",
+              }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: animationDuration, delay: 0.2 }}
@@ -271,7 +329,10 @@ const Banner: React.FC<BannerProps> = ({
             {/* Subtitle */}
             {subtitle && (
               <motion.p
-                className={`${subtitleClassName} text-white/90`}
+                className={`${subtitleClassName} text-white/95 drop-shadow-md ${layout === "left" ? "text-left max-w-7xl" : layout === "right" ? "text-right max-w-3xl ml-auto" : "text-center mx-auto"}`}
+                style={{
+                  textShadow: "0 2px 8px rgba(0,0,0,0.4)",
+                }}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: animationDuration, delay: 0.3 }}
@@ -311,7 +372,7 @@ const Banner: React.FC<BannerProps> = ({
       </div>
 
       {/* Bottom Gradient */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-slate-900/60 via-slate-800/30 to-transparent pointer-events-none" />
     </motion.div>
   );
 };

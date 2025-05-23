@@ -279,7 +279,7 @@ export default function ImageTextSection({
       )}
 
       {/* Content container with padding */}
-      <div className=" mx-auto px-4 sm:px-6 lg:px-[200px] relative z-10">
+      <div className=" mx-auto px-4 sm:px-6 lg:px-[170px] relative z-10">
         <motion.div
           className={`flex flex-col-reverse ${
             imagePosition === "right" ? "md:flex-row" : "md:flex-row-reverse"
