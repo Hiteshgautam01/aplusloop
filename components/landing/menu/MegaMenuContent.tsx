@@ -17,24 +17,6 @@ const TopLevelTabs: React.FC<{
       <div
         className={cn(
           "px-6 py-3 font-medium cursor-pointer transition-colors relative",
-          activeTab === "solutions" ? "text-blue-700" : "hover:text-blue-600"
-        )}
-        onClick={() => setActiveTab("solutions")}
-      >
-        Solutions
-        {activeTab === "solutions" && (
-          <motion.div
-            className="absolute bottom-0 left-0 w-full h-[2px] bg-blue-700"
-            layoutId="active-tab-indicator"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
-          />
-        )}
-      </div>
-      <div
-        className={cn(
-          "px-6 py-3 font-medium cursor-pointer transition-colors relative",
           activeTab === "services" ? "text-blue-700" : "hover:text-blue-600"
         )}
         onClick={() => setActiveTab("services")}
@@ -50,13 +32,32 @@ const TopLevelTabs: React.FC<{
           />
         )}
       </div>
+      <div
+        className={cn(
+          "px-6 py-3 font-medium cursor-pointer transition-colors relative",
+          activeTab === "solutions" ? "text-blue-700" : "hover:text-blue-600"
+        )}
+        onClick={() => setActiveTab("solutions")}
+      >
+        Solutions
+        {activeTab === "solutions" && (
+          <motion.div
+            className="absolute bottom-0 left-0 w-full h-[2px] bg-blue-700"
+            layoutId="active-tab-indicator"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+          />
+        )}
+      </div>
+      
     </div>
   );
 };
 
 // Main navigation content component
 export function MegaMenuContent( { closeMenu }: { closeMenu?: () => void }) {
-  const [activeTab, setActiveTab] = React.useState("solutions");
+  const [activeTab, setActiveTab] = React.useState("services");
 
   return (
     <NavigationMenuContent className="bg-background/95 backdrop-blur-lg border border-muted/20 shadow-lg w-[900px] rounded-lg overflow-hidden">
