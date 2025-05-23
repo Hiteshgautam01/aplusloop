@@ -20,12 +20,12 @@ const MobilityServices = () => {
         description="We design scalable, technology-driven mobility platforms for fleet optimization, route planning, and public-private transport integration. Our solutions improve efficiency, reduce operational costs, and adapt to evolving transportation demands."
         icon={<Navigation className="w-8 h-8 text-white" />}
         iconBackground="bg-gradient-to-br from-cyan-600 to-blue-500"
-        layout="stacked"
+        layout="centered"
         dividerStyle="dashed"
         dividerColor="from-cyan-500"
         // badge="Transportation Technology"
         badgeColor="bg-cyan-100 text-cyan-800"
-        maxWidth="max-w-5xl"
+        maxWidth="max-w-6xl"
         animationDelay={0.2}
         titleClassName="tracking-tight"
       />

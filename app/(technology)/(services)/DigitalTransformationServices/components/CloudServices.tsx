@@ -23,7 +23,7 @@ const CloudServices = () => {
           description="From infrastructure management to application migration, our cloud experts deliver flexible, secure, and scalable solutions. We specialize in hybrid cloud architectures, workload optimization, and end-to-end cloud transition strategies."
           icon={<Cloud className="w-8 h-8 text-white" />}
           iconBackground="bg-gradient-to-br from-indigo-500 to-blue-600"
-          layout="standard"
+          layout="centered"
           dividerStyle="solid"
           dividerColor="blue-400"
         //   badge="Cloud Solutions"
