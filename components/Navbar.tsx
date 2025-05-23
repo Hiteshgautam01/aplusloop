@@ -35,7 +35,7 @@ const navLinks: NavLink[] = [
   { href: "/technology", label: "Technology", hasMenu: true },
   { href: "/services", label: "Business Consulting", hasMenu: true },
   { href: "/career", label: "Careers" },
-  { href: "/contact-us", label: "Contact Us" },
+  // { href: "/contact-us", label: "Contact Us" },
 ];
 
 export function Navbar() {
