@@ -43,6 +43,8 @@ const Development = () => {
         blueBg={true}
       />
 
+      
+
       {/* SDLC Diagram Image Placeholder */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
