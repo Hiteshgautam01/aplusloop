@@ -111,7 +111,7 @@ const DataManagementServices = () => {
             From Data Integrity to Real-Time Intelligence
           </h2>
           <p
-            className="text-lg md:text-xl leading-relaxed max-w-4xl  opacity-90"
+            className="text-lg md:text-lg leading-relaxed max-w-4xl  opacity-90"
             style={{ color: "#1A1A4F" }}
           >
             We empower enterprises to transform raw data into strategic assets.
