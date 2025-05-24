@@ -60,7 +60,7 @@ export function MegaMenuContent( { closeMenu }: { closeMenu?: () => void }) {
   const [activeTab, setActiveTab] = React.useState("services");
 
   return (
-    <NavigationMenuContent className="bg-background/95 backdrop-blur-lg border border-muted/20 shadow-lg w-[900px] rounded-lg overflow-hidden">
+    <NavigationMenuContent className=" mr-10  bg-background/95 backdrop-blur-lg border border-muted/20 shadow-lg w-[900px] rounded-lg overflow-hidden">
       <div className="p-2">
         {/* Top tabs */}
         <TopLevelTabs activeTab={activeTab} setActiveTab={setActiveTab} />

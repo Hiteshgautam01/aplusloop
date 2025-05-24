@@ -76,10 +76,10 @@ export function Navbar() {
   const renderNavItem = (link: NavLink) => {
     if (link.hasMenu) {
       return (
-        <NavigationMenuItem key={link.href}>
+        <NavigationMenuItem key={link.href} className="">
           <NavigationMenuTrigger
             className={cn(
-              "px-4 py-2 text-sm font-medium transition-all bg-transparent",
+              "px-4 py-2 text-sm mr-2 font-medium transition-all bg-transparent",
               "hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent",
               pathname === link.href
                 ? "text-primary font-semibold"
@@ -104,7 +104,7 @@ export function Navbar() {
         <NavigationMenuLink
           href={link.href}
           className={cn(
-            "px-4 py-2 text-sm font-medium inline-flex items-center justify-center relative",
+            "px-4 py-2 mr-32 text-sm font-medium inline-flex items-center justify-center relative",
             pathname === link.href
               ? "text-primary font-semibold"
               : "text-foreground/70 hover:text-foreground"
