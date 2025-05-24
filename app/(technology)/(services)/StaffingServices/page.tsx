@@ -39,12 +39,12 @@ const ITStaffAugmentation = () => {
     light: "#F5F8FF",
     medium: "#E0E8FF",
     dark: "#1A1A4F",
-    darkNavy: '#0a0e27',
-    deepBlue: '#151c3a',
-    royalBlue: '#1e3a8a',
-    electricBlue: '#3b82f6',
-    skyBlue: '#60a5fa',
-    lightBlue: '#93bbfc'
+    darkNavy: "#0a0e27",
+    deepBlue: "#151c3a",
+    royalBlue: "#1e3a8a",
+    electricBlue: "#3b82f6",
+    skyBlue: "#60a5fa",
+    lightBlue: "#93bbfc",
   };
 
   // Expertise Areas
@@ -434,117 +434,112 @@ const ITStaffAugmentation = () => {
 
       {/* CTA Section */}
       <section className="relative overflow-hidden">
-      {/* Main gradient background */}
-      <div 
-        className="absolute inset-0"
-        style={{
-          background: `linear-gradient(135deg, ${colors.darkNavy} 0%, ${colors.deepBlue} 40%, ${colors.royalBlue} 80%, ${colors.electricBlue} 100%)`,
-        }}
-      />
-      
-      {/* Overlay gradient for depth */}
-      <div 
-        className="absolute inset-0 opacity-30"
-        style={{
-          background: `radial-gradient(circle at 20% 50%, ${colors.electricBlue} 0%, transparent 50%),
+        {/* Main gradient background */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `linear-gradient(135deg, ${colors.darkNavy} 0%, ${colors.deepBlue} 40%, ${colors.royalBlue} 80%, ${colors.electricBlue} 100%)`,
+          }}
+        />
+
+        {/* Overlay gradient for depth */}
+        <div
+          className="absolute inset-0 opacity-30"
+          style={{
+            background: `radial-gradient(circle at 20% 50%, ${colors.electricBlue} 0%, transparent 50%),
                        radial-gradient(circle at 80% 50%, ${colors.skyBlue} 0%, transparent 50%)`,
-        }}
-      />
-      
-      {/* Animated background shapes */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div 
-          className="absolute -top-40 -right-40 w-80 h-80 rounded-full opacity-10"
-          style={{
-            background: colors.electricBlue,
-            filter: 'blur(100px)',
-            animation: 'float 20s ease-in-out infinite'
           }}
         />
-        <div 
-          className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full opacity-10"
-          style={{
-            background: colors.skyBlue,
-            filter: 'blur(120px)',
-            animation: 'float 25s ease-in-out infinite reverse'
-          }}
-        />
-      </div>
 
-      <div className="relative z-10 px-4 sm:px-6 lg:px-8 py-24">
-        <div className="max-w-5xl mx-auto text-center">
-          {/* Main heading with gradient text */}
-          <h2 className="text-5xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            <span className="text-white">Let's Build </span>
-            <span 
-              className="bg-clip-text text-transparent"
-              style={{
-                backgroundImage: `linear-gradient(to right, ${colors.skyBlue}, ${colors.lightBlue})`,
-              }}
-            >
-              Together
-            </span>
-          </h2>
-          
-          {/* Tagline with better styling */}
-          <p
-            className="text-2xl md:text-3xl font-semibold mb-4"
-            style={{ color: colors.lightBlue }}
-          >
-            Build faster. Scale smarter.
-          </p>
-          
-          {/* Description with improved opacity */}
-          <p className="text-lg md:text-xl text-white/70 mb-12 max-w-2xl mx-auto">
-            Extend your tech team with expert resources from Aplusloop.
-          </p>
+        {/* Animated background shapes */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div
+            className="absolute -top-40 -right-40 w-80 h-80 rounded-full opacity-10"
+            style={{
+              background: colors.electricBlue,
+              filter: "blur(100px)",
+              animation: "float 20s ease-in-out infinite",
+            }}
+          />
+          <div
+            className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full opacity-10"
+            style={{
+              background: colors.skyBlue,
+              filter: "blur(120px)",
+              animation: "float 25s ease-in-out infinite reverse",
+            }}
+          />
+        </div>
 
-          {/* CTA buttons with enhanced styling */}
-          <div className="flex flex-col sm:flex-row gap-5 justify-center">
-            {/* Primary CTA */}
-            <button 
-              className="group px-10 py-5 bg-white text-blue-900 font-semibold rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center gap-3 hover:scale-105 relative overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-blue-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <Target className="w-6 h-6 relative z-10" />
-              <span className="relative z-10">Request a Talent Match</span>
-            </button>
+        <div className="relative z-10 px-4 sm:px-6 lg:px-8 py-24">
+          <div className="max-w-5xl mx-auto text-center">
+            {/* Main heading with gradient text */}
+            <h2 className="text-5xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              <span className="text-white">Let's Build </span>
+              <span
+                className="bg-clip-text text-transparent"
+                style={{
+                  backgroundImage: `linear-gradient(to right, ${colors.skyBlue}, ${colors.lightBlue})`,
+                }}
+              >
+                Together
+              </span>
+            </h2>
 
-            {/* Secondary CTAs with glass morphism */}
-            <button 
-              className="group px-10 py-5 bg-white/5 backdrop-blur-md hover:bg-white/10 text-white font-semibold rounded-2xl border border-white/20 transition-all duration-300 flex items-center justify-center gap-3 hover:scale-105 hover:border-white/40 shadow-lg"
+            {/* Tagline with better styling */}
+            <p
+              className="text-2xl md:text-3xl font-semibold mb-4"
+              style={{ color: colors.lightBlue }}
             >
-              <Eye className="w-6 h-6 group-hover:text-blue-300 transition-colors" />
-              <span>View Available Profiles</span>
-            </button>
+              Build faster. Scale smarter.
+            </p>
 
-            <button 
-              className="group px-10 py-5 bg-white/5 backdrop-blur-md hover:bg-white/10 text-white font-semibold rounded-2xl border border-white/20 transition-all duration-300 flex items-center justify-center gap-3 hover:scale-105 hover:border-white/40 shadow-lg"
-            >
-              <MessageCircle className="w-6 h-6 group-hover:text-blue-300 transition-colors" />
-              <span>Book a Discovery Call</span>
-            </button>
+            {/* Description with improved opacity */}
+            <p className="text-lg md:text-xl text-white/70 mb-12 max-w-2xl mx-auto">
+              Extend your tech team with expert resources from Aplusloop.
+            </p>
+
+            {/* CTA buttons with enhanced styling */}
+            <div className="flex flex-col sm:flex-row gap-5 justify-center">
+              {/* Primary CTA */}
+              <button className="group px-10 py-5 bg-white text-blue-900 font-semibold rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center gap-3 hover:scale-105 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-blue-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <Target className="w-6 h-6 relative z-10" />
+                <span className="relative z-10">Request a Talent Match</span>
+              </button>
+
+              {/* Secondary CTAs with glass morphism */}
+              <button className="group px-10 py-5 bg-white/5 backdrop-blur-md hover:bg-white/10 text-white font-semibold rounded-2xl border border-white/20 transition-all duration-300 flex items-center justify-center gap-3 hover:scale-105 hover:border-white/40 shadow-lg">
+                <Eye className="w-6 h-6 group-hover:text-blue-300 transition-colors" />
+                <span>View Available Profiles</span>
+              </button>
+
+              <button className="group px-10 py-5 bg-white/5 backdrop-blur-md hover:bg-white/10 text-white font-semibold rounded-2xl border border-white/20 transition-all duration-300 flex items-center justify-center gap-3 hover:scale-105 hover:border-white/40 shadow-lg">
+                <MessageCircle className="w-6 h-6 group-hover:text-blue-300 transition-colors" />
+                <span>Book a Discovery Call</span>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <style jsx>{`
-        @keyframes float {
-          0%, 100% {
-            transform: translateY(0) translateX(0);
+        <style jsx>{`
+          @keyframes float {
+            0%,
+            100% {
+              transform: translateY(0) translateX(0);
+            }
+            25% {
+              transform: translateY(-20px) translateX(10px);
+            }
+            50% {
+              transform: translateY(10px) translateX(-10px);
+            }
+            75% {
+              transform: translateY(-10px) translateX(20px);
+            }
           }
-          25% {
-            transform: translateY(-20px) translateX(10px);
-          }
-          50% {
-            transform: translateY(10px) translateX(-10px);
-          }
-          75% {
-            transform: translateY(-10px) translateX(20px);
-          }
-        }
-      `}</style>
-    </section>
+        `}</style>
+      </section>
     </div>
   );
 };
