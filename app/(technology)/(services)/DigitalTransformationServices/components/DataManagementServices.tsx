@@ -107,7 +107,7 @@ const DataManagementServices = () => {
           transition={{ duration: 0.6 }}
           className=" mb-10"
         >
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 bg-gradient-to-r from-[#1E22AA] to-[#0047FF] bg-clip-text text-transparent">
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-4 bg-gradient-to-r from-[#1E22AA] to-[#0047FF] bg-clip-text text-transparent">
             From Data Integrity to Real-Time Intelligence
           </h2>
           <p
