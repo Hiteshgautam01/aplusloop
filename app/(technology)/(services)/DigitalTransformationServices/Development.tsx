@@ -27,7 +27,7 @@ const Development = () => {
       <div className="absolute top-40 right-10 w-64 h-64 rounded-full bg-blue-100/30 blur-3xl"></div>
       <div className="absolute bottom-20 left-10 w-64 h-64 rounded-full bg-indigo-100/30 blur-3xl"></div>
       <SectionHeader
-        title="Application Development"
+        title="Application Services"
         description="We help organizations implement and modernize enterprise platforms like HRMS, CRM, and ERP. Our experts develop custom applications that align with your business workflows and ensure seamless integration for unified operations. From launch to maintenance, we ensure every app delivers
             performance, security, and value."
         layout="stacked"

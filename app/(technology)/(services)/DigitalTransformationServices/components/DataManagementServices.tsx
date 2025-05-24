@@ -1,6 +1,6 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import ImageTextSection from "@/components/reusable/ImageTextSection";
 import {
   Database,
@@ -9,19 +9,82 @@ import {
   HardDrive,
   Zap,
   Cloud,
+  Plus,
+  Minus,
+  CheckCircle,
 } from "lucide-react";
 import ImagePlaceholder from "@/components/reusable/ImagePlaceholder";
 import SectionHeader from "@/components/reusable/SectionHeader";
+
 const DataManagementServices = () => {
+  const [expandedSection, setExpandedSection] = useState<number | null>(null);
+
+  const sections = [
+    {
+      title: "Data Governance & Quality Management",
+      description:
+        "Establishing strong data foundations by enforcing accuracy, consistency, and compliance. We help businesses implement governance frameworks and quality assurance protocols that drive trust, transparency, and regulatory alignment.",
+      items: [
+        "Data governance frameworks and policies",
+        "Data lineage and lifecycle management",
+        "Quality monitoring, validation, and cleansing",
+        "Regulatory compliance (e.g., GDPR, UAE Data Law)",
+      ],
+    },
+    {
+      title: "Real-Time Data Processing & Edge Computing",
+      description:
+        "Accelerate decision-making with intelligent data flows from the edge to the cloud. We build robust data pipelines and integrate IoT and AI/ML systems to deliver insights when and where they matter most.",
+      items: [
+        "Real-time, high-frequency data ingestion",
+        "IoT edge computing for reduced latency",
+        "Edge-to-cloud synchronization",
+        "Integration with AI/ML for real-time analytics",
+        "Event-driven architecture and streaming data solutions",
+      ],
+    },
+    {
+      title: "Advanced Data Analytics & AI",
+      description:
+        "Harness the power of data science to unlock meaningful insights and predict future trends. Our solutions combine statistical modeling, machine learning, and business intelligence to drive data-informed decisions.",
+      items: [
+        "Predictive & prescriptive analytics",
+        "AI/ML model development and deployment",
+        "Business intelligence dashboards",
+        "Sentiment, trend & pattern analysis",
+      ],
+    },
+    {
+      title: "Data Warehousing & System Integration",
+      description:
+        "We design modern, scalable data warehouse solutions and ensure seamless integration across platforms, enabling a unified view of your business operations.",
+      items: [
+        "Centralized cloud & hybrid data warehouses",
+        "ETL/ELT pipeline development",
+        "API-based and legacy system integration",
+        "Scalable architecture for structured and unstructured data",
+      ],
+    },
+    {
+      title: "Data Security & Privacy",
+      description:
+        "Your data deserves airtight protection. We implement best-in-class security frameworks to safeguard sensitive information and ensure compliance with evolving global and local data privacy laws.",
+      items: [
+        "Role-based access controls",
+        "Data masking & tokenization",
+        "Encryption at rest and in transit",
+        "Compliance with ISO, HIPAA, GDPR, and local UAE standards",
+      ],
+    },
+  ];
+
+  const toggleSection = (index: number) => {
+    setExpandedSection(expandedSection === index ? null : index);
+  };
+
   return (
     <div className="relative pb-20 overflow-hidden">
-      {/* Background Elements - using a different style from Automation component */}
-      {/* <div className="absolute inset-0 -z-10 bg-gradient-to-br from-blue-50 via-white to-indigo-50/30"></div>
-      <div className="absolute top-0 right-0 -z-10 w-full h-full bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-blue-100/20 via-transparent to-transparent"></div> */}
-
-      {/* Decorative Elements */}
-      <div className="absolute top-40 left-10 w-80 h-80 rounded-full bg-indigo-100/20 blur-3xl"></div>
-      <div className="absolute bottom-20 right-10 w-80 h-80 rounded-full bg-blue-100/20 blur-3xl"></div>
+      {/* Gradient Overlay */}
 
       <SectionHeader
         title="Data Management Services"
@@ -31,155 +94,145 @@ const DataManagementServices = () => {
         layout="stacked"
         titleSize="xl"
         badgeColor="bg-indigo-100 text-indigo-800"
-        // badge="Strategic Data Solutions"
         animation={true}
         blueBg={true}
       />
 
-      {/* Data Services Overview - Using ImageTextSection with a different approach */}
-      <ImageTextSection
-        title="TRANSFORMING YOUR DATA INTO BUSINESS VALUE"
-        content={
-          <div className="space-y-5">
-            <p className="text-base mb-6">
-              Our comprehensive data management services help organizations
-              harness the full potential of their data, turning information into
-              actionable insights and competitive advantage:
-            </p>
+      {/* Interactive Expandable Sections */}
+      <div className="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-0 mt-12">
+        {/* Header Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className=" mb-10"
+        >
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 bg-gradient-to-r from-[#1E22AA] to-[#0047FF] bg-clip-text text-transparent">
+            From Data Integrity to Real-Time Intelligence
+          </h2>
+          <p
+            className="text-lg md:text-xl leading-relaxed max-w-4xl  opacity-90"
+            style={{ color: "#1A1A4F" }}
+          >
+            We empower enterprises to transform raw data into strategic assets.
+            Our holistic data management services ensure accuracy, agility, and
+            intelligence at every stage—from governance and security to
+            real-time processing and predictive analytics.
+          </p>
+        </motion.div>
 
-            {/* Using a different bullet point style with cards */}
+        {/* Expandable Sections */}
+        <div className="space-y-3">
+          {sections.map((section, index) => (
             <motion.div
+              key={index}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7, duration: 0.8 }}
-              className="grid grid-cols-1 gap-4"
+              transition={{ duration: 0.5, delay: index * 0.08 }}
+              className="group rounded-xl border border-transparent hover:border-[#0047FF]/20 transition-all duration-300 backdrop-blur-sm"
+              style={{
+                backgroundColor: "rgba(245, 248, 255, 0.8)",
+                boxShadow:
+                  expandedSection === index
+                    ? "0 8px 32px rgba(0, 71, 255, 0.15)"
+                    : "0 2px 12px rgba(0, 0, 0, 0.05)",
+              }}
             >
-              {/* Item 1 */}
-              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-blue-100 hover:border-blue-200 transition-colors">
-                <div className="flex items-start gap-3">
-                  <div className="bg-blue-50 p-2 rounded-md flex-shrink-0">
-                    <Database className="w-5 h-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-gray-900 mb-1">
-                      Data Governance & Quality Management
-                    </h3>
-                    <p className="text-gray-600">
-                      Ensuring data accuracy, consistency, and compliance.
-                    </p>
-                  </div>
+              {/* Section Header */}
+              <button
+                onClick={() => toggleSection(index)}
+                className="w-full p-5 text-left flex items-center justify-between group hover:bg-opacity-90 transition-all duration-300 rounded-xl"
+                style={{
+                  backgroundColor:
+                    expandedSection === index
+                      ? "rgba(224, 232, 255, 0.6)"
+                      : "transparent",
+                }}
+              >
+                <div className="flex-1 pr-4">
+                  <h3
+                    className="text-lg md:text-xl font-bold mb-2 group-hover:text-[#0047FF] transition-colors duration-300"
+                    style={{ color: "#1E22AA" }}
+                  >
+                    {section.title}
+                  </h3>
+                  <p
+                    className="text-sm md:text-base leading-relaxed opacity-80"
+                    style={{ color: "#1A1A4F" }}
+                  >
+                    {section.description}
+                  </p>
                 </div>
-              </div>
 
-              {/* Item 2 with nested list */}
-              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-blue-100 hover:border-blue-200 transition-colors">
-                <div className="flex items-start gap-3">
-                  <div className="bg-indigo-50 p-2 rounded-md flex-shrink-0">
-                    <Zap className="w-5 h-5 text-indigo-600" />
-                  </div>
-                  <div className="w-full">
-                    <h3 className="font-medium text-gray-900 mb-2">
-                      Real-time Data Processing & Edge Computing
-                    </h3>
+                <motion.div
+                  animate={{ rotate: expandedSection === index ? 45 : 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="ml-4 p-2 rounded-full transition-all duration-300 backdrop-blur-sm"
+                  style={{
+                    backgroundColor:
+                      expandedSection === index
+                        ? "rgba(0, 71, 255, 0.1)"
+                        : "rgba(224, 232, 255, 0.5)",
+                    boxShadow: "0 2px 8px rgba(0, 71, 255, 0.1)",
+                  }}
+                >
+                  <Plus
+                    className="w-5 h-5 transition-colors duration-300"
+                    style={{
+                      color: expandedSection === index ? "#0047FF" : "#1E22AA",
+                    }}
+                  />
+                </motion.div>
+              </button>
 
-                    <div className="pl-3 border-l-2 border-indigo-100 mt-3 space-y-2">
-                      <p className="text-gray-600 text-sm">
-                        Building and managing data pipelines for immediate
-                        insights.
-                      </p>
-                      <p className="text-gray-600 text-sm">
-                        Processing high-frequency, time-series data directly at
-                        the edge for rapid decision-making and reduced latency.
-                      </p>
-                      <p className="text-gray-600 text-sm">
-                        IoT data ingestion and local processing.
-                      </p>
-                      <p className="text-gray-600 text-sm">
-                        Edge-to-cloud synchronization for centralized analytics.
-                      </p>
-                      <p className="text-gray-600 text-sm">
-                        Integration with AI/ML models for predictive and
-                        real-time insights.
-                      </p>
+              {/* Expandable Content */}
+              <AnimatePresence>
+                {expandedSection === index && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-5 pb-5">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-3">
+                        {section.items.map((item, itemIndex) => (
+                          <motion.div
+                            key={itemIndex}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{
+                              duration: 0.3,
+                              delay: itemIndex * 0.05,
+                            }}
+                            className="flex items-start space-x-3 p-3 rounded-lg transition-all duration-200 hover:shadow-sm"
+                            style={{
+                              backgroundColor: "rgba(255, 255, 255, 0.7)",
+                              border: "1px solid rgba(224, 232, 255, 0.5)",
+                            }}
+                          >
+                            <CheckCircle
+                              className="w-4 h-4 mt-0.5 flex-shrink-0"
+                              style={{ color: "#0047FF" }}
+                            />
+                            <span
+                              className="text-sm md:text-base font-medium leading-relaxed"
+                              style={{ color: "#1A1A4F" }}
+                            >
+                              {item}
+                            </span>
+                          </motion.div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Item 3 */}
-              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-blue-100 hover:border-blue-200 transition-colors">
-                <div className="flex items-start gap-3">
-                  <div className="bg-blue-50 p-2 rounded-md flex-shrink-0">
-                    <BarChart className="w-5 h-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-gray-900 mb-1">
-                      Advanced Data Analytics
-                    </h3>
-                    <p className="text-gray-600">
-                      Delivering actionable insights through analytics and AI/ML
-                      models.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Item 4 */}
-              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-blue-100 hover:border-blue-200 transition-colors">
-                <div className="flex items-start gap-3">
-                  <div className="bg-indigo-50 p-2 rounded-md flex-shrink-0">
-                    <HardDrive className="w-5 h-5 text-indigo-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-gray-900 mb-1">
-                      Data Warehousing & Integration
-                    </h3>
-                    <p className="text-gray-600">
-                      Centralized storage and seamless system integration.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Item 5 */}
-              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-blue-100 hover:border-blue-200 transition-colors">
-                <div className="flex items-start gap-3">
-                  <div className="bg-blue-50 p-2 rounded-md flex-shrink-0">
-                    <Shield className="w-5 h-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-gray-900 mb-1">
-                      Data Security & Privacy
-                    </h3>
-                    <p className="text-gray-600">
-                      Protecting sensitive data and ensuring compliance with
-                      regulations.
-                    </p>
-                  </div>
-                </div>
-              </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
-          </div>
-        }
-        borderStyle="floating"
-        borderColor="indigo"
-        badge="Strategic Data Solutions"
-        imagePosition="right"
-        textContentStyle="minimal"
-        decorative={true}
-        backgroundColor="white"
-        backgroundStyle="solid"
-        customImage={
-          <ImagePlaceholder
-            title="Data Management"
-            subtitle="Unlocking Business Intelligence"
-            iconPath="/api/placeholder/48/48"
-            accentColor="#4f46e5"
-            bgColor="#e0e7ff"
-            height="100%"
-          />
-        }
-      />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

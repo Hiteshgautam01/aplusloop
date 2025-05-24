@@ -86,8 +86,8 @@ const TestingTypes = () => {
               <div className="p-8 flex flex-col h-full relative z-10">
                 {/* Icon */}
                 <div className="mb-6 flex items-center">
-                  <div className="w-14 h-14 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-lg">
-                    <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="w-14 h-14 rounded-lg bg-blue-50 text-blue-500 flex items-center justify-center shadow-lg">
+                    <svg className="w-7 h-7 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={type.icon} />
                     </svg>
                   </div>

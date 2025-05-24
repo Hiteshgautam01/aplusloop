@@ -34,9 +34,9 @@ const InfoSecurityServices = () => {
   }, [searchParams]);
 
   return (
-    <main className="flex min-h-screen flex-col items-center">
+    <main className="flex min-h-screen flex-col">
       <Banner />
-      <div className=" mx-auto px-4 py-16 space-y-">
+      <div className="   py-16 space-y-">
         <div id="risk-assessment-and-vapt">
           <RiskManagement />
         </div>
