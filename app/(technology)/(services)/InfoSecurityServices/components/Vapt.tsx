@@ -53,6 +53,7 @@ const Vapt = () => {
       />
 
       {/* Second Section - Vulnerability Management - WITH BACKGROUND */}
+      <div className=" w-full bg-gradient-to-br from-blue-50 to-blue-200">
       <ImageTextSection
         title="VULNERABILITY MANAGEMENT LIFECYCLE"
         content={
@@ -83,7 +84,8 @@ const Vapt = () => {
             height="100%"
           />
         }
-      />
+        />
+        </div>
 
       {/* Third Section - Benefits with Bullet Points - NO BACKGROUND */}
       <ImageTextSection
@@ -146,6 +148,7 @@ const Vapt = () => {
       />
 
       {/* Fourth Section - Penetration Testing - WITH BACKGROUND */}
+      <div className="bg-blue-50 bg-opacity-70 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] bg-[size:20px_20px]">
       <ImageTextSection
         title="PENETRATION TESTING"
         content={
@@ -176,7 +179,8 @@ const Vapt = () => {
             height="100%"
           />
         }
-      />
+        />
+        </div>
       
       {/* Fifth Section - Custom Testing Approach - NO BACKGROUND */}
       <ImageTextSection
