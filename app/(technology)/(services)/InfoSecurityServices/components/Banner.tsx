@@ -294,7 +294,7 @@ const Banner: React.FC<BannerProps> = ({
         className={`absolute inset-0 flex flex-col justify-center ${contentPadding[layout]} z-10`}
       >
         <div
-          className={`max-w-6xl w-full ${layout === "center" ? "mx-auto" : ""}`}
+          className={`max-w-7xl w-full ${layout === "center" ? "mx-auto" : "mx-auto"}`}
         >
           <div className={`flex flex-col ${layoutAlignments[layout]}`}>
             {/* Badge */}

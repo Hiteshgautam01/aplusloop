@@ -266,7 +266,7 @@ export default function ImageTextSection({
   const textContentClass = getTextContentStyles();
 
   return (
-    <section className={`relative overflow-hidden w-full py-16 ${className}`}>
+    <section className={`relative w-full max-w-6xl mx-auto py-16 ${className}`}>
       {/* Background div that spans full width without padding/margin issues */}
       <div className={`absolute inset-0 w-full h-full ${bgClass}`}></div>
       
@@ -279,7 +279,7 @@ export default function ImageTextSection({
       )}
 
       {/* Content container with padding */}
-      <div className=" mx-auto px-4 sm:px-6 lg:px-[170px] relative z-10">
+      <div className="relative z-10">
         <motion.div
           className={`flex flex-col-reverse ${
             imagePosition === "right" ? "md:flex-row" : "md:flex-row-reverse"
