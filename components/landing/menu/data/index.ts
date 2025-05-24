@@ -129,11 +129,11 @@ export const solutionCategories = [
 // Digital transformation sections
 export const digitalTransformationSections = [
   {
-    title: "Development Integration & Deployment",
+    title: "Application Services",
     description:
       "Custom software development services tailored to your business needs and requirements",
     imageSrc: "/automation.jpg",
-    section: "development-integration-deployment",
+    section: "application-services",
   },
   {
     title: "Automation Services",
@@ -162,13 +162,6 @@ export const digitalTransformationSections = [
       "Comprehensive cloud solutions to enhance scalability and reduce operational costs",
     imageSrc: "/automation.jpg",
     section: "cloud-services",
-  },
-  {
-    title: "Service Management",
-    description:
-      "Effective IT service management to optimize your technology investments",
-    imageSrc: "/automation.jpg",
-    section: "service-management",
   },
   {
     title: "DevOps",

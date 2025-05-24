@@ -4,6 +4,7 @@ import * as React from "react";
 import { ServiceSectionProps } from "./data";
 import { ServiceCard } from "./ServiceCard";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 // Service Sections component with sections list on left and card display on right
 export const ServiceSections: React.FC<ServiceSectionProps> = ({
@@ -29,9 +30,12 @@ export const ServiceSections: React.FC<ServiceSectionProps> = ({
                     ? "bg-blue-50 text-blue-700 border-blue-200 shadow-sm"
                     : "hover:bg-blue-50/30 border-transparent hover:border-gray-100"
                 )}
+                
                 onMouseEnter={() => setHoveredSection(index)}
               >
-                <h4 className="font-medium text-sm">{section.title}</h4>
+                <Link href={`${section.href}?section=${section.section}`}>
+                  <h4 className="font-medium text-sm">{section.title}</h4>
+                </Link>
               </li>
             ))}
           </ul>

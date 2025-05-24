@@ -60,7 +60,7 @@ const DigitalTransformationServices = () => {
         imageSrc="/DigitalTransformation.jpg"
         
       />
-      <div id="development-integration-deployment">
+      <div id="application-services">
         <Development />
       </div>
       <div id="automation-services">
