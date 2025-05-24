@@ -33,7 +33,7 @@ interface NavLink {
 
 const navLinks: NavLink[] = [
   { href: "/technology", label: "Technology", hasMenu: true },
-  { href: "/services", label: "Business Consulting", hasMenu: true },
+  // { href: "/services", label: "Business Consulting", hasMenu: true },
   { href: "/career", label: "Careers" },
   // { href: "/contact-us", label: "Contact Us" },
 ];
@@ -100,31 +100,30 @@ export function Navbar() {
     }
 
     return (
-      
-<NavigationMenuItem key={link.href}>
-  <NavigationMenuLink
-    href={link.href}
-    className={cn(
-      "px-4 py-2 text-sm font-medium inline-flex items-center justify-center relative",
-      pathname === link.href
-        ? "text-primary font-semibold"
-        : "text-foreground/70 hover:text-foreground"
-    )}
-  >
-    {link.label}
-    {pathname === link.href && (
-      <motion.span
-        className="absolute -bottom-0.5 left-4 right-4 h-0.5 bg-primary/60 rounded-full"
-        layoutId="activeIndicator"
-        transition={{
-          type: "spring",
-          stiffness: 500,
-          damping: 30,
-        }}
-      />
-    )}
-  </NavigationMenuLink>
-</NavigationMenuItem>
+      <NavigationMenuItem key={link.href}>
+        <NavigationMenuLink
+          href={link.href}
+          className={cn(
+            "px-4 py-2 text-sm font-medium inline-flex items-center justify-center relative",
+            pathname === link.href
+              ? "text-primary font-semibold"
+              : "text-foreground/70 hover:text-foreground"
+          )}
+        >
+          {link.label}
+          {pathname === link.href && (
+            <motion.span
+              className="absolute -bottom-0.5 left-4 right-4 h-0.5 bg-primary/60 rounded-full"
+              layoutId="activeIndicator"
+              transition={{
+                type: "spring",
+                stiffness: 500,
+                damping: 30,
+              }}
+            />
+          )}
+        </NavigationMenuLink>
+      </NavigationMenuItem>
     );
   };
 
@@ -156,28 +155,52 @@ export function Navbar() {
             {activeMobileMenu === link.href && (
               <div className="bg-background/80 border-l border-muted/20 pl-4 ml-3 my-2">
                 {link.label === "Technology" && (
-                  <div className="py-2">
-                    <h4 className="text-sm font-medium text-foreground/80 mb-2">
-                      Solutions
-                    </h4>
-                    <ul className="space-y-2">
-                      {solutionCategories.map((category) => (
-                        <li key={category.title}>
-                          <Link
-                            href={category.href}
-                            className="flex items-center text-sm pl-2 py-1 text-foreground/70 hover:text-foreground"
-                            onClick={closeAllMenus}
-                          >
-                            <category.icon className="h-3.5 w-3.5 mr-2 text-primary/70" />
-                            {category.title}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
+                  <div className="py-2 space-y-4">
+                    {/* Services Section */}
+                    <div>
+                      <h4 className="text-sm font-medium text-foreground/80 mb-2">
+                        Services
+                      </h4>
+                      <ul className="space-y-2">
+                        {serviceCategories.map((category) => (
+                          <li key={category.title}>
+                            <Link
+                              href={category.href}
+                              className="flex items-center text-sm pl-2 py-1 text-foreground/70 hover:text-foreground"
+                              onClick={closeAllMenus}
+                            >
+                              <category.icon className="h-3.5 w-3.5 mr-2 text-primary/70" />
+                              {category.title}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Solutions Section */}
+                    <div>
+                      <h4 className="text-sm font-medium text-foreground/80 mb-2">
+                        Solutions
+                      </h4>
+                      <ul className="space-y-2">
+                        {solutionCategories.map((category) => (
+                          <li key={category.title}>
+                            <Link
+                              href={category.href}
+                              className="flex items-center text-sm pl-2 py-1 text-foreground/70 hover:text-foreground"
+                              onClick={closeAllMenus}
+                            >
+                              <category.icon className="h-3.5 w-3.5 mr-2 text-primary/70" />
+                              {category.title}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 )}
 
-                {link.label === "Business Consulting" && (
+                {/* {link.label === "Business Consulting" && (
                   <div className="py-2">
                     <h4 className="text-sm font-medium text-foreground/80 mb-2">
                       Services
@@ -197,7 +220,7 @@ export function Navbar() {
                       ))}
                     </ul>
                   </div>
-                )}
+                )} */}
               </div>
             )}
           </div>
