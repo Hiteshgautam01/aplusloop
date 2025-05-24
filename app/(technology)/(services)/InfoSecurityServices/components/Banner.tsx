@@ -103,7 +103,7 @@ const Banner: React.FC<BannerProps> = ({
   title = "Information Security Services",
   subtitle = "Comprehensive security solutions to protect your digital assets and empower your business",
   height = "600px",
-  overlayType = "default",
+  overlayType = "gradient",
   overlayOpacity = 0.6,
   animationDuration = 0.5,
   customOverlayStyle = {},
@@ -118,54 +118,54 @@ const Banner: React.FC<BannerProps> = ({
   badge,
   children,
 }) => {
-  // Different overlay styles with more visibility
+  // Different overlay styles with much darker visibility
   const overlayStyles: OverlayStyles = {
     gradient: {
       background:
-        "linear-gradient(135deg, rgba(15,23,42,0.85) 0%, rgba(30,41,59,0.9) 50%, rgba(51,65,85,0.8) 100%)",
+        "linear-gradient(135deg, rgba(3,6,14,0.97) 0%, rgba(7,12,28,0.95) 25%, rgba(12,20,44,0.93) 50%, rgba(15,30,68,0.90) 75%, rgba(20,45,105,0.87) 100%)",
     },
     mesh: {
       background: `
-        radial-gradient(circle at 20% 20%, rgba(23,37,84,0.4) 0%, transparent 40%),
-        radial-gradient(circle at 80% 80%, rgba(30,58,138,0.3) 0%, transparent 40%),
-        radial-gradient(circle at 50% 50%, rgba(37,99,235,0.2) 0%, transparent 60%),
-        linear-gradient(135deg, rgba(15,23,42,0.8) 0%, rgba(30,41,59,0.9) 100%)
+        radial-gradient(circle at 20% 20%, rgba(12,20,44,0.7) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(15,30,68,0.6) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(20,45,105,0.5) 0%, transparent 60%),
+        linear-gradient(135deg, rgba(7,12,28,0.95) 0%, rgba(15,23,42,0.97) 100%)
       `,
     },
     blur: {
-      backgroundColor: `rgba(15,23,42,${overlayOpacity + 0.2})`,
-      backdropFilter: "blur(12px) saturate(150%) brightness(1.1)",
-      WebkitBackdropFilter: "blur(12px) saturate(150%) brightness(1.1)",
+      backgroundColor: `rgba(7,12,28,${overlayOpacity + 0.35})`,
+      backdropFilter: "blur(12px) saturate(120%) brightness(0.8)",
+      WebkitBackdropFilter: "blur(12px) saturate(120%) brightness(0.8)",
     },
     glass: {
       background:
-        "linear-gradient(135deg, rgba(23,37,84,0.15) 0%, rgba(30,58,138,0.1) 50%, rgba(37,99,235,0.08) 100%)",
-      backdropFilter: "blur(16px) saturate(180%) brightness(1.2)",
-      WebkitBackdropFilter: "blur(16px) saturate(180%) brightness(1.2)",
-      borderTop: "1px solid rgba(23,37,84,0.3)",
-      borderLeft: "1px solid rgba(23,37,84,0.2)",
+        "linear-gradient(135deg, rgba(12,20,44,0.75) 0%, rgba(15,30,68,0.65) 50%, rgba(20,45,105,0.55) 100%)",
+      backdropFilter: "blur(16px) saturate(140%) brightness(0.9)",
+      WebkitBackdropFilter: "blur(16px) saturate(140%) brightness(0.9)",
+      borderTop: "1px solid rgba(12,20,44,0.6)",
+      borderLeft: "1px solid rgba(12,20,44,0.5)",
       boxShadow:
-        "0 8px 32px 0 rgba(23,37,84,0.2), inset 0 1px 0 rgba(255,255,255,0.1)",
+        "0 8px 32px 0 rgba(3,6,14,0.6), inset 0 1px 0 rgba(255,255,255,0.05)",
     },
     split: {
       background: `
-        linear-gradient(90deg, rgba(15,23,42,0.95) 0%, rgba(30,41,59,0.8) 50%, rgba(51,65,85,0.6) 100%)
+        linear-gradient(90deg, rgba(7,12,28,0.98) 0%, rgba(15,23,42,0.95) 50%, rgba(30,41,59,0.85) 100%)
       `,
     },
     geometric: {
       backgroundImage: `
-        linear-gradient(30deg, rgba(15,23,42,0.9) 12%, transparent 12.5%, transparent 87%, rgba(15,23,42,0.9) 87.5%),
-        linear-gradient(150deg, rgba(30,41,59,0.8) 12%, transparent 12.5%, transparent 87%, rgba(30,41,59,0.8) 87.5%),
-        linear-gradient(60deg, rgba(23,37,84,0.3) 25%, transparent 25.5%, transparent 75%, rgba(23,37,84,0.3) 75%),
-        linear-gradient(120deg, rgba(30,58,138,0.2) 25%, transparent 25.5%, transparent 75%, rgba(30,58,138,0.2) 75%)
+        linear-gradient(30deg, rgba(7,12,28,0.95) 12%, transparent 12.5%, transparent 87%, rgba(7,12,28,0.95) 87.5%),
+        linear-gradient(150deg, rgba(15,23,42,0.9) 12%, transparent 12.5%, transparent 87%, rgba(15,23,42,0.9) 87.5%),
+        linear-gradient(60deg, rgba(12,20,44,0.7) 25%, transparent 25.5%, transparent 75%, rgba(12,20,44,0.7) 75%),
+        linear-gradient(120deg, rgba(15,30,68,0.6) 25%, transparent 25.5%, transparent 75%, rgba(15,30,68,0.6) 75%)
       `,
       backgroundSize: "100px 170px, 80px 140px, 60px 104px, 40px 70px",
       backgroundPosition: "0 0, 40px 70px, 20px 35px, 60px 105px",
-      backgroundColor: "rgba(15,23,42,0.85)",
+      backgroundColor: "rgba(3,6,14,0.95)",
     },
     default: {
       background: `
-        linear-gradient(135deg, rgba(15,23,42,${overlayOpacity + 0.15}) 0%, rgba(30,41,59,${overlayOpacity + 0.1}) 50%, rgba(51,65,85,${overlayOpacity}) 100%)
+        linear-gradient(135deg, rgba(7,12,28,${overlayOpacity + 0.25}) 0%, rgba(15,23,42,${overlayOpacity + 0.2}) 50%, rgba(30,41,59,${overlayOpacity + 0.15}) 100%)
       `,
     },
   };
@@ -340,6 +340,16 @@ const Banner: React.FC<BannerProps> = ({
                 {subtitle}
               </motion.p>
             )}
+            {children && (
+              <motion.div
+                className="mt-8"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: animationDuration, delay: 0.7 }}
+              >
+                {children}
+              </motion.div>
+            )}
 
             {/* CTA Buttons */}
             {ctaButtons.length > 0 && (
@@ -357,16 +367,6 @@ const Banner: React.FC<BannerProps> = ({
             )}
 
             {/* Custom Children */}
-            {children && (
-              <motion.div
-                className="mt-8"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: animationDuration, delay: 0.7 }}
-              >
-                {children}
-              </motion.div>
-            )}
           </div>
         </div>
       </div>
