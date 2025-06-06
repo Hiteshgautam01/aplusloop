@@ -8,10 +8,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Navbar } from "@/components/Navbar";
 import { BlogBanner } from "@/components/blog/BlogBanner";
 import { Footer } from "@/components/landing/Footer";
-import { createClient } from "next-sanity";
 import { getBlogPageData } from "@/sanity/queries/blog";
 
-
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
 
 export default function BlogPage() {
   const [activeCategory, setActiveCategory] = useState("all");
