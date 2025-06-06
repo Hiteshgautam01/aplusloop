@@ -14,15 +14,16 @@ interface SDLCPhase {
 const SDLCFlowDiagram = () => {
   const [activePhase, setActivePhase] = useState(0);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
+  const [isMounted, setIsMounted] = useState(false);
 
-  // Perfectly positioned hexagonal layout with better spacing
+  // Simple hexagonal layout with minimal color palette
   const sdlcPhases: SDLCPhase[] = [
     {
       id: "planning",
       title: "Planning",
       description: "Requirements & Analysis",
       detailedDescription: "Define project scope, gather requirements, and create project roadmap",
-      color: "#2563eb",
+      color: "#3b82f6",
       position: { x: 50, y: 15 },
       angle: 0
     },
@@ -31,7 +32,7 @@ const SDLCFlowDiagram = () => {
       title: "Design",
       description: "System Architecture",
       detailedDescription: "Create technical specifications, UI/UX designs, and system architecture",
-      color: "#0891b2",
+      color: "#3b82f6",
       position: { x: 77, y: 35 },
       angle: 60
     },
@@ -40,7 +41,7 @@ const SDLCFlowDiagram = () => {
       title: "Development",
       description: "Code Implementation",
       detailedDescription: "Write clean, scalable code following best practices and standards",
-      color: "#059669",
+      color: "#3b82f6",
       position: { x: 77, y: 65 },
       angle: 120
     },
@@ -49,7 +50,7 @@ const SDLCFlowDiagram = () => {
       title: "Testing",
       description: "Quality Assurance",
       detailedDescription: "Comprehensive testing including unit, integration, and user acceptance tests",
-      color: "#dc2626",
+      color: "#3b82f6",
       position: { x: 50, y: 85 },
       angle: 180
     },
@@ -58,7 +59,7 @@ const SDLCFlowDiagram = () => {
       title: "Deployment",
       description: "Release & Launch",
       detailedDescription: "Deploy to production environment with monitoring and rollback strategies",
-      color: "#7c3aed",
+      color: "#3b82f6",
       position: { x: 23, y: 65 },
       angle: 240
     },
@@ -67,13 +68,14 @@ const SDLCFlowDiagram = () => {
       title: "Maintenance",
       description: "Support & Updates",
       detailedDescription: "Ongoing support, bug fixes, feature enhancements, and performance optimization",
-      color: "#ea580c",
+      color: "#3b82f6",
       position: { x: 23, y: 35 },
       angle: 300
     }
   ];
 
   useEffect(() => {
+    setIsMounted(true);
     const interval = setInterval(() => {
       setActivePhase((prev) => (prev + 1) % sdlcPhases.length);
     }, 3000);
@@ -98,57 +100,37 @@ const SDLCFlowDiagram = () => {
     return () => window.removeEventListener('resize', updateSize);
   }, []);
 
-  // Create smooth curved paths between phases
+  // Simple direct paths to avoid hydration issues
   const getConnectionPath = (from: SDLCPhase, to: SDLCPhase) => {
-    const radius = 8; // Offset from node edge
-    const fromAngle = from.angle * (Math.PI / 180);
-    const toAngle = to.angle * (Math.PI / 180);
-    
-    // Calculate points on circle edge
-    const fromX = from.position.x + radius * Math.cos(fromAngle);
-    const fromY = from.position.y + radius * Math.sin(fromAngle);
-    const toX = to.position.x - radius * Math.cos(toAngle);
-    const toY = to.position.y - radius * Math.sin(toAngle);
-    
-    // Create curved path towards center
+    // Use simple quadratic curves with fixed control points
+    const midX = (from.position.x + to.position.x) / 2;
+    const midY = (from.position.y + to.position.y) / 2;
     const centerX = 50;
     const centerY = 50;
-    const controlOffset = 0.6;
     
-    const controlX1 = fromX + (centerX - fromX) * controlOffset;
-    const controlY1 = fromY + (centerY - fromY) * controlOffset;
-    const controlX2 = toX + (centerX - toX) * controlOffset;
-    const controlY2 = toY + (centerY - toY) * controlOffset;
+    // Simple control point towards center
+    const controlX = midX + (centerX - midX) * 0.3;
+    const controlY = midY + (centerY - midY) * 0.3;
     
-    return `M ${fromX} ${fromY} C ${controlX1} ${controlY1}, ${controlX2} ${controlY2}, ${toX} ${toY}`;
+    return `M ${from.position.x} ${from.position.y} Q ${controlX} ${controlY} ${to.position.x} ${to.position.y}`;
   };
 
-  // Get arrow marker path for direction
+  // Simple arrow using fixed triangular path
   const getArrowPath = (from: SDLCPhase, to: SDLCPhase) => {
-    const radius = 8;
-    const toAngle = to.angle * (Math.PI / 180);
-    const arrowX = to.position.x - radius * Math.cos(toAngle);
-    const arrowY = to.position.y - radius * Math.sin(toAngle);
-    
-    // Calculate arrow direction
     const dx = to.position.x - from.position.x;
     const dy = to.position.y - from.position.y;
-    const angle = Math.atan2(dy, dx);
+    const length = Math.sqrt(dx * dx + dy * dy);
+    const unitX = dx / length;
+    const unitY = dy / length;
     
-    const arrowLength = 2.5;
-    const arrowWidth = 1.5;
+    // Arrow at end point
+    const arrowX = to.position.x - unitX * 7;
+    const arrowY = to.position.y - unitY * 7;
     
-    const tip = { x: arrowX, y: arrowY };
-    const left = {
-      x: arrowX - arrowLength * Math.cos(angle - Math.PI / 6),
-      y: arrowY - arrowLength * Math.sin(angle - Math.PI / 6)
-    };
-    const right = {
-      x: arrowX - arrowLength * Math.cos(angle + Math.PI / 6),
-      y: arrowY - arrowLength * Math.sin(angle + Math.PI / 6)
-    };
+    const perpX = -unitY * 2;
+    const perpY = unitX * 2;
     
-    return `M ${tip.x} ${tip.y} L ${left.x} ${left.y} L ${right.x} ${right.y} Z`;
+    return `M ${to.position.x} ${to.position.y} L ${arrowX + perpX} ${arrowY + perpY} L ${arrowX - perpX} ${arrowY - perpY} Z`;
   };
 
   const getResponsiveScale = () => {
@@ -217,148 +199,91 @@ const SDLCFlowDiagram = () => {
   return (
     <div 
       id="sdlc-container"
-      className="relative w-full max-w-2xl mx-auto"
+      className="relative w-full max-w-lg mx-auto"
     >
-      {/* Title */}
-      <div className="text-center mb-6">
-        <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-1">
-          SDLC Flow
+      {/* Simple Title */}
+      <div className="text-center mb-8">
+        <h3 className="text-lg font-medium text-gray-900">
+          Development Lifecycle
         </h3>
-        <p className="text-sm text-gray-600">
-          Software Development Lifecycle
-        </p>
       </div>
 
-      {/* Main Diagram Container */}
-      <div className="relative w-full aspect-square bg-gradient-to-br from-gray-50 to-white rounded-xl shadow-lg border border-gray-200/50">
+      {/* Clean Diagram Container */}
+      <div className="relative w-full aspect-square bg-white rounded-lg border border-gray-100">
         <svg
-          className="absolute inset-0 w-full h-full"
+          className="absolute inset-0 w-full h-full p-4"
           viewBox="0 0 100 100"
           preserveAspectRatio="xMidYMid meet"
         >
-          {/* Connection Lines with Arrows */}
-          {sdlcPhases.map((phase, index) => {
+          {/* Simple Connection Lines */}
+          {isMounted && sdlcPhases.map((phase, index) => {
             const nextPhase = sdlcPhases[(index + 1) % sdlcPhases.length];
             const isActive = index === activePhase;
             
             return (
               <g key={`connection-${index}`}>
-                {/* Background Connection */}
                 <path
                   d={getConnectionPath(phase, nextPhase)}
                   fill="none"
-                  stroke="#e5e7eb"
-                  strokeWidth="1.5"
-                  opacity="0.5"
+                  stroke={isActive ? "#6366f1" : "#e5e7eb"}
+                  strokeWidth={isActive ? "2" : "1"}
+                  opacity={isActive ? "1" : "0.4"}
+                  style={{ transition: "all 0.4s ease" }}
                 />
                 
-                {/* Active Connection */}
-                <path
-                  d={getConnectionPath(phase, nextPhase)}
-                  fill="none"
-                  stroke={isActive ? phase.color : "#d1d5db"}
-                  strokeWidth={isActive ? "2.5" : "1.5"}
-                  opacity={isActive ? "1" : "0.6"}
-                  style={{
-                    transition: "all 0.6s ease"
-                  }}
-                />
-                
-                {/* Directional Arrow */}
+                {/* Simple Arrow */}
                 <path
                   d={getArrowPath(phase, nextPhase)}
-                  fill={isActive ? phase.color : "#d1d5db"}
-                  opacity={isActive ? "1" : "0.6"}
-                  style={{
-                    transition: "all 0.6s ease"
-                  }}
+                  fill={isActive ? "#6366f1" : "#e5e7eb"}
+                  opacity={isActive ? "1" : "0.4"}
+                  style={{ transition: "all 0.4s ease" }}
                 />
-                
-                {/* Flow Animation Dot */}
-                {isActive && (
-                  <circle
-                    r="1.2"
-                    fill={phase.color}
-                    opacity="0.8"
-                  >
-                    <animateMotion
-                      dur="2.5s"
-                      repeatCount="indefinite"
-                      path={getConnectionPath(phase, nextPhase)}
-                    />
-                  </circle>
-                )}
               </g>
             );
           })}
 
-          {/* Phase Nodes */}
+          {/* Clean Phase Nodes */}
           {sdlcPhases.map((phase, index) => {
             const isActive = index === activePhase;
-            const baseRadius = 7;
-            const activeRadius = 8.5;
             
             return (
               <g key={phase.id}>
-                {/* Outer Ring for Active Phase */}
-                {isActive && (
-                  <circle
-                    cx={phase.position.x}
-                    cy={phase.position.y}
-                    r={activeRadius + 2}
-                    fill="none"
-                    stroke={phase.color}
-                    strokeWidth="0.5"
-                    opacity="0.4"
-                    className="animate-ping"
-                  />
-                )}
-                
-                {/* Main Node Circle */}
+                {/* Simple Circle */}
                 <circle
                   cx={phase.position.x}
                   cy={phase.position.y}
-                  r={isActive ? activeRadius : baseRadius}
-                  fill={isActive ? phase.color : "#ffffff"}
-                  stroke={phase.color}
-                  strokeWidth={isActive ? "2.5" : "2"}
-                  className="transition-all duration-500 hover:scale-105 cursor-pointer"
-                  style={{
-                    filter: isActive ? `drop-shadow(0 0 8px ${phase.color}30)` : "drop-shadow(0 1px 3px rgba(0,0,0,0.1))"
-                  }}
+                  r={isActive ? "6" : "5"}
+                  fill={isActive ? "#6366f1" : "#ffffff"}
+                  stroke={isActive ? "#6366f1" : "#d1d5db"}
+                  strokeWidth="1.5"
+                  className="transition-all duration-300 cursor-pointer"
                   onClick={() => setActivePhase(index)}
                 />
                 
-                {/* Icon Container */}
-                <g 
-                  transform={`translate(${phase.position.x - 2.5}, ${phase.position.y - 2.5}) scale(${isActive ? 0.65 : 0.55})`}
-                  style={{ transition: "all 0.5s ease" }}
-                >
-                  <foreignObject width="5" height="5" className="pointer-events-none">
-                    <div 
-                      className="w-full h-full flex items-center justify-center"
-                      style={{ 
-                        color: isActive ? "white" : phase.color,
-                        transition: "all 0.5s ease"
-                      }}
-                    >
-                      {getPhaseIcon(phase.id)}
-                    </div>
-                  </foreignObject>
-                </g>
-                
-                {/* Phase Title */}
+                {/* Phase Number */}
                 <text
                   x={phase.position.x}
-                  y={phase.position.y - (isActive ? 13 : 11)}
+                  y={phase.position.y + 1}
                   textAnchor="middle"
-                  fontSize={isActive ? "4" : "3.5"}
-                  fontWeight={isActive ? "600" : "500"}
-                  fill={isActive ? phase.color : "#374151"}
+                  fontSize="3"
+                  fontWeight="500"
+                  fill={isActive ? "white" : "#6b7280"}
                   className="pointer-events-none select-none"
-                  style={{ 
-                    transition: "all 0.5s ease"
-                  }}
+                  style={{ transition: "all 0.3s ease" }}
+                >
+                  {index + 1}
+                </text>
+                
+                {/* Phase Label */}
+                <text
+                  x={phase.position.x}
+                  y={phase.position.y - 10}
+                  textAnchor="middle"
+                  fontSize="3"
+                  fontWeight={isActive ? "500" : "400"}
+                  fill={isActive ? "#6366f1" : "#6b7280"}
+                  className="pointer-events-none select-none"
+                  style={{ transition: "all 0.3s ease" }}
                 >
                   {phase.title}
                 </text>
@@ -367,43 +292,18 @@ const SDLCFlowDiagram = () => {
           })}
         </svg>
 
-        {/* Progress Indicator */}
-        <div className="absolute top-3 right-3 bg-white/80 backdrop-blur-sm rounded-md px-2 py-1 shadow-sm">
-          <div className="flex items-center space-x-1.5">
-            <div className="w-12 h-1.5 bg-gray-200 rounded-full overflow-hidden">
-              <div 
-                className="h-full bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-500 rounded-full"
-                style={{ width: `${((activePhase + 1) / sdlcPhases.length) * 100}%` }}
-              />
-            </div>
-            <span className="text-xs font-medium text-gray-600">
-              {activePhase + 1}/{sdlcPhases.length}
-            </span>
-          </div>
+        {/* Minimal Progress */}
+        <div className="absolute top-3 right-3 text-xs text-gray-500 font-medium">
+          {activePhase + 1}/6
         </div>
       </div>
 
-      {/* Active Phase Details - Simplified */}
-      <div className="mt-4 bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-        <div className="flex items-center space-x-3">
-          <div 
-            className="w-10 h-10 rounded-lg flex items-center justify-center text-white transition-all duration-500"
-            style={{ backgroundColor: sdlcPhases[activePhase].color }}
-          >
-            <div className="w-5 h-5">
-              {getPhaseIcon(sdlcPhases[activePhase].id)}
-            </div>
-          </div>
-          <div className="flex-1">
-            <h4 className="font-semibold text-gray-900 text-base">
-              {sdlcPhases[activePhase].title}
-            </h4>
-            <p className="text-sm text-gray-600">
-              {sdlcPhases[activePhase].description}
-            </p>
-          </div>
-          <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
-            {activePhase + 1}/{sdlcPhases.length}
+      {/* Clean Status */}
+      <div className="mt-6 text-center">
+        <div className="inline-flex items-center space-x-2 bg-gray-50 rounded-full px-4 py-2">
+          <div className="w-2 h-2 rounded-full bg-indigo-500"></div>
+          <span className="text-sm font-medium text-gray-700">
+            {sdlcPhases[activePhase].title}
           </span>
         </div>
       </div>
