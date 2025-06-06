@@ -14,6 +14,7 @@ import { Footer } from "@/components/landing/Footer";
 import { Suspense } from "react";
 
 const roboto = Roboto({
+  variable: "--font-roboto",
   weight: ["400", "500", "700"],
   subsets: ["latin"],
 });
@@ -59,7 +60,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${openSans.variable} ${ptSans.variable} ${roboto.className} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${openSans.variable} ${ptSans.variable} ${roboto.variable} antialiased`}
       >
         <Suspense fallback={<div>Loading...</div>}>
           {/* <ThemeProvider

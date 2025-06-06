@@ -33,7 +33,7 @@ interface NavLink {
 
 const navLinks: NavLink[] = [
   { href: "/technology", label: "Technology", hasMenu: true },
-  // { href: "/services", label: "Business Consulting", hasMenu: true },
+  { href: "/services", label: "Services", hasMenu: true },
   { href: "/career", label: "Careers" },
   // { href: "/contact-us", label: "Contact Us" },
 ];
@@ -91,6 +91,45 @@ export function Navbar() {
 
           {link.label === "Technology" && (
             <MegaMenuContent closeMenu={closeAllMenus} />
+          )}
+          {link.label === "Services" && (
+            <NavigationMenuContent className="w-auto min-w-[400px] p-4">
+              <div className="grid gap-3">
+                <h4 className="text-sm font-medium leading-none mb-2">Our Services</h4>
+                <div className="grid gap-2">
+                  <NavigationMenuLink
+                    href="/DigitalTransformationServices"
+                    className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                    onClick={closeAllMenus}
+                  >
+                    <div className="text-sm font-medium leading-none">Digital Transformation Services</div>
+                    <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                      Modernize your enterprise with our comprehensive digital transformation solutions
+                    </p>
+                  </NavigationMenuLink>
+                  <NavigationMenuLink
+                    href="/cms-development"
+                    className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                    onClick={closeAllMenus}
+                  >
+                    <div className="text-sm font-medium leading-none">CMS Development</div>
+                    <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                      Custom content management solutions for your business needs
+                    </p>
+                  </NavigationMenuLink>
+                  <NavigationMenuLink
+                    href="/mobile-app-development"
+                    className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                    onClick={closeAllMenus}
+                  >
+                    <div className="text-sm font-medium leading-none">Mobile App Development</div>
+                    <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                      Native and cross-platform mobile applications
+                    </p>
+                  </NavigationMenuLink>
+                </div>
+              </div>
+            </NavigationMenuContent>
           )}
           {link.label === "Business Consulting" && (
             <MarketingMegaMenu closeMenu={closeAllMenus} />
@@ -195,6 +234,48 @@ export function Navbar() {
                             </Link>
                           </li>
                         ))}
+                      </ul>
+                    </div>
+                  </div>
+                )}
+
+                {link.label === "Services" && (
+                  <div className="py-2 space-y-4">
+                    <div>
+                      <h4 className="text-sm font-medium text-foreground/80 mb-2">
+                        Our Services
+                      </h4>
+                      <ul className="space-y-2">
+                        <li>
+                          <Link
+                            href="/DigitalTransformationServices"
+                            className="flex items-center text-sm pl-2 py-1 text-foreground/70 hover:text-foreground"
+                            onClick={closeAllMenus}
+                          >
+                            <span className="h-3.5 w-3.5 mr-2 text-primary/70">•</span>
+                            Digital Transformation Services
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href="/cms-development"
+                            className="flex items-center text-sm pl-2 py-1 text-foreground/70 hover:text-foreground"
+                            onClick={closeAllMenus}
+                          >
+                            <span className="h-3.5 w-3.5 mr-2 text-primary/70">•</span>
+                            CMS Development
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href="/mobile-app-development"
+                            className="flex items-center text-sm pl-2 py-1 text-foreground/70 hover:text-foreground"
+                            onClick={closeAllMenus}
+                          >
+                            <span className="h-3.5 w-3.5 mr-2 text-primary/70">•</span>
+                            Mobile App Development
+                          </Link>
+                        </li>
                       </ul>
                     </div>
                   </div>
