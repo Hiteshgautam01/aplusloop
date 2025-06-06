@@ -142,13 +142,13 @@ const SDLCFlowDiagram = () => {
 
   const scale = getResponsiveScale();
 
-  // Icons as simple SVG paths
+  // Clean, modern icons
   const getPhaseIcon = (phaseId: string) => {
     const iconProps = {
       className: "w-full h-full",
       fill: "none",
       stroke: "currentColor",
-      strokeWidth: "2.5",
+      strokeWidth: "2",
       strokeLinecap: "round" as const,
       strokeLinejoin: "round" as const
     };
@@ -157,38 +157,48 @@ const SDLCFlowDiagram = () => {
       case "planning":
         return (
           <svg {...iconProps} viewBox="0 0 24 24">
-            <path d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14,2 14,8 20,8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10,9 9,9 8,9"/>
           </svg>
         );
       case "design":
         return (
           <svg {...iconProps} viewBox="0 0 24 24">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+            <path d="M2 2l7.586 7.586"/>
+            <circle cx="11" cy="11" r="2"/>
           </svg>
         );
       case "development":
         return (
           <svg {...iconProps} viewBox="0 0 24 24">
-            <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+            <polyline points="16 18 22 12 16 6"/>
+            <polyline points="8 6 2 12 8 18"/>
           </svg>
         );
       case "testing":
         return (
           <svg {...iconProps} viewBox="0 0 24 24">
-            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
           </svg>
         );
       case "deployment":
         return (
           <svg {...iconProps} viewBox="0 0 24 24">
-            <path d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"/>
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"/>
           </svg>
         );
       case "maintenance":
         return (
           <svg {...iconProps} viewBox="0 0 24 24">
-            <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-            <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
           </svg>
         );
       default:
@@ -252,7 +262,7 @@ const SDLCFlowDiagram = () => {
                 <circle
                   cx={phase.position.x}
                   cy={phase.position.y}
-                  r={isActive ? "6" : "5"}
+                  r={isActive ? "7" : "6"}
                   fill={isActive ? "#6366f1" : "#ffffff"}
                   stroke={isActive ? "#6366f1" : "#d1d5db"}
                   strokeWidth="1.5"
@@ -260,19 +270,24 @@ const SDLCFlowDiagram = () => {
                   onClick={() => setActivePhase(index)}
                 />
                 
-                {/* Phase Number */}
-                <text
-                  x={phase.position.x}
-                  y={phase.position.y + 1}
-                  textAnchor="middle"
-                  fontSize="3"
-                  fontWeight="500"
-                  fill={isActive ? "white" : "#6b7280"}
-                  className="pointer-events-none select-none"
-                  style={{ transition: "all 0.3s ease" }}
-                >
-                  {index + 1}
-                </text>
+                {/* Phase Icon */}
+                {isMounted && (
+                  <g 
+                    transform={`translate(${phase.position.x - 2.5}, ${phase.position.y - 2.5}) scale(0.42)`}
+                  >
+                    <foreignObject width="12" height="12" className="pointer-events-none">
+                      <div 
+                        className="w-full h-full flex items-center justify-center"
+                        style={{ 
+                          color: isActive ? "white" : "#6366f1",
+                          transition: "all 0.3s ease"
+                        }}
+                      >
+                        {getPhaseIcon(phase.id)}
+                      </div>
+                    </foreignObject>
+                  </g>
+                )}
                 
                 {/* Phase Label */}
                 <text
