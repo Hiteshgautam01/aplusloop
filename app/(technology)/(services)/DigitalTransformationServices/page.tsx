@@ -1,10 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import ApplicationServices from "./components/ApplicationServices";
+import ITServiceManagement from "./components/ITServiceManagement";
 import DataManagementServices from "./components/DataManagementServices";
 import SmartMobilityServices from "./components/SmartMobilityServices";
 import CloudServices from "./components/CloudServices";
 import DevOpsServices from "./components/DevOpsServices";
+import ParticlesBackground from "./components/ParticlesBackground";
 
 const DigitalTransformationServices = () => {
   const [activeSection, setActiveSection] = useState("applications");
@@ -17,6 +19,15 @@ const DigitalTransformationServices = () => {
       icon: (
         <svg className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+        </svg>
+      )
+    },
+    { 
+      id: "automation", 
+      label: "Automation Services", 
+      icon: (
+        <svg className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z"/>
         </svg>
       )
     },
@@ -111,12 +122,17 @@ const DigitalTransformationServices = () => {
         ></div>
         
         {/* Blue Tint Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 via-blue-800/75 to-slate-900/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#07047F]/60 via-[#05035F]/55 to-slate-900/60 z-[2]"></div>
         
         {/* Additional Dark Overlay */}
-        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="absolute inset-0 bg-black/20 z-[3]"></div>
         
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+        {/* Particles Background - Between overlays and content */}
+        <div className="absolute inset-0 z-[8]">
+          <ParticlesBackground />
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8" style={{ pointerEvents: 'none' }}>
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 tracking-tight uppercase">
               DIGITAL TRANSFORMATION
@@ -124,13 +140,13 @@ const DigitalTransformationServices = () => {
             <h4 className="text-2xl md:text-3xl lg:text-4xl font-light text-white/90 mb-8">
               SERVICES
             </h4>
-            <div className="w-24 h-1 bg-blue-400 mx-auto mb-8"></div>
+            <div className="w-24 h-1 bg-[#07047F] mx-auto mb-8"></div>
             
           </div>
         </div>
         
         {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5 z-5">
+        <div className="absolute inset-0 opacity-5 z-[9]">
           <div className="h-full w-full bg-gradient-to-r from-transparent via-white/10 to-transparent transform skew-y-12"></div>
         </div>
       </section>
@@ -139,16 +155,16 @@ const DigitalTransformationServices = () => {
       <div className={`fixed top-20 left-1/2 transform -translate-x-1/2 z-40 transition-all duration-300 ${
         isMenuVisible ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0 pointer-events-none'
       }`}>
-        <div className="bg-white/95 backdrop-blur-xl border border-slate-200/50 rounded-2xl shadow-xl shadow-blue-500/10 px-6 py-3">
+        <div className="bg-white/90 backdrop-blur-lg border border-slate-200 rounded-2xl shadow-lg px-6 py-3">
           <div className="flex space-x-1">
             {sections.map((section) => (
               <button
                 key={section.id}
                 onClick={() => scrollToSection(section.id)}
-                className={`group px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 flex items-center space-x-2 hover:shadow-lg hover:scale-105 transform ${
+                className={`group px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 flex items-center space-x-2 ${
                   activeSection === section.id
-                    ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg scale-105'
-                    : 'text-slate-600 hover:text-blue-600 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50'
+                    ? 'bg-[#07047F] text-white shadow-md'
+                    : 'text-slate-600 hover:text-[#07047F] hover:bg-[#07047F]/5'
                 }`}
               >
                 <span className={`transition-colors duration-300 ${
@@ -173,7 +189,20 @@ const DigitalTransformationServices = () => {
 
       {/* Section Divider */}
       <div className="relative py-8">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-50 via-slate-50 to-blue-50"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#07047F]/5 via-slate-50 to-[#07047F]/5"></div>
+        <div className="relative max-w-7xl mx-auto px-8">
+          <div className="w-full h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
+        </div>
+      </div>
+
+      {/* Automation Services Component */}
+      <div id="automation">
+        <ITServiceManagement />
+      </div>
+
+      {/* Section Divider */}
+      <div className="relative py-8">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#07047F]/5 via-slate-50 to-[#07047F]/5"></div>
         <div className="relative max-w-7xl mx-auto px-8">
           <div className="w-full h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
         </div>
@@ -186,9 +215,9 @@ const DigitalTransformationServices = () => {
 
       {/* Section Divider */}
       <div className="relative py-8">
-        <div className="absolute inset-0 bg-gradient-to-r from-green-50 via-blue-50 to-green-50"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#07047F]/5 via-[#07047F]/5 to-[#07047F]/5"></div>
         <div className="relative max-w-7xl mx-auto px-8">
-          <div className="w-full h-px bg-gradient-to-r from-transparent via-green-300 to-transparent"></div>
+          <div className="w-full h-px bg-gradient-to-r from-transparent via-[#07047F]/30 to-transparent"></div>
         </div>
       </div>
 
@@ -199,9 +228,9 @@ const DigitalTransformationServices = () => {
 
       {/* Section Divider */}
       <div className="relative py-8">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-50 via-indigo-50 to-blue-50"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#07047F]/5 via-[#07047F]/5 to-[#07047F]/5"></div>
         <div className="relative max-w-7xl mx-auto px-8">
-          <div className="w-full h-px bg-gradient-to-r from-transparent via-blue-300 to-transparent"></div>
+          <div className="w-full h-px bg-gradient-to-r from-transparent via-[#07047F]/30 to-transparent"></div>
         </div>
       </div>
 
@@ -232,7 +261,7 @@ const DigitalTransformationServices = () => {
           <p className="text-xl text-white/80 mb-8 max-w-3xl mx-auto">
             Let's discuss how our digital transformation services can modernize your enterprise platforms and drive operational excellence.
           </p>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg text-lg uppercase tracking-wide transition-colors duration-300">
+          <button className="bg-[#07047F] hover:bg-[#05035F] text-white font-bold py-4 px-8 rounded-lg text-lg uppercase tracking-wide transition-colors duration-300">
             GET STARTED TODAY
           </button>
         </div>

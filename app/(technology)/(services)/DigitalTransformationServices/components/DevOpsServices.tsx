@@ -1,19 +1,7 @@
 "use client";
 import React, { useState } from "react";
-
-// Custom styles for animations
-const customStyles = `
-  @keyframes slowSpin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-  @keyframes reverseSpin {
-    from { transform: rotate(360deg); }
-    to { transform: rotate(0deg); }
-  }
-  .slow { animation: slowSpin 8s linear infinite; }
-  .reverse { animation: reverseSpin 6s linear infinite; }
-`;
+import Image from "next/image";
+import devopsimg from "@/public/images/devops.jpg";
 
 const DevOpsServices = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -114,84 +102,58 @@ const DevOpsServices = () => {
   ];
 
   return (
-    <>
-      <style jsx>{customStyles}</style>
-      <section className="py-20 bg-gradient-to-br from-slate-50 via-white to-blue-50">
+    <section className="py-20 bg-slate-50">
       <div className="max-w-7xl mx-auto px-8">
         {/* Section Layout with Image - Reversed */}
         <div className="grid lg:grid-cols-2 gap-16 items-start mb-20">
-          {/* Left: Enhanced Image Placeholder */}
+          {/* Left: Image Placeholder */}
           <div className="lg:sticky lg:top-8 order-2 lg:order-1">
-            <div className="relative bg-gradient-to-br from-slate-800 via-blue-900 to-indigo-900 rounded-3xl p-8 overflow-hidden shadow-2xl">
-              {/* Animated Background Pattern - DevOps Theme */}
-              <div className="absolute inset-0 opacity-20">
-                <div className="absolute animate-pulse top-6 left-6 w-8 h-2 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full"></div>
-                <div className="absolute animate-bounce top-8 left-8 w-2 h-8 bg-gradient-to-b from-green-400 to-emerald-400 rounded-full"></div>
-                <div className="absolute animate-pulse delay-300 top-12 left-12 w-8 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full"></div>
-                <div className="absolute animate-bounce delay-150 top-14 left-14 w-2 h-8 bg-gradient-to-b from-orange-400 to-red-400 rounded-full"></div>
-                <div className="absolute animate-pulse delay-500 top-18 left-18 w-8 h-2 bg-gradient-to-r from-indigo-400 to-blue-400 rounded-full"></div>
-                <div className="absolute animate-spin slow top-4 left-16 w-4 h-4 bg-gradient-to-br from-cyan-300 to-blue-400 rounded-full"></div>
-                <div className="absolute animate-ping top-16 left-4 w-3 h-3 bg-gradient-to-br from-green-300 to-emerald-400 rounded-full"></div>
-                
+            <div className="relative bg-gradient-to-br from-slate-100 to-[#07047F]/10 rounded-2xl p-8 overflow-hidden">
+              {/* Professional Background Pattern - DevOps Theme */}
+              <div className="absolute top-0 left-0 w-40 h-40 opacity-10">
+                {/* Pipeline/Flow patterns */}
+                <div className="absolute top-6 left-6 w-8 h-2 bg-slate-500 rounded"></div>
+                <div className="absolute top-8 left-8 w-2 h-8 bg-[#07047F] rounded"></div>
+                <div className="absolute top-12 left-12 w-8 h-2 bg-slate-400 rounded"></div>
+                <div className="absolute top-14 left-14 w-2 h-8 bg-[#07047F]/60 rounded"></div>
+                <div className="absolute top-18 left-18 w-8 h-2 bg-slate-500 rounded"></div>
+                <div className="absolute top-4 left-16 w-4 h-4 bg-[#07047F]/30 rounded-full"></div>
+                <div className="absolute top-16 left-4 w-3 h-3 bg-slate-300 rounded-full"></div>
+              </div>
+              <div className="absolute bottom-0 right-0 w-36 h-36 opacity-10">
                 {/* Gear/Automation patterns */}
-                <div className="absolute animate-spin slow bottom-8 right-8 w-12 h-12 border-2 border-cyan-400 rounded-full"></div>
-                <div className="absolute animate-spin reverse slow bottom-10 right-10 w-8 h-8 border-2 border-emerald-400 rounded-full"></div>
-                <div className="absolute animate-pulse bottom-12 right-12 w-4 h-4 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full"></div>
-                <div className="absolute animate-pulse delay-200 bottom-6 right-16 w-6 h-1 bg-gradient-to-r from-orange-400 to-red-400 rounded-full"></div>
-                <div className="absolute animate-pulse delay-400 bottom-16 right-6 w-1 h-6 bg-gradient-to-b from-indigo-400 to-blue-400 rounded-full"></div>
+                <div className="absolute bottom-8 right-8 w-12 h-12 border-2 border-[#07047F]/60 rounded-full"></div>
+                <div className="absolute bottom-10 right-10 w-8 h-8 border-2 border-slate-400 rounded-full"></div>
+                <div className="absolute bottom-12 right-12 w-4 h-4 bg-[#07047F] rounded-full"></div>
+                <div className="absolute bottom-6 right-16 w-6 h-1 bg-slate-400 rounded"></div>
+                <div className="absolute bottom-16 right-6 w-1 h-6 bg-[#07047F]/60 rounded"></div>
               </div>
               
-              <div className="relative w-full h-96 bg-white/10 backdrop-blur-lg rounded-2xl border border-white/20 flex items-center justify-center mb-4 shadow-xl">
-                <div className="text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl mb-4 shadow-lg">
-                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                    </svg>
-                  </div>
-                  <p className="text-white font-semibold text-lg mb-2">DevOps Pipeline</p>
-                  <p className="text-white/80 text-sm">Automation Excellence</p>
-                </div>
-              </div>
-              <p className="relative text-sm text-white/80 text-center font-medium">
-                CI/CD pipeline diagrams, infrastructure automation workflows, and deployment process visualizations
-              </p>
+              <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[28rem] mb-4">
+                <Image src={devopsimg} alt="DevOps Services" width={1000} height={1000} className="w-full h-full object-cover" />
+              </div>  
+              
             </div>
           </div>
 
-          {/* Right: Enhanced Content */}
+          {/* Right: Content */}
           <div className="order-1 lg:order-2">
             <div className="mb-12">
-              <div className="inline-flex items-center space-x-3 mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center shadow-lg">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                  </svg>
-                </div>
-                <div className="h-8 w-px bg-gradient-to-b from-blue-500 to-cyan-500"></div>
-                <h2 className="text-3xl lg:text-4xl bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent font-bold">
-                  DevOps Services
-                </h2>
-              </div>
-              <h3 className="text-xl lg:text-2xl text-slate-700 font-semibold mb-6 leading-tight">
+              <h2 className="text-3xl lg:text-4xl text-[#07047F] font-semibold mb-4">
+                DevOps Services
+              </h2>
+              <h3 className="text-xl lg:text-2xl text-slate-700 font-medium mb-6">
                 Accelerate Development. Automate Delivery. Achieve Operational Excellence.
               </h3>
-              <p className="text-slate-600 leading-relaxed text-lg">
+              <p className="text-slate-600 leading-relaxed">
                 At Aplusloop, our DevOps services empower your organization to bridge the gap between development and operations—enhancing collaboration, increasing release velocity, and reducing deployment failures. By integrating modern DevOps practices, we help you streamline software delivery pipelines, improve product quality, and accelerate time-to-market.
               </p>
             </div>
 
-            {/* What We Offer - Enhanced */}
+            {/* What We Offer */}
             <div className="mb-12">
-              <div className="flex items-center space-x-3 mb-8">
-                <div className="w-8 h-8 bg-gradient-to-br from-slate-700 to-blue-600 rounded-xl flex items-center justify-center">
-                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                </div>
-                <h4 className="text-2xl font-bold text-slate-900">What We Offer</h4>
-              </div>
-              <div className="space-y-4">
+              <h4 className="text-xl font-semibold text-slate-900 mb-8">What We Offer</h4>
+              <div className="space-y-6">
                 {devOpsOfferings.map((offering, index) => (
                   <div 
                     key={index} 
@@ -199,34 +161,28 @@ const DevOpsServices = () => {
                     onMouseEnter={() => setHoveredCard(index)}
                     onMouseLeave={() => setHoveredCard(null)}
                   >
-                    <div className={`relative bg-white rounded-2xl border border-slate-200 p-6 transition-all duration-500 hover:shadow-xl hover:shadow-blue-500/10 hover:border-blue-300 ${
-                      hoveredCard === index ? 'transform hover:-translate-y-1' : ''
-                    }`}>
-                      <div className="flex items-start space-x-4">
-                        <div className={`flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${offering.gradient} shadow-lg transition-transform duration-300 group-hover:scale-110`}>
-                          <div className="text-white">
-                            {offering.icon}
-                          </div>
-                        </div>
-                        <div className="flex-1">
-                          <h5 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-700 transition-colors">
-                            {offering.title}
-                          </h5>
-                          <div className={`overflow-hidden transition-all duration-500 ${
-                            hoveredCard === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                          }`}>
-                            <p className="text-slate-600 leading-relaxed">
-                              {offering.description}
-                            </p>
-                          </div>
-                        </div>
-                        <div className={`text-slate-300 group-hover:text-blue-500 transition-all duration-300 ${
-                          hoveredCard === index ? 'rotate-90' : ''
+                    <div className="flex items-start space-x-4 py-4">
+                      <div className="text-[#07047F] group-hover:text-slate-700 transition-colors mt-1">
+                        {offering.icon}
+                      </div>
+                      <div className="flex-1">
+                        <h5 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-slate-800 transition-colors">
+                          {offering.title}
+                        </h5>
+                        <div className={`overflow-hidden transition-all duration-500 ${
+                          hoveredCard === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                         }`}>
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/>
-                          </svg>
+                          <p className="text-slate-600 text-sm leading-relaxed">
+                            {offering.description}
+                          </p>
                         </div>
+                      </div>
+                      <div className={`text-slate-300 group-hover:text-slate-500 transition-all duration-300 ${
+                        hoveredCard === index ? 'rotate-90' : ''
+                      }`}>
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/>
+                        </svg>
                       </div>
                     </div>
                   </div>
@@ -237,23 +193,34 @@ const DevOpsServices = () => {
         </div>
 
         {/* Benefits Section - Enhanced */}
-        <div className="mb-16 max-w-6xl mx-auto">
+        <div className="mb-20 max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h4 className="text-3xl font-bold bg-gradient-to-r from-slate-900 to-blue-700 bg-clip-text text-transparent mb-4">
+            <h4 className="text-3xl font-bold text-slate-900 mb-4">
               Benefits of Our DevOps Services
             </h4>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"></div>
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+              Transform your development lifecycle with measurable improvements across your entire organization
+            </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-6">
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => (
-              <div key={index} className="group bg-white rounded-xl p-6 border border-slate-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300">
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/>
-                    </svg>
+              <div key={index} className="group">
+                <div className="bg-white rounded-xl border border-slate-200 p-6 h-full hover:shadow-lg hover:border-[#07047F]/30 transition-all duration-300">
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0">
+                      <div className="w-10 h-10 bg-[#07047F]/10 rounded-lg flex items-center justify-center group-hover:bg-[#07047F]/20 transition-colors duration-300">
+                        <svg className="w-5 h-5 text-[#07047F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-slate-700 leading-relaxed font-medium group-hover:text-slate-900 transition-colors duration-300">
+                        {benefit}
+                      </p>
+                    </div>
                   </div>
-                  <span className="text-slate-700 leading-relaxed font-medium group-hover:text-slate-900 transition-colors">{benefit}</span>
                 </div>
               </div>
             ))}
@@ -261,67 +228,67 @@ const DevOpsServices = () => {
         </div>
 
         {/* Why Choose Us Section - Enhanced */}
-        <div className="mb-16 max-w-6xl mx-auto">
+        <div className="mb-20 max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h4 className="text-3xl font-bold bg-gradient-to-r from-slate-900 to-blue-700 bg-clip-text text-transparent mb-4">
+            <h4 className="text-3xl font-bold text-slate-900 mb-4">
               Why Choose Aplusloop for DevOps?
             </h4>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"></div>
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+              Partner with experts who understand the complexities of modern software delivery and infrastructure management
+            </p>
           </div>
+          
           <div className="grid md:grid-cols-2 gap-8">
             {whyChooseUs.map((item, index) => (
-              <div key={index} className="group bg-gradient-to-br from-white to-blue-50 rounded-2xl p-8 border border-slate-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div className="text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
+              <div key={index} className="group">
+                <div className="bg-white rounded-xl border border-slate-200 p-8 h-full hover:shadow-lg hover:border-[#07047F]/30 transition-all duration-300">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#07047F]/5 transition-colors duration-300">
+                      <svg className="w-8 h-8 text-slate-600 group-hover:text-[#07047F] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                    </div>
+                    <h5 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-[#05035F] transition-colors duration-300">
+                      {item.title}
+                    </h5>
+                    <p className="text-slate-600 leading-relaxed group-hover:text-slate-700 transition-colors duration-300">
+                      {item.description}
+                    </p>
                   </div>
-                  <h5 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-blue-700 transition-colors">{item.title}</h5>
-                  <p className="text-slate-600 leading-relaxed group-hover:text-slate-700 transition-colors">{item.description}</p>
                 </div>
               </div>
             ))}
           </div>
+          
+          {/* Additional Value Proposition */}
+          <div className="mt-12 bg-slate-50 rounded-2xl p-8">
+            <div className="text-center">
+              <h5 className="text-xl font-bold text-slate-900 mb-4">
+                Comprehensive DevOps Partnership
+              </h5>
+              <p className="text-slate-600 leading-relaxed max-w-4xl mx-auto">
+                From initial assessment to full-scale implementation, we provide end-to-end DevOps solutions that align with your business objectives. Our certified engineers work alongside your team to ensure knowledge transfer and long-term success.
+              </p>
+            </div>
+          </div>
         </div>
 
-        {/* Enhanced CTA */}
+        {/* CTA */}
         <div className="text-center">
-          <div className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 rounded-3xl p-12 text-white shadow-2xl overflow-hidden">
-            {/* Animated Background Elements */}
-            <div className="absolute inset-0 opacity-10">
-              <div className="absolute animate-pulse top-4 left-4 w-3 h-3 bg-cyan-400 rounded-full"></div>
-              <div className="absolute animate-ping top-8 right-8 w-2 h-2 bg-blue-400 rounded-full"></div>
-              <div className="absolute animate-pulse delay-300 bottom-6 left-8 w-2 h-2 bg-purple-400 rounded-full"></div>
-              <div className="absolute animate-bounce delay-500 bottom-4 right-4 w-3 h-3 bg-pink-400 rounded-full"></div>
-            </div>
-            
-            <div className="relative z-10">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-3xl mb-6 shadow-2xl">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                </svg>
-              </div>
-              <h4 className="text-3xl lg:text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-transparent">
-                Ready to Accelerate Your Development Pipeline?
-              </h4>
-              <p className="text-xl mb-10 opacity-90 max-w-3xl mx-auto leading-relaxed">
-                Let our DevOps experts design and implement a streamlined delivery pipeline that scales with your business and accelerates your digital transformation journey.
-              </p>
-              <button className="group bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-4 px-10 rounded-2xl transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 transform">
-                <span className="flex items-center space-x-3">
-                  <span>Get DevOps Consultation</span>
-                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                  </svg>
-                </span>
-              </button>
-            </div>
+          <div className="bg-gradient-to-r from-slate-800 to-[#07047F] rounded-2xl p-10 text-white shadow-xl">
+            <h4 className="text-2xl lg:text-3xl font-bold mb-4">
+              🚀 Ready to Accelerate Your Development Pipeline?
+            </h4>
+            <p className="text-xl mb-8 opacity-90">
+              Let our DevOps experts design and implement a streamlined delivery pipeline that scales with your business.
+            </p>
+            <button className="bg-white text-slate-800 hover:bg-slate-100 font-semibold py-3 px-8 rounded-xl transition-colors duration-300 shadow-lg hover:shadow-xl">
+              Get DevOps Consultation
+            </button>
           </div>
         </div>
       </div>
     </section>
-    </>
   );
 };
 

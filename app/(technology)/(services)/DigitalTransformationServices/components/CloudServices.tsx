@@ -1,5 +1,7 @@
 "use client";
 import React, { useState } from "react";
+import Image from "next/image";
+import cloudimg from "@/public/images/cloud.jpg";
 
 const CloudServices = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -60,7 +62,7 @@ const CloudServices = () => {
           {/* Left: Content */}
           <div>
             <div className="mb-12">
-              <h2 className="text-3xl lg:text-4xl text-blue-600 font-semibold mb-4">
+              <h2 className="text-3xl lg:text-4xl text-[#07047F] font-semibold mb-4">
                 Cloud Services
               </h2>
               <h3 className="text-xl lg:text-2xl text-slate-700 font-medium mb-6">
@@ -84,11 +86,11 @@ const CloudServices = () => {
                   onMouseLeave={() => setHoveredCard(null)}
                 >
                   <div className="flex items-start space-x-4 py-4">
-                    <div className="text-blue-600 group-hover:text-blue-700 transition-colors mt-1">
+                    <div className="text-[#07047F] group-hover:text-[#05035F] transition-colors mt-1">
                       {pillar.icon}
                     </div>
                     <div className="flex-1">
-                      <h5 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-blue-700 transition-colors">
+                      <h5 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-[#05035F] transition-colors">
                         {pillar.title}
                       </h5>
                       <div className={`overflow-hidden transition-all duration-500 ${
@@ -99,7 +101,7 @@ const CloudServices = () => {
                         </p>
                       </div>
                     </div>
-                    <div className={`text-blue-300 group-hover:text-blue-500 transition-all duration-300 ${
+                    <div className={`text-[#07047F]/30 group-hover:text-[#07047F] transition-all duration-300 ${
                       hoveredCard === index ? 'rotate-90' : ''
                     }`}>
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -114,34 +116,33 @@ const CloudServices = () => {
 
           {/* Right: Image Placeholder */}
           <div className="lg:sticky lg:top-8">
-            <div className="relative bg-gradient-to-br from-blue-50 to-slate-100 rounded-2xl p-8 overflow-hidden">
+            <div className="relative bg-gradient-to-br from-[#07047F]/5 to-slate-100 rounded-2xl p-8 overflow-hidden">
               {/* Professional Background Pattern - Cloud Theme */}
               <div className="absolute top-0 right-0 w-48 h-48 opacity-10">
                 {/* Cloud-like patterns */}
-                <div className="absolute top-6 right-6 w-16 h-8 bg-blue-400 rounded-full"></div>
+                <div className="absolute top-6 right-6 w-16 h-8 bg-[#07047F]/60 rounded-full"></div>
                 <div className="absolute top-8 right-12 w-12 h-6 bg-slate-400 rounded-full"></div>
-                <div className="absolute top-12 right-8 w-20 h-10 bg-blue-300 rounded-full"></div>
+                <div className="absolute top-12 right-8 w-20 h-10 bg-[#07047F]/30 rounded-full"></div>
                 <div className="absolute top-16 right-16 w-8 h-4 bg-slate-300 rounded-full"></div>
-                <div className="absolute top-20 right-4 w-14 h-7 bg-blue-500 rounded-full"></div>
+                <div className="absolute top-20 right-4 w-14 h-7 bg-[#07047F] rounded-full"></div>
               </div>
               <div className="absolute bottom-0 left-0 w-44 h-44 opacity-10">
                 {/* Network/Connection patterns */}
-                <div className="absolute bottom-8 left-8 w-3 h-3 bg-blue-500 rounded-full"></div>
+                <div className="absolute bottom-8 left-8 w-3 h-3 bg-[#07047F] rounded-full"></div>
                 <div className="absolute bottom-12 left-16 w-3 h-3 bg-slate-400 rounded-full"></div>
-                <div className="absolute bottom-16 left-12 w-3 h-3 bg-blue-400 rounded-full"></div>
+                <div className="absolute bottom-16 left-12 w-3 h-3 bg-[#07047F]/60 rounded-full"></div>
                 <div className="absolute bottom-20 left-20 w-3 h-3 bg-slate-500 rounded-full"></div>
                 {/* Connection lines */}
-                <div className="absolute bottom-8 left-11 w-5 h-0.5 bg-blue-400 transform rotate-45"></div>
+                <div className="absolute bottom-8 left-11 w-5 h-0.5 bg-[#07047F]/60 transform rotate-45"></div>
                 <div className="absolute bottom-14 left-15 w-4 h-0.5 bg-slate-400 transform -rotate-45"></div>
-                <div className="absolute bottom-18 left-17 w-6 h-0.5 bg-blue-300 transform rotate-12"></div>
+                <div className="absolute bottom-18 left-17 w-6 h-0.5 bg-[#07047F]/30 transform rotate-12"></div>
               </div>
               
-              <div className="relative w-full h-96 bg-white/80 backdrop-blur-sm rounded-xl border border-slate-100 flex items-center justify-center mb-4 shadow-sm">
-                <p className="text-slate-500 font-medium text-center">Cloud Architecture<br/>Visual Placeholder</p>
+              <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[28rem] mb-4">
+                <Image src={cloudimg} alt="Cloud Services" width={1000} height={1000} className="w-full h-full object-cover" />
               </div>
-              <p className="relative text-sm text-slate-600 text-center">
-                Cloud infrastructure diagrams, hybrid architecture visualizations, and migration pathway illustrations
-              </p>
+              
+             
             </div>
           </div>
         </div>
@@ -160,14 +161,14 @@ const CloudServices = () => {
 
         {/* CTA */}
         <div className="text-center">
-          <div className="bg-gradient-to-r from-blue-600 to-slate-700 rounded-2xl p-10 text-white shadow-xl">
+          <div className="bg-gradient-to-r from-[#07047F] to-slate-700 rounded-2xl p-10 text-white shadow-xl">
             <h4 className="text-2xl lg:text-3xl font-bold mb-4">
               ☁️ Ready to Transform Your Cloud Strategy?
             </h4>
             <p className="text-xl mb-8 opacity-90">
               Let our cloud experts design and implement a comprehensive cloud solution tailored to your enterprise needs.
             </p>
-            <button className="bg-white text-blue-600 hover:bg-slate-100 font-semibold py-3 px-8 rounded-xl transition-colors duration-300 shadow-lg hover:shadow-xl">
+            <button className="bg-white text-[#07047F] hover:bg-slate-100 font-semibold py-3 px-8 rounded-xl transition-colors duration-300 shadow-lg hover:shadow-xl">
               Get Cloud Consultation
             </button>
           </div>

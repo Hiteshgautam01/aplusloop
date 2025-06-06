@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
-
+import Image from "next/image";
+import mobilityimg from "@/public/images/fleet.png";  
 const SmartMobilityServices = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
@@ -64,7 +65,7 @@ const SmartMobilityServices = () => {
           {/* Left: Content */}
           <div>
             <div className="mb-12">
-              <h2 className="text-3xl lg:text-4xl text-blue-600 font-semibold mb-4">
+              <h2 className="text-3xl lg:text-4xl text-[#07047F] font-semibold mb-4">
                 Smart Mobility & Fleet Management
               </h2>
               <h3 className="text-xl lg:text-2xl text-slate-700 font-medium">
@@ -82,11 +83,11 @@ const SmartMobilityServices = () => {
                   onMouseLeave={() => setHoveredCard(null)}
                 >
                   <div className="flex items-start space-x-4 py-4">
-                    <div className="text-blue-600 group-hover:text-green-600 transition-colors mt-1">
+                    <div className="text-[#07047F] group-hover:text-[#07047F] transition-colors mt-1">
                       {service.icon}
                     </div>
                     <div className="flex-1">
-                      <h5 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-green-700 transition-colors">
+                      <h5 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-[#07047F] transition-colors">
                         {service.title}
                       </h5>
                       <div className={`overflow-hidden transition-all duration-500 ${
@@ -97,7 +98,7 @@ const SmartMobilityServices = () => {
                         </p>
                       </div>
                     </div>
-                    <div className={`text-green-300 group-hover:text-green-500 transition-all duration-300 ${
+                    <div className={`text-[#07047F]/30 group-hover:text-[#07047F] transition-all duration-300 ${
                       hoveredCard === index ? 'rotate-90' : ''
                     }`}>
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -112,49 +113,47 @@ const SmartMobilityServices = () => {
 
           {/* Right: Image Placeholder */}
           <div className="lg:sticky lg:top-8">
-            <div className="relative bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-8 overflow-hidden">
+            <div className="relative bg-gradient-to-br from-[#07047F]/5 to-[#07047F]/5 rounded-2xl p-8 overflow-hidden">
               {/* Professional Background Pattern - Mobility Theme */}
               <div className="absolute top-0 right-0 w-44 h-44 opacity-10">
                 {/* Route/Path patterns */}
-                <div className="absolute top-8 right-8 w-16 h-2 bg-green-400 rounded-full transform rotate-12"></div>
-                <div className="absolute top-12 right-12 w-12 h-2 bg-blue-400 rounded-full transform -rotate-12"></div>
-                <div className="absolute top-16 right-6 w-20 h-2 bg-green-300 rounded-full transform rotate-24"></div>
-                <div className="absolute top-20 right-16 w-8 h-2 bg-blue-300 rounded-full transform -rotate-24"></div>
+                <div className="absolute top-8 right-8 w-16 h-2 bg-[#07047F]/60 rounded-full transform rotate-12"></div>
+                <div className="absolute top-12 right-12 w-12 h-2 bg-[#07047F]/60 rounded-full transform -rotate-12"></div>
+                <div className="absolute top-16 right-6 w-20 h-2 bg-[#07047F]/30 rounded-full transform rotate-24"></div>
+                <div className="absolute top-20 right-16 w-8 h-2 bg-[#07047F]/30 rounded-full transform -rotate-24"></div>
                 {/* Vehicle dots */}
-                <div className="absolute top-6 right-14 w-3 h-3 bg-green-500 rounded-full"></div>
-                <div className="absolute top-14 right-8 w-3 h-3 bg-blue-500 rounded-full"></div>
-                <div className="absolute top-22 right-20 w-3 h-3 bg-green-400 rounded-full"></div>
+                <div className="absolute top-6 right-14 w-3 h-3 bg-[#07047F] rounded-full"></div>
+                <div className="absolute top-14 right-8 w-3 h-3 bg-[#07047F] rounded-full"></div>
+                <div className="absolute top-22 right-20 w-3 h-3 bg-[#07047F]/60 rounded-full"></div>
               </div>
               <div className="absolute bottom-0 left-0 w-40 h-40 opacity-10">
                 {/* Network/Fleet patterns */}
-                <div className="absolute bottom-8 left-8 w-4 h-6 bg-green-400 rounded"></div>
-                <div className="absolute bottom-12 left-12 w-6 h-4 bg-blue-400 rounded"></div>
-                <div className="absolute bottom-16 left-6 w-3 h-8 bg-green-300 rounded"></div>
-                <div className="absolute bottom-6 left-16 w-8 h-3 bg-blue-300 rounded"></div>
-                <div className="absolute bottom-10 left-20 w-2 h-2 bg-green-500 rounded-full"></div>
-                <div className="absolute bottom-18 left-10 w-2 h-2 bg-blue-500 rounded-full"></div>
+                <div className="absolute bottom-8 left-8 w-4 h-6 bg-[#07047F]/60 rounded"></div>
+                <div className="absolute bottom-12 left-12 w-6 h-4 bg-[#07047F]/60 rounded"></div>
+                <div className="absolute bottom-16 left-6 w-3 h-8 bg-[#07047F]/30 rounded"></div>
+                <div className="absolute bottom-6 left-16 w-8 h-3 bg-[#07047F]/30 rounded"></div>
+                <div className="absolute bottom-10 left-20 w-2 h-2 bg-[#07047F] rounded-full"></div>
+                <div className="absolute bottom-18 left-10 w-2 h-2 bg-[#07047F] rounded-full"></div>
               </div>
               
               <div className="relative w-full h-96 bg-white/80 backdrop-blur-sm rounded-xl border border-slate-100 flex items-center justify-center mb-4 shadow-sm">
-                <p className="text-slate-500 font-medium text-center">Smart Mobility<br/>Fleet Management Visual</p>
+                  <Image src={mobilityimg} alt="Smart Mobility" width={1000} height={1000} className="w-full h-full object-cover" />
               </div>
-              <p className="relative text-sm text-slate-600 text-center">
-                Fleet tracking dashboards, route optimization maps, and mobility platform interfaces
-              </p>
+                 
             </div>
           </div>
         </div>
 
         {/* CTA */}
         <div className="text-center">
-          <div className="bg-gradient-to-r from-green-600 to-blue-600 rounded-2xl p-10 text-white shadow-xl">
+          <div className="bg-gradient-to-r from-[#07047F] to-[#07047F] rounded-2xl p-10 text-white shadow-xl">
             <h4 className="text-2xl lg:text-3xl font-bold mb-4">
               🚗 Transform Your Fleet Operations
             </h4>
             <p className="text-xl mb-8 opacity-90">
               Optimize your mobility solutions with our smart fleet management technologies.
             </p>
-            <button className="bg-white text-green-600 hover:bg-slate-100 font-semibold py-3 px-8 rounded-xl transition-colors duration-300 shadow-lg hover:shadow-xl">
+            <button className="bg-white text-[#07047F] hover:bg-slate-100 font-semibold py-3 px-8 rounded-xl transition-colors duration-300 shadow-lg hover:shadow-xl">
               Get Fleet Consultation
             </button>
           </div>

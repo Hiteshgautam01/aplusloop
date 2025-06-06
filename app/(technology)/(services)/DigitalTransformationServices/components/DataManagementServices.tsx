@@ -1,5 +1,7 @@
 "use client";
 import React, { useState } from "react";
+import Image from "next/image";
+import dataimg from "@/public/images/dataimg.jpg";
 
 const DataManagementServices = () => {
   const [expandedSection, setExpandedSection] = useState<number | null>(null);
@@ -94,41 +96,41 @@ const DataManagementServices = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-start mb-20">
           {/* Left: Image Placeholder */}
           <div className="lg:sticky lg:top-8 order-2 lg:order-1">
-            <div className="relative bg-gradient-to-br from-slate-100 to-blue-100 rounded-2xl p-8 overflow-hidden">
+            <div className="relative bg-gradient-to-br from-slate-100 to-[#07047F]/10 rounded-2xl p-8 overflow-hidden">
               {/* Professional Background Pattern - Data Theme */}
               <div className="absolute top-0 left-0 w-40 h-40 opacity-10">
                 <div className="absolute inset-0">
-                  <div className="w-6 h-6 bg-blue-500 rounded transform rotate-45 absolute top-4 left-4"></div>
+                  <div className="w-6 h-6 bg-[#07047F] rounded transform rotate-45 absolute top-4 left-4"></div>
                   <div className="w-4 h-4 bg-slate-400 rounded transform rotate-12 absolute top-8 left-12"></div>
-                  <div className="w-8 h-8 bg-blue-300 rounded transform -rotate-30 absolute top-12 left-8"></div>
+                  <div className="w-8 h-8 bg-[#07047F]/30 rounded transform -rotate-30 absolute top-12 left-8"></div>
                   <div className="w-3 h-3 bg-slate-500 rounded absolute top-16 left-16"></div>
-                  <div className="w-5 h-5 bg-blue-400 rounded transform rotate-60 absolute top-6 left-20"></div>
+                  <div className="w-5 h-5 bg-[#07047F]/60 rounded transform rotate-60 absolute top-6 left-20"></div>
                 </div>
               </div>
               <div className="absolute bottom-0 right-0 w-36 h-36 opacity-10">
                 <div className="grid grid-cols-3 gap-2 p-4">
-                  <div className="w-full h-6 bg-blue-400 rounded"></div>
+                  <div className="w-full h-6 bg-[#07047F]/60 rounded"></div>
                   <div className="w-full h-4 bg-slate-400 rounded"></div>
-                  <div className="w-full h-5 bg-blue-300 rounded"></div>
+                  <div className="w-full h-5 bg-[#07047F]/30 rounded"></div>
                   <div className="w-full h-3 bg-slate-300 rounded"></div>
-                  <div className="w-full h-6 bg-blue-500 rounded"></div>
+                  <div className="w-full h-6 bg-[#07047F] rounded"></div>
                   <div className="w-full h-4 bg-slate-400 rounded"></div>
                 </div>
               </div>
               
               <div className="relative w-full h-96 bg-white/80 backdrop-blur-sm rounded-xl border border-slate-100 flex items-center justify-center mb-4 shadow-sm">
-                <p className="text-slate-500 font-medium text-center">Data Management<br/>Visual Placeholder</p>
+            <img src={dataimg.src} alt="Data Management" width={1000} height={1000} className="w-full h-full object-cover" />
               </div>
-              <p className="relative text-sm text-slate-600 text-center">
+              {/* <p className="relative text-sm text-slate-600 text-center">
                 Data flow diagrams, analytics dashboards, and infrastructure visualizations
-              </p>
+              </p> */}
             </div>
           </div>
 
           {/* Right: Content */}
           <div className="order-1 lg:order-2">
             <div className="mb-12">
-              <h2 className="text-3xl lg:text-4xl text-blue-600 font-semibold mb-4">
+              <h2 className="text-3xl lg:text-4xl text-[#07047F] font-semibold mb-4">
                 Data Management Services
               </h2>
               <h3 className="text-xl lg:text-2xl text-slate-700 font-medium">
@@ -146,11 +148,11 @@ const DataManagementServices = () => {
                   onMouseLeave={() => setExpandedSection(null)}
                 >
                   <div className="flex items-start space-x-4 py-4">
-                    <div className="text-blue-600 group-hover:text-blue-700 transition-colors mt-1">
+                    <div className="text-[#07047F] group-hover:text-[#05035F] transition-colors mt-1">
                       {service.icon}
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-blue-700 transition-colors">
+                      <h4 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-[#05035F] transition-colors">
                         {service.title}
                       </h4>
                       <div className={`overflow-hidden transition-all duration-500 ${
@@ -162,14 +164,14 @@ const DataManagementServices = () => {
                         <div className="space-y-2">
                           {service.details.map((detail, detailIndex) => (
                             <div key={detailIndex} className="flex items-start space-x-3">
-                              <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                              <div className="w-1.5 h-1.5 bg-[#07047F] rounded-full mt-2 flex-shrink-0"></div>
                               <span className="text-slate-600 text-sm leading-relaxed">{detail}</span>
                             </div>
                           ))}
                         </div>
                       </div>
                     </div>
-                    <div className={`text-blue-300 group-hover:text-blue-500 transition-all duration-300 ${
+                    <div className={`text-[#07047F]/30 group-hover:text-[#07047F] transition-all duration-300 ${
                       expandedSection === index ? 'rotate-90' : ''
                     }`}>
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

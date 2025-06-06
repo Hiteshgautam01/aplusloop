@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import SDLCFlowDiagram from "./SDLCFlowDiagram";
 
 const ApplicationServices = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -65,10 +66,10 @@ const ApplicationServices = () => {
           {/* Left: Content */}
           <div>
             <div className="mb-12">
-              <h2 className="text-3xl lg:text-4xl text-blue-600 font-semibold mb-4">
+              <h2 className="text-3xl lg:text-4xl text-[#07047F] font-semibold mb-4">
                 Transforming Business Workflows through Intelligent Applications
-              </h2>
-              <h3 className="text-xl lg:text-2xl text-slate-700 font-medium">
+              </h2>   
+              <h3 className="text-xl lg:text-2xl text-[#07047F] font-light">
                 Future-Ready Applications for a Digital-First Enterprise
               </h3>
             </div>
@@ -83,11 +84,11 @@ const ApplicationServices = () => {
                   onMouseLeave={() => setHoveredCard(null)}
                 >
                   <div className="flex items-start space-x-4 py-4">
-                    <div className="text-blue-600 group-hover:text-blue-700 transition-colors mt-1">
+                    <div className="text-[#07047F] group-hover:text-[#05035F] transition-colors mt-1">
                       {offering.icon}
                     </div>
                     <div className="flex-1">
-                      <h5 className="font-semibold text-slate-900 mb-2 group-hover:text-blue-700 transition-colors">
+                      <h5 className="font-semibold text-slate-900 mb-2 group-hover:text-[#05035F] transition-colors">
                         {offering.title}
                       </h5>
                       <div className={`overflow-hidden transition-all duration-500 ${
@@ -98,7 +99,7 @@ const ApplicationServices = () => {
                         </p>
                       </div>
                     </div>
-                    <div className={`text-blue-300 group-hover:text-blue-500 transition-all duration-300 ${
+                    <div className={`text-[#07047F]/30 group-hover:text-[#07047F] transition-all duration-300 ${
                       hoveredCard === index ? 'rotate-90' : ''
                     }`}>
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -113,24 +114,22 @@ const ApplicationServices = () => {
 
           {/* Right: Image Placeholder */}
           <div className="lg:sticky lg:top-8">
-            <div className="relative bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-8 overflow-hidden">
+            <div className="relative  rounded-2xl  overflow-hidden">
               {/* Professional Background Pattern */}
               <div className="absolute top-0 right-0 w-32 h-32 opacity-10">
-                <div className="absolute inset-0 bg-blue-500 rounded-full transform rotate-45 scale-75"></div>
+                <div className="absolute inset-0 bg-[#07047F] rounded-full transform rotate-45 scale-75"></div>
                 <div className="absolute top-4 right-4 w-16 h-16 bg-slate-400 rounded-full transform -rotate-12"></div>
-                <div className="absolute bottom-2 left-2 w-8 h-8 bg-blue-300 rounded-full"></div>
+                <div className="absolute bottom-2 left-2 w-8 h-8 bg-[#07047F]/50 rounded-full"></div>
               </div>
               <div className="absolute bottom-0 left-0 w-24 h-24 opacity-10">
                 <div className="absolute inset-0 bg-slate-500 transform rotate-12 rounded-lg"></div>
-                <div className="absolute top-2 left-2 w-12 h-12 bg-blue-400 transform -rotate-45 rounded-lg"></div>
+                <div className="absolute top-2 left-2 w-12 h-12 bg-[#07047F]/60 transform -rotate-45 rounded-lg"></div>
               </div>
               
-              <div className="relative w-full h-96 bg-white/80 backdrop-blur-sm rounded-xl border border-slate-100 flex items-center justify-center mb-4 shadow-sm">
-                <p className="text-slate-500 font-medium text-center">SDLC Life-cycle<br/>Visual Placeholder</p>
+              <div className="relative w-full">
+                <SDLCFlowDiagram />
               </div>
-              <p className="relative text-sm text-slate-600 text-center">
-                Show images of SDLC life-cycle. How software industry has changed the way organizations work starting from the initial days of software and today integrated and connected world
-              </p>
+              
             </div>
           </div>
         </div>
@@ -195,7 +194,7 @@ const ApplicationServices = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4">
             {["100% Tailored Implementation", "Agile Delivery Model", "Industry-Specific Expertise", "Enterprise-Grade Security", "Cross-Platform Compatibility", "24/7 Support & Monitoring"].map((feature, index) => (
               <div key={index} className="flex items-center space-x-3 py-2">
-                <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-[#07047F] rounded-full flex-shrink-0"></div>
                 <span className="text-slate-700 font-medium">{feature}</span>
               </div>
             ))}
@@ -204,14 +203,14 @@ const ApplicationServices = () => {
 
         {/* CTA */}
         <div className="text-center">
-          <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-10 text-white shadow-xl">
+          <div className="bg-gradient-to-r from-[#07047F] to-[#05035F] rounded-2xl p-10 text-white shadow-xl">
             <h4 className="text-2xl lg:text-3xl font-bold mb-4">
               📩 Let's Talk About Your Application Needs
             </h4>
             <p className="text-xl mb-8 opacity-90">
               Book a free consultation with our solution architects today.
             </p>
-            <button className="bg-white text-blue-600 hover:bg-slate-100 font-semibold py-3 px-8 rounded-xl transition-colors duration-300 shadow-lg hover:shadow-xl">
+            <button className="bg-white text-[#07047F] hover:bg-slate-100 font-semibold py-3 px-8 rounded-xl transition-colors duration-300 shadow-lg hover:shadow-xl">
               Contact Us
             </button>
           </div>
